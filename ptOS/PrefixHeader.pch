@@ -1,0 +1,52 @@
+//
+//  PrefixHeader.pch
+//  ptOS
+//
+//  Created by 周瑞 on 16/8/26.
+//  Copyright © 2016年 商盟. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "NSDictionary+Additional.h"
+#import "Defines.h"
+#import "ControlUtil.h"
+#import "UIView+Additional.h"
+#import "StringUtil.h"
+#import "UIViewController+Additional.h"
+#import "GlobalData.h"
+#import "ControlUtil.h"
+#import "XHToast.h"
+#import "JPUSHService.h"
+#import "NIMSDK.h"
+#import "NIMAVChat.h"
+#import "NTESGlobalMacro.h"
+#import "NIMKit.h"
+
+//#import "CocoaLumberjack.h"
+
+
+//#ifdef DEBUG
+//static DDLogLevel ddLogLevel = DDLogLevelVerbose;
+//#else
+//static DDLogLevel ddLogLevel = DDLogLevelInfo;
+//#endif
+//
+#define NTES_USE_CLEAR_BAR - (BOOL)useClearBar{return YES;}
+//
+#define NTES_FORBID_INTERACTIVE_POP - (BOOL)forbidInteractivePop{return YES;}
+
+
+#endif
+
+#endif
+
+
+
+
+ /* PrefixHeader_pch */
