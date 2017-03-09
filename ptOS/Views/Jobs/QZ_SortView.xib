@@ -19,9 +19,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="125" height="37"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehS-aX-0tw">
-                            <rect key="frame" x="13" y="3" width="46" height="30"/>
+                            <rect key="frame" x="13" y="3" width="31" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="46" id="bV9-lU-Dbd"/>
                                 <constraint firstAttribute="height" constant="30" id="slY-dZ-43r"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -29,11 +28,11 @@
                                 <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_paixu_no.png" translatesAutoresizingMaskIntoConstraints="NO" id="zUU-fG-bkW">
-                            <rect key="frame" x="56" y="12" width="6" height="12"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_xuan.png" translatesAutoresizingMaskIntoConstraints="NO" id="zUU-fG-bkW">
+                            <rect key="frame" x="50" y="15" width="8" height="8"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="12" id="IEN-Yd-0Rm"/>
-                                <constraint firstAttribute="width" constant="6" id="rYO-hy-0rl"/>
+                                <constraint firstAttribute="height" constant="8" id="IEN-Yd-0Rm"/>
+                                <constraint firstAttribute="width" constant="8" id="rYO-hy-0rl"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9lD-XY-ruD">
@@ -47,11 +46,11 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="zUU-fG-bkW" firstAttribute="leading" secondItem="LaD-9c-7Vu" secondAttribute="leading" constant="56" id="Ctd-Ak-krD"/>
                         <constraint firstAttribute="height" constant="37" id="Hyb-GB-fyK"/>
                         <constraint firstItem="ehS-aX-0tw" firstAttribute="leading" secondItem="LaD-9c-7Vu" secondAttribute="leading" constant="13" id="WsF-8f-BJt"/>
-                        <constraint firstItem="zUU-fG-bkW" firstAttribute="top" secondItem="LaD-9c-7Vu" secondAttribute="top" constant="12" id="bkg-eE-Dcy"/>
+                        <constraint firstItem="zUU-fG-bkW" firstAttribute="top" secondItem="LaD-9c-7Vu" secondAttribute="top" constant="15" id="bkg-eE-Dcy"/>
                         <constraint firstItem="ehS-aX-0tw" firstAttribute="top" secondItem="LaD-9c-7Vu" secondAttribute="top" constant="3" id="dvR-ih-kV0"/>
+                        <constraint firstItem="zUU-fG-bkW" firstAttribute="leading" secondItem="ehS-aX-0tw" secondAttribute="trailing" constant="6" id="p1O-Nh-8VR"/>
                         <constraint firstAttribute="trailing" secondItem="9lD-XY-ruD" secondAttribute="trailing" constant="1" id="rWi-26-ohy"/>
                         <constraint firstItem="9lD-XY-ruD" firstAttribute="top" secondItem="LaD-9c-7Vu" secondAttribute="top" constant="8" id="unY-iF-CL5"/>
                     </constraints>
@@ -161,5 +160,6 @@
     </objects>
     <resources>
         <image name="icon_paixu_no.png" width="12" height="20"/>
+        <image name="icon_xuan.png" width="13" height="8"/>
     </resources>
 </document>

@@ -67,6 +67,9 @@
     
     NSString *_lastSort;
     BOOL _hasSearch;
+    
+    BOOL hasSelected;
+
 }
 
 
@@ -110,6 +113,7 @@
 
 @property (nonatomic ,strong)screenView *chooseView;
 
+
 @end
 
 @implementation QiuzhiViewController
@@ -123,6 +127,8 @@
     [self autiLoginNet];
 
     _hasSearch = NO;
+    
+    hasSelected = NO;
     
     sleep(0.9);
     _money = 0;
@@ -350,7 +356,7 @@
     //跳转到新页面，地区选择页面
     SelectCityViewController *selectCity = [[SelectCityViewController alloc]init];
     
-    selectCity.indexCity = self.selectedCity;
+    selectCity.indexCity = [GlobalData sharedInstance].location;
     
     [self.navigationController pushViewController:selectCity animated:YES];
 }
@@ -367,6 +373,7 @@
     [GlobalData sharedInstance].location = city;
     NSLog(@"当前城市:%@",[GlobalData sharedInstance].location);
     [self jobsListApiNet];
+    [self companyListApi];
     
     
     
@@ -439,7 +446,7 @@
 - (void)addObserverForSalary:(NSNotification *)notification {
     
     self.chooseView.salary.text = [notification.userInfo objectForKey:@"0"];
-    
+   
     NSLog(@"%@",[notification.userInfo objectForKey:@"0"]);
 }
 
@@ -448,6 +455,21 @@
     
     [self removeScreenView];
     self.sortView.moneyBtn.selected = NO;
+    NSLog(@"工作－－－%@",[GlobalData sharedInstance].experience );
+    NSLog(@"学历－－－%@",[GlobalData sharedInstance].educations );
+    NSLog(@"性质－－－%@",[GlobalData sharedInstance].jobNatures );
+
+    if([[GlobalData sharedInstance].experience isEqualToString:@"0,0,0"]&&[[GlobalData sharedInstance].educations isEqualToString:@"0,0,0,0,0,0,0"]&&[[GlobalData sharedInstance].jobNatures isEqualToString:@"0,0,0"]){
+        if([[GlobalData sharedInstance].minSalary isEqualToString: @"1000"]&&[[GlobalData sharedInstance].maxSalary isEqualToString: @"10000"]){
+            [self.sortView.moneyBtn setTitle:@"筛选" forState:UIControlStateNormal];
+            self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_xuan"];
+        }
+    }else {
+        [self.sortView.moneyBtn setTitle:@"已选择" forState:UIControlStateNormal];
+        self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_xuan_press"];
+        [self.sortView.moneyBtn setTitleColor:MainColor forState:UIControlStateNormal];
+    }
+    
     //需要做新的网络请求去获取工作信息
     [self jobsListApiNet];
     
@@ -458,6 +480,7 @@
     
     self.sortView.timeBtn.selected = NO;
     self.sortView.distanceBtn.selected = NO;
+    self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_xuan_press"];
     
     self.sortView.timeImageView.image = [UIImage imageNamed:@"icon_paixu_no"];
     self.sortView.distanceImageview.image = [UIImage imageNamed:@"icon_paixu_no"];
@@ -491,7 +514,7 @@
         self.sortView.timeBtn.selected = YES;
         self.sortView.distanceBtn.selected = NO;
         
-        self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_paixu_no"];
+        self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_xuan"];
         self.sortView.distanceImageview.image = [UIImage imageNamed:@"icon_paixu_no"];
         
         
@@ -534,7 +557,7 @@
         self.sortView.timeBtn.selected = NO;
         self.sortView.distanceBtn.selected = YES;
         
-        self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_paixu_no"];
+        self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_xuan"];
         self.sortView.timeImageView.image = [UIImage imageNamed:@"icon_paixu_no"];
         
         _time = 0;
@@ -567,7 +590,7 @@
 }
 
 - (void)backToNormal {
-    self.sortView.allBtn.selected = YES;
+    
     self.sortView.moneyBtn.selected = NO;
     self.sortView.timeBtn.selected = NO;
     self.sortView.distanceBtn.selected = NO;
@@ -742,6 +765,7 @@
         [self.company_tbView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
          [self addPlaceHolderView];
+        [self.company_tbView reloadData];
         if (_rightPage > 1) {
             _rightPage --;
         }else {
@@ -785,6 +809,8 @@
         [self.job_tbView.mj_header endRefreshing];
         [self.job_tbView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        
         if (_search_leftPage > 1) {
             _search_leftPage --;
         }else {
@@ -809,7 +835,7 @@
             }else {
                 [self.search_rightDataArray addObjectsFromArray:[result getCompanySearchList]];
             }
-            [self.job_tbView reloadData];
+            [self.company_tbView reloadData];
             NSInteger count = [result getCompanySearchList].count;
             if (count == 0) {
                 [(MJRefreshAutoFooter *)self.job_tbView.mj_footer setHidden:YES];
@@ -821,12 +847,13 @@
                 _search_rightPage --;
             }else {
                 self.search_rightDataArray = [NSMutableArray array];
-                [self.job_tbView reloadData];
+                [self.company_tbView reloadData];
             }
         }
         [self.job_tbView.mj_header endRefreshing];
         [self.job_tbView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [self.company_tbView reloadData];
         if (_search_rightPage > 1) {
             _search_rightPage --;
         }else {

@@ -64,7 +64,7 @@
     
     cell.textLabel.text = [self.cityArray objectAtIndex:indexPath.row];
     if([cell.textLabel.text isEqualToString: self.indexCity]) {
-        cell.textLabel.textColor = [UIColor grayColor];
+        cell.textLabel.textColor = MainColor;
     } else {
         cell.textLabel.textColor = [UIColor blackColor];
     }

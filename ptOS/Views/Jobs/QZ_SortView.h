@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib;
 
-@property (weak, nonatomic) IBOutlet UIButton *allBtn;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *moneyBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *moneyImageView;

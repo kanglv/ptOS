@@ -23,7 +23,7 @@
     self = [[[NSBundle mainBundle] loadNibNamed:@"ScreenView" owner:nil options:nil] lastObject];
     if (self) {
         [self setFrame:frame];
-        self.conditionArr = [NSMutableArray arrayWithObjects:@"15", nil];
+//        self.conditionArr = [NSMutableArray arrayWithObjects:@"15", nil];
         
         self.experience = [NSMutableArray arrayWithObjects:@"0",@"0",@"0", nil];
         
@@ -71,8 +71,7 @@
         } else {
             [self.jobNatures setObject:@"1" atIndexedSubscript:sender.tag-10];
         }
-         sender.backgroundColor = [UIColor colorWithRed:112/255.0 green:124/255.0 blue:248/255.0 alpha:1];
-       
+        sender.backgroundColor = MainColor;
         sender.selected = YES;
     }
 }
@@ -80,8 +79,7 @@
 //确定按钮呗点击
 - (IBAction)sureBtnClicked:(id)sender {
     
-    NSLog(@"1111hhhhhhh");
-    NSLog(@"%@",self.conditionArr);
+    
     //需要将所选条件拼接完整，具体看服务端借口规则
     [GlobalData sharedInstance].experience = [self.experience componentsJoinedByString:@","];
 

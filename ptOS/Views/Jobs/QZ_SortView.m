@@ -11,9 +11,7 @@
 @implementation QZ_SortView
 
 - (void)awakeFromNib {
-    [self.allBtn setTitleColor:MainColor forState:UIControlStateSelected];
-    [self.allBtn setTitleColor:RGB(102, 102, 102) forState:UIControlStateNormal];
-    [self.allBtn setTitleColor:MainColor forState:UIControlStateHighlighted];
+    
     
     [self.moneyBtn setTitleColor:MainColor forState:UIControlStateSelected];
     [self.moneyBtn setTitleColor:RGB(102, 102, 102) forState:UIControlStateNormal];
