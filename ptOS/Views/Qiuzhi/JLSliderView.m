@@ -78,7 +78,7 @@
 
 -(UILabel *)creatLabelWithFrame:(CGRect )frame {
     UILabel *label =  [[UILabel alloc]initWithFrame:frame];
-    label.textColor = [UIColor blueColor];
+    label.textColor = MainColor;
     label.font      = [UIFont systemFontOfSize:15];
     label.layer.cornerRadius = 5;
     label.layer.masksToBounds = YES;
@@ -102,7 +102,7 @@
    
     
     self.lineView = [[UIView alloc]initWithFrame:CGRectMake(30, iconheight +self.moveVHeight/2 + 5, self.frame.size.width - 60, self.lineVHeight)];
-    self.lineView.backgroundColor = [UIColor blueColor];
+    self.lineView.backgroundColor = MainColor;
     self.lineView.layer.cornerRadius = self.lineView.height/2                                                            ;
     self.lineView.layer.masksToBounds = YES;
     [self addSubview:self.lineView];

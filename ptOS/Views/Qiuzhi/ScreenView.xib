@@ -59,7 +59,7 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="layer.border.color">
-                            <color key="value" white="0.81193426724137929" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="value" red="0.90619558158345248" green="0.90619558158345248" blue="0.90619558158345248" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -81,7 +81,7 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="layer.border.color">
-                            <color key="value" white="0.81000000000000005" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="value" red="0.91270779034230098" green="0.91270779034230098" blue="0.91270779034230098" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -92,9 +92,9 @@
                     <rect key="frame" x="185" y="127" width="70" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="3-5年">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -107,7 +107,7 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="layer.border.color">
-                            <color key="value" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <color key="value" red="0.90729303010471207" green="0.90729303010471207" blue="0.90729303010471207" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -130,7 +130,7 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="layer.border.color">
-                            <color key="value" white="0.81000000000000005" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="value" red="0.91567326809099203" green="0.91567326809099203" blue="0.91567326809099203" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -198,7 +198,7 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="layer.border.color">
-                            <color key="value" white="0.61137392241379307" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="value" red="0.89941382283315607" green="0.89941382283315607" blue="0.89941382283315607" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -221,7 +221,7 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="layer.border.color">
-                            <color key="value" white="0.81000000000000005" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="value" red="0.91567326809099203" green="0.91567326809099203" blue="0.91567326809099203" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -267,7 +267,7 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="layer.border.color">
-                            <color key="value" white="0.81000000000000005" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="value" red="0.9163481699234528" green="0.9163481699234528" blue="0.9163481699234528" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -319,7 +319,7 @@
                             <integer key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="layer.border.color">
-                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="value" red="0.92645615183246077" green="0.92645615183246077" blue="0.92645615183246077" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                             <integer key="value" value="1"/>
@@ -349,7 +349,7 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="layer.border.color">
-                            <color key="value" white="0.60999999999999999" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="value" red="0.92129337163495773" green="0.92129337163495773" blue="0.92129337163495773" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>

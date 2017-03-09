@@ -50,12 +50,12 @@ typedef enum : NSUInteger {
         self.leftLabel = [self creatLabelWithFrame:CGRectMake(0, 0, iconwidth, self.height)];
         [self addSubview:self.leftLabel];
         UIPanGestureRecognizer *leftPan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(doLeftPanGesture:)];
-        self.leftLabel.backgroundColor = [UIColor blueColor];
+        self.leftLabel.backgroundColor = MainColor;
         [self.leftLabel addGestureRecognizer:leftPan];
         
         
         self.rightLabel = [self creatLabelWithFrame:CGRectMake(self.width - iconwidth, 0, iconwidth, self.height)];
-         self.rightLabel.backgroundColor = [UIColor blueColor];
+         self.rightLabel.backgroundColor = MainColor;
         [self addSubview:self.rightLabel];
         
         UIPanGestureRecognizer *rightPan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(doRightPanGesture:)];

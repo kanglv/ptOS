@@ -58,7 +58,7 @@
         } else {
             [self.jobNatures setObject:@"0" atIndexedSubscript:sender.tag-10];
         }
-        
+        [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
          sender.backgroundColor = [UIColor whiteColor];
         sender.selected = NO;
     } else {
@@ -72,6 +72,7 @@
             [self.jobNatures setObject:@"1" atIndexedSubscript:sender.tag-10];
         }
         sender.backgroundColor = MainColor;
+        [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         sender.selected = YES;
     }
 }
