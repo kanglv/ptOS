@@ -25,7 +25,7 @@
 #import "SVProgressHUD.h"
 
 #pragma mark - Team Header View
-#define CardHeaderHeight 89
+#define CardHeaderHeight 160
 
 @protocol NIMAdvancedTeamCardHeaderViewDelegate <NSObject>
 
@@ -57,12 +57,14 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _team = [[NIMSDK sharedSDK].teamManager teamById:team.teamId];
-        _avatar  = [[NIMAvatarImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        _avatar  = [[NIMAvatarImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
         [_avatar addTarget:self action:@selector(onTouchAvatar:) forControlEvents:UIControlEventTouchUpInside];
         _titleLabel                      = [[UILabel alloc]initWithFrame:CGRectZero];
         _titleLabel.backgroundColor      = [UIColor clearColor];
         _titleLabel.font                 = [UIFont systemFontOfSize:17.f];
-        _titleLabel.textColor            = NIMKit_UIColorFromRGB(0x333333);
+        //        _titleLabel.textColor            = NIMKit_UIColorFromRGB(0x333333);
+        _titleLabel.textColor            = NIMKit_UIColorFromRGB(0xFFFFFF);
+        _titleLabel.textAlignment        = NSTextAlignmentCenter;
         _numberLabel                     = [[UILabel alloc]initWithFrame:CGRectZero];
         _numberLabel.backgroundColor     = [UIColor clearColor];
         _numberLabel.font                = [UIFont systemFontOfSize:14.f];
@@ -73,10 +75,11 @@
         _createTimeLabel.textColor       = NIMKit_UIColorFromRGB(0x999999);
         [self addSubview:_avatar];
         [self addSubview:_titleLabel];
-        [self addSubview:_numberLabel];
-        [self addSubview:_createTimeLabel];
-        
-        self.backgroundColor = NIMKit_UIColorFromRGB(0xecf1f5);
+        //        [self addSubview:_numberLabel];
+        //        [self addSubview:_createTimeLabel];
+        //
+        //        self.backgroundColor = NIMKit_UIColorFromRGB(0xecf1f5);
+        self.backgroundColor  = MainColor;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
         [self refresh];
@@ -114,8 +117,8 @@
     }
 }
 
-#define AvatarLeft 20
-#define AvatarTop  25
+#define AvatarLeft (self.frame.size.width - 70)/2
+#define AvatarTop  20
 #define TitleAndAvatarSpacing 10
 #define NumberAndTimeSpacing  10
 #define MaxTitleLabelWidth 200
@@ -127,12 +130,14 @@
     [_titleLabel sizeToFit];
     [_createTimeLabel sizeToFit];
     [_numberLabel sizeToFit];
-
+    
     self.titleLabel.nim_width = self.titleLabel.nim_width > MaxTitleLabelWidth ? MaxTitleLabelWidth : self.titleLabel.nim_width;
     self.avatar.nim_left = AvatarLeft;
     self.avatar.nim_top  = AvatarTop;
-    self.titleLabel.nim_left = self.avatar.nim_right + TitleAndAvatarSpacing;
-    self.titleLabel.nim_top  = self.avatar.nim_top;
+    //    self.titleLabel.nim_left = self.avatar.nim_right + TitleAndAvatarSpacing;
+    self.titleLabel.nim_left = 0;
+    self.titleLabel.nim_top  = self.avatar.nim_bottom + 10;
+    self.titleLabel.nim_width = self.frame.size.width;
     self.numberLabel.nim_left   = self.titleLabel.nim_left;
     self.numberLabel.nim_bottom = self.avatar.nim_bottom;
     self.createTimeLabel.nim_left   = self.numberLabel.nim_right + NumberAndTimeSpacing;
@@ -161,7 +166,7 @@
     UIActionSheet *_beInviteActionSheet;
     UIActionSheet *_updateInfoActionSheet;
     UIActionSheet *_avatarActionSheet;
-
+    
 }
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -195,10 +200,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NIMAdvancedTeamCardHeaderView *headerView = [[NIMAdvancedTeamCardHeaderView alloc] initWithTeam:self.team];
-
+    
     headerView.delegate = self;
     headerView.nim_size = [headerView sizeThatFits:self.view.nim_size];
-    self.navigationItem.title = self.team.teamName;
+    //    self.navigationItem.title = self.team.teamName;
+    self.navigationItem.title = @"群设置";
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.tableView];
@@ -221,6 +227,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc]init]];
     [self reloadData];
 }
 
@@ -230,7 +238,7 @@
     [self.tableView reloadData];
     NIMAdvancedTeamCardHeaderView *headerView = (NIMAdvancedTeamCardHeaderView*)self.tableView.tableHeaderView;
     headerView.titleLabel.text = self.team.teamName;;
-    self.navigationItem.title  = self.team.teamName;
+    //    self.navigationItem.title  = self.team.teamName;
     if (self.myTeamInfo.type == NIMTeamMemberTypeOwner) {
         UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(onMore:)];
         self.navigationItem.rightBarButtonItem = buttonItem;
@@ -252,10 +260,10 @@
             wself.memberData = members;
         }else if(error.code == NIMRemoteErrorCodeTeamNotMember){
             [wself.view makeToast:@"你已经不在群里" duration:2
-                                position:CSToastPositionCenter];
+                         position:CSToastPositionCenter];
         }else{
             [wself.view makeToast:[NSString stringWithFormat:@"拉好友失败 error: %zd",error.code] duration:2
-                                position:CSToastPositionCenter];
+                         position:CSToastPositionCenter];
         }
         handler(error);
     }];
@@ -286,7 +294,7 @@
     teamNick.action = @selector(updateTeamNick);
     teamNick.rowHeight = 50.f;
     teamNick.type   = TeamCardRowItemTypeCommon;
-
+    
     
     NIMTeamCardRowItem *teamIntro = [[NIMTeamCardRowItem alloc] init];
     teamIntro.title = @"群介绍";
@@ -309,7 +317,7 @@
     teamNotify.switchOn = [self.team notifyForNewMsg];
     teamNotify.rowHeight = 50.f;
     teamNotify.type   = TeamCardRowItemTypeSwitch;
-
+    
     NIMTeamCardRowItem *itemQuit = [[NIMTeamCardRowItem alloc] init];
     itemQuit.title = @"退出高级群";
     itemQuit.action = @selector(quitTeam);
@@ -355,24 +363,24 @@
     itemBeInvite.rowHeight = 60.f;
     itemBeInvite.type   = TeamCardRowItemTypeCommon;
     
-
+    
     
     if (isOwner) {
         self.bodyData = @[
-                  @[teamMember],
-                  @[teamName,teamNick,teamIntro,teamAnnouncement,teamNotify],
-                  @[itemAuth],
-                  @[itemInvite,itemUpdateInfo,itemBeInvite],
-                  @[itemDismiss],
-                 ];
+                          @[teamMember],
+                          @[teamName,teamNick,teamIntro,teamAnnouncement,teamNotify],
+                          @[itemAuth],
+                          @[itemInvite,itemUpdateInfo,itemBeInvite],
+                          @[itemDismiss],
+                          ];
     }else if(isManager){
         self.bodyData = @[
-                 @[teamMember],
-                 @[teamName,teamNick,teamIntro,teamAnnouncement,teamNotify],
-                 @[itemAuth],
-                 @[itemInvite,itemUpdateInfo,itemBeInvite],
-                 @[itemQuit],
-                 ];
+                          @[teamMember],
+                          @[teamName,teamNick,teamIntro,teamAnnouncement,teamNotify],
+                          @[itemAuth],
+                          @[itemInvite,itemUpdateInfo,itemBeInvite],
+                          @[itemQuit],
+                          ];
     }else{
         self.bodyData = @[
                           @[teamMember],
@@ -676,8 +684,8 @@
                                              completion:^(NSError *error) {
                                                  if (error) {
                                                      [weakSelf.view makeToast:[NSString stringWithFormat:@"修改失败  error:%zd",error.code]
-                                                                            duration:2
-                                                                            position:CSToastPositionCenter];
+                                                                     duration:2
+                                                                     position:CSToastPositionCenter];
                                                  }
                                                  [weakSelf reloadData];
                                              }];
@@ -712,12 +720,12 @@
     [[NIMSDK sharedSDK].teamManager addUsers:selectedContacts toTeam:self.team.teamId postscript:postscript completion:^(NSError *error, NSArray *members) {
         if (!error) {
             [self.view makeToast:@"邀请成功"
-                               duration:2
-                               position:CSToastPositionCenter];
+                        duration:2
+                        position:CSToastPositionCenter];
         }else{
             [self.view makeToast:[NSString stringWithFormat:@"邀请失败 code:%zd",error.code]
-                               duration:2
-                               position:CSToastPositionCenter];
+                        duration:2
+                        position:CSToastPositionCenter];
         }
     }];
 }
@@ -758,11 +766,11 @@
                     if (!error) {
                         self.team.teamName = name;
                         [self.view makeToast:@"修改成功" duration:2
-                                           position:CSToastPositionCenter];
+                                    position:CSToastPositionCenter];
                         [self reloadData];
                     }else{
                         [self.view makeToast:[NSString stringWithFormat:@"修改失败 code:%zd",error.code] duration:2
-                                           position:CSToastPositionCenter];
+                                    position:CSToastPositionCenter];
                     }
                 }];
             }
@@ -835,7 +843,7 @@
         default:
             break;
     }
-
+    
 }
 
 - (void)dismissTeamAlert:(NSInteger)index{

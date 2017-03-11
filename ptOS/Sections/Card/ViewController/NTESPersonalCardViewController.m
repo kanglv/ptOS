@@ -85,7 +85,7 @@
     self.navigationItem.title = @"个人名片";
     if ([self.userId isEqualToString:[[NIMSDK sharedSDK].loginManager currentAccount]]) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleDone target:self action:@selector(onActionEditMyInfo:)];
-        self.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];
+        self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     }
 }
 

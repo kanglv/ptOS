@@ -87,12 +87,31 @@
         My_ChangeNIcknameApi *result = (My_ChangeNIcknameApi *)request;
         if(result.isCorrectResult)
         {
+            [self updateNick:self.name];
+            
             [XHToast showCenterWithText:@"修改成功"];
             self.nickNameLabel.text = self.name;
             [GlobalData sharedInstance].selfInfo.nickName = self.name;
         }
     } failure:^(YTKBaseRequest *request) {
         
+    }];
+}
+
+- (void)updateNick:(NSString *)nick{
+    
+    [[NIMSDK sharedSDK].userManager updateMyUserInfo:@{@(NIMUserInfoUpdateTagNick) : nick} completion:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        if (!error) {
+            //            [self.navigationController.view makeToast:@"昵称设置成功"
+            //                                              duration:2
+            //                                              position:CSToastPositionCenter];
+            //            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            //            [self.view makeToast:@"昵称设置失败，请重试"
+            //                         duration:2
+            //                         position:CSToastPositionCenter];
+        }
     }];
 }
 
@@ -110,10 +129,10 @@
             [SVProgressHUD showImage:nil status:@"请输入昵称"];
         }else if (![ControlUtil validateNickName:alertController.textFields.firstObject.text]) {
             [SVProgressHUD showImage:nil status:@"4-16个字符，汉字为2个字符"];
-       }else {
-           [self changNameApiNetWithName:alertController.textFields.firstObject.text];
-           self.name = alertController.textFields.firstObject.text;
-       }
+        }else {
+            [self changNameApiNetWithName:alertController.textFields.firstObject.text];
+            self.name = alertController.textFields.firstObject.text;
+        }
         
     }];
     

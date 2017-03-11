@@ -74,7 +74,7 @@
 - (void)setUpNav{
     self.navigationItem.title = @"签名";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(onDone:)];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 }
 
 - (void)onDone:(id)sender{

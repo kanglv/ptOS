@@ -19,6 +19,8 @@
 #import "NTESWhiteboardAttachment.h"
 #import "NTESSessionUtil.h"
 #import "NTESPersonalCardViewController.h"
+#import "PT_ListTableViewCell.h"
+#import "PT_NearlyTableViewCell.h"
 
 #define SessionListTitle @"云信 Demo"
 
@@ -31,6 +33,8 @@
 @property (nonatomic,assign) BOOL supportsForceTouch;
 
 @property (nonatomic,strong) NSMutableDictionary *previews;
+
+@property (nonatomic,strong) NSMutableArray *pt_listArr;
 
 @end
 
@@ -59,15 +63,22 @@
     self.header.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.header.delegate = self;
     [self.view addSubview:self.header];
-
+    
     self.emptyTipLabel = [[UILabel alloc] init];
     self.emptyTipLabel.text = @"还没有会话，在通讯录中找个人聊聊吧";
     [self.emptyTipLabel sizeToFit];
     self.emptyTipLabel.hidden = self.recentSessions.count;
-    [self.view addSubview:self.emptyTipLabel];
+    //    [self.view addSubview:self.emptyTipLabel];
     
     NSString *userID = [[[NIMSDK sharedSDK] loginManager] currentAccount];
     self.navigationItem.titleView  = [self titleView:userID];
+    
+    self.tableView.backgroundColor = BackgroundColor;
+    self.pt_listArr = [NSMutableArray array];
+    [self.pt_listArr addObject:@{@"title":@"求职",@"icon":@"icon_pt_qiuzhi",@"viewController":@""}];
+    [self.pt_listArr addObject:@{@"title":@"活动",@"icon":@"icon_huodong",@"viewController":@""}];
+    [self.pt_listArr addObject:@{@"title":@"陌生人",@"icon":@"icon_moshengren",@"viewController":@""}];
+    [self.pt_listArr addObject:@{@"title":@"通知消息",@"icon":@"icon_tongzhi",@"viewController":@""}];
 }
 
 - (void)refresh:(BOOL)reload{
@@ -76,15 +87,68 @@
 }
 
 - (void)onSelectedRecent:(NIMRecentSession *)recent atIndexPath:(NSIndexPath *)indexPath{
-    NTESSessionViewController *vc = [[NTESSessionViewController alloc] initWithSession:recent.session];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if (indexPath.section == 0) {
+        
+        NSLog(@"没有接口，未开发！");
+    }else{
+        
+        NTESSessionViewController *vc = [[NTESSessionViewController alloc] initWithSession:recent.session];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }
+    
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            static NSString * cellId = @"PT_NearlyTableViewCell";
+            PT_NearlyTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            if (!cell) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId owner:nil options:nil] firstObject];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
+            return cell;
+        }else{
+            static NSString * cellId = @"PT_ListTableViewCell";
+            PT_ListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            if (!cell) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId owner:nil options:nil] firstObject];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            cell.icon_image.image = [UIImage imageNamed:self.pt_listArr[indexPath.row - 1][@"icon"]];
+            cell.titleLabel.text = self.pt_listArr[indexPath.row - 1][@"title"];
+            //        cell.messageLabel.text = @"面试通知";
+            //        cell.timeLabel.text = @"15分钟前";
+            //        cell.timeLabel.hidden = NO;
+            //        cell.tag_numLabel.text = @"12";
+            //        cell.tag_numLabel.hidden = NO;
+            
+            return cell;
+        }
+    }else{
+        
+        UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        
+        return cell;
+        
+    }
+    
+}
+
 
 - (void)onSelectedAvatar:(NIMRecentSession *)recent
              atIndexPath:(NSIndexPath *)indexPath{
     if (recent.session.sessionType == NIMSessionTypeP2P) {
-       NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:recent.session.sessionId];
-      [self.navigationController pushViewController:vc animated:YES];
+        NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:recent.session.sessionId];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -154,8 +218,6 @@
     [self.view setNeedsLayout];
 }
 
-
-
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -198,7 +260,7 @@
 }
 
 
-#pragma mark - Private 
+#pragma mark - Private
 - (void)refreshSubview{
     [self.titleLabel sizeToFit];
     self.titleLabel.centerX   = self.navigationItem.titleView.width * .5f;
