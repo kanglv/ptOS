@@ -7138,6 +7138,7 @@
 					"$(PROJECT_DIR)/ptOS/Libs",
 					"$(PROJECT_DIR)/ptOS/NIMAVChat",
 					"$(PROJECT_DIR)/ptOS/NIMAVChat/Libs",
+					"$(PROJECT_DIR)/ptOS/ThirdPart/VoiceConvert/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -7182,6 +7183,7 @@
 					"$(PROJECT_DIR)/ptOS/Libs",
 					"$(PROJECT_DIR)/ptOS/NIMAVChat",
 					"$(PROJECT_DIR)/ptOS/NIMAVChat/Libs",
+					"$(PROJECT_DIR)/ptOS/ThirdPart/VoiceConvert/lib",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";

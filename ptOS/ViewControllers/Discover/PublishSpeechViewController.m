@@ -198,13 +198,22 @@
         [self.audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
         [self.audioSession setActive:YES error:nil];
         
-        NSDictionary *setting = [[NSDictionary alloc] initWithObjectsAndKeys: [NSNumber numberWithFloat: 44100.0],AVSampleRateKey, [NSNumber numberWithInt: kAudioFormatLinearPCM],AVFormatIDKey, [NSNumber numberWithInt:16],AVLinearPCMBitDepthKey, [NSNumber numberWithInt: 2], AVNumberOfChannelsKey, [NSNumber numberWithBool:NO],AVLinearPCMIsBigEndianKey, [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,nil]; //然后直接把文件保存成.wav就好了
+    NSDictionary *recordSetting = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                   [NSNumber numberWithFloat: 11025.0],AVSampleRateKey, //采样率
+                                   [NSNumber numberWithInt: kAudioFormatMPEG4AAC],AVFormatIDKey,
+                                   [NSNumber numberWithInt:16],AVLinearPCMBitDepthKey,//采样位数 默认 16
+                                   [NSNumber numberWithInt: 2], AVNumberOfChannelsKey,//通道的数目
+                                   //                                   [NSNumber numberWithBool:NO],AVLinearPCMIsBigEndianKey,//大端还是小端 是内存的组织方式
+                                   //                                   [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,//采样信号是整数还是浮点数
+                                   //                                   [NSNumber numberWithInt: AVAudioQualityMedium],AVEncoderAudioQualityKey,//音频编码质量
+                                   nil];
+//然后直接把文件保存成.wav就好了
         _tmpFile = [NSURL fileURLWithPath:
                    [NSTemporaryDirectory() stringByAppendingPathComponent:
                     [NSString stringWithFormat: @"%@.%@",
                      @"kanglv",
-                     @"caf"]]];
-        self.recorder = [[AVAudioRecorder alloc] initWithURL:_tmpFile settings:setting error:nil];
+                     @"aac"]]];
+        self.recorder = [[AVAudioRecorder alloc] initWithURL:_tmpFile settings:recordSetting error:nil];
         [ self.recorder setDelegate:self];
         [ self.recorder prepareToRecord];
         [ self.recorder record];
@@ -223,37 +232,22 @@
 }
 
 
-//播放录音
-
-- (void)palyRecord:(UIButton *)sender {
-//    [self.record setTitle:@"按住说两句" forState:UIControlStateNormal];
-    
-    NSError *error;
-    self.player=[[AVAudioPlayer alloc]initWithContentsOfURL:_tmpFile
-                                                      error:&error];
-    
-    self.player.volume=1;
-    if (error) {
-        NSLog(@"error:%@",[error description]);
-        return;
-    }
-    //准备播放
-    [self.player prepareToPlay];
-    //播放
-    [self.player play];
-}
-
 - (void)next {
     if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
     {
         [self presentLoginCtrl];
         return;
-    } else{
-        
     }
-    
-    
    
+    NSData *data = [NSData dataWithContentsOfURL:_tmpFile];
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[[NSDate  date] timeIntervalSince1970]];
+    NSString *fileName = [NSString stringWithFormat:@"%@.aac",timeSp];
+    [[OSSManager sharedManager] uploadObjectAsyncWithData:data andFileName:fileName andBDName:@"bd-image" andIsSuccess:^(BOOL isSuccess, UIImage *image) {
+        NSLog(@"success!");
+    } andProgressBlock:^(int64_t has, int64_t total, int64_t will) {
+        
+    }];
+    [self publishApiNetWithImgUrl:[NSString stringWithFormat:@"http://bd-image.img-cn-shanghai.aliyuncs.com/%@.aac",timeSp]];
 }
 
 - (void)publishApiNetWithImgUrl:(NSString *)url {
@@ -267,6 +261,8 @@
     if (self.switchBtn.isOn) {
         isQYQ = @"1";
     }
+     self.publishApi = [[FX_PublishTZApi alloc]initWithContent:@"111" withImgUrl:url withAddress:self.locationLabel.text withIsQYQ:isQYQ];
+    
     [self.publishApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         
         FX_PublishTZApi *result = (FX_PublishTZApi *)request;

@@ -32,6 +32,7 @@
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <AVFoundation/AVFoundation.h>
 
+
 #import "WorkerViewController.h"
 #import "SuggestionViewController.h"
 
@@ -912,7 +913,7 @@
                 if (cell == nil) {
                     cell = [[NSBundle mainBundle] loadNibNamed:@"GroupSpeechTableViewCell" owner:nil options:nil].lastObject;
                 }
-                
+                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 [cell.smallImageView sd_setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:@"morentouxiang"]];
                 ZRViewRadius(cell.smallImageView, 12);
                 cell.nickNameLabel.text = model.nickName;
@@ -978,8 +979,6 @@
                     cell.shuView.hidden = NO;
                 }
                 
-                
-                
                 CGFloat height = [ControlUtil heightWithContent:model.content withFont:[UIFont systemFontOfSize:15] withWidth:FITWIDTH(326)];
                 if (height >= 60) {
                     height = 60;
@@ -1018,20 +1017,29 @@
     if([model.fileType isEqualToString:@"2"]){
                 NSError *error;
         NSLog(@"当前文件地址%@",model.imgUrl);
-        self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:model.imgUrl] error:&error];
-
-        NSLog(@"%ld",(long)self.player.duration);
-        self.player.volume=1;
         
+        NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.imgUrl]];
+        NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        
+        NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , @"temp"];
+        [audioData writeToFile:amrfilePath atomically:YES];
+        
+        
+       
+      
+
+        self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
+        
+        if (self.player == nil){
+            NSLog(@"AudioPlayer did not load properly: %@", [error description]);
+        }else{
+            [self.player play];
+        }
         
         if (error) {
             NSLog(@"error:%@",[error description]);
             return;
         }
-        //准备播放
-        [self.player prepareToPlay];
-        //播放
-        [self.player play];
     }
 }
 
