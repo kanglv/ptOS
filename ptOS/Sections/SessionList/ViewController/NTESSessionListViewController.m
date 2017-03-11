@@ -20,9 +20,19 @@
 #import "NTESSessionUtil.h"
 #import "NTESPersonalCardViewController.h"
 
+#import "PT_ListTableViewCell.h"
+#import "PT_NearlyTableViewCell.h"
+#import "PT_MsgNumApi.h"
+#import "PT_ClearMsgNumApi.h"
+#import "AFHTTPRequestOperation.h"
+#import "BaseNetApi.h"
+#import "PT_QiuzhiViewController.h"
+#import "LoginViewController.h"
+#import "PT_NearlyListViewController.h"
+
 #define SessionListTitle @"云信 Demo"
 
-@interface NTESSessionListViewController ()<NIMLoginManagerDelegate,NTESListHeaderDelegate,UIViewControllerPreviewingDelegate>
+@interface NTESSessionListViewController ()<NIMLoginManagerDelegate,NTESListHeaderDelegate,UIViewControllerPreviewingDelegate,SessionExpireDelegate,NetLoadingDelegate,NoNetWorkingDelegate>
 
 @property (nonatomic,strong) UILabel *titleLabel;
 
@@ -31,6 +41,11 @@
 @property (nonatomic,assign) BOOL supportsForceTouch;
 
 @property (nonatomic,strong) NSMutableDictionary *previews;
+
+@property (nonatomic,strong) NSMutableArray *pt_listArr;
+
+@property (nonatomic,strong)PT_MsgNumApi *msgNumApi;
+@property (nonatomic,strong)PT_ClearMsgNumApi *clearMsgNumApi;
 
 @end
 
@@ -59,15 +74,67 @@
     self.header.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.header.delegate = self;
     [self.view addSubview:self.header];
-
+    
     self.emptyTipLabel = [[UILabel alloc] init];
     self.emptyTipLabel.text = @"还没有会话，在通讯录中找个人聊聊吧";
     [self.emptyTipLabel sizeToFit];
     self.emptyTipLabel.hidden = self.recentSessions.count;
-    [self.view addSubview:self.emptyTipLabel];
+    //    [self.view addSubview:self.emptyTipLabel];
     
     NSString *userID = [[[NIMSDK sharedSDK] loginManager] currentAccount];
     self.navigationItem.titleView  = [self titleView:userID];
+    
+    self.tableView.backgroundColor = BackgroundColor;
+    self.pt_listArr = [NSMutableArray array];
+    [self.pt_listArr addObject:@{@"title":@"求职",@"icon":@"icon_pt_qiuzhi",@"viewController":@""}];
+    [self.pt_listArr addObject:@{@"title":@"活动",@"icon":@"icon_huodong",@"viewController":@""}];
+    [self.pt_listArr addObject:@{@"title":@"陌生人",@"icon":@"icon_moshengren",@"viewController":@""}];
+    [self.pt_listArr addObject:@{@"title":@"通知消息",@"icon":@"icon_tongzhi",@"viewController":@""}];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+    {
+        [self msgNumApiNet];
+    }
+}
+
+#pragma mark - NetworkApis
+- (void)msgNumApiNet {
+    if(self.msgNumApi && !self.msgNumApi.requestOperation.isFinished)
+    {
+        [self.msgNumApi stop];
+    }
+    
+    self.msgNumApi.sessionDelegate = self;
+    self.msgNumApi = [[PT_MsgNumApi alloc]init];
+//    self.msgNumApi.netLoadingDelegate = self;
+//    [self.msgNumApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+//        
+//        PT_MsgNumApi *result = (PT_MsgNumApi *)request;
+//        if(result.isCorrectResult)
+//        {
+////            self.timeLabel.hidden = NO;
+////            self.detailLabel.hidden = NO;
+////            self.msgNumLabel.hidden = NO;
+//            PT_MsgNumModel *model = [result getMsgNumModel];
+////            self.detailLabel.text = model.content;
+//            if ([model.content isEqualToString:@""]) {
+////                self.detailLabel.text = @"暂无新的消息";
+//            }
+////            self.timeLabel.text = model.time;
+//            
+////            self.msgNumLabel.text = model.number;
+//            if ([model.number isEqualToString:@"0"]) {
+////                self.msgNumLabel.hidden = YES;
+//            }
+//        }
+//        
+//    } failure:^(YTKBaseRequest *request) {
+//        
+//    }];
 }
 
 - (void)refresh:(BOOL)reload{
@@ -76,15 +143,92 @@
 }
 
 - (void)onSelectedRecent:(NIMRecentSession *)recent atIndexPath:(NSIndexPath *)indexPath{
-    NTESSessionViewController *vc = [[NTESSessionViewController alloc] initWithSession:recent.session];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if (indexPath.section == 0) {
+        
+        if (indexPath.row == 0) {//附近的
+            PT_NearlyListViewController *nearlyListViewController = [[PT_NearlyListViewController alloc]init];
+            [self.navigationController pushViewController:nearlyListViewController animated:YES];
+            
+        }else if (indexPath.row == 1){//求职
+            if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+            {
+                [self presentLoginCtrl];
+                return;
+            }
+//            [self clearMsgNumApiNet];
+            PT_QiuzhiViewController *ctrl = [[PT_QiuzhiViewController alloc]init];
+            [self.navigationController pushViewController:ctrl animated:YES];
+
+            
+        }else if (indexPath.row == 2){//活动
+            
+        }else if (indexPath.row == 3){//陌生人
+            
+        }else if (indexPath.row == 4){//通知消息
+            
+        }else{
+            
+        }
+        
+    }else{
+        
+        NTESSessionViewController *vc = [[NTESSessionViewController alloc] initWithSession:recent.session];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }
+    
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            static NSString * cellId = @"PT_NearlyTableViewCell";
+            PT_NearlyTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            if (!cell) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId owner:nil options:nil] firstObject];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
+            return cell;
+        }else{
+            static NSString * cellId = @"PT_ListTableViewCell";
+            PT_ListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            if (!cell) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId owner:nil options:nil] firstObject];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            cell.icon_image.image = [UIImage imageNamed:self.pt_listArr[indexPath.row - 1][@"icon"]];
+            cell.titleLabel.text = self.pt_listArr[indexPath.row - 1][@"title"];
+            //        cell.messageLabel.text = @"面试通知";
+            //        cell.timeLabel.text = @"15分钟前";
+            //        cell.timeLabel.hidden = NO;
+            //        cell.tag_numLabel.text = @"12";
+            //        cell.tag_numLabel.hidden = NO;
+            
+            return cell;
+        }
+    }else{
+        
+        UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        
+        return cell;
+        
+    }
+    
+}
+
 
 - (void)onSelectedAvatar:(NIMRecentSession *)recent
              atIndexPath:(NSIndexPath *)indexPath{
     if (recent.session.sessionType == NIMSessionTypeP2P) {
-       NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:recent.session.sessionId];
-      [self.navigationController pushViewController:vc animated:YES];
+        NTESPersonalCardViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:recent.session.sessionId];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -154,8 +298,6 @@
     [self.view setNeedsLayout];
 }
 
-
-
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -198,7 +340,7 @@
 }
 
 
-#pragma mark - Private 
+#pragma mark - Private
 - (void)refreshSubview{
     [self.titleLabel sizeToFit];
     self.titleLabel.centerX   = self.navigationItem.titleView.width * .5f;
@@ -275,6 +417,15 @@
         NSAttributedString *atTip = [[NSAttributedString alloc] initWithString:@"[有人@你] " attributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];
         [content insertAttributedString:atTip atIndex:0];
     }
+}
+
+- (void)presentLoginCtrl{
+    
+    LoginViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ctrl];
+    [self.navigationController presentViewController:nav animated:YES completion:^{
+        
+    }];
 }
 
 @end

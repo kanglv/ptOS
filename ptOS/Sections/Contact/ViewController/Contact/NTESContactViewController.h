@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContactCell.h"
+@interface NTESContactViewController : UIViewController<ContactCellDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
+{
+    
+    NSMutableArray *searchResults;
+    UISearchBar *contactsSearchBar;
+    UISearchDisplayController *searchDisplayController;
+    
+}
 
-@interface NTESContactViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,strong) IBOutlet UITableView *tableView;
 

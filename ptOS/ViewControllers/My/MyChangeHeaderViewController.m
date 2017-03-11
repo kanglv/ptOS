@@ -11,19 +11,109 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIImageView+WebCache.h"
 #import "XHToast.h"
+#import "UIImage+NTES.h"
+#import "NTESFileLocationHelper.h"
+#import "NIMCommonTableDelegate.h"
+#import "NIMCommonTableData.h"
+#import "NTESUserUtil.h"
 
-@interface MyChangeHeaderViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface MyChangeHeaderViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,NIMUserManagerDelegate>
 {
     UIImageView *_headerImageView;
 }
+
+@property (nonatomic,strong) NIMCommonTableDelegate *delegator;
+
+@property (nonatomic,copy)   NSArray *data;
+
 @end
 
 @implementation MyChangeHeaderViewController
 
+- (void)dealloc{
+    [[NIMSDK sharedSDK].userManager removeDelegate:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self buildData];
+    __weak typeof(self) wself = self;
+    self.delegator = [[NIMCommonTableDelegate alloc] initWithTableData:^NSArray *{
+        return wself.data;
+    }];
+    
+    [[NIMSDK sharedSDK].userManager addDelegate:self];
+    
     [self createPortaitView];
+}
+
+- (void)buildData{
+    NIMUser *me = [[NIMSDK sharedSDK].userManager userInfo:[[NIMSDK sharedSDK].loginManager currentAccount]];
+    NSArray *data = @[
+                      @{
+                          HeaderTitle:@"",
+                          RowContent :@[
+                                  @{
+                                      ExtraInfo     : me.userId ? me.userId : [NSNull null],
+                                      CellClass     : @"NTESSettingPortraitCell",
+                                      RowHeight     : @(100),
+                                      CellAction    : @"onTouchPortrait:",
+                                      ShowAccessory : @(YES)
+                                      },
+                                  ],
+                          FooterTitle:@""
+                          },
+                      @{
+                          HeaderTitle:@"",
+                          RowContent :@[
+                                  @{
+                                      Title      :@"昵称",
+                                      DetailTitle:me.userInfo.nickName.length ? me.userInfo.nickName : @"未设置",
+                                      CellAction :@"onTouchNickSetting:",
+                                      RowHeight     : @(50),
+                                      ShowAccessory : @(YES),
+                                      },
+                                  @{
+                                      Title      :@"性别",
+                                      DetailTitle:[NTESUserUtil genderString:me.userInfo.gender],
+                                      CellAction :@"onTouchGenderSetting:",
+                                      RowHeight     : @(50),
+                                      ShowAccessory : @(YES)
+                                      },
+                                  @{
+                                      Title      :@"生日",
+                                      DetailTitle:me.userInfo.birth.length ? me.userInfo.birth : @"未设置",
+                                      CellAction :@"onTouchBirthSetting:",
+                                      RowHeight     : @(50),
+                                      ShowAccessory : @(YES)
+                                      },
+                                  @{
+                                      Title      :@"手机",
+                                      DetailTitle:me.userInfo.mobile.length ? me.userInfo.mobile : @"未设置",
+                                      CellAction :@"onTouchTelSetting:",
+                                      RowHeight     : @(50),
+                                      ShowAccessory : @(YES)
+                                      },
+                                  @{
+                                      Title      :@"邮箱",
+                                      DetailTitle:me.userInfo.email.length ? me.userInfo.email : @"未设置",
+                                      CellAction :@"onTouchEmailSetting:",
+                                      RowHeight     : @(50),
+                                      ShowAccessory : @(YES)
+                                      },
+                                  @{
+                                      Title      :@"签名",
+                                      DetailTitle:me.userInfo.sign.length ? me.userInfo.sign : @"未设置",
+                                      CellAction :@"onTouchSignSetting:",
+                                      RowHeight     : @(50),
+                                      ShowAccessory : @(YES)
+                                      },
+                                  ],
+                          FooterTitle:@""
+                          },
+                      ];
+    self.data = [NIMCommonTableSection sectionsWithData:data];
 }
 
 - (void)createPortaitView {
@@ -31,7 +121,7 @@
     self.title = @"修改头像";
     _headerImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0 , SCREEN_WIDTH, SCREEN_WIDTH)];
     _headerImageView.centerX = self.view.centerX;
-
+    
     UIImage *image = [UIImage imageWithData:[UserDefault objectForKey:HeaderKey]];
     if (image) {
         _headerImageView.image = image;
@@ -140,11 +230,15 @@
         
         if (isSuccess) {
             [[NSUserDefaults standardUserDefaults] setObject:imageData forKey:HeaderKey];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self uploadImage:photoImg];
                 
                 [XHToast showCenterWithText:@"上传成功"];
                 [SVProgressHUD dismiss];
                 [self.navigationController popViewControllerAnimated:YES];
+                
             });
             
             [[OSSManager sharedManager] downloadObjectAsyncWithFileName:fileName andBDName:@"bd-header" andGetImage:^(BOOL isSuccess, UIImage *image) {
@@ -177,6 +271,34 @@
     
     
     
+}
+
+- (void)uploadImage:(UIImage *)image{
+    UIImage *imageForAvatarUpload = [image imageForAvatarUpload];
+    NSString *fileName = [NTESFileLocationHelper genFilenameWithExt:@"jpg"];
+    NSString *filePath = [[NTESFileLocationHelper getAppDocumentPath] stringByAppendingPathComponent:fileName];
+    NSData *data = UIImageJPEGRepresentation(imageForAvatarUpload, 1.0);
+    BOOL success = data && [data writeToFile:filePath atomically:YES];
+    
+    if (success) {
+        [[NIMSDK sharedSDK].resourceManager upload:filePath progress:nil completion:^(NSString *urlString, NSError *error) {
+            
+            if (!error) {
+                [[NIMSDK sharedSDK].userManager updateMyUserInfo:@{@(NIMUserInfoUpdateTagAvatar):urlString} completion:^(NSError *error) {
+                    if (!error) {
+                        [[SDWebImageManager sharedManager] saveImageToCache:imageForAvatarUpload forURL:[NSURL URLWithString:urlString]];
+                        
+                    }else{
+                        
+                    }
+                }];
+            }else{
+                
+            }
+        }];
+    }else{
+        
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

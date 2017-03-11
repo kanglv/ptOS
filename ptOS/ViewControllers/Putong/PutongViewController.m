@@ -21,12 +21,13 @@
 #import "UIView+Toast.h"
 #import "NIMContactSelectViewController.h"
 #import "NTESSessionViewController.h"
+#import "NTESSessionListViewController.h"
 
 @interface PutongViewController ()
 @property (nonatomic,strong)PT_MsgNumApi *msgNumApi;
 @property (nonatomic,strong)PT_ClearMsgNumApi *clearMsgNumApi;
 
-
+@property (nonatomic,strong)NTESSessionListViewController *NTESSessionListVC;
 @end
 
 @implementation PutongViewController
@@ -42,7 +43,7 @@
     backBtn.frame = CGRectMake(23, 23, 20, 20);
     [backBtn setBackgroundImage:[UIImage imageNamed:@"icon_tongxunlu.png"] forState:UIControlStateNormal];
     //    backBtn.centerY = doneButton.centerY;
-    [backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 20)];
+    [backBtn setImageEdgeInsets:UIEdgeInsetsMake(-10, -20, 0, 20)];
     [backBtn addTarget:self action:@selector(backToFirst) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
     self.navigationItem.leftBarButtonItem = leftBarButton;
@@ -56,6 +57,12 @@
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithCustomView:addBtn];
     self.navigationItem.rightBarButtonItem = rightBarButton;
     [self initUI];
+    
+    _NTESSessionListVC = [[NTESSessionListViewController alloc]init];
+    _NTESSessionListVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-46);
+    
+    [self addChildViewController:_NTESSessionListVC];
+    [self.view addSubview:_NTESSessionListVC.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
