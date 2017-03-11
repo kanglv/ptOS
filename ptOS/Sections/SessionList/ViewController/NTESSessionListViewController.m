@@ -19,12 +19,20 @@
 #import "NTESWhiteboardAttachment.h"
 #import "NTESSessionUtil.h"
 #import "NTESPersonalCardViewController.h"
+
 #import "PT_ListTableViewCell.h"
 #import "PT_NearlyTableViewCell.h"
+#import "PT_MsgNumApi.h"
+#import "PT_ClearMsgNumApi.h"
+#import "AFHTTPRequestOperation.h"
+#import "BaseNetApi.h"
+#import "PT_QiuzhiViewController.h"
+#import "LoginViewController.h"
+#import "PT_NearlyListViewController.h"
 
 #define SessionListTitle @"云信 Demo"
 
-@interface NTESSessionListViewController ()<NIMLoginManagerDelegate,NTESListHeaderDelegate,UIViewControllerPreviewingDelegate>
+@interface NTESSessionListViewController ()<NIMLoginManagerDelegate,NTESListHeaderDelegate,UIViewControllerPreviewingDelegate,SessionExpireDelegate,NetLoadingDelegate,NoNetWorkingDelegate>
 
 @property (nonatomic,strong) UILabel *titleLabel;
 
@@ -35,6 +43,9 @@
 @property (nonatomic,strong) NSMutableDictionary *previews;
 
 @property (nonatomic,strong) NSMutableArray *pt_listArr;
+
+@property (nonatomic,strong)PT_MsgNumApi *msgNumApi;
+@property (nonatomic,strong)PT_ClearMsgNumApi *clearMsgNumApi;
 
 @end
 
@@ -81,6 +92,51 @@
     [self.pt_listArr addObject:@{@"title":@"通知消息",@"icon":@"icon_tongzhi",@"viewController":@""}];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+    {
+        [self msgNumApiNet];
+    }
+}
+
+#pragma mark - NetworkApis
+- (void)msgNumApiNet {
+    if(self.msgNumApi && !self.msgNumApi.requestOperation.isFinished)
+    {
+        [self.msgNumApi stop];
+    }
+    
+    self.msgNumApi.sessionDelegate = self;
+    self.msgNumApi = [[PT_MsgNumApi alloc]init];
+//    self.msgNumApi.netLoadingDelegate = self;
+//    [self.msgNumApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+//        
+//        PT_MsgNumApi *result = (PT_MsgNumApi *)request;
+//        if(result.isCorrectResult)
+//        {
+////            self.timeLabel.hidden = NO;
+////            self.detailLabel.hidden = NO;
+////            self.msgNumLabel.hidden = NO;
+//            PT_MsgNumModel *model = [result getMsgNumModel];
+////            self.detailLabel.text = model.content;
+//            if ([model.content isEqualToString:@""]) {
+////                self.detailLabel.text = @"暂无新的消息";
+//            }
+////            self.timeLabel.text = model.time;
+//            
+////            self.msgNumLabel.text = model.number;
+//            if ([model.number isEqualToString:@"0"]) {
+////                self.msgNumLabel.hidden = YES;
+//            }
+//        }
+//        
+//    } failure:^(YTKBaseRequest *request) {
+//        
+//    }];
+}
+
 - (void)refresh:(BOOL)reload{
     [super refresh:reload];
     self.emptyTipLabel.hidden = self.recentSessions.count;
@@ -90,7 +146,31 @@
     
     if (indexPath.section == 0) {
         
-        NSLog(@"没有接口，未开发！");
+        if (indexPath.row == 0) {//附近的
+            PT_NearlyListViewController *nearlyListViewController = [[PT_NearlyListViewController alloc]init];
+            [self.navigationController pushViewController:nearlyListViewController animated:YES];
+            
+        }else if (indexPath.row == 1){//求职
+            if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+            {
+                [self presentLoginCtrl];
+                return;
+            }
+//            [self clearMsgNumApiNet];
+            PT_QiuzhiViewController *ctrl = [[PT_QiuzhiViewController alloc]init];
+            [self.navigationController pushViewController:ctrl animated:YES];
+
+            
+        }else if (indexPath.row == 2){//活动
+            
+        }else if (indexPath.row == 3){//陌生人
+            
+        }else if (indexPath.row == 4){//通知消息
+            
+        }else{
+            
+        }
+        
     }else{
         
         NTESSessionViewController *vc = [[NTESSessionViewController alloc] initWithSession:recent.session];
@@ -337,6 +417,15 @@
         NSAttributedString *atTip = [[NSAttributedString alloc] initWithString:@"[有人@你] " attributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];
         [content insertAttributedString:atTip atIndex:0];
     }
+}
+
+- (void)presentLoginCtrl{
+    
+    LoginViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ctrl];
+    [self.navigationController presentViewController:nav animated:YES completion:^{
+        
+    }];
 }
 
 @end

@@ -255,7 +255,6 @@
 		2C0A2F051E6EC163006CD3E1 /* NTESMutiClientsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A2E331E6EC163006CD3E1 /* NTESMutiClientsHeaderView.m */; };
 		2C0A2F061E6EC163006CD3E1 /* NTESTextHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A2E351E6EC163006CD3E1 /* NTESTextHeaderView.m */; };
 		2C0A2F071E6EC163006CD3E1 /* NTESClientsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A2E381E6EC163006CD3E1 /* NTESClientsTableViewController.m */; };
-		2C0A2F081E6EC163006CD3E1 /* NTESSessionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A2E3A1E6EC163006CD3E1 /* NTESSessionListViewController.m */; };
 		2C0A2F091E6EC163006CD3E1 /* NTESLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A2E3E1E6EC163006CD3E1 /* NTESLogManager.m */; };
 		2C0A2F0A1E6EC163006CD3E1 /* NTESLogUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A2E401E6EC163006CD3E1 /* NTESLogUploader.m */; };
 		2C0A2F0B1E6EC163006CD3E1 /* NTESLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A2E421E6EC163006CD3E1 /* NTESLogViewController.m */; };
@@ -321,6 +320,7 @@
 		2C510D0F1E71451E00A50582 /* touxiang1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C510D0E1E71451E00A50582 /* touxiang1.png */; };
 		2CA0AEA31E71A262004EB87A /* icon_qunzhu.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA0AEA21E71A262004EB87A /* icon_qunzhu.png */; };
 		2CA0AEA51E741F9E004EB87A /* NTESContactAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA0AEA41E741F9E004EB87A /* NTESContactAddFriendViewController.m */; };
+		2CA0AEA71E74294C004EB87A /* NTESSessionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA0AEA61E74294C004EB87A /* NTESSessionListViewController.m */; };
 		2CAE8D5E1E6BE9DB00419B9E /* PutongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE8D5D1E6BE9DB00419B9E /* PutongViewController.m */; };
 		2E9D758D1E72E17300D65BAA /* PT_ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9D75881E72E17300D65BAA /* PT_ListTableViewCell.m */; };
 		2E9D758E1E72E17300D65BAA /* PT_ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E9D75891E72E17300D65BAA /* PT_ListTableViewCell.xib */; };
@@ -1484,7 +1484,6 @@
 		2C0A2E371E6EC163006CD3E1 /* NTESClientsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESClientsTableViewController.h; sourceTree = "<group>"; };
 		2C0A2E381E6EC163006CD3E1 /* NTESClientsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESClientsTableViewController.m; sourceTree = "<group>"; };
 		2C0A2E391E6EC163006CD3E1 /* NTESSessionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSessionListViewController.h; sourceTree = "<group>"; };
-		2C0A2E3A1E6EC163006CD3E1 /* NTESSessionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSessionListViewController.m; sourceTree = "<group>"; };
 		2C0A2E3D1E6EC163006CD3E1 /* NTESLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESLogManager.h; sourceTree = "<group>"; };
 		2C0A2E3E1E6EC163006CD3E1 /* NTESLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESLogManager.m; sourceTree = "<group>"; };
 		2C0A2E3F1E6EC163006CD3E1 /* NTESLogUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESLogUploader.h; sourceTree = "<group>"; };
@@ -1602,6 +1601,7 @@
 		2C510D0E1E71451E00A50582 /* touxiang1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touxiang1.png; sourceTree = "<group>"; };
 		2CA0AEA21E71A262004EB87A /* icon_qunzhu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_qunzhu.png; sourceTree = "<group>"; };
 		2CA0AEA41E741F9E004EB87A /* NTESContactAddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESContactAddFriendViewController.m; sourceTree = "<group>"; };
+		2CA0AEA61E74294C004EB87A /* NTESSessionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSessionListViewController.m; sourceTree = "<group>"; };
 		2CAE8D5C1E6BE9DB00419B9E /* PutongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PutongViewController.h; sourceTree = "<group>"; };
 		2CAE8D5D1E6BE9DB00419B9E /* PutongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PutongViewController.m; sourceTree = "<group>"; };
 		2E9D75871E72E17300D65BAA /* PT_ListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_ListTableViewCell.h; sourceTree = "<group>"; };
@@ -3936,8 +3936,8 @@
 			children = (
 				2C0A2E371E6EC163006CD3E1 /* NTESClientsTableViewController.h */,
 				2C0A2E381E6EC163006CD3E1 /* NTESClientsTableViewController.m */,
+				2CA0AEA61E74294C004EB87A /* NTESSessionListViewController.m */,
 				2C0A2E391E6EC163006CD3E1 /* NTESSessionListViewController.h */,
-				2C0A2E3A1E6EC163006CD3E1 /* NTESSessionListViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -6663,6 +6663,7 @@
 				F0B2E0F21D813F6200C7A478 /* CompanyDetailViewController.m in Sources */,
 				2EC3FE171E6EDE1300CDD478 /* NIMKitSwitcherCell.m in Sources */,
 				2EC3FE6B1E6EDE1300CDD478 /* NIMTeamAnnouncementListViewController.m in Sources */,
+				2CA0AEA71E74294C004EB87A /* NTESSessionListViewController.m in Sources */,
 				2C0A2EFE1E6EC163006CD3E1 /* NTESVideoChatViewController.m in Sources */,
 				2EC3FE3C1E6EDE1300CDD478 /* NIMAudioContentConfig.m in Sources */,
 				2C0A2F0A1E6EC163006CD3E1 /* NTESLogUploader.m in Sources */,
@@ -7146,7 +7147,6 @@
 				5D74A8551E6BBDCC00D437DE /* DisplayCollectionViewCell.m in Sources */,
 				2EC3FE5E1E6EDE1300CDD478 /* NIMLocationViewController.m in Sources */,
 				F0616B871D76E6760041599B /* WorkExperienceViewController.m in Sources */,
-				2C0A2F081E6EC163006CD3E1 /* NTESSessionListViewController.m in Sources */,
 				F0C8C0D31D9299680065D945 /* QZ_JobDetailApi.m in Sources */,
 				F0695B451DAD3D90003CB097 /* IQUITextFieldView+Additions.m in Sources */,
 				F00D4D841D7099C20031A6C1 /* KeyChainStore.m in Sources */,
