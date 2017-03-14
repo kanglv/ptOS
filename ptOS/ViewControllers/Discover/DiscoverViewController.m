@@ -32,9 +32,11 @@
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <AVFoundation/AVFoundation.h>
 
-
+#import "NewsViewController.h"
 #import "WorkerViewController.h"
 #import "SuggestionViewController.h"
+#import "PolicyViewController.h"
+#import "AnnouncementViewController.h"
 
 @interface DiscoverViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
 {
@@ -110,9 +112,21 @@
 //点击广场上的cell
 - (void)pushToSubViewController:(NSNotification *)notification {
     NSString *indexItem = [notification.userInfo objectForKey:@"0"];
-    if([indexItem isEqualToString:@"4"]){
-        WorkerViewController *workerVC = [[WorkerViewController alloc]init];
-        [self.navigationController pushViewController:workerVC animated:YES];
+    if([indexItem isEqualToString:@"0"]){
+        //跳转新闻资讯
+        NewsViewController *newsVc = [[NewsViewController alloc]init];
+        [self.navigationController pushViewController:newsVc animated:YES];
+    }  else if ([indexItem isEqualToString:@"1"]){
+        PolicyViewController *policyVc = [[PolicyViewController alloc]init];
+        [self.navigationController pushViewController:policyVc animated:YES];
+    } else if([indexItem isEqualToString:@"2"]){
+        AnnouncementViewController *announcementVc = [[AnnouncementViewController alloc]init];
+        [self.navigationController pushViewController:announcementVc animated:YES];
+    } else if([indexItem isEqualToString:@"3"]){
+        //工资政策
+    } else if([indexItem isEqualToString:@"4"]){
+        WorkerViewController *workerVc = [[WorkerViewController alloc]init];
+        [self.navigationController pushViewController:workerVc animated:YES];
     }  else if ([indexItem isEqualToString:@"5"]){
         SuggestionViewController *suggestionVc = [[SuggestionViewController alloc]init];
         [self.navigationController pushViewController:suggestionVc animated:YES];
@@ -725,6 +739,8 @@
             cell.playBtn.tag = indexPath.row;
             [cell.playBtn addTarget:self action:@selector(playGroundSpeech:) forControlEvents:UIControlEventTouchUpInside];
             
+            cell.time.text = [self caculateSpeechTime:model.imgUrl];
+            
             [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
             
             if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
@@ -1000,7 +1016,24 @@
     }
 }
 
+//计算语音时长
+- (NSString *)caculateSpeechTime:(NSString *)url {
+    NSString * string;
+    
+    NSError *error;
 
+    NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+    NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , @"temp"];
+    [audioData writeToFile:amrfilePath atomically:YES];
+     AVAudioPlayer *player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
+    float seconds =  (float)player.duration;
+    
+    int disSecond = ceilf(seconds);
+    string = [NSString stringWithFormat:@"%d秒",disSecond];
+    return string;
+}
 
 - (void)playGroundSpeech:(UIButton *)sender{
     //广场列表的播放录音
@@ -1023,11 +1056,7 @@
         
         NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , @"temp"];
         [audioData writeToFile:amrfilePath atomically:YES];
-        
-        
-       
-      
-
+        NSLog(@"%@",amrfilePath);
         self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
         
         if (self.player == nil){

@@ -25,7 +25,14 @@
     }
     return self;
 }
-
+- (id)initWithPage:(NSString *)page withSessionId:(NSString *)sessionId withType:(NSString *)type  {
+    if (self == [super init]) {
+        _page = page;
+        _sessionId = sessionId;
+        _type = type;
+    }
+    return self;
+}
 - (NSString *)requestUrl {
     return @"getNoticeList";
 }
@@ -53,10 +60,9 @@
         if(dataDict && [dataDict isKindOfClass:[NSDictionary class]])
         {
             NSArray *array = [dataDict objectForKey:@"dataList"];
-            NSMutableArray *result = [NSMutableArray array];
-            NSLog(@"%@",array);
+            
            
-            return result;
+            return array;
         }
     }
     return nil;

@@ -131,6 +131,12 @@
 
 - (void)deleteRecord {
     //按钮移除
+    [self.audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:_tmpFile error:
+                             nil];
+    NSLog(@"%@",_tmpFile);
+    [self.player play];
+    
     [self.deleteBtn removeFromSuperview];
     self.timeLabel.text = @"00:00";
 }
@@ -193,30 +199,32 @@
 - (void)startRecord {
     
     self.audioSession = [AVAudioSession sharedInstance];
-
+    
         _isRecoding= YES;
-        [self.audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
-        [self.audioSession setActive:YES error:nil];
-        
+    [self.audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
+   
+    [self.audioSession setActive:YES error:nil];
+    
     NSDictionary *recordSetting = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                   [NSNumber numberWithFloat: 11025.0],AVSampleRateKey, //采样率
+//                                   [NSNumber numberWithFloat: 11025.0],AVSampleRateKey, //采样率
                                    [NSNumber numberWithInt: kAudioFormatMPEG4AAC],AVFormatIDKey,
                                    [NSNumber numberWithInt:16],AVLinearPCMBitDepthKey,//采样位数 默认 16
                                    [NSNumber numberWithInt: 2], AVNumberOfChannelsKey,//通道的数目
-                                   //                                   [NSNumber numberWithBool:NO],AVLinearPCMIsBigEndianKey,//大端还是小端 是内存的组织方式
-                                   //                                   [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,//采样信号是整数还是浮点数
-                                   //                                   [NSNumber numberWithInt: AVAudioQualityMedium],AVEncoderAudioQualityKey,//音频编码质量
+                                  
                                    nil];
-//然后直接把文件保存成.wav就好了
-        _tmpFile = [NSURL fileURLWithPath:
+//然后直接把文件保存成.aac就好了
+    _tmpFile = [NSURL fileURLWithPath:
                    [NSTemporaryDirectory() stringByAppendingPathComponent:
                     [NSString stringWithFormat: @"%@.%@",
                      @"kanglv",
                      @"aac"]]];
-        self.recorder = [[AVAudioRecorder alloc] initWithURL:_tmpFile settings:recordSetting error:nil];
-        [ self.recorder setDelegate:self];
-        [ self.recorder prepareToRecord];
-        [ self.recorder record];
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:_tmpFile settings:recordSetting error:nil];
+    self.recorder.meteringEnabled =YES;
+    [self.recorder setDelegate:self];
+    if ([self.recorder prepareToRecord]) {
+        //开始
+        [self.recorder record];
+    }
     
 }
 
@@ -226,10 +234,12 @@
    
     _isRecoding = NO;
     [self.audioSession setActive:NO error:nil];
+
     [ self.recorder stop];
     [self.record setTitle:@"按住说两句" forState:UIControlStateNormal];
     
 }
+
 
 
 - (void)next {

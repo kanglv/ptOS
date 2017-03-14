@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ptOS/ViewControllers/Discover/DiscoverViewController.m"
-            timestampString = "510813437.747397"
+            timestampString = "511168324.173352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "-initUI"
             landmarkType = "7">
          </BreakpointContent>
@@ -152,22 +152,6 @@
             startingLineNumber = "98"
             endingLineNumber = "98"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ptOS/Model/QZ_JobModel.m"
-            timestampString = "510474577.735469"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "-initWithDic:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

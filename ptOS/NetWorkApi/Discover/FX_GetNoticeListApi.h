@@ -11,7 +11,7 @@
 @interface FX_GetNoticeListApi : BaseNetApi
 
 - (id)initWithPage:(NSString *)page withSessionId:(NSString *)sessionId withType:(NSString *)type withSearchKey:(NSString *)searchKey;
-
+- (id)initWithPage:(NSString *)page withSessionId:(NSString *)sessionId withType:(NSString *)type;
 - (NSArray *)getNoticeList;
 
 @end

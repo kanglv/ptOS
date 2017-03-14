@@ -439,12 +439,17 @@
 		2EC3FE7E1E6EDE2400CDD478 /* NIMKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3FE7B1E6EDE2400CDD478 /* NIMKitResource.bundle */; };
 		2EC3FE7F1E6EDE2400CDD478 /* NIMKitSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3FE7C1E6EDE2400CDD478 /* NIMKitSettings.bundle */; };
 		2EC3FE811E6F014D00CDD478 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3FE801E6F014D00CDD478 /* AppDelegate.m */; };
+		5D01787B1E751B7400550045 /* FX_NoticeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01787A1E751B7400550045 /* FX_NoticeListModel.m */; };
+		5D01787F1E751FF900550045 /* GroundGetNoticeListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01787D1E751FF900550045 /* GroundGetNoticeListTableViewCell.m */; };
+		5D0178801E751FF900550045 /* GroundGetNoticeListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D01787E1E751FF900550045 /* GroundGetNoticeListTableViewCell.xib */; };
 		5D3E70751E5C3881004CAD59 /* icon_guanzhu.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E70741E5C3881004CAD59 /* icon_guanzhu.png */; };
 		5D3E70771E5C38A0004CAD59 /* icon_xuan_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E70761E5C38A0004CAD59 /* icon_xuan_press.png */; };
 		5D3E70791E5C38A6004CAD59 /* icon_xuan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E70781E5C38A6004CAD59 /* icon_xuan.png */; };
 		5D3E707B1E5C38B3004CAD59 /* icon_yuying.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E707A1E5C38B3004CAD59 /* icon_yuying.png */; };
 		5D3E707D1E5C38B9004CAD59 /* icon_yuying_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E707C1E5C38B9004CAD59 /* icon_yuying_press.png */; };
 		5D56EF751E5AD03C009F5C9E /* PublishSpeechViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D56EF741E5AD03C009F5C9E /* PublishSpeechViewController.m */; };
+		5D585B081E77C67C00569D33 /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B071E77C67C00569D33 /* PolicyViewController.m */; };
+		5D585B0B1E77C6A800569D33 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B0A1E77C6A800569D33 /* AnnouncementViewController.m */; };
 		5D74A8551E6BBDCC00D437DE /* DisplayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D74A8531E6BBDCC00D437DE /* DisplayCollectionViewCell.m */; };
 		5D74A8561E6BBDCC00D437DE /* DisplayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D74A8541E6BBDCC00D437DE /* DisplayCollectionViewCell.xib */; };
 		5D74A85D1E6BF1B700D437DE /* icon_gongyouji.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D74A8571E6BF1B700D437DE /* icon_gongyouji.png */; };
@@ -1846,6 +1851,11 @@
 		2EC3FE7B1E6EDE2400CDD478 /* NIMKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitResource.bundle; sourceTree = "<group>"; };
 		2EC3FE7C1E6EDE2400CDD478 /* NIMKitSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitSettings.bundle; sourceTree = "<group>"; };
 		2EC3FE801E6F014D00CDD478 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5D0178791E751B7400550045 /* FX_NoticeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FX_NoticeListModel.h; sourceTree = "<group>"; };
+		5D01787A1E751B7400550045 /* FX_NoticeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FX_NoticeListModel.m; sourceTree = "<group>"; };
+		5D01787C1E751FF900550045 /* GroundGetNoticeListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundGetNoticeListTableViewCell.h; sourceTree = "<group>"; };
+		5D01787D1E751FF900550045 /* GroundGetNoticeListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundGetNoticeListTableViewCell.m; sourceTree = "<group>"; };
+		5D01787E1E751FF900550045 /* GroundGetNoticeListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroundGetNoticeListTableViewCell.xib; sourceTree = "<group>"; };
 		5D3E70741E5C3881004CAD59 /* icon_guanzhu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_guanzhu.png; sourceTree = "<group>"; };
 		5D3E70761E5C38A0004CAD59 /* icon_xuan_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_xuan_press.png; sourceTree = "<group>"; };
 		5D3E70781E5C38A6004CAD59 /* icon_xuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_xuan.png; sourceTree = "<group>"; };
@@ -1853,6 +1863,10 @@
 		5D3E707C1E5C38B9004CAD59 /* icon_yuying_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_yuying_press.png; sourceTree = "<group>"; };
 		5D56EF731E5AD03C009F5C9E /* PublishSpeechViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSpeechViewController.h; sourceTree = "<group>"; };
 		5D56EF741E5AD03C009F5C9E /* PublishSpeechViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSpeechViewController.m; sourceTree = "<group>"; };
+		5D585B061E77C67B00569D33 /* PolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyViewController.h; sourceTree = "<group>"; };
+		5D585B071E77C67C00569D33 /* PolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyViewController.m; sourceTree = "<group>"; };
+		5D585B091E77C6A700569D33 /* AnnouncementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
+		5D585B0A1E77C6A800569D33 /* AnnouncementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
 		5D74A8521E6BBDCC00D437DE /* DisplayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayCollectionViewCell.h; sourceTree = "<group>"; };
 		5D74A8531E6BBDCC00D437DE /* DisplayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayCollectionViewCell.m; sourceTree = "<group>"; };
 		5D74A8541E6BBDCC00D437DE /* DisplayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -4682,6 +4696,8 @@
 				5D7958571E6A9345005764CF /* ConcernCompanyModel.m */,
 				5DA050621E7019B7006B6C5E /* FX_CompanyNoticeModel.h */,
 				5DA050631E7019B7006B6C5E /* FX_CompanyNoticeModel.m */,
+				5D0178791E751B7400550045 /* FX_NoticeListModel.h */,
+				5D01787A1E751B7400550045 /* FX_NoticeListModel.m */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -5117,6 +5133,10 @@
 				5D7958491E6A7A81005764CF /* ConcernJobViewController.m */,
 				5DA050591E701963006B6C5E /* NewsViewController.h */,
 				5DA0505A1E701963006B6C5E /* NewsViewController.m */,
+				5D585B061E77C67B00569D33 /* PolicyViewController.h */,
+				5D585B071E77C67C00569D33 /* PolicyViewController.m */,
+				5D585B091E77C6A700569D33 /* AnnouncementViewController.h */,
+				5D585B0A1E77C6A800569D33 /* AnnouncementViewController.m */,
 				5DA0505B1E701963006B6C5E /* WorkerViewController.h */,
 				5DA0505C1E701963006B6C5E /* WorkerViewController.m */,
 				5DA0505D1E701963006B6C5E /* SuggestionViewController.h */,
@@ -5256,6 +5276,9 @@
 				5D74A8521E6BBDCC00D437DE /* DisplayCollectionViewCell.h */,
 				5D74A8531E6BBDCC00D437DE /* DisplayCollectionViewCell.m */,
 				5D74A8541E6BBDCC00D437DE /* DisplayCollectionViewCell.xib */,
+				5D01787C1E751FF900550045 /* GroundGetNoticeListTableViewCell.h */,
+				5D01787D1E751FF900550045 /* GroundGetNoticeListTableViewCell.m */,
+				5D01787E1E751FF900550045 /* GroundGetNoticeListTableViewCell.xib */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -6506,6 +6529,7 @@
 				F07315241D7C03070057213C /* icon_guanbi.png in Resources */,
 				2C0A2EAA1E6EC163006CD3E1 /* NTESJionTeamViewController.xib in Resources */,
 				F073154C1D7C54FE0057213C /* icon_faxian@2x.png in Resources */,
+				5D0178801E751FF900550045 /* GroundGetNoticeListTableViewCell.xib in Resources */,
 				F07A501E1D82AAE0001BE234 /* DiscoverNavView.xib in Resources */,
 				F0EF458A1DAE6A9E006E1EB0 /* tab_qiye_press.png in Resources */,
 				F073152C1D7C03070057213C /* icon_xianshimima.png in Resources */,
@@ -6637,6 +6661,7 @@
 				2C0A235E1E6D7A75006CD3E1 /* DDASLLogger.m in Sources */,
 				F094E7741DB9E99200ADE3DE /* ReadApi.m in Sources */,
 				F0E82A3F1D9BF16E0087FC4C /* MHDatePicker.m in Sources */,
+				5D585B081E77C67C00569D33 /* PolicyViewController.m in Sources */,
 				2EC3FE671E6EDE1300CDD478 /* NIMUsrInfoData.m in Sources */,
 				F0E82A201D9B62E80087FC4C /* XHToast.m in Sources */,
 				2C0A26651E6DADB1006CD3E1 /* SSZipArchive.m in Sources */,
@@ -6740,6 +6765,7 @@
 				2C0A2EDD1E6EC163006CD3E1 /* NTESJanKenPonAttachment.m in Sources */,
 				F00DE8F41D759081004D43D0 /* UIImageView+AFNetworking.m in Sources */,
 				2C0A2EFD1E6EC163006CD3E1 /* NTESNetChatViewController.m in Sources */,
+				5D585B0B1E77C6A800569D33 /* AnnouncementViewController.m in Sources */,
 				5DF4F0401E68605900ACA183 /* GetConcernCompany.m in Sources */,
 				F0B60ED01D9183D000F8F519 /* MJRefreshNormalHeader.m in Sources */,
 				2C0A2EE81E6EC163006CD3E1 /* NTESSessionWhiteBoardContentView.m in Sources */,
@@ -6769,6 +6795,7 @@
 				2C0A2F1E1E6EC163006CD3E1 /* NTESUserInfoSettingViewController.m in Sources */,
 				F0E82A651D9C0DE90087FC4C /* AJPhotoListCell.m in Sources */,
 				F0E82A671D9C0DE90087FC4C /* AJPhotoListView.m in Sources */,
+				5D01787F1E751FF900550045 /* GroundGetNoticeListTableViewCell.m in Sources */,
 				2C0A2E941E6EC163006CD3E1 /* NTESNotificationCenter.m in Sources */,
 				2C0A2EEF1E6EC163006CD3E1 /* NTESGalleryViewController.m in Sources */,
 				F0B60ECE1D9183D000F8F519 /* MJRefreshBackStateFooter.m in Sources */,
@@ -7101,6 +7128,7 @@
 				F0616B7E1D76E1460041599B /* PubLishQunaziViewController.m in Sources */,
 				F02AFAF11D950FB300D9AE4B /* PT_MsgListApi.m in Sources */,
 				2C0A2EB71E6EC163006CD3E1 /* NTESChatroomViewController.m in Sources */,
+				5D01787B1E751B7400550045 /* FX_NoticeListModel.m in Sources */,
 				2C0A2E881E6EC163006CD3E1 /* NTESNavigationHandler.m in Sources */,
 				F0C8C0CD1D9292510065D945 /* QZ_CompanyListApi.m in Sources */,
 				F02AFAF41D950FC700D9AE4B /* PT_MsgDetailApi.m in Sources */,

@@ -1,12 +1,12 @@
 //
-//  NewsViewController.m
+//  PolicyViewController.m
 //  ptOS
 //
-//  Created by 吕康 on 17/3/7.
+//  Created by 吕康 on 17/3/14.
 //  Copyright © 2017年 zhourui. All rights reserved.
 //
 
-#import "NewsViewController.h"
+#import "PolicyViewController.h"
 #import "UIImageView+WebCache.h"
 #import "DisCover_SearchNavView.h"
 #import "DisCoverNavView.h"
@@ -16,13 +16,13 @@
 #import "FX_NoticeListModel.h"
 #import "GroundGetNoticeListTableViewCell.h"
 
-@interface NewsViewController ()<UITableViewDelegate, UITableViewDataSource>{
+@interface PolicyViewController ()<UITableViewDelegate, UITableViewDataSource>{
     
-        NSInteger _leftPage;
-//        NSInteger _rightPage;
-//        NSInteger _searchPage;
-//        NSString *m_content;
-//        BOOL _hasPress;
+    NSInteger _leftPage;
+    //        NSInteger _rightPage;
+    //        NSInteger _searchPage;
+    //        NSString *m_content;
+    //        BOOL _hasPress;
 }
 
 //@property (nonatomic,strong)DiscoverNavView *navView;
@@ -51,13 +51,13 @@
 @property (nonatomic, strong)UIImageView *nodataImgView;
 @end
 
-@implementation NewsViewController
+@implementation PolicyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.needNav = YES;
-    self.title = @"新闻资讯";
+    self.title = @"薪资政策";
     self.automaticallyAdjustsScrollViewInsets = NO;
     _leftPage = 1;
     [self getDataApiNet];
@@ -66,18 +66,18 @@
 
 #pragma mark - customFuncs
 - (void)initUI {
-        self.tbView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height-64) ];
-        self.tbView.backgroundColor = BackgroundColor;
-        self.tbView.showsHorizontalScrollIndicator= NO;
-        self.tbView.delegate = self;
-        self.tbView.dataSource =self;
-        self.tbView.separatorStyle = NO;
-        [self.view addSubview:self.tbView];
+    self.tbView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,self.view.frame.size.height-64) ];
+    self.tbView.backgroundColor = BackgroundColor;
+    self.tbView.showsHorizontalScrollIndicator= NO;
+    self.tbView.delegate = self;
+    self.tbView.dataSource =self;
+    self.tbView.separatorStyle = NO;
+    [self.view addSubview:self.tbView];
 }
 
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
+    
     return self.leftDataArray.count;
     
 }
@@ -90,7 +90,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-     NSDictionary *dic = self.leftDataArray[indexPath.row ];
+    NSDictionary *dic = self.leftDataArray[indexPath.row ];
     FX_NoticeListModel *model = [[FX_NoticeListModel alloc]initWithDic:dic];
     static NSString *left_Identifier = @"GroundGetNoticeListTableViewCell";
     GroundGetNoticeListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:left_Identifier];
@@ -110,7 +110,7 @@
     if (self.getNoticeListNet && !self.getNoticeListNet.requestOperation.isFinished) {
         [self.getNoticeListNet stop];
     }
-    self.getNoticeListNet = [[FX_GetNoticeListApi alloc]initWithPage:[NSString stringWithFormat:@"%ld",(long)_leftPage] withSessionId:[GlobalData sharedInstance].selfInfo.sessionId withType:@"1" withSearchKey:@"1"];
+    self.getNoticeListNet = [[FX_GetNoticeListApi alloc]initWithPage:[NSString stringWithFormat:@"%ld",(long)_leftPage] withSessionId:[GlobalData sharedInstance].selfInfo.sessionId withType:@"2" withSearchKey:@"1"];
     self.getNoticeListNet .netLoadingDelegate = self;
     self.getNoticeListNet .noNetWorkingDelegate = self;
     [self.getNoticeListNet  startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -126,13 +126,13 @@
             NSLog(@"%@",self.leftDataArray);
             [self.tbView reloadData];
             NSInteger count = [result getNoticeList].count;
-
+            
             if (count == 0) {
                 [(MJRefreshAutoFooter *)self.tbView.mj_footer setHidden:YES];
             }else {
                 [(MJRefreshAutoFooter *)self.tbView.mj_footer setHidden:NO];
             }
-        
+            
         }else {
             [self addPlaceholder];
             if (_leftPage > 1) {
@@ -175,7 +175,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 @end
