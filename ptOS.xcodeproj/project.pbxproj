@@ -450,6 +450,10 @@
 		5D56EF751E5AD03C009F5C9E /* PublishSpeechViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D56EF741E5AD03C009F5C9E /* PublishSpeechViewController.m */; };
 		5D585B081E77C67C00569D33 /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B071E77C67C00569D33 /* PolicyViewController.m */; };
 		5D585B0B1E77C6A800569D33 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B0A1E77C6A800569D33 /* AnnouncementViewController.m */; };
+		5D585B0E1E77E2A000569D33 /* PT_GetMessageNetApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B0D1E77E2A000569D33 /* PT_GetMessageNetApi.m */; };
+		5D585B111E77E37800569D33 /* PT_GetMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B101E77E37800569D33 /* PT_GetMessageModel.m */; };
+		5D585B141E77E50900569D33 /* PT_NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B131E77E50900569D33 /* PT_NoticeViewController.m */; };
+		5D585B171E77E54700569D33 /* PT_ConcernViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B161E77E54700569D33 /* PT_ConcernViewController.m */; };
 		5D74A8551E6BBDCC00D437DE /* DisplayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D74A8531E6BBDCC00D437DE /* DisplayCollectionViewCell.m */; };
 		5D74A8561E6BBDCC00D437DE /* DisplayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D74A8541E6BBDCC00D437DE /* DisplayCollectionViewCell.xib */; };
 		5D74A85D1E6BF1B700D437DE /* icon_gongyouji.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D74A8571E6BF1B700D437DE /* icon_gongyouji.png */; };
@@ -1867,6 +1871,14 @@
 		5D585B071E77C67C00569D33 /* PolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolicyViewController.m; sourceTree = "<group>"; };
 		5D585B091E77C6A700569D33 /* AnnouncementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
 		5D585B0A1E77C6A800569D33 /* AnnouncementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
+		5D585B0C1E77E2A000569D33 /* PT_GetMessageNetApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_GetMessageNetApi.h; sourceTree = "<group>"; };
+		5D585B0D1E77E2A000569D33 /* PT_GetMessageNetApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_GetMessageNetApi.m; sourceTree = "<group>"; };
+		5D585B0F1E77E37800569D33 /* PT_GetMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_GetMessageModel.h; sourceTree = "<group>"; };
+		5D585B101E77E37800569D33 /* PT_GetMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_GetMessageModel.m; sourceTree = "<group>"; };
+		5D585B121E77E50900569D33 /* PT_NoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_NoticeViewController.h; sourceTree = "<group>"; };
+		5D585B131E77E50900569D33 /* PT_NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_NoticeViewController.m; sourceTree = "<group>"; };
+		5D585B151E77E54700569D33 /* PT_ConcernViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_ConcernViewController.h; sourceTree = "<group>"; };
+		5D585B161E77E54700569D33 /* PT_ConcernViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_ConcernViewController.m; sourceTree = "<group>"; };
 		5D74A8521E6BBDCC00D437DE /* DisplayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayCollectionViewCell.h; sourceTree = "<group>"; };
 		5D74A8531E6BBDCC00D437DE /* DisplayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayCollectionViewCell.m; sourceTree = "<group>"; };
 		5D74A8541E6BBDCC00D437DE /* DisplayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -4730,6 +4742,8 @@
 				F00933B01D94241B006B00A9 /* PT_MsgDetailModel.m */,
 				5D811F581E6D4F180024374B /* PT_NearlyListModel.h */,
 				5D811F591E6D4F180024374B /* PT_NearlyListModel.m */,
+				5D585B0F1E77E37800569D33 /* PT_GetMessageModel.h */,
+				5D585B101E77E37800569D33 /* PT_GetMessageModel.m */,
 			);
 			path = PuTong;
 			sourceTree = "<group>";
@@ -4826,6 +4840,8 @@
 				F02AFAF61D95100200D9AE4B /* PT_HearthFeedBackApi.m */,
 				5D811F4A1E6D027B0024374B /* PT_NearlyListApi.h */,
 				5D811F4B1E6D027B0024374B /* PT_NearlyListApi.m */,
+				5D585B0C1E77E2A000569D33 /* PT_GetMessageNetApi.h */,
+				5D585B0D1E77E2A000569D33 /* PT_GetMessageNetApi.m */,
 			);
 			path = PuTong;
 			sourceTree = "<group>";
@@ -5208,6 +5224,10 @@
 				F07A50261D82FBED001BE234 /* PT_MapViewController.m */,
 				5D811F501E6D060C0024374B /* PT_NearlyListViewController.h */,
 				5D811F511E6D060C0024374B /* PT_NearlyListViewController.m */,
+				5D585B121E77E50900569D33 /* PT_NoticeViewController.h */,
+				5D585B131E77E50900569D33 /* PT_NoticeViewController.m */,
+				5D585B151E77E54700569D33 /* PT_ConcernViewController.h */,
+				5D585B161E77E54700569D33 /* PT_ConcernViewController.m */,
 			);
 			path = Putong;
 			sourceTree = "<group>";
@@ -6739,6 +6759,7 @@
 				2C0A281D1E6DB49D006CD3E1 /* UIView+FDCollapsibleConstraints.m in Sources */,
 				2EC3FE811E6F014D00CDD478 /* AppDelegate.m in Sources */,
 				2C0A2F261E6EC163006CD3E1 /* NTESSessionCustomContentConfig.m in Sources */,
+				5D585B171E77E54700569D33 /* PT_ConcernViewController.m in Sources */,
 				2EC3FE6D1E6EDE1300CDD478 /* NIMTeamMemberListViewController.m in Sources */,
 				F02AFB091D951D1900D9AE4B /* MY_ResumeDetailApi.m in Sources */,
 				F00933671D93998D006B00A9 /* QZ_JobSearchApi.m in Sources */,
@@ -6792,6 +6813,7 @@
 				2C0A2ED31E6EC163006CD3E1 /* NTESSystemNotificationViewController.m in Sources */,
 				F0F33D3D1D9E33A700D276F5 /* LayoutTextView.m in Sources */,
 				F0B2E0FC1D81583400C7A478 /* QZ_CompanyDetailView2.m in Sources */,
+				5D585B111E77E37800569D33 /* PT_GetMessageModel.m in Sources */,
 				2C0A2F1E1E6EC163006CD3E1 /* NTESUserInfoSettingViewController.m in Sources */,
 				F0E82A651D9C0DE90087FC4C /* AJPhotoListCell.m in Sources */,
 				F0E82A671D9C0DE90087FC4C /* AJPhotoListView.m in Sources */,
@@ -6880,6 +6902,7 @@
 				F0F945B21D77DAEC001AE058 /* SetPSWViewController.m in Sources */,
 				2C0A2F0B1E6EC163006CD3E1 /* NTESLogViewController.m in Sources */,
 				2EC3FE4E1E6EDE1300CDD478 /* NIMSessionInteractorImpl.m in Sources */,
+				5D585B141E77E50900569D33 /* PT_NoticeViewController.m in Sources */,
 				F00DE90C1D759088004D43D0 /* YTKBaseRequest.m in Sources */,
 				2EC3FE371E6EDE1300CDD478 /* NIMKitInfo.m in Sources */,
 				2EC3FE251E6EDE1300CDD478 /* NIMContactDataItem.m in Sources */,
@@ -7192,6 +7215,7 @@
 				F0B2E0F91D81582B00C7A478 /* QZ_CompanyDetailView1.m in Sources */,
 				F00DE8EA1D759081004D43D0 /* AFNetworkReachabilityManager.m in Sources */,
 				F0616B951D76F05A0041599B /* GroundTableViewCell.m in Sources */,
+				5D585B0E1E77E2A000569D33 /* PT_GetMessageNetApi.m in Sources */,
 				5D811F5A1E6D4F180024374B /* PT_NearlyListModel.m in Sources */,
 				F0F945CC1D782ACD001AE058 /* PT_MessageViewController.m in Sources */,
 				F073158E1D7C738B0057213C /* MyPublishTableViewCell.m in Sources */,
