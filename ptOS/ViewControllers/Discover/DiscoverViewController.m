@@ -740,7 +740,8 @@
             cell.playBtn.tag = indexPath.row;
             [cell.playBtn addTarget:self action:@selector(playGroundSpeech:) forControlEvents:UIControlEventTouchUpInside];
             
-            cell.time.text = [self caculateSpeechTime:model.imgUrl];
+            
+            cell.time.text = [self caculateSpeechTime:model.imgUrl withMessageId:model.tzId];
             
             [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -930,7 +931,8 @@
                 if (cell == nil) {
                     cell = [[NSBundle mainBundle] loadNibNamed:@"GroupSpeechTableViewCell" owner:nil options:nil].lastObject;
                 }
-                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
                 [cell.smallImageView sd_setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:@"morentouxiang"]];
                 ZRViewRadius(cell.smallImageView, 12);
                 cell.nickNameLabel.text = model.nickName;
@@ -1018,7 +1020,9 @@
 }
 
 //计算语音时长
-- (NSString *)caculateSpeechTime:(NSString *)url {
+- (NSString *)caculateSpeechTime:(NSString *)url withMessageId:(NSString *)messageId{
+    
+    //将语音写入缓存,获取录音时长
     NSString * string;
     
     NSError *error;
@@ -1026,8 +1030,10 @@
     NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
     NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
-    NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , @"temp"];
+    NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , messageId];
     [audioData writeToFile:amrfilePath atomically:YES];
+    NSLog(@"%@",amrfilePath);
+    
      AVAudioPlayer *player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
     float seconds =  (float)player.duration;
     
@@ -1052,12 +1058,12 @@
     if([model.fileType isEqualToString:@"2"]){
                 NSError *error;
         NSLog(@"当前文件地址%@",model.imgUrl);
-        
-        NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.imgUrl]];
         NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//        NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.imgUrl]];
+     
         
-        NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , @"temp"];
-        [audioData writeToFile:amrfilePath atomically:YES];
+        NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , model.tzId];
+//        [audioData writeToFile:amrfilePath atomically:YES];
         NSLog(@"%@",amrfilePath);
         self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
         

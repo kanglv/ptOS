@@ -148,7 +148,7 @@
         [self.record setTitle:@"松开停止" forState:UIControlStateNormal];
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerMove) userInfo:nil repeats:YES];
         
-        [self startRecord];
+        [self PT_StartRecord];
     }
     
     if (longPressGesture.state == UIGestureRecognizerStateChanged) {
@@ -196,38 +196,53 @@
 }
 
 //录音
-- (void)startRecord {
+- (void)PT_StartRecord {
     
-    self.audioSession = [AVAudioSession sharedInstance];
+    _audioSession = [AVAudioSession sharedInstance];
+    NSError *setCategoryError = nil;
+    //设置AVAudioSession
+    [_audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&setCategoryError];
+    if(setCategoryError) {
+         NSLog(@"%@", [setCategoryError description]);
+    }else {
+        
+        [_audioSession setActive:YES error:nil];
+        
+    }
     
-        _isRecoding= YES;
-    [self.audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
-   
-    [self.audioSession setActive:YES error:nil];
     
     NSDictionary *recordSetting = [[NSDictionary alloc] initWithObjectsAndKeys:
-//                                   [NSNumber numberWithFloat: 11025.0],AVSampleRateKey, //采样率
+                                   [NSNumber numberWithFloat: 44100],AVSampleRateKey, //采样率
                                    [NSNumber numberWithInt: kAudioFormatMPEG4AAC],AVFormatIDKey,
                                    [NSNumber numberWithInt:16],AVLinearPCMBitDepthKey,//采样位数 默认 16
                                    [NSNumber numberWithInt: 2], AVNumberOfChannelsKey,//通道的数目
                                   
                                    nil];
 //然后直接把文件保存成.aac就好了
-    _tmpFile = [NSURL fileURLWithPath:
-                   [NSTemporaryDirectory() stringByAppendingPathComponent:
-                    [NSString stringWithFormat: @"%@.%@",
-                     @"kanglv",
-                     @"aac"]]];
+      NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString *amrfilePath = [NSString stringWithFormat:@"%@/%5.2f.aac", docDirPath ,[[NSDate date] timeIntervalSince1970] ];
+    _tmpFile = [NSURL URLWithString:amrfilePath];
+    
+    NSLog(@"%@",_tmpFile);
+    
+    //初始化录音控件
     self.recorder = [[AVAudioRecorder alloc] initWithURL:_tmpFile settings:recordSetting error:nil];
-    self.recorder.meteringEnabled =YES;
-    [self.recorder setDelegate:self];
+    self.recorder.delegate = self;
+    
     if ([self.recorder prepareToRecord]) {
         //开始
+         self.recorder.meteringEnabled =YES;
         [self.recorder record];
     }
     
 }
 
+
+
+- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
+    
+}
 //停止录音后
 
 - (void)endRecord:(UIButton *)sender {
@@ -257,7 +272,7 @@
     } andProgressBlock:^(int64_t has, int64_t total, int64_t will) {
         
     }];
-    [self publishApiNetWithImgUrl:[NSString stringWithFormat:@"http://bd-image.img-cn-shanghai.aliyuncs.com/%@.aac",timeSp]];
+    [self publishApiNetWithImgUrl:@""];
 }
 
 - (void)publishApiNetWithImgUrl:(NSString *)url {
@@ -271,7 +286,7 @@
     if (self.switchBtn.isOn) {
         isQYQ = @"1";
     }
-     self.publishApi = [[FX_PublishTZApi alloc]initWithContent:@"111" withImgUrl:url withAddress:self.locationLabel.text withIsQYQ:isQYQ];
+     self.publishApi = [[FX_PublishTZApi alloc]initWithContent:@"1" withImgUrl:url withAddress:self.locationLabel.text withIsQYQ:isQYQ];
     
     [self.publishApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         

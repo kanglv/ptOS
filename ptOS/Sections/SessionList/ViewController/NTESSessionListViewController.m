@@ -90,7 +90,7 @@
     self.pt_listArr = [NSMutableArray array];
     [self.pt_listArr addObject:@{@"title":@"求职",@"icon":@"icon_pt_qiuzhi",@"viewController":@""}];
     [self.pt_listArr addObject:@{@"title":@"活动",@"icon":@"icon_huodong",@"viewController":@""}];
-    [self.pt_listArr addObject:@{@"title":@"我关注的",@"icon":@"icon_guanzhu",@"viewController":@""}];
+    [self.pt_listArr addObject:@{@"title":@"我关注的",@"icon":@"icon_dguanzhu",@"viewController":@""}];
     [self.pt_listArr addObject:@{@"title":@"通知消息",@"icon":@"icon_tongzhi",@"viewController":@""}];
 }
 
