@@ -53,11 +53,9 @@
         NSLog(@"%@",dataDict);
         if(dataDict && [dataDict isKindOfClass:[NSDictionary class]])
         {
-            NSArray *array = [dataDict objectForKey:@"dataList"];
-            NSMutableArray *result = [NSMutableArray array];
-            NSLog(@"%@",array);
+            NSArray *array = [dataDict objectForKey:@"datalist"];
             
-            return result;
+            return array;
         }
     }
     return nil;

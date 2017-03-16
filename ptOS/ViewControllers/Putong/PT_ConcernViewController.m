@@ -40,7 +40,7 @@
     _page = 1 ;
     
     
-    [self getNearlyApiNet];
+    [self getMessageApiNet];
     
     [self initTableView];
     
@@ -78,7 +78,7 @@
     }
     
     PT_GetMessageModel *model = [[ PT_GetMessageModel alloc]initWithDic:dic];
-    cell.nickNameLabel.text = model.userid;
+    cell.nickNameLabel.text = model.title;
     cell.contentLabel.text  = model.content;
     cell.timeLabel.text     = model.createTime;
     
@@ -104,13 +104,13 @@
 }
 
 
-- (void)getNearlyApiNet {
+- (void)getMessageApiNet {
     if (self.getMessageApi && !self.getMessageApi.requestOperation) {
         [self.getMessageApi stop];
     }
     
     NSLog(@"%@",[GlobalData sharedInstance].selfInfo.sessionId);
-    self.getMessageApi = [[PT_GetMessageNetApi alloc]initWithPage:[NSString stringWithFormat:@"%ld",(long)_page] withSessionId:[GlobalData sharedInstance].selfInfo.sessionId withType:@"1"];
+    self.getMessageApi = [[PT_GetMessageNetApi alloc]initWithPage:[NSString stringWithFormat:@"%ld",(long)_page] withSessionId:[GlobalData sharedInstance].selfInfo.sessionId withType:@"2"];
     
     self.getMessageApi.noNetWorkingDelegate = self;
     [self.getMessageApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {

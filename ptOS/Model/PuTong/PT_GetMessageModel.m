@@ -19,8 +19,9 @@
         self.isRead          = [dict strForKey:@"isRead"];
         self.createTime              = [dict strForKey:@"createTime"];
         self.type      = [dict strForKey:@"type"];
-        self.userid              = [dict strForKey:@"userid"];
+        self.userId              = [dict strForKey:@"userId"];
         self.targetid     = [dict strForKey:@"targetid"];
+        self.status = [dict strForKey:@"status"];
 
     }
     return self;

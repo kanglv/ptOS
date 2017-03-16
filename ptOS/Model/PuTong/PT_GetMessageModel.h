@@ -15,6 +15,7 @@
 @property (nonatomic, copy)NSString *isRead;
 @property (nonatomic, copy)NSString *createTime;
 @property (nonatomic, copy)NSString *type;
-@property (nonatomic, copy)NSString *userid;
+@property (nonatomic, copy)NSString *useriId;
 @property (nonatomic, copy)NSString *targetid;
+@property (nonatomic, copy)NSString *status;
 @end

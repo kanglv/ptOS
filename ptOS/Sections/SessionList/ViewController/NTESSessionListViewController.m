@@ -124,6 +124,11 @@
     if (indexPath.section == 0) {
         
         if (indexPath.row == 0) {//附近的
+            if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+            {
+                [self presentLoginCtrl];
+                return;
+            }
             PT_NearlyListViewController *nearlyListViewController = [[PT_NearlyListViewController alloc]init];
             [self.navigationController pushViewController:nearlyListViewController animated:YES];
             
@@ -141,9 +146,19 @@
         }else if (indexPath.row == 2){//活动
             
         }else if (indexPath.row == 3){//我关注的
+            if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+            {
+                [self presentLoginCtrl];
+                return;
+            }
             PT_ConcernViewController *concernVc = [[PT_ConcernViewController alloc]init];
             [self.navigationController pushViewController:concernVc animated:YES];
         }else if (indexPath.row == 4){//通知消息
+            if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+            {
+                [self presentLoginCtrl];
+                return;
+            }
             PT_NoticeViewController *noticeVc = [[PT_NoticeViewController alloc]init];
             [self.navigationController pushViewController:noticeVc animated:YES];
 
