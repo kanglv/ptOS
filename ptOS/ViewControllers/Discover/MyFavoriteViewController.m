@@ -12,6 +12,8 @@
 
 #import "ConcernCompanyViewController.h"
 
+#import "CareManViewController.h"
+
 @interface MyFavoriteViewController ()
 
 @end
@@ -33,6 +35,8 @@
 }
 - (IBAction)peopleBtnClick:(id)sender {
     //关注的人
+    CareManViewController *cvc = [[CareManViewController alloc]init];
+    [self.navigationController pushViewController:cvc animated:YES];
 }
 
 - (IBAction)jobBtnClick:(id)sender {

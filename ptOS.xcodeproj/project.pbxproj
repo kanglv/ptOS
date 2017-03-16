@@ -447,6 +447,9 @@
 		5D3E70791E5C38A6004CAD59 /* icon_xuan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E70781E5C38A6004CAD59 /* icon_xuan.png */; };
 		5D3E707B1E5C38B3004CAD59 /* icon_yuying.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E707A1E5C38B3004CAD59 /* icon_yuying.png */; };
 		5D3E707D1E5C38B9004CAD59 /* icon_yuying_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E707C1E5C38B9004CAD59 /* icon_yuying_press.png */; };
+		5D4BBC211E7A2C9C00633313 /* PT_ConcernTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BBC1F1E7A2C9C00633313 /* PT_ConcernTableViewCell.m */; };
+		5D4BBC221E7A2C9D00633313 /* PT_ConcernTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4BBC201E7A2C9C00633313 /* PT_ConcernTableViewCell.xib */; };
+		5D4BBC251E7A39C800633313 /* CareManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BBC241E7A39C800633313 /* CareManViewController.m */; };
 		5D56EF751E5AD03C009F5C9E /* PublishSpeechViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D56EF741E5AD03C009F5C9E /* PublishSpeechViewController.m */; };
 		5D585B081E77C67C00569D33 /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B071E77C67C00569D33 /* PolicyViewController.m */; };
 		5D585B0B1E77C6A800569D33 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B0A1E77C6A800569D33 /* AnnouncementViewController.m */; };
@@ -1865,6 +1868,11 @@
 		5D3E70781E5C38A6004CAD59 /* icon_xuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_xuan.png; sourceTree = "<group>"; };
 		5D3E707A1E5C38B3004CAD59 /* icon_yuying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_yuying.png; sourceTree = "<group>"; };
 		5D3E707C1E5C38B9004CAD59 /* icon_yuying_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_yuying_press.png; sourceTree = "<group>"; };
+		5D4BBC1E1E7A2C9C00633313 /* PT_ConcernTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_ConcernTableViewCell.h; sourceTree = "<group>"; };
+		5D4BBC1F1E7A2C9C00633313 /* PT_ConcernTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_ConcernTableViewCell.m; sourceTree = "<group>"; };
+		5D4BBC201E7A2C9C00633313 /* PT_ConcernTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PT_ConcernTableViewCell.xib; sourceTree = "<group>"; };
+		5D4BBC231E7A39C800633313 /* CareManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareManViewController.h; sourceTree = "<group>"; };
+		5D4BBC241E7A39C800633313 /* CareManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareManViewController.m; sourceTree = "<group>"; };
 		5D56EF731E5AD03C009F5C9E /* PublishSpeechViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSpeechViewController.h; sourceTree = "<group>"; };
 		5D56EF741E5AD03C009F5C9E /* PublishSpeechViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSpeechViewController.m; sourceTree = "<group>"; };
 		5D585B061E77C67B00569D33 /* PolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyViewController.h; sourceTree = "<group>"; };
@@ -4101,6 +4109,8 @@
 		2C510CB11E7144BE00A50582 /* 自定义通讯录 */ = {
 			isa = PBXGroup;
 			children = (
+				5D4BBC231E7A39C800633313 /* CareManViewController.h */,
+				5D4BBC241E7A39C800633313 /* CareManViewController.m */,
 				2C510CB21E71450B00A50582 /* txlClasses */,
 			);
 			name = "自定义通讯录";
@@ -5339,6 +5349,9 @@
 				2E9D75911E72E33200D65BAA /* PT_NearlyTableViewCell.h */,
 				2E9D75921E72E33200D65BAA /* PT_NearlyTableViewCell.m */,
 				2E9D75931E72E33200D65BAA /* PT_NearlyTableViewCell.xib */,
+				5D4BBC1E1E7A2C9C00633313 /* PT_ConcernTableViewCell.h */,
+				5D4BBC1F1E7A2C9C00633313 /* PT_ConcernTableViewCell.m */,
+				5D4BBC201E7A2C9C00633313 /* PT_ConcernTableViewCell.xib */,
 			);
 			path = Putong;
 			sourceTree = "<group>";
@@ -6321,7 +6334,7 @@
 				TargetAttributes = {
 					F00D4D291D7094690031A6C1 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 429MK98M9U;
+						DevelopmentTeam = 63A639V35L;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -6569,6 +6582,7 @@
 				F09F3BE91D8ED07000A5CA20 /* dengluye5.png in Resources */,
 				F073153E1D7C54C80057213C /* icon_saoyisao.png in Resources */,
 				F0616B8C1D76E7B70041599B /* FavoriteCompanyTableViewCell.xib in Resources */,
+				5D4BBC221E7A2C9D00633313 /* PT_ConcernTableViewCell.xib in Resources */,
 				5D3E707B1E5C38B3004CAD59 /* icon_yuying.png in Resources */,
 				F00201271D8A5ECE006F0136 /* icon_dianzan_white.png in Resources */,
 				5DFDD7401E51B68900B1F2E2 /* ScreenView.xib in Resources */,
@@ -7034,6 +7048,7 @@
 				F07315301D7C0A610057213C /* ThirdRegisterViewController.m in Sources */,
 				2EC3FE731E6EDE1300CDD478 /* NIMTimePickerView.m in Sources */,
 				F0695B0D1DAD25E0003CB097 /* TQLocationConverter.m in Sources */,
+				5D4BBC211E7A2C9C00633313 /* PT_ConcernTableViewCell.m in Sources */,
 				2C0A2ED51E6EC163006CD3E1 /* NTESLoginManager.m in Sources */,
 				F02AFB361D9542D500D9AE4B /* GetUserInfoApi.m in Sources */,
 				2EC3FE441E6EDE1300CDD478 /* NIMUnsupportContentConfig.m in Sources */,
@@ -7107,6 +7122,7 @@
 				2C0A2EDE1E6EC163006CD3E1 /* NTESSearchLocalHistoryObject.m in Sources */,
 				F0E82A151D9B5F570087FC4C /* MyChangeHeaderViewController.m in Sources */,
 				2C510D071E71450B00A50582 /* ChineseToPinyinResource.m in Sources */,
+				5D4BBC251E7A39C800633313 /* CareManViewController.m in Sources */,
 				5D7958551E6A9316005764CF /* ConcernJobModel.m in Sources */,
 				F0C33D331D86D5110014E8CB /* Discover_companyTableViewCell.m in Sources */,
 				F0F945D91D782C8F001AE058 /* QZ_CompanyTableViewCell.m in Sources */,
@@ -7421,7 +7437,7 @@
 				CODE_SIGN_ENTITLEMENTS = ptOS/ptOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: binbin cheng (XTYVSNET8A)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 429MK98M9U;
+				DEVELOPMENT_TEAM = 63A639V35L;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7451,7 +7467,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.putong.pt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hj.WorkForMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -7466,7 +7482,7 @@
 				CODE_SIGN_ENTITLEMENTS = ptOS/ptOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: binbin cheng (XTYVSNET8A)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 429MK98M9U;
+				DEVELOPMENT_TEAM = 63A639V35L;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7496,7 +7512,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.putong.pt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hj.WorkForMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

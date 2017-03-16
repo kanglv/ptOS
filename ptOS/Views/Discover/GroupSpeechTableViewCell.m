@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     ZRViewRadius(self.bottomView1, 10);
+    self.playBtn.layer.borderWidth = 1;
+    self.playBtn.layer.borderColor = [UIColor grayColor].CGColor;
     [self.zanBtn setImage:[UIImage imageNamed:@"icon_dianzan"] forState:UIControlStateNormal];
     [self.zanBtn setImage:[UIImage imageNamed:@"icon_dianzhan_blue"] forState:UIControlStateSelected];
 }

@@ -722,6 +722,7 @@
           
             static NSString *left_Identifier = @"GroupSpeechTableViewCell";
             GroupSpeechTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:left_Identifier];
+            
             if (cell == nil) {
                 cell = [[NSBundle mainBundle] loadNibNamed:@"GroupSpeechTableViewCell" owner:nil options:nil].lastObject;
             }
@@ -734,7 +735,7 @@
             [cell.zanNumLabel setTitle:model.greatNum forState:UIControlStateNormal];
             [cell.commentNumLabel setTitle:model.commentNum forState:UIControlStateNormal];
             [cell.addressLabel setTitle:model.address forState:UIControlStateNormal];
-            
+            cell.time.text = @"";
             [cell.playBtn setImage:[UIImage imageNamed:@"icon_yuying"] forState:UIControlStateNormal];
             cell.playBtn.tag = indexPath.row;
             [cell.playBtn addTarget:self action:@selector(playGroundSpeech:) forControlEvents:UIControlEventTouchUpInside];
@@ -1021,7 +1022,7 @@
     NSString * string;
     
     NSError *error;
-
+    NSLog(@"%@",url);
     NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
     NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
@@ -1032,6 +1033,7 @@
     
     int disSecond = ceilf(seconds);
     string = [NSString stringWithFormat:@"%d秒",disSecond];
+    NSLog(@"%@",string);
     return string;
 }
 

@@ -12,6 +12,9 @@
 
 #import "PT_GetMessageModel.h"
 #import "PT_GetMessageNetApi.h"
+#import "PT_ConcernTableViewCell.h"
+
+#import "Discover_DetailViewController.h"
 
 @interface PT_ConcernViewController ()<UITableViewDelegate,UITableViewDataSource>{
     NSInteger _page;
@@ -33,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor;
-    self.title = @"附近的";
+    self.title = @"我关注的";
     _page = 1 ;
     
     
@@ -67,15 +70,29 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *dic = [self.dataArr objectAtIndex:indexPath.row];
+    static NSString *concernIdentifier = @"PT_ConcernTableViewCell";
+    PT_ConcernTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:concernIdentifier];
+    if (cell == nil) {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"PT_ConcernTableViewCell" owner:nil options:nil].lastObject;
+    }
+    
+    PT_GetMessageModel *model = [[ PT_GetMessageModel alloc]initWithDic:dic];
+    cell.nickNameLabel.text = model.userid;
+    cell.contentLabel.text  = model.content;
+    cell.timeLabel.text     = model.createTime;
     
     
-    
-    return nil;
+    return cell;
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    Discover_DetailViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Discover_DetailViewController"];
+     NSDictionary *dic = [self.dataArr objectAtIndex:indexPath.row];
+    PT_GetMessageModel *model = [[ PT_GetMessageModel alloc]initWithDic:dic];
+    ctrl.tzId = model.messageId;
+    [self.navigationController pushViewController:ctrl animated:YES];
 }
 
 

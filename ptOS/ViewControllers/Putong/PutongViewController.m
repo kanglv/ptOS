@@ -22,6 +22,7 @@
 #import "NIMContactSelectViewController.h"
 #import "NTESSessionViewController.h"
 #import "NTESSessionListViewController.h"
+#import "PT_ConcernViewController.h"
 
 @interface PutongViewController ()
 @property (nonatomic,strong)PT_MsgNumApi *msgNumApi;
@@ -104,6 +105,8 @@
 }
 //我关注的人点击事件
 - (IBAction)concernAction:(id)sender {
+    PT_ConcernViewController *concernVc = [[PT_ConcernViewController alloc]init];
+    [self.navigationController pushViewController:concernVc animated:YES];
 }
 
 - (IBAction)QZBtnPress:(id)sender {

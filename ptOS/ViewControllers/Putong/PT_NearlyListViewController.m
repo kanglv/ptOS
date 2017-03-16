@@ -13,7 +13,7 @@
 
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
-
+#import "NTESSessionViewController.h"
 @interface PT_NearlyListViewController ()<UITableViewDelegate,UITableViewDataSource>{
     NSInteger _page;
 }
@@ -117,6 +117,11 @@
     PT_NearlyListModel *model = [[ PT_NearlyListModel alloc]initWithDic:dic];
     if([model.isAttention isEqualToString:@"1"]){
             //  跳转到聊天页面，传入imId   model.imId
+        
+        NIMSession *session = [NIMSession session:model.imId type:NIMSessionTypeP2P];
+        NTESSessionViewController *vc = [[NTESSessionViewController alloc] initWithSession:session];
+        [self.navigationController pushViewController:vc animated:YES];
+
     }
     
 }

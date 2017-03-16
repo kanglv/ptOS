@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor;
-    self.title = @"附近的";
+    self.title = @"通知";
     _page = 1 ;
     
     

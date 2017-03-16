@@ -29,6 +29,8 @@
 #import "PT_QiuzhiViewController.h"
 #import "LoginViewController.h"
 #import "PT_NearlyListViewController.h"
+#import "PT_ConcernViewController.h"
+#import "PT_NoticeViewController.h"
 
 #define SessionListTitle @"云信 Demo"
 
@@ -88,7 +90,7 @@
     self.pt_listArr = [NSMutableArray array];
     [self.pt_listArr addObject:@{@"title":@"求职",@"icon":@"icon_pt_qiuzhi",@"viewController":@""}];
     [self.pt_listArr addObject:@{@"title":@"活动",@"icon":@"icon_huodong",@"viewController":@""}];
-    [self.pt_listArr addObject:@{@"title":@"陌生人",@"icon":@"icon_moshengren",@"viewController":@""}];
+    [self.pt_listArr addObject:@{@"title":@"我关注的",@"icon":@"icon_guanzhu",@"viewController":@""}];
     [self.pt_listArr addObject:@{@"title":@"通知消息",@"icon":@"icon_tongzhi",@"viewController":@""}];
 }
 
@@ -110,31 +112,6 @@
     
     self.msgNumApi.sessionDelegate = self;
     self.msgNumApi = [[PT_MsgNumApi alloc]init];
-//    self.msgNumApi.netLoadingDelegate = self;
-//    [self.msgNumApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
-//        
-//        PT_MsgNumApi *result = (PT_MsgNumApi *)request;
-//        if(result.isCorrectResult)
-//        {
-////            self.timeLabel.hidden = NO;
-////            self.detailLabel.hidden = NO;
-////            self.msgNumLabel.hidden = NO;
-//            PT_MsgNumModel *model = [result getMsgNumModel];
-////            self.detailLabel.text = model.content;
-//            if ([model.content isEqualToString:@""]) {
-////                self.detailLabel.text = @"暂无新的消息";
-//            }
-////            self.timeLabel.text = model.time;
-//            
-////            self.msgNumLabel.text = model.number;
-//            if ([model.number isEqualToString:@"0"]) {
-////                self.msgNumLabel.hidden = YES;
-//            }
-//        }
-//        
-//    } failure:^(YTKBaseRequest *request) {
-//        
-//    }];
 }
 
 - (void)refresh:(BOOL)reload{
@@ -163,10 +140,13 @@
             
         }else if (indexPath.row == 2){//活动
             
-        }else if (indexPath.row == 3){//陌生人
-            
+        }else if (indexPath.row == 3){//我关注的
+            PT_ConcernViewController *concernVc = [[PT_ConcernViewController alloc]init];
+            [self.navigationController pushViewController:concernVc animated:YES];
         }else if (indexPath.row == 4){//通知消息
-            
+            PT_NoticeViewController *noticeVc = [[PT_NoticeViewController alloc]init];
+            [self.navigationController pushViewController:noticeVc animated:YES];
+
         }else{
             
         }

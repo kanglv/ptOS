@@ -29,7 +29,7 @@
     {
         _appKey = @"f627f3c01e1304793b7dd6972ae4a92e";
         _apiURL = @"https://app.netease.im/api";
-        _cerName= @"nill";
+        _cerName= @"zhengshu";
     }
     return self;
 }
