@@ -17,6 +17,10 @@
     ZRViewRadius(self.bottomView3, 10);
     ZRViewRadius(self.bottomView4, 10);
     ZRViewRadius(self.bottomView5, 10);
+    ZRViewRadius(self.zhizhaoLabel,10);
+    self.zhizhaoLabel.layer.borderWidth =1;
+    self.zhizhaoLabel.layer.borderColor = [UIColor redColor].CGColor;
+    self.zhizhaoLabel.textColor = [UIColor redColor];
 }
 
 @end

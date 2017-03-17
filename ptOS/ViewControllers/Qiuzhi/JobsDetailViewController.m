@@ -157,7 +157,7 @@
         return;
     }
     btn.selected = !btn.selected;
-    [self collectJobApiNet];
+    [self collectJobApiNet:btn];
 }
 
 
@@ -285,6 +285,12 @@
                 self.detailView.xzrzImageView.hidden = NO;
             }else {
                 self.detailView.xzrzImageView.hidden = YES;
+            }
+            
+            if([model.isZZ isEqualToString:@"1"]){
+                self.detailView.zhizhaoLabel.hidden = NO;
+            } else{
+                self.detailView.zhizhaoLabel.hidden = YES;
             }
             
             NSString *fuliStr = model.fuli;
@@ -551,7 +557,7 @@
     }];
 }
 
-- (void)collectJobApiNet {
+- (void)collectJobApiNet :(UIButton *)btn{
     if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
     {
         [self presentLoginCtrl];
@@ -569,6 +575,12 @@
         QZ_JobDetailCollectJobApi *result = (QZ_JobDetailCollectJobApi *)request;
         if(result.isCorrectResult)
         {
+            //关注成功
+            if(btn.selected){
+                [XHToast showCenterWithText:@"报名成功，等待HR确认"];
+            } else{
+                [XHToast showCenterWithText:@"取消报名成功，等待HR确认"];
+            }
             
         }
     } failure:^(YTKBaseRequest *request) {

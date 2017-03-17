@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *attentionNumLabel;
 @property (weak, nonatomic) IBOutlet UILabel *salaryLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *xzrzImageView;
+@property (strong, nonatomic) IBOutlet UILabel *zhizhaoLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *unitLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *fuli1View;
