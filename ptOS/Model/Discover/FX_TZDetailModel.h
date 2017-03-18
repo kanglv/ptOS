@@ -19,7 +19,7 @@
 @property (nonatomic, copy)NSString *time;
 @property (nonatomic, copy)NSString *greatPeople;
 @property (nonatomic, copy)NSString *address;
-
+@property (nonatomic, copy)NSString *fileType;
 @property (nonatomic, strong)NSArray *replyList;
 
 //@property (nonatomic, copy)NSString *replyName;

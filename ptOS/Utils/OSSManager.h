@@ -13,6 +13,7 @@
 
 typedef void(^OSSBlock)(BOOL isSuccess,UIImage *image);
 
+
 typedef void(^ProgressBlock)(int64_t has,int64_t total,int64_t will);
 
 

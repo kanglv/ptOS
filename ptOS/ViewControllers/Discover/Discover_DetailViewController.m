@@ -31,6 +31,8 @@
 
 #import "UITextView+JKPlaceHolder.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 @interface Discover_DetailViewController ()<ReplyDelegate,QZTopTextViewDelegate>
 {
     BOOL _isFirst;
@@ -73,11 +75,15 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *zanBtnBlue;
 @property (weak, nonatomic) IBOutlet UILabel *zanLabel;
+@property (strong, nonatomic) IBOutlet UIButton *playSpeechBtn;
 
 @property (nonatomic,strong)LayoutTextView *layoutTextView;
 
 @property (nonatomic,strong)NSString *repluId;
 @property (nonatomic,strong)NSString *replyName;
+
+@property (nonatomic, strong) AVAudioPlayer * player;
+@property (nonatomic, strong)NSString *speechString;
 
 @end
 
@@ -214,6 +220,32 @@
     [self.navigationController pushViewController:ctrl animated:YES];
 }
 
+
+- (void)playSpeech:(UIButton *)sender{
+    
+    NSError *error = nil;
+    NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    //        NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.imgUrl]];
+    
+    
+    NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , self.tzId];
+    //        [audioData writeToFile:amrfilePath atomically:YES];
+    NSLog(@"%@",amrfilePath);
+    self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
+    
+    if (self.player == nil){
+        NSLog(@"AudioPlayer did not load properly: %@", [error description]);
+    }else{
+        [self.player play];
+    }
+    
+    if (error) {
+        NSLog(@"error:%@",[error description]);
+        return;
+    }
+
+}
+
 #pragma mark - NetworkApis
 - (void)detailApiNet {
     if (self.detailApi && !self.detailApi.requestOperation.isFinished) {
@@ -236,12 +268,26 @@
             [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:@"morentouxiang"]];
             ZRViewRadius(self.smallImageView, 12);
             self.nickNameLabel.text = model.nickName;
-            [self.bigImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"moren_pt"]];
+            //判断是否为语音
+            if([model.fileType isEqualToString:@"2"]){
+                self.bigImageView.hidden = YES;
+                self.contentLabel.hidden = YES;
+                self.playSpeechBtn.hidden = NO;
+                self.speechString = model.imgUrl;
+                [self.playSpeechBtn addTarget:self action:@selector(playSpeech:) forControlEvents:UIControlEventTouchUpInside];
+            } else {
+                [self.bigImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"moren_pt"]];
+                m_content = model.content;
+                self.contentLabel.text = model.content;
+                self.playSpeechBtn.hidden = YES;
+            }
+            
+            
+            
             self.companyNameLabel.text = model.companyName;
-            m_content = model.content;
             self.timeLabel.text = model.time;
             [self.addressBtn setTitle:model.address forState:UIControlStateNormal];
-            self.contentLabel.text = model.content;
+           
             if ([model.isLike isEqualToString:@"1"]) {
                 self.dianzanBtn.selected = YES;
             }else {

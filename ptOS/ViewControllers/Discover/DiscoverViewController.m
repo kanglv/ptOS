@@ -574,7 +574,7 @@
             
           
             if (height > 60) {
-                return 181;
+                return 231;
             }else {
                 return 181 - 60 + height;
             }
@@ -582,7 +582,7 @@
            
              return 154 ;
         } else {
-            return 181;
+            return 231;
         }
         
     }else if (tableView == self.right_tbView) {
@@ -590,22 +590,25 @@
             return 200;
         }else {
             FX_ComListModel *model = [[FX_ComListModel alloc]init];
-            model = self.rightDataArray[indexPath.row];
+            model = self.rightDataArray[indexPath.row - 1];
             
             if (model.imgUrl.length < 6) {
                 //无图
                 CGFloat height = [ControlUtil heightWithContent:model.content withFont:[UIFont systemFontOfSize:15] withWidth:FITWIDTH(326)];
                 if (height > 60) {
-                    return 181;
+                    return 231;
                 }else {
                     return 181 - 60 + height;
                 }
-            }else {
+            } else if([model.fileType isEqualToString:@"2"]){
+                
+                return 154 ;
+            } else {
                 //有图
-                return 181;
+                return 231;
             }
-        }
-    }else {
+        } 
+    } else {
         return 0;
     }
 }
@@ -726,7 +729,7 @@
             if (cell == nil) {
                 cell = [[NSBundle mainBundle] loadNibNamed:@"GroupSpeechTableViewCell" owner:nil options:nil].lastObject;
             }
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell.smallImageView sd_setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:@"morentouxiang"]];
             ZRViewRadius(cell.smallImageView, 12);
             cell.nickNameLabel.text = model.nickName;
@@ -928,11 +931,11 @@
                 
                 static NSString *left_Identifier = @"GroupSpeechTableViewCell";
                 GroupSpeechTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:left_Identifier];
+                
                 if (cell == nil) {
                     cell = [[NSBundle mainBundle] loadNibNamed:@"GroupSpeechTableViewCell" owner:nil options:nil].lastObject;
                 }
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
                 [cell.smallImageView sd_setImageWithURL:[NSURL URLWithString:model.headerUrl] placeholderImage:[UIImage imageNamed:@"morentouxiang"]];
                 ZRViewRadius(cell.smallImageView, 12);
                 cell.nickNameLabel.text = model.nickName;
@@ -941,10 +944,14 @@
                 [cell.zanNumLabel setTitle:model.greatNum forState:UIControlStateNormal];
                 [cell.commentNumLabel setTitle:model.commentNum forState:UIControlStateNormal];
                 [cell.addressLabel setTitle:model.address forState:UIControlStateNormal];
-                
+                cell.time.text = @"";
                 [cell.playBtn setImage:[UIImage imageNamed:@"icon_yuying"] forState:UIControlStateNormal];
                 cell.playBtn.tag = indexPath.row;
-                [cell.playBtn addTarget:self action:@selector(playSpeech:) forControlEvents:UIControlEventTouchUpInside];
+                [cell.playBtn addTarget:self action:@selector(playGroundSpeech:) forControlEvents:UIControlEventTouchUpInside];
+                
+                
+                cell.time.text = [self caculateSpeechTime:model.imgUrl withMessageId:model.tzId];
+                
                 [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
                 
                 if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
@@ -967,7 +974,6 @@
                 }
                 [cell.zanBtn addTarget:self action:@selector(dianzanActionNO:) forControlEvents:UIControlEventTouchUpInside];
                 return cell;
-                
                 
             } else {
                 //视频，先用image的cell
@@ -1027,14 +1033,26 @@
     
     NSError *error;
     NSLog(@"%@",url);
-    NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-    NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
     NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , messageId];
-    [audioData writeToFile:amrfilePath atomically:YES];
-    NSLog(@"%@",amrfilePath);
     
-     AVAudioPlayer *player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if(![fileManager fileExistsAtPath:amrfilePath]){
+        NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+        [audioData writeToFile:amrfilePath atomically:YES];
+    }
+//    if(!amrfilePath){
+        NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+        [audioData writeToFile:amrfilePath atomically:YES];
+
+//    }
+    
+    AVAudioPlayer *player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
+    if(player){
+        
+    }
+    
     float seconds =  (float)player.duration;
     
     int disSecond = ceilf(seconds);
@@ -1056,14 +1074,13 @@
         }
     }
     if([model.fileType isEqualToString:@"2"]){
-                NSError *error;
+        NSError *error;
         NSLog(@"当前文件地址%@",model.imgUrl);
         NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//        NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.imgUrl]];
      
         
         NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , model.tzId];
-//        [audioData writeToFile:amrfilePath atomically:YES];
+
         NSLog(@"%@",amrfilePath);
         self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
         
@@ -1085,18 +1102,26 @@
     FX_ComListModel *model = [[FX_ComListModel alloc]init];
     model = self.rightDataArray[sender.tag - 1];
     if([model.fileType isEqualToString:@"2"]){
-        self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:model.imgUrl] error:nil];
-        NSError *error;
+         NSError *error;
+        NSLog(@"当前文件地址%@",model.imgUrl);
+        NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         
-        self.player.volume=1;
+        
+        NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , model.tzId];
+        
+        NSLog(@"%@",amrfilePath);
+        self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
+        
+        if (self.player == nil){
+            NSLog(@"AudioPlayer did not load properly: %@", [error description]);
+        }else{
+            [self.player play];
+        }
+        
         if (error) {
             NSLog(@"error:%@",[error description]);
             return;
         }
-        //准备播放
-        [self.player prepareToPlay];
-        //播放
-        [self.player play];
     }
 }
 

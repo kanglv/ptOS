@@ -40,6 +40,8 @@
 
 @property (nonatomic, strong)UIButton *deleteBtn;
 
+@property (nonatomic, strong)NSString *filePath;
+
 @property int time;
 
 @end
@@ -68,6 +70,12 @@
 
 
 - (void)initUI {
+    //去掉导航栏下面的黑线
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+
+    
+    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:@"    发表" forState:UIControlStateNormal];
     [btn setTitleColor:WhiteColor forState:UIControlStateNormal];
@@ -131,12 +139,12 @@
 
 - (void)deleteRecord {
     //按钮移除
-    [self.audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-    self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:_tmpFile error:
-                             nil];
-    NSLog(@"%@",_tmpFile);
-    [self.player play];
-    
+//    [self.audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+//    self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:_tmpFile error:
+//                             nil];
+//    NSLog(@"%@",_tmpFile);
+//    [self.player play];
+    [self.recorder deleteRecording];
     [self.deleteBtn removeFromSuperview];
     self.timeLabel.text = @"00:00";
 }
@@ -219,10 +227,10 @@
                                   
                                    nil];
 //然后直接把文件保存成.aac就好了
-      NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
-    NSString *amrfilePath = [NSString stringWithFormat:@"%@/%5.2f.aac", docDirPath ,[[NSDate date] timeIntervalSince1970] ];
-    _tmpFile = [NSURL URLWithString:amrfilePath];
+    self.filePath = [NSString stringWithFormat:@"%@/%5.2f.aac", docDirPath ,[[NSDate date] timeIntervalSince1970] ];
+    _tmpFile = [NSURL URLWithString:self.filePath];
     
     NSLog(@"%@",_tmpFile);
     
@@ -264,15 +272,21 @@
         return;
     }
    
-    NSData *data = [NSData dataWithContentsOfURL:_tmpFile];
+    NSData *data = [NSData dataWithContentsOfFile:self.filePath];
+    
+    
+    //音频文件命名
     NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[[NSDate  date] timeIntervalSince1970]];
     NSString *fileName = [NSString stringWithFormat:@"%@.aac",timeSp];
     [[OSSManager sharedManager] uploadObjectAsyncWithData:data andFileName:fileName andBDName:@"bd-image" andIsSuccess:^(BOOL isSuccess, UIImage *image) {
-        NSLog(@"success!");
+        if(isSuccess){
+            //将音频文件地址上传到本机服务器
+            [self publishApiNetWithImgUrl:[NSString stringWithFormat:@"http://bd-image.img-cn-shanghai.aliyuncs.com/%@",fileName]];
+        }
     } andProgressBlock:^(int64_t has, int64_t total, int64_t will) {
         
     }];
-    [self publishApiNetWithImgUrl:@""];
+    
 }
 
 - (void)publishApiNetWithImgUrl:(NSString *)url {

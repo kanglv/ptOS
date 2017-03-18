@@ -54,7 +54,7 @@ static OSSManager *manager = nil;
 
     put.uploadProgress = ^(int64_t bytesSent, int64_t totalByteSent, int64_t totalBytesExpectedToSend) {
         NSLog(@"%lld, %lld, %lld", bytesSent, totalByteSent, totalBytesExpectedToSend);
-        CGFloat n = totalByteSent * 1.0 / (totalBytesExpectedToSend * 1.0);
+//        CGFloat n = totalByteSent * 1.0 / (totalBytesExpectedToSend * 1.0);
         dispatch_async(dispatch_get_main_queue(), ^{
 //            [SVProgressHUD showProgress:n];
         });
@@ -79,7 +79,7 @@ static OSSManager *manager = nil;
         } else {
             NSLog(@"upload object failed, error: %@" , task.error);
             [SVProgressHUD dismiss];
-//             [SVProgressHUD showErrorWithStatus:@"上传失败"];
+             [SVProgressHUD showErrorWithStatus:@"上传失败"];
             isSuccess = NO;
             block(isSuccess,nil);
         }

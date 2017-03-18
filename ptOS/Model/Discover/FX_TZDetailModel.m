@@ -27,6 +27,7 @@
         self.greatPeople = [dict objectForKey:@"greatPeople"];
         self.address = [dict objectForKey:@"address"];
         self.replyList = [dict objectForKey:@"commentList"];
+        self.fileType = [dict objectForKey:@"fileType"];
     }
     return self;
 }
