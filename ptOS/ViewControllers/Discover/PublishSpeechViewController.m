@@ -60,6 +60,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+
 }
 
 - (void)dealloc {
@@ -70,10 +73,7 @@
 
 
 - (void)initUI {
-    //去掉导航栏下面的黑线
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-
+    
     
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

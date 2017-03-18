@@ -9,6 +9,7 @@
 #import "PT_NoticeViewController.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
+#import "PT_NoticeTableViewCell.h"
 
 #import "PT_GetMessageModel.h"
 #import "PT_GetMessageNetApi.h"
@@ -64,14 +65,24 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    return 130;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *dic = [self.dataArr objectAtIndex:indexPath.row];
+    static NSString *concernIdentifier = @"PT_NoticeTableViewCell";
+    PT_NoticeTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:concernIdentifier];
+    if (cell == nil) {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"PT_NoticeTableViewCell" owner:nil options:nil].lastObject;
+    }
+    
+    PT_GetMessageModel *model = [[ PT_GetMessageModel alloc]initWithDic:dic];
+    cell.typeLabel.text = model.title;
+    cell.detailLabel.text  = model.content;
+    cell.timeLabel.text     = model.createTime;
     
     
-    
-    return nil;
+    return cell;
     
 }
 

@@ -156,11 +156,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ptOS/ViewControllers/Qiuzhi/QiuzhiViewController.m"
-            timestampString = "510759409.560614"
+            timestampString = "511541265.453008"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "858"
-            endingLineNumber = "858"
+            startingLineNumber = "866"
+            endingLineNumber = "866"
             landmarkName = "-searchComApiNet"
             landmarkType = "7">
          </BreakpointContent>
@@ -179,6 +179,54 @@
             endingLineNumber = "275"
             landmarkName = "-next"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ptOS/Views/Putong/PT_NoticeTableViewCell.h"
+            timestampString = "511540493.226839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "backView"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PT_NoticeTableViewCell backView]"
+                  moduleName = "ptOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvkang/oooo/ptOS/Views/Putong/PT_NoticeTableViewCell.h"
+                  timestampString = "511544104.944448"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PT_NoticeTableViewCell setBackView:]"
+                  moduleName = "ptOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lvkang/oooo/ptOS/Views/Putong/PT_NoticeTableViewCell.h"
+                  timestampString = "511544104.948224"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

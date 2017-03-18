@@ -82,6 +82,8 @@
 //透明度为1.0
 #define RGB(r,g,b) RGBA(r,g,b,1.0)
 
+#define ports @"/HJ/regesitIdWangyi.do"
+
 //UIColor 十六进制RGB_0x
 #define UIColorFromRGB_0x(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \

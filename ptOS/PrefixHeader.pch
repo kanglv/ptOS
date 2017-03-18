@@ -42,6 +42,7 @@
 #define NTES_FORBID_INTERACTIVE_POP - (BOOL)forbidInteractivePop{return YES;}
 
 
+#define server @"120.27.112.49:8888"
 #endif
 
 #endif

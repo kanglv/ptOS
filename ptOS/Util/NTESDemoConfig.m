@@ -27,9 +27,10 @@
 {
     if (self = [super init])
     {
-        _appKey = @"f627f3c01e1304793b7dd6972ae4a92e";
+//        _appKey = @"f627f3c01e1304793b7dd6972ae4a92e";
         _apiURL = @"https://app.netease.im/api";
         _cerName= @"zhengshu";
+        _appKey = @"d4cb991c5d421c11da3019feda601b64";
     }
     return self;
 }

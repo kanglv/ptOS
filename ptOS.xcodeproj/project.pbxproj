@@ -474,6 +474,8 @@
 		5D7958611E6A9DCF005764CF /* ConcernCompanyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D79585F1E6A9DCF005764CF /* ConcernCompanyTableViewCell.m */; };
 		5D7958621E6A9DCF005764CF /* ConcernCompanyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D7958601E6A9DCF005764CF /* ConcernCompanyTableViewCell.xib */; };
 		5D7A9D1A1E7D191D0032E643 /* PT_ToAddAttentionApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A9D191E7D191D0032E643 /* PT_ToAddAttentionApi.m */; };
+		5D7A9D1E1E7D7A320032E643 /* PT_NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A9D1C1E7D7A320032E643 /* PT_NoticeTableViewCell.m */; };
+		5D7A9D1F1E7D7A320032E643 /* PT_NoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9D1D1E7D7A320032E643 /* PT_NoticeTableViewCell.xib */; };
 		5D811F4C1E6D027B0024374B /* PT_NearlyListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D811F4B1E6D027B0024374B /* PT_NearlyListApi.m */; };
 		5D811F521E6D060C0024374B /* PT_NearlyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D811F511E6D060C0024374B /* PT_NearlyListViewController.m */; };
 		5D811F561E6D09B70024374B /* PT_NearlyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D811F541E6D09B70024374B /* PT_NearlyListTableViewCell.m */; };
@@ -1913,6 +1915,9 @@
 		5D7958601E6A9DCF005764CF /* ConcernCompanyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConcernCompanyTableViewCell.xib; sourceTree = "<group>"; };
 		5D7A9D181E7D191D0032E643 /* PT_ToAddAttentionApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_ToAddAttentionApi.h; sourceTree = "<group>"; };
 		5D7A9D191E7D191D0032E643 /* PT_ToAddAttentionApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_ToAddAttentionApi.m; sourceTree = "<group>"; };
+		5D7A9D1B1E7D7A320032E643 /* PT_NoticeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_NoticeTableViewCell.h; sourceTree = "<group>"; };
+		5D7A9D1C1E7D7A320032E643 /* PT_NoticeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_NoticeTableViewCell.m; sourceTree = "<group>"; };
+		5D7A9D1D1E7D7A320032E643 /* PT_NoticeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PT_NoticeTableViewCell.xib; sourceTree = "<group>"; };
 		5D811F4A1E6D027B0024374B /* PT_NearlyListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_NearlyListApi.h; sourceTree = "<group>"; };
 		5D811F4B1E6D027B0024374B /* PT_NearlyListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_NearlyListApi.m; sourceTree = "<group>"; };
 		5D811F501E6D060C0024374B /* PT_NearlyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_NearlyListViewController.h; sourceTree = "<group>"; };
@@ -5357,6 +5362,9 @@
 				5D4BBC1E1E7A2C9C00633313 /* PT_ConcernTableViewCell.h */,
 				5D4BBC1F1E7A2C9C00633313 /* PT_ConcernTableViewCell.m */,
 				5D4BBC201E7A2C9C00633313 /* PT_ConcernTableViewCell.xib */,
+				5D7A9D1B1E7D7A320032E643 /* PT_NoticeTableViewCell.h */,
+				5D7A9D1C1E7D7A320032E643 /* PT_NoticeTableViewCell.m */,
+				5D7A9D1D1E7D7A320032E643 /* PT_NoticeTableViewCell.xib */,
 			);
 			path = Putong;
 			sourceTree = "<group>";
@@ -6575,6 +6583,7 @@
 				5D74A85F1E6BF1B700D437DE /* icon_tongzhigonggao.png in Resources */,
 				5D74A8611E6BF1B700D437DE /* icon_xinzi.png in Resources */,
 				5D74A8601E6BF1B700D437DE /* icon_xinwenzixun.png in Resources */,
+				5D7A9D1F1E7D7A320032E643 /* PT_NoticeTableViewCell.xib in Resources */,
 				2C0A266B1E6DB161006CD3E1 /* d3.icns in Resources */,
 				F043EB191DB4F8C700752081 /* MSTableViewCell.xib in Resources */,
 				F0A017F41D7D5A85003BEABF /* mima_eye_blue.png in Resources */,
@@ -6822,6 +6831,7 @@
 				2C0A2F281E6EC163006CD3E1 /* NTESDemoRegisterTask.m in Sources */,
 				F02B89B61DA7A54F0020ED25 /* rscode.c in Sources */,
 				2C0A2EBC1E6EC163006CD3E1 /* NTESChatroomSegmentedControl.m in Sources */,
+				5D7A9D1E1E7D7A320032E643 /* PT_NoticeTableViewCell.m in Sources */,
 				2C0A2F1D1E6EC163006CD3E1 /* NTESSignSettingViewController.m in Sources */,
 				5D811F561E6D09B70024374B /* PT_NearlyListTableViewCell.m in Sources */,
 				2C0A2EE21E6EC163006CD3E1 /* NTESSearchMessageContentCell.m in Sources */,

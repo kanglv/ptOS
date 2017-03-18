@@ -198,16 +198,18 @@
     if (self.loginApi && !self.loginApi.requestOperation.isFinished) {
         [self.loginApi stop];
     }
-//    NSString *psw = [StringUtil getmd5WithString:self.pswTF.text];
+    //    NSString *psw = [StringUtil getmd5WithString:self.pswTF.text];
     NSLog(@"%@",[_phoneNumTF text]
           );
-    NSLog(@"%@",[@"99887766" tokenByPassword] );
+    NSLog(@"%@",[self.pswTF.text tokenByPassword] );
     
-
+    
     self.loginApi = [[LoginNetApi alloc]initWithUserName:self.phoneNumTF.text withUserPsw:self.pswTF.text];
     self.loginApi.netLoadingDelegate = self;
+    
+    //云信的帐号密码获取？
     [[[NIMSDK sharedSDK] loginManager] login:[_phoneNumTF text]
-                                       token:[@"99887766" tokenByPassword] completion:^(NSError * _Nullable error) {
+                                       token:[self.pswTF.text tokenByPassword] completion:^(NSError * _Nullable error) {
                                            
                                            NSLog(@"%@",error);
                                            
@@ -217,9 +219,9 @@
         if (result.isCorrectResult) {
             NSLog(@"%@",[_phoneNumTF text]
                   );
-            NSLog(@"%@",[@"99887766" tokenByPassword] );
-          
-
+            NSLog(@"%@",[self.pswTF.text tokenByPassword] );
+            
+            
             
             [GlobalData sharedInstance].selfInfo = [result getUserInfo];
             NSLog(@"%@",[GlobalData sharedInstance].selfInfo.nickName);

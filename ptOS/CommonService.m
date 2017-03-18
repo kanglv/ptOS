@@ -18,7 +18,7 @@
     
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
     
-    [manager POST:@"http://91youzhi.imwork.net:19402/HJ/regesitIdWangyi.do" parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",server,ports] parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         
         NSLog(@"%@", responseObject);
         

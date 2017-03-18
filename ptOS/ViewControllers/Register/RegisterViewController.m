@@ -194,7 +194,7 @@
             
             NSDictionary *dict = @{
                                    @"accStringid":_phoneNumTF.text,
-                                   @"password": [@"99887766" tokenByPassword] ,
+                                   @"password": [self.codeTF.text tokenByPassword] ,
                                    @"name":_phoneNumTF.text};
             
             [service getNetWorkData:dict Successed:^(id entity) {

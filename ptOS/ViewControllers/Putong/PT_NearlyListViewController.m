@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
 #import "NTESSessionViewController.h"
+#import "NTESBundleSetting.h"
 @interface PT_NearlyListViewController ()<UITableViewDelegate,UITableViewDataSource>{
     NSInteger _page;
 }
@@ -75,7 +76,7 @@
     if (cell == nil) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"PT_NearlyListTableViewCell" owner:nil options:nil].lastObject;
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     PT_NearlyListModel *model = [[ PT_NearlyListModel alloc]initWithDic:dic];
     NSString *urlString;
     
@@ -135,14 +136,50 @@
 //申请加入
 -(void)applyToJoin:(UIButton *)sender{
     //加入群组，然后同步关系到服务端
-//    NSDictionary *dic = [self.dataArr objectAtIndex:sender.tag];
-//    PT_NearlyListModel *model = [[ PT_NearlyListModel alloc]initWithDic:dic];
+    NSDictionary *dic = [self.dataArr objectAtIndex:sender.tag];
+    PT_NearlyListModel *model = [[ PT_NearlyListModel alloc]initWithDic:dic];
     
-    //根据model.imid拿到聊天对象的uid
-    
-    
-    //将当前登录用户的uid  与 聊天对象的uid 作为参数传入
-//    [self addAttentionApiNetWithUid:uid withTargetUid:targetUid withSender:sender]
+    //获取自身的云信id
+    NSString *uid = [NIMSDK sharedSDK].loginManager.currentAccount;
+    NSString *targetuid = model.imId;
+    if([model.type isEqualToString:@"1"]){
+        //申请加好友，然后同步
+        NIMUserRequest *request = [[NIMUserRequest alloc] init];
+        request.userId = targetuid;
+        request.operation = NIMUserOperationAdd;
+        if ([[NTESBundleSetting sharedConfig] needVerifyForFriend]) {
+            request.operation = NIMUserOperationRequest;
+            request.message = @"跪求通过";
+        }
+       
+        [SVProgressHUD show];
+        [[NIMSDK sharedSDK].userManager requestFriend:request completion:^(NSError *error) {
+            [SVProgressHUD dismiss];
+            if(!error){
+               [self addAttentionApiNetWithUid:uid withTargetUid:targetuid withSender:sender];
+            }
+            
+        }];
+    } else {
+        //申请入群，然后同步
+        [[NIMSDK sharedSDK].teamManager applyToTeam:targetuid message:@"跪求通过" completion:^(NSError *error,NIMTeamApplyStatus applyStatus) {
+            [SVProgressHUD dismiss];
+            if (!error) {
+                switch (applyStatus) {
+                        //申请成功
+                    case NIMTeamApplyStatusAlreadyInTeam:{
+                        [self addAttentionApiNetWithUid:uid withTargetUid:targetuid withSender:sender];
+                        break;
+                    }
+                    case NIMTeamApplyStatusWaitForPass:
+                      
+                    default:
+                        break;
+                }
+            }
+           
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

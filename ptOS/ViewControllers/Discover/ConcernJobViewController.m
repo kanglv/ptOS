@@ -141,6 +141,7 @@
                 [(MJRefreshAutoFooter *)self.tableView.mj_footer setHidden:NO];
             }
         }else {
+            [self addPlaceHolderView];
             if (_page > 1) {
                 _page --;
             }else {

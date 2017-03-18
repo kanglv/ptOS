@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PT_NoticeTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-03-12 12:38:49" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISh-Eh-F0R">
+                        <rect key="frame" x="12" y="10" width="351" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oli-uI-J7L">
+                        <rect key="frame" x="12" y="36" width="351" height="83.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tK-GE-eAX">
+                                <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O12-6w-cGX">
+                                <rect key="frame" x="8" y="47.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5tK-GE-eAX" firstAttribute="top" secondItem="Oli-uI-J7L" secondAttribute="top" constant="8" id="7f7-pA-X6O"/>
+                            <constraint firstAttribute="bottom" secondItem="O12-6w-cGX" secondAttribute="bottom" constant="15" id="Gq5-3Y-bIh"/>
+                            <constraint firstItem="O12-6w-cGX" firstAttribute="leading" secondItem="Oli-uI-J7L" secondAttribute="leading" constant="8" id="hvE-3R-7rP"/>
+                            <constraint firstItem="5tK-GE-eAX" firstAttribute="leading" secondItem="Oli-uI-J7L" secondAttribute="leading" constant="8" id="mFb-Hw-eKd"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Oli-uI-J7L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="5RY-k9-T7f"/>
+                    <constraint firstItem="ISh-Eh-F0R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="AYC-jv-9Hc"/>
+                    <constraint firstAttribute="trailing" secondItem="Oli-uI-J7L" secondAttribute="trailing" constant="12" id="Gaa-cJ-z8g"/>
+                    <constraint firstItem="ISh-Eh-F0R" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="QNG-dh-8ee"/>
+                    <constraint firstAttribute="trailing" secondItem="ISh-Eh-F0R" secondAttribute="trailing" constant="12" id="Sqo-M5-TlN"/>
+                    <constraint firstItem="Oli-uI-J7L" firstAttribute="top" secondItem="ISh-Eh-F0R" secondAttribute="bottom" constant="10" id="gsI-Ha-Z8y"/>
+                    <constraint firstAttribute="bottom" secondItem="Oli-uI-J7L" secondAttribute="bottom" constant="10" id="zOg-uD-Mcz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="backView" destination="Oli-uI-J7L" id="VW3-hx-DNa"/>
+                <outlet property="detailLabel" destination="O12-6w-cGX" id="eI5-01-bcc"/>
+                <outlet property="timeLabel" destination="ISh-Eh-F0R" id="tEN-Ud-AOM"/>
+                <outlet property="typeLabel" destination="5tK-GE-eAX" id="VBT-Gf-707"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
