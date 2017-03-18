@@ -152,22 +152,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ptOS/ViewControllers/Qiuzhi/QiuzhiViewController.m"
-            timestampString = "510759409.560614"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "838"
-            endingLineNumber = "838"
-            landmarkName = "-searchComApiNet"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -177,22 +161,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "858"
             endingLineNumber = "858"
-            landmarkName = "-searchComApiNet"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ptOS/ViewControllers/Qiuzhi/QiuzhiViewController.m"
-            timestampString = "510759409.560614"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "829"
-            endingLineNumber = "829"
             landmarkName = "-searchComApiNet"
             landmarkType = "7">
          </BreakpointContent>

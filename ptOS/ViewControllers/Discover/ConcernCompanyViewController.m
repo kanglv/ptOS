@@ -114,6 +114,7 @@
     [self.getConcernCompanyApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         GetConcernCompany *result = (GetConcernCompany *)request;
         if (result.isCorrectResult) {
+            [self removePlaceHolderView];
             if (_page == 1) {
                 self.dataArr = [NSMutableArray arrayWithArray:[result getCompanyList]];
             }else {
@@ -122,6 +123,7 @@
             [self.tableView reloadData];
             NSInteger count = [result getCompanyList].count;
             if (count == 0) {
+                [self addPlaceHolderView];
                 [(MJRefreshAutoFooter *)self.tableView.mj_footer setHidden:YES];
             }else {
                 [(MJRefreshAutoFooter *)self.tableView.mj_footer setHidden:NO];
@@ -137,6 +139,8 @@
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [self addPlaceHolderView];
+        [self.tableView reloadData];
         if (_page > 1) {
             _page --;
         }else {

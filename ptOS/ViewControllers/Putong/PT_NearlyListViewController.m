@@ -135,8 +135,8 @@
 //申请加入
 -(void)applyToJoin:(UIButton *)sender{
     //加入群组，然后同步关系到服务端
-    NSDictionary *dic = [self.dataArr objectAtIndex:sender.tag];
-    PT_NearlyListModel *model = [[ PT_NearlyListModel alloc]initWithDic:dic];
+//    NSDictionary *dic = [self.dataArr objectAtIndex:sender.tag];
+//    PT_NearlyListModel *model = [[ PT_NearlyListModel alloc]initWithDic:dic];
     
     //根据model.imid拿到聊天对象的uid
     
@@ -162,6 +162,7 @@
     [self.getNearlyApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         PT_NearlyListApi *result = (PT_NearlyListApi *)request;
         if (result.isCorrectResult) {
+            [self removePlaceHolderView];
             if (_page == 1) {
                 self.dataArr = [NSMutableArray arrayWithArray:[result getNearlyList]];
             }else {
@@ -170,6 +171,7 @@
             [self.tableView reloadData];
             NSInteger count = self.dataArr.count;
             if (count == 0) {
+                [self addPlaceHolderView];
                 [(MJRefreshAutoFooter *)self.tableView.mj_footer setHidden:YES];
             }else {
                 [(MJRefreshAutoFooter *)self.tableView.mj_footer setHidden:NO];
@@ -185,6 +187,8 @@
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [self addPlaceHolderView];
+        [self.tableView reloadData];
         if (_page > 1) {
             _page --;
         }else {

@@ -11,13 +11,13 @@
 @implementation PT_ToAddAttentionApi
 {
     NSString *_uid;
-    NSString *_targetUid;
+    NSString *_targetuid;
 }
 
-- (id)initWithUid:(NSString *)uid withTargetUid:(NSString *)targetUid {
+- (id)initWithUid:(NSString *)uid withTargetUid:(NSString *)targetuid {
     if (self == [super init]) {
         _uid = uid;
-        _targetUid = targetUid;
+        _targetuid = targetuid;
     }
     return self;
 }
@@ -42,7 +42,7 @@
     }
     
     [argument setCustomString:_uid forKey:@"uid"];
-    [argument setCustomString:_targetUid forKey:@"targetUid"];
+    [argument setCustomString:_targetuid forKey:@"targetuid"];
    
     return argument;
 }

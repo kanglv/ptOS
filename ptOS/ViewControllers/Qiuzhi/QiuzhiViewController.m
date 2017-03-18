@@ -711,7 +711,10 @@
             }else {
                 self.leftDataArray = [NSMutableArray array];
                 [self.job_tbView reloadData];
-                [self addPlaceHolderView];
+                if(!self.job_tbView.hidden){
+                    [self addPlaceHolderView];
+                }
+                
             }
         }
         [self.job_tbView.mj_header endRefreshing];
@@ -757,14 +760,19 @@
             }else {
                 self.rightDataArray = [NSMutableArray array];
                 [self.company_tbView reloadData];
-                [self addPlaceHolderView];
+                if(!self.company_tbView.hidden){
+                    [self addPlaceHolderView];
+                }
+                
             }
         }
         [self showNoDataView];
         [self.company_tbView.mj_header endRefreshing];
         [self.company_tbView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-         [self addPlaceHolderView];
+        if(!self.company_tbView.hidden){
+            [self addPlaceHolderView];
+        }
         [self.company_tbView reloadData];
         if (_rightPage > 1) {
             _rightPage --;

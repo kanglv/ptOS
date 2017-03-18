@@ -31,6 +31,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <AVFoundation/AVFoundation.h>
+#import "Discover_DetailViewController.h"
 
 @interface WorkerViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UITextFieldDelegate>
 {
@@ -258,7 +259,7 @@
             
             
             if (height > 60) {
-                return 181;
+                return 231;
             }else {
                 return 181 - 60 + height;
             }
@@ -266,7 +267,7 @@
             
             return 154 ;
         } else {
-            return 181;
+            return 231;
         }
         
     }else {
@@ -481,20 +482,24 @@
     if([model.fileType isEqualToString:@"2"]){
         NSError *error;
         NSLog(@"当前文件地址%@",model.imgUrl);
-        self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:model.imgUrl] error:&error];
+        NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         
-        NSLog(@"%ld",(long)self.player.duration);
-        self.player.volume=1;
         
+        NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , model.tzId];
+        
+        NSLog(@"%@",amrfilePath);
+        self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
+        
+        if (self.player == nil){
+            NSLog(@"AudioPlayer did not load properly: %@", [error description]);
+        }else{
+            [self.player play];
+        }
         
         if (error) {
             NSLog(@"error:%@",[error description]);
             return;
         }
-        //准备播放
-        [self.player prepareToPlay];
-        //播放
-        [self.player play];
     }
 }
 
@@ -569,6 +574,7 @@
     [self.getCompanyApi  startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         FX_GetCompanyOtherNoticeApi *result = (FX_GetCompanyOtherNoticeApi *)request;
         if (result.isCorrectResult) {
+            [self removePlaceholder];
             if (_leftPage == 1) {
                 self.leftDataArray = [NSMutableArray arrayWithArray:[result getCompanyOtherNotice]];
             }else {
@@ -577,6 +583,7 @@
             [self.left_tbView reloadData];
             NSInteger count = [result getCompanyOtherNotice].count;
             if (count == 0) {
+                [self addPlaceholder];
                 [(MJRefreshAutoFooter *)self.left_tbView.mj_footer setHidden:YES];
             }else {
                 [(MJRefreshAutoFooter *)self.left_tbView.mj_footer setHidden:NO];
@@ -592,6 +599,8 @@
         [self.left_tbView.mj_header endRefreshing];
         [self.left_tbView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [self addPlaceholder];
+        [self.left_tbView reloadData];
         if (_leftPage > 1) {
             _leftPage --;
         }else {
@@ -629,7 +638,11 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSDictionary *dic = self.leftDataArray[indexPath.row ];
+    FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]initWithDic:dic];
+    Discover_DetailViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Discover_DetailViewController"];
+    ctrl.tzId = model.tzId;
+    [self.navigationController pushViewController:ctrl animated:YES];
 }
 
 

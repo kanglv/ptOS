@@ -89,6 +89,7 @@
             [self.tbView reloadData];
             NSInteger count = [result getNoticeList].count;
             if (count == 0) {
+                [self addPlaceholder];
                 [(MJRefreshAutoFooter *)self.tbView.mj_footer setHidden:YES];
             }else {
                 [(MJRefreshAutoFooter *)self.tbView.mj_footer setHidden:NO];
@@ -106,7 +107,7 @@
         [self.tbView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [self addPlaceholder];
-        
+        [self.tbView reloadData];
         if (_leftPage > 1) {
             _leftPage --;
         }else {
