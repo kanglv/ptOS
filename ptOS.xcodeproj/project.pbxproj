@@ -473,6 +473,7 @@
 		5D7958581E6A9345005764CF /* ConcernCompanyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7958571E6A9345005764CF /* ConcernCompanyModel.m */; };
 		5D7958611E6A9DCF005764CF /* ConcernCompanyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D79585F1E6A9DCF005764CF /* ConcernCompanyTableViewCell.m */; };
 		5D7958621E6A9DCF005764CF /* ConcernCompanyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D7958601E6A9DCF005764CF /* ConcernCompanyTableViewCell.xib */; };
+		5D7A9D1A1E7D191D0032E643 /* PT_ToAddAttentionApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A9D191E7D191D0032E643 /* PT_ToAddAttentionApi.m */; };
 		5D811F4C1E6D027B0024374B /* PT_NearlyListApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D811F4B1E6D027B0024374B /* PT_NearlyListApi.m */; };
 		5D811F521E6D060C0024374B /* PT_NearlyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D811F511E6D060C0024374B /* PT_NearlyListViewController.m */; };
 		5D811F561E6D09B70024374B /* PT_NearlyListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D811F541E6D09B70024374B /* PT_NearlyListTableViewCell.m */; };
@@ -1910,6 +1911,8 @@
 		5D79585E1E6A9DCF005764CF /* ConcernCompanyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcernCompanyTableViewCell.h; sourceTree = "<group>"; };
 		5D79585F1E6A9DCF005764CF /* ConcernCompanyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcernCompanyTableViewCell.m; sourceTree = "<group>"; };
 		5D7958601E6A9DCF005764CF /* ConcernCompanyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConcernCompanyTableViewCell.xib; sourceTree = "<group>"; };
+		5D7A9D181E7D191D0032E643 /* PT_ToAddAttentionApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_ToAddAttentionApi.h; sourceTree = "<group>"; };
+		5D7A9D191E7D191D0032E643 /* PT_ToAddAttentionApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_ToAddAttentionApi.m; sourceTree = "<group>"; };
 		5D811F4A1E6D027B0024374B /* PT_NearlyListApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_NearlyListApi.h; sourceTree = "<group>"; };
 		5D811F4B1E6D027B0024374B /* PT_NearlyListApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_NearlyListApi.m; sourceTree = "<group>"; };
 		5D811F501E6D060C0024374B /* PT_NearlyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_NearlyListViewController.h; sourceTree = "<group>"; };
@@ -4852,6 +4855,8 @@
 				5D811F4B1E6D027B0024374B /* PT_NearlyListApi.m */,
 				5D585B0C1E77E2A000569D33 /* PT_GetMessageNetApi.h */,
 				5D585B0D1E77E2A000569D33 /* PT_GetMessageNetApi.m */,
+				5D7A9D181E7D191D0032E643 /* PT_ToAddAttentionApi.h */,
+				5D7A9D191E7D191D0032E643 /* PT_ToAddAttentionApi.m */,
 			);
 			path = PuTong;
 			sourceTree = "<group>";
@@ -7083,6 +7088,7 @@
 				F0DD36D21D9CE277001D869C /* AboutMeViewController.m in Sources */,
 				2EC3FE491E6EDE1300CDD478 /* NIMMessageCellFactory.m in Sources */,
 				2C510D0C1E71450B00A50582 /* PinyinHelper.m in Sources */,
+				5D7A9D1A1E7D191D0032E643 /* PT_ToAddAttentionApi.m in Sources */,
 				2EC3FE421E6EDE1300CDD478 /* NIMTextContentConfig.m in Sources */,
 				2C0A2EBE1E6EC163006CD3E1 /* NTESLiveBroadcastView.m in Sources */,
 				2C510D031E71450B00A50582 /* ContactsTableView.m in Sources */,

@@ -10,7 +10,7 @@
 #import "PT_NearlyListModel.h"
 #import "PT_NearlyListApi.h"
 #import "PT_NearlyListTableViewCell.h"
-
+#import "PT_ToAddAttentionApi.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
 #import "NTESSessionViewController.h"
@@ -19,7 +19,7 @@
 }
 
 @property (strong , nonatomic)PT_NearlyListApi *getNearlyApi;
-
+@property (strong, nonatomic)PT_ToAddAttentionApi *addAttentionApi;
 
 
 @property (strong ,nonatomic)UITableView *tableView;
@@ -98,6 +98,7 @@
         cell.stateBtn.backgroundColor = [UIColor orangeColor];
     } else{
         [cell.stateBtn setTitle:@"申请加入" forState:UIControlStateNormal];
+        cell.stateBtn.tag = indexPath.row;
         [cell.stateBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
         [cell.stateBtn addTarget:self action:@selector(applyToJoin:) forControlEvents:UIControlEventTouchUpInside]; //申请加入按钮点击事件
         cell.stateBtn.backgroundColor = WhiteColor;
@@ -118,17 +119,30 @@
     if([model.isAttention isEqualToString:@"1"]){
             //  跳转到聊天页面，传入imId   model.imId
         
-        NIMSession *session = [NIMSession session:model.imId type:NIMSessionTypeP2P];
-        NTESSessionViewController *vc = [[NTESSessionViewController alloc] initWithSession:session];
-        [self.navigationController pushViewController:vc animated:YES];
-
+        if([model.type isEqualToString:@"1"]){
+            NIMSession *session = [NIMSession session:model.imId type:NIMSessionTypeP2P];
+            NTESSessionViewController *p2pVc = [[NTESSessionViewController alloc] initWithSession:session];
+            [self.navigationController pushViewController:p2pVc animated:YES];
+        } else {
+             NIMSession *session = [NIMSession session:model.imId type:NIMSessionTypeTeam];
+            NTESSessionViewController *teamVc = [[NTESSessionViewController alloc] initWithSession:session];
+            [self.navigationController pushViewController:teamVc animated:YES];
+        }
     }
     
 }
 
 //申请加入
 -(void)applyToJoin:(UIButton *)sender{
+    //加入群组，然后同步关系到服务端
+    NSDictionary *dic = [self.dataArr objectAtIndex:sender.tag];
+    PT_NearlyListModel *model = [[ PT_NearlyListModel alloc]initWithDic:dic];
     
+    //根据model.imid拿到聊天对象的uid
+    
+    
+    //将当前登录用户的uid  与 聊天对象的uid 作为参数传入
+//    [self addAttentionApiNetWithUid:uid withTargetUid:targetUid withSender:sender]
 }
 
 - (void)didReceiveMemoryWarning {
@@ -179,6 +193,34 @@
         }
     }];
 }
+
+- (void)addAttentionApiNetWithUid:(NSString *)uid withTargetUid:(NSString *)targetUid withSender:(UIButton *)sender {
+    
+    if(self.addAttentionApi&& !self.addAttentionApi.requestOperation)
+    {
+        [self.addAttentionApi stop];
+    }
+    self.addAttentionApi.sessionDelegate = self;
+   
+    self.addAttentionApi = [[PT_ToAddAttentionApi alloc]initWithUid:uid withTargetUid:targetUid];
+    [self.addAttentionApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+        
+        PT_ToAddAttentionApi *result = (PT_ToAddAttentionApi *)request;
+        if(result.isCorrectResult)
+        {
+            //关注成功了，按钮状态改变
+            [sender setTitle:@"已关注" forState:UIControlStateNormal];
+            [sender setTitleColor:WhiteColor forState:UIControlStateNormal];
+            sender.backgroundColor = [UIColor orangeColor];
+
+        }
+    } failure:^(YTKBaseRequest *request) {
+        
+    }];
+}
+
+
+
 //没有数据时添加占位的view
 
 - (void)addPlaceHolderView {
