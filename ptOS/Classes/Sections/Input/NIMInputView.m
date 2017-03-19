@@ -104,9 +104,15 @@
     [self.toolBar update:_inputType];
     switch (status) {
         case NIMInputStatusText:
+            if (self.toolBar.showsKeyboard) {
+                self.nim_top = self.keyBoardFrameTop - self.toolBar.nim_height-64;
+            }else{
+                self.nim_top = self.superview.nim_height - self.toolBar.nim_height;
+            }
+
         case NIMInputStatusAudio:{
             if (self.toolBar.showsKeyboard) {
-                self.nim_top = self.keyBoardFrameTop - self.toolBar.nim_height;
+                self.nim_top = self.keyBoardFrameTop - self.toolBar.nim_height-64;
             }else{
                 self.nim_top = self.superview.nim_height - self.toolBar.nim_height;
             }

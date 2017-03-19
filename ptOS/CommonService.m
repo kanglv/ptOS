@@ -22,9 +22,9 @@
         
         NSLog(@"%@", responseObject);
         
-//        NSError *e;
-//        NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&e];
-//        
+        //        NSError *e;
+        //        NSDictionary *resultDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&e];
+        //
         successed(responseObject);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -33,7 +33,7 @@
         
         failed(errorCode,errorMessage);
     }];
-
+    
 }
 
 

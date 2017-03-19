@@ -198,29 +198,23 @@
     if (self.loginApi && !self.loginApi.requestOperation.isFinished) {
         [self.loginApi stop];
     }
-    //    NSString *psw = [StringUtil getmd5WithString:self.pswTF.text];
-    NSLog(@"%@",[_phoneNumTF text]
-          );
-    NSLog(@"%@",[self.pswTF.text tokenByPassword] );
+   
     
     
     self.loginApi = [[LoginNetApi alloc]initWithUserName:self.phoneNumTF.text withUserPsw:self.pswTF.text];
     self.loginApi.netLoadingDelegate = self;
-    
+   
         [self.loginApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         LoginNetApi *result = (LoginNetApi *)request;
         if (result.isCorrectResult) {
-            NSLog(@"%@",[_phoneNumTF text]
-                  );
-            NSLog(@"%@",[self.pswTF.text tokenByPassword] );
             
             [GlobalData sharedInstance].selfInfo = [result getUserInfo];
             NSLog(@"%@",[GlobalData sharedInstance].selfInfo.userId);
             //云信的帐号密码获取？
             [[[NIMSDK sharedSDK] loginManager] login:[GlobalData sharedInstance].selfInfo.userId
                                                token:[[GlobalData sharedInstance].selfInfo.userId tokenByPassword] completion:^(NSError * _Nullable error) {
+                                                
                                                    
-                                                   NSLog(@"%@",error);
                                                    
                                                }];
             
@@ -229,7 +223,7 @@
             [self downloadHeaderImage];
             [UserDefault setObject:self.phoneNumTF.text forKey:PhoneKey];
             [UserDefault setObject:self.pswTF.text forKey:PswKey];
-            
+            [UserDefault setObject:[GlobalData sharedInstance].selfInfo.userId forKey:UIDKey];
             [UserDefault synchronize];
             [self cancelAction];
         }else {

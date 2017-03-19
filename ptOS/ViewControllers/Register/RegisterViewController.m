@@ -72,7 +72,7 @@
     
     UIImageView *phoneLeftView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon_shoujihao"]];
     UIImageView *pswLeftView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"icon_mima"]];
-
+    
     phoneLeftView.frame = CGRectMake(0, 0, 18, 18);
     pswLeftView.frame = CGRectMake(0, 0, 18, 18);
     
@@ -157,7 +157,7 @@
     view.layer.mask = maskLayer;
 }
 
-#pragma mark - NetworkApis 
+#pragma mark - NetworkApis
 - (void)getGetCodeApiNet {
     if(self.getCodeApi&& !self.getCodeApi.requestOperation.isFinished)
     {
@@ -204,7 +204,7 @@
             } Failed:^(int errorCode, NSString *message) {
                 
             }];
-
+            
             SetPSWViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SetPSWViewController"];
             ctrl.code = _key;
             ctrl.phone = self.phoneNumTF.text;

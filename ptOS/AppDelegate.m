@@ -130,10 +130,12 @@ NSString *NTESNotificationLogout = @"NTESNotificationLogout";
     //ShareSDK
     [self setShareWithOptions:launchOptions];
     
-    NSString *usrName = [UserDefault objectForKey:PhoneKey];
-    NSString *psw = [UserDefault objectForKey:PswKey];
-    if (isValidStr(usrName) && isValidStr(psw)) {
-        [[[NIMSDK sharedSDK] loginManager] autoLogin:usrName token:[@"99887766" tokenByPassword]];
+    NSString *uid = [UserDefault objectForKey:UIDKey];
+    NSLog(@"%@",uid);
+    if (isValidStr(uid)) {
+        if(![[[NIMSDK sharedSDK] loginManager]isLogined]){
+             [[[NIMSDK sharedSDK] loginManager] autoLogin:uid token:[uid tokenByPassword]];
+        }
     }
     
     
