@@ -204,12 +204,12 @@
                   moduleName = "ptOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lvkang/oooo/ptOS/Views/Putong/PT_NoticeTableViewCell.h"
-                  timestampString = "511544104.944448"
+                  timestampString = "511592893.658266"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "12">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -219,14 +219,30 @@
                   moduleName = "ptOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lvkang/oooo/ptOS/Views/Putong/PT_NoticeTableViewCell.h"
-                  timestampString = "511544104.948224"
+                  timestampString = "511592893.661171"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "64">
+                  offsetFromSymbolStart = "49">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ptOS/NetWorkApi/GetConcernJob.m"
+            timestampString = "511591337.25189"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-getJobList"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

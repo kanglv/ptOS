@@ -103,10 +103,11 @@
     
 }
 
+
 //添加一个占位图
 - (void)addPlaceholder {
     _placeholderImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"kongbai"]];
-    _placeholderImageView.frame = CGRectMake(100, 250, 200, 200);//待调整
+    _placeholderImageView.frame = CGRectMake(0, 186, FITWIDTH(200) * 2.2, FITWIDTH(200));//待调整
     [self.view addSubview:_placeholderImageView];
     
 }
@@ -660,7 +661,7 @@
 #pragma mark - lazyViews
 - (UIImageView *)nodataImgView {
     if (_nodataImgView == nil) {
-        _nodataImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 250, FITWIDTH(200) * 2.2, FITWIDTH(200))];
+        _nodataImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 186, FITWIDTH(200) * 2.2, FITWIDTH(200))];
         _nodataImgView.centerX = self.view.centerX;
         _nodataImgView.image = [UIImage imageNamed:@"kongbai"];
     }

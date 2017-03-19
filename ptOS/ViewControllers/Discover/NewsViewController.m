@@ -16,6 +16,8 @@
 #import "FX_NoticeListModel.h"
 #import "GroundGetNoticeListTableViewCell.h"
 
+#import "NewsDetailViewController.h"
+
 @interface NewsViewController ()<UITableViewDelegate, UITableViewDataSource>{
     
         NSInteger _leftPage;
@@ -106,6 +108,16 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *dic = self.leftDataArray[indexPath.row ];
+    FX_NoticeListModel *model = [[FX_NoticeListModel alloc]initWithDic:dic];
+    
+    NewsDetailViewController *newsDetailViewController = [[NewsDetailViewController alloc]init];
+    newsDetailViewController.model = model;
+    [self.navigationController pushViewController:newsDetailViewController animated:YES];
+    
+}
+
 - (void)getDataApiNet {
     if (self.getNoticeListNet && !self.getNoticeListNet.requestOperation.isFinished) {
         [self.getNoticeListNet stop];
@@ -160,7 +172,7 @@
 //添加一个占位图
 - (void)addPlaceholder {
     _placeholderImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"kongbai"]];
-    _placeholderImageView.frame = CGRectMake(0, 250, FITWIDTH(200) * 2.2, FITWIDTH(200));//待调整
+    _placeholderImageView.frame = CGRectMake(0, 186, FITWIDTH(200) * 2.2, FITWIDTH(200));//待调整
     [self.view addSubview:_placeholderImageView];
     
 }

@@ -20,5 +20,6 @@
 @property (nonatomic, copy) NSString *companyImg;
 @property (nonatomic, copy) NSString *isBindQQ;
 @property (nonatomic, copy) NSString *isBindWeiXin;
+@property (nonatomic, copy) NSString *userId;
 
 @end

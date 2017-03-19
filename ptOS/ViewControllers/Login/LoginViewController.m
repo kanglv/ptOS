@@ -207,24 +207,22 @@
     self.loginApi = [[LoginNetApi alloc]initWithUserName:self.phoneNumTF.text withUserPsw:self.pswTF.text];
     self.loginApi.netLoadingDelegate = self;
     
-    //云信的帐号密码获取？
-    [[[NIMSDK sharedSDK] loginManager] login:[_phoneNumTF text]
-                                       token:[self.pswTF.text tokenByPassword] completion:^(NSError * _Nullable error) {
-                                           
-                                           NSLog(@"%@",error);
-                                           
-                                       }];
-    [self.loginApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [self.loginApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         LoginNetApi *result = (LoginNetApi *)request;
         if (result.isCorrectResult) {
             NSLog(@"%@",[_phoneNumTF text]
                   );
             NSLog(@"%@",[self.pswTF.text tokenByPassword] );
             
-            
-            
             [GlobalData sharedInstance].selfInfo = [result getUserInfo];
-            NSLog(@"%@",[GlobalData sharedInstance].selfInfo.nickName);
+            NSLog(@"%@",[GlobalData sharedInstance].selfInfo.userId);
+            //云信的帐号密码获取？
+            [[[NIMSDK sharedSDK] loginManager] login:[GlobalData sharedInstance].selfInfo.userId
+                                               token:[[GlobalData sharedInstance].selfInfo.userId tokenByPassword] completion:^(NSError * _Nullable error) {
+                                                   
+                                                   NSLog(@"%@",error);
+                                                   
+                                               }];
             
             [JPUSHService setAlias:[GlobalData sharedInstance].selfInfo.userName callbackSelector:nil object:nil];
             

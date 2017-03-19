@@ -101,7 +101,7 @@
 //添加一个占位图
 - (void)addPlaceholder {
     _placeholderImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"kongbai"]];
-    _placeholderImageView.frame = CGRectMake(100, 250, 200, 200);//待调整
+    _placeholderImageView.frame = CGRectMake(0, 186, FITWIDTH(200) * 2.2, FITWIDTH(200));//待调整
     [self.view addSubview:_placeholderImageView];
     
 }
@@ -111,7 +111,6 @@
     
     [_placeholderImageView removeFromSuperview];
 }
-
 
 #pragma mark - customFuncs
 - (void)initUI {

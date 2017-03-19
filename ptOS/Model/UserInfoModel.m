@@ -22,6 +22,7 @@
         self.companyImg         = [dict strForKey:@"companyImg"];
         self.isBindQQ           = [dict strForKey:@"isBindQQ"];
         self.isBindWeiXin       = [dict strForKey:@"isBindWeiXin"];
+        self.userId             = [dict strForKey:@"userId"];
     }
     return self;
 }
