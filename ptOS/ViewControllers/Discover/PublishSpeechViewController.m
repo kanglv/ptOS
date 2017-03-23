@@ -102,8 +102,8 @@
     self.longPressGesture.delegate = self;
     
    
-    [self.record addGestureRecognizer:self.longPressGesture];
-    
+    [self.recordView addGestureRecognizer:self.longPressGesture];
+    [self.record setEnabled:NO];
 
 
     
@@ -138,24 +138,14 @@
 }
 
 - (void)deleteRecord {
-    //按钮移除
-//    [self.audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-//    self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:_tmpFile error:
-//                             nil];
-//    NSLog(@"%@",_tmpFile);
-//    [self.player play];
     [self.recorder deleteRecording];
     [self.deleteBtn removeFromSuperview];
     self.timeLabel.text = @"00:00";
 }
 - (void)handleLongPress:(UILongPressGestureRecognizer *)longPressGesture{
     if (longPressGesture.state ==  UIGestureRecognizerStateBegan) {
-        
-       
-
-        [self.record setTitle:@"松开停止" forState:UIControlStateNormal];
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerMove) userInfo:nil repeats:YES];
-        
+        [self.record setTitle:@"松开停止" forState:UIControlStateNormal];
         [self PT_StartRecord];
     }
     
@@ -165,13 +155,11 @@
     
     if (longPressGesture.state == UIGestureRecognizerStateEnded) {
         
-        NSLog(@"UIGestureRecognizerStateEnded");
         //长按结束后显示删除按钮
+         [self addDeleteBtn]; //添加删除按钮
         [self.record setTitle:@"按住说两句" forState:UIControlStateNormal];
-        [self.timer invalidate];
-        self.timer=nil;
-        self.time = 0; //计时器归0
-        [self addDeleteBtn]; //添加删除按钮
+        [self PT_EndRecord];
+       
         
     }
 }
@@ -248,19 +236,17 @@
 
 
 
-- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
-    
-}
+
 //停止录音后
 
-- (void)endRecord:(UIButton *)sender {
+- (void)PT_EndRecord {
    
     _isRecoding = NO;
     [self.audioSession setActive:NO error:nil];
-
     [ self.recorder stop];
-    [self.record setTitle:@"按住说两句" forState:UIControlStateNormal];
-    
+    [self.timer invalidate];
+     self.timer=nil;
+    self.time = 0; //计时器归0
 }
 
 

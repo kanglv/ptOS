@@ -743,8 +743,9 @@
             cell.playBtn.tag = indexPath.row;
             [cell.playBtn addTarget:self action:@selector(playGroundSpeech:) forControlEvents:UIControlEventTouchUpInside];
             
-            
             cell.time.text = [self caculateSpeechTime:model.imgUrl withMessageId:model.tzId];
+
+        
             
             [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -947,10 +948,13 @@
                 cell.time.text = @"";
                 [cell.playBtn setImage:[UIImage imageNamed:@"icon_yuying"] forState:UIControlStateNormal];
                 cell.playBtn.tag = indexPath.row;
-                [cell.playBtn addTarget:self action:@selector(playGroundSpeech:) forControlEvents:UIControlEventTouchUpInside];
+                [cell.playBtn addTarget:self action:@selector(playSpeech:) forControlEvents:UIControlEventTouchUpInside];
                 
                 
+               
                 cell.time.text = [self caculateSpeechTime:model.imgUrl withMessageId:model.tzId];
+                    
+                
                 
                 [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
                 
@@ -1043,11 +1047,11 @@
         [audioData writeToFile:amrfilePath atomically:YES];
     }
 //    if(!amrfilePath){
-        NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-        [audioData writeToFile:amrfilePath atomically:YES];
-
+//        NSData *audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+//        [audioData writeToFile:amrfilePath atomically:YES];
+//
 //    }
-    
+
     AVAudioPlayer *player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:amrfilePath] error:&error];
     if(player){
         
@@ -1055,7 +1059,7 @@
     
     float seconds =  (float)player.duration;
     
-    int disSecond = ceilf(seconds);
+    int disSecond = ceilf(seconds-3);//时间计算大概3秒误差，待修复
     string = [NSString stringWithFormat:@"%d秒",disSecond];
     NSLog(@"%@",string);
     return string;
@@ -1106,7 +1110,7 @@
         NSLog(@"当前文件地址%@",model.imgUrl);
         NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         
-        
+        NSLog(@"%@",model.tzId);
         NSString *amrfilePath = [NSString stringWithFormat:@"%@/%@.aac", docDirPath , model.tzId];
         
         NSLog(@"%@",amrfilePath);
@@ -1197,7 +1201,7 @@
         }
         model = self.rightDataArray[indexPath.row - 1];
     }
-    
+    NSLog(@"%@",model.tzId);
     ctrl.tzId = model.tzId;
     [self.navigationController pushViewController:ctrl animated:YES];
 }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -3440,21 +3441,31 @@
                                     <constraint firstAttribute="height" constant="50" id="Jif-AB-pvo"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sga-S1-ZsU">
+                                <rect key="frame" x="16" y="140" width="343" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3os-Hh-0Rj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Kdk-me-4ma" secondAttribute="trailing" constant="20" id="3OX-Ph-La7"/>
                             <constraint firstItem="Kdk-me-4ma" firstAttribute="leading" secondItem="h1l-4a-cvW" secondAttribute="leading" constant="20" id="7cA-xh-Da7"/>
                             <constraint firstItem="Kdk-me-4ma" firstAttribute="top" secondItem="lR5-Wt-LmS" secondAttribute="bottom" constant="20" id="80b-ey-4Hp"/>
+                            <constraint firstItem="Sga-S1-ZsU" firstAttribute="leading" secondItem="h1l-4a-cvW" secondAttribute="leadingMargin" id="AAf-Ts-EI9"/>
                             <constraint firstItem="2Ks-xQ-SCB" firstAttribute="top" secondItem="h1l-4a-cvW" secondAttribute="top" id="Box-uA-9BQ"/>
                             <constraint firstItem="2Ks-xQ-SCB" firstAttribute="leading" secondItem="h1l-4a-cvW" secondAttribute="leading" id="EJm-rM-dYc"/>
                             <constraint firstItem="lR5-Wt-LmS" firstAttribute="leading" secondItem="h1l-4a-cvW" secondAttribute="leading" constant="30" id="Gaf-lD-FDn"/>
                             <constraint firstItem="MtA-3K-v1O" firstAttribute="leading" secondItem="h1l-4a-cvW" secondAttribute="leading" constant="20" id="GtP-hp-ijh"/>
+                            <constraint firstItem="Sga-S1-ZsU" firstAttribute="top" secondItem="2Ks-xQ-SCB" secondAttribute="bottom" constant="20" id="HFq-tW-eML"/>
                             <constraint firstAttribute="trailing" secondItem="lR5-Wt-LmS" secondAttribute="trailing" constant="20" id="MAC-Ki-fnF"/>
                             <constraint firstAttribute="trailing" secondItem="D8v-r2-i96" secondAttribute="trailing" constant="20" id="McA-xv-wYN"/>
                             <constraint firstItem="D8v-r2-i96" firstAttribute="top" secondItem="2Ks-xQ-SCB" secondAttribute="bottom" constant="20" id="NxM-pf-Ntp"/>
                             <constraint firstItem="lR5-Wt-LmS" firstAttribute="top" secondItem="D8v-r2-i96" secondAttribute="bottom" constant="20" id="OC6-Sp-zuq"/>
                             <constraint firstItem="D8v-r2-i96" firstAttribute="leading" secondItem="h1l-4a-cvW" secondAttribute="leading" constant="20" id="Pcu-ry-7Ba"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sga-S1-ZsU" secondAttribute="trailing" id="Yik-nz-TOG"/>
                             <constraint firstItem="MtA-3K-v1O" firstAttribute="top" secondItem="Kdk-me-4ma" secondAttribute="bottom" constant="20" id="ZKv-68-AQM"/>
                             <constraint firstAttribute="trailing" secondItem="MtA-3K-v1O" secondAttribute="trailing" constant="20" id="osO-o3-B0e"/>
                             <constraint firstAttribute="trailing" secondItem="2Ks-xQ-SCB" secondAttribute="trailing" id="tEM-4d-b4y"/>
@@ -3464,6 +3475,7 @@
                         <outlet property="locationBtn" destination="9LL-fn-BjU" id="Ldt-oq-60k"/>
                         <outlet property="locationLabel" destination="787-IE-SjA" id="LNB-QO-zQg"/>
                         <outlet property="record" destination="D8v-r2-i96" id="KAC-i4-cvd"/>
+                        <outlet property="recordView" destination="Sga-S1-ZsU" id="9yR-vA-UvD"/>
                         <outlet property="switchBtn" destination="hP0-nP-M8F" id="IPl-wk-PVb"/>
                         <outlet property="topView" destination="2Ks-xQ-SCB" id="6tL-xU-jFa"/>
                     </connections>

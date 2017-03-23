@@ -690,7 +690,7 @@
          NSLog(@"%@",result);
         if (result.isCorrectResult) {
             
-            [self removePlaceHolderView];
+           
             NSLog(@"%@",result);
             if (_leftPage == 1) {
                 self.leftDataArray = [NSMutableArray arrayWithArray:[result getJobsList]];
@@ -701,25 +701,33 @@
             NSInteger count = [result getJobsList].count;
             if (count == 0) {
                 [(MJRefreshAutoFooter *)self.job_tbView.mj_footer setHidden:YES];
-                [self addPlaceHolderView];
+                if(!self.job_tbView.hidden){
+                    [self addPlaceHolderView];
+                }
             }else {
+                if(!self.job_tbView.hidden){
+                    [self removePlaceHolderView];
+                }
                 [(MJRefreshAutoFooter *)self.job_tbView.mj_footer setHidden:NO];
             }
         }else {
+            if(!self.job_tbView.hidden){
+                [self addPlaceHolderView];
+            }
             if (_leftPage > 1) {
                 _leftPage --;
             }else {
                 self.leftDataArray = [NSMutableArray array];
                 [self.job_tbView reloadData];
-                if(!self.job_tbView.hidden){
-                    [self addPlaceHolderView];
-                }
                 
             }
         }
         [self.job_tbView.mj_header endRefreshing];
         [self.job_tbView.mj_footer endRefreshing];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        if(!self.job_tbView.hidden){
+            [self addPlaceHolderView];
+        }
         if (_leftPage > 1) {
             _leftPage --;
         }else {
@@ -740,7 +748,6 @@
     [self.companyListApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         QZ_CompanyListApi *result = (QZ_CompanyListApi *)request;
         if (result.isCorrectResult) {
-            [self removePlaceHolderView];
             
             if (_rightPage == 1) {
                 self.rightDataArray = [NSMutableArray arrayWithArray:[result getCompanyList]];
@@ -750,19 +757,25 @@
             [self.company_tbView reloadData];
             NSInteger count = [result getCompanyList].count;
             if (count == 0) {
+                if(!self.company_tbView.hidden){
+                    [self addPlaceHolderView];
+                }
                 [(MJRefreshAutoFooter *)self.company_tbView.mj_footer setHidden:YES];
             }else {
+                if(!self.company_tbView.hidden){
+                    [self removePlaceHolderView];
+                }
                 [(MJRefreshAutoFooter *)self.company_tbView.mj_footer setHidden:NO];
             }
         }else {
+            if(!self.company_tbView.hidden){
+                [self addPlaceHolderView];
+            }
             if (_rightPage > 1) {
                 _rightPage --;
             }else {
                 self.rightDataArray = [NSMutableArray array];
                 [self.company_tbView reloadData];
-                if(!self.company_tbView.hidden){
-                    [self addPlaceHolderView];
-                }
                 
             }
         }

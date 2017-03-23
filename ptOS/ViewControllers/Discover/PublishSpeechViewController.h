@@ -12,6 +12,7 @@
 
 //录音按钮
 @property (strong, nonatomic) IBOutlet UIButton *record;
+@property (strong, nonatomic) IBOutlet UIView *recordView;
 
 //顶部背景view
 @property (strong, nonatomic) IBOutlet UIView *topView;
