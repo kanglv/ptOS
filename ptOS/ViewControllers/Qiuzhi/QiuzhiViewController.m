@@ -429,7 +429,7 @@
     if(self.chooseView) {
         [self.view bringSubviewToFront:self.chooseView];
     } else {
-        self.chooseView = [[screenView alloc] initWithFrame:CGRectMake(15, 111, SCREEN_WIDTH-30, SCREEN_HEIGHT - 111 - 49) withString:@"123"];
+        self.chooseView = [[screenView alloc] initWithFrame:CGRectMake(12, 111, SCREEN_WIDTH-24, SCREEN_HEIGHT - 111 - 49) withString:@"123"];
         self.chooseView.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:self.chooseView];
     }
@@ -462,6 +462,7 @@
     if([[GlobalData sharedInstance].experience isEqualToString:@"0,0,0"]&&[[GlobalData sharedInstance].educations isEqualToString:@"0,0,0,0,0,0,0"]&&[[GlobalData sharedInstance].jobNatures isEqualToString:@"0,0,0"]){
         if([[GlobalData sharedInstance].minSalary isEqualToString: @"1000"]&&[[GlobalData sharedInstance].maxSalary isEqualToString: @"10000"]){
             [self.sortView.moneyBtn setTitle:@"筛选" forState:UIControlStateNormal];
+             [self.sortView.moneyBtn setTitleColor:[UIColor blackColor]  forState:UIControlStateNormal];
             self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_xuan"];
         }
     }else {
@@ -484,20 +485,39 @@
     
     self.sortView.timeImageView.image = [UIImage imageNamed:@"icon_paixu_no"];
     self.sortView.distanceImageview.image = [UIImage imageNamed:@"icon_paixu_no"];
-    
     _time = 0;
     _distance = 0;
     
+    //当筛选确认按钮未被点击时，给筛选赋予初值，以erperience为判定，没有experience，其他也没有
+    if(![GlobalData sharedInstance].experience){
+        [GlobalData sharedInstance].experience = @"0,0,0";
+        [GlobalData sharedInstance].educations = @"0,0,0,0,0,0,0";
+        [GlobalData sharedInstance].jobNatures = @"0,0,0";
+        [GlobalData sharedInstance].minSalary = @"1000";
+        [GlobalData sharedInstance].maxSalary = @"10000";
+    }
+  
     
-    //弹出一个选择页面,初始时点击数位0，点一次加一,以此控制筛选view弹出收起
-    
+    //设置筛选按钮状态
+   
+    if([[GlobalData sharedInstance].experience isEqualToString:@"0,0,0"]&&[[GlobalData sharedInstance].educations isEqualToString:@"0,0,0,0,0,0,0"]&&[[GlobalData sharedInstance].jobNatures isEqualToString:@"0,0,0"]){
+        if([[GlobalData sharedInstance].minSalary isEqualToString: @"1000"]&&[[GlobalData sharedInstance].maxSalary isEqualToString: @"10000"]){
+            
+            [self.sortView.moneyBtn setTitle:@"筛选" forState:UIControlStateNormal];
+            [self.sortView.moneyBtn setTitleColor:[UIColor blackColor]  forState:UIControlStateNormal];
+            self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_xuan"];
+        }
+    }else {
+        [self.sortView.moneyBtn setTitle:@"已选择" forState:UIControlStateNormal];
+        self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_xuan_press"];
+        [self.sortView.moneyBtn setTitleColor:MainColor forState:UIControlStateNormal];
+    }
+
+     //弹出一个选择页面,初始时点击数位0，点一次加一,以此控制筛选view弹出收起
     if(!self.sortView.moneyBtn.selected){
         
          [self addScreenView];
         self.sortView.moneyBtn.selected = YES;
-        [self.sortView.moneyBtn setTitle:@"已选择" forState:UIControlStateNormal];
-        
-        
     } else {
         self.sortView.moneyBtn.selected = NO;
          [self removeScreenView];
@@ -506,8 +526,8 @@
 
 - (void)sort_time {
     
-    if( !self.sortView.timeBtn.selected){
-        
+//    if( !self.sortView.timeBtn.selected){
+    
         [self removeScreenView];
         self.sortView.moneyBtn.selected = NO;
         
@@ -539,14 +559,14 @@
             [self jobsListApiNet];
         }
         
-        _lastSort = @"2";
+//        _lastSort = @"2";
 
-    }
+//    }
 }
 
 - (void)sort_distance {
     
-    if( !self.sortView.distanceBtn.selected){
+//    if( !self.sortView.distanceBtn.selected){
         if (!isValidStr([GlobalData sharedInstance].coordinate)) {
             [XHToast showCenterWithText:@"未获取到当前位置"];
             return;
@@ -581,8 +601,8 @@
             [self jobsListApiNet];
         }
         
-        _lastSort = @"3";
-    }
+//        _lastSort = @"3";
+//    }
 }
 
 - (void)refreshView {
@@ -697,9 +717,9 @@
             }else {
                 [self.leftDataArray addObjectsFromArray:[result getJobsList]];
             }
-            [self.job_tbView reloadData];
-            NSInteger count = [result getJobsList].count;
-            if (count == 0) {
+    
+//            NSInteger count = [result getJobsList].count;
+            if (self.leftDataArray.count == 0) {
                 [(MJRefreshAutoFooter *)self.job_tbView.mj_footer setHidden:YES];
                 if(!self.job_tbView.hidden){
                     [self addPlaceHolderView];
@@ -710,6 +730,7 @@
                 }
                 [(MJRefreshAutoFooter *)self.job_tbView.mj_footer setHidden:NO];
             }
+             [self.job_tbView reloadData];
         }else {
             if(!self.job_tbView.hidden){
                 [self addPlaceHolderView];
@@ -734,6 +755,7 @@
             [self.job_tbView.mj_header endRefreshing];
             [self.job_tbView.mj_footer endRefreshing];
         }
+        [self.job_tbView reloadData];
     }];
 }
 

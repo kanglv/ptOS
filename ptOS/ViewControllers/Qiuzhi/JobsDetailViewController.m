@@ -144,11 +144,21 @@
 }
 
 - (void)applyAction {
+    
+    
     if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId)) {
         [self presentLoginCtrl];
         return;
     }
-    [self applyJobApiNet];
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认报名？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        
+         [self applyJobApiNet];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    
+   [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)favoriteAction:(UIButton *)btn {
@@ -522,7 +532,7 @@
         QZ_JobDetail_ApplyJobApi *result = (QZ_JobDetail_ApplyJobApi *)request;
         if(result.isCorrectResult)
         {
-            [XHToast showCenterWithText:@"报名成功"];
+            [XHToast showCenterWithText:@"报名成功，等待HR确认"];
         }else {
             NSString *num = [UserDefault objectForKey:JLKey];
             if ([num isEqualToString:@"0"]) {
