@@ -86,7 +86,7 @@
     
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn1 setImage:[UIImage imageNamed:@"icon_aixin"] forState:UIControlStateNormal];
-    [btn1 setImage:[UIImage imageNamed:@"icon_aixin_press"] forState:UIControlStateSelected];
+//    [btn1 setImage:[UIImage imageNamed:@"icon_aixin_press"] forState:UIControlStateSelected];
     [btn1 addTarget:self action:@selector(favoriteAction:) forControlEvents:UIControlEventTouchUpInside];
     [btn1 setFrame:CGRectMake(0, 0, 18, 18)];
     UIBarButtonItem *rightItem1 = [[UIBarButtonItem alloc]initWithCustomView:btn1];
@@ -587,9 +587,11 @@
         {
             //关注成功
             if(btn.selected){
-                [XHToast showCenterWithText:@"报名成功，等待HR确认"];
+                [btn setImage:[UIImage imageNamed:@"icon_aixin_press"] forState:UIControlStateNormal];
+                [XHToast showCenterWithText:@"关注成功"];
             } else{
-                [XHToast showCenterWithText:@"取消报名成功，等待HR确认"];
+                [btn setImage:[UIImage imageNamed:@"icon_aixin"] forState:UIControlStateNormal];
+                [XHToast showCenterWithText:@"已取消关注"];
             }
             
         }
