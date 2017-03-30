@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *playBtn;
 
+@property (strong, nonatomic) IBOutlet UIButton *commentBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *zanBtn;
 

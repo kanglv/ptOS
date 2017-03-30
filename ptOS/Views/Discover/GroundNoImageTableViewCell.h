@@ -28,6 +28,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 
+@property (strong, nonatomic) IBOutlet UIButton *commentBtn;
 
 @property (weak, nonatomic) IBOutlet UILabel *comNameLbel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;

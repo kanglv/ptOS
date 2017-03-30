@@ -304,6 +304,7 @@
             }
             
             NSString *fuliStr = model.fuli;
+            NSLog(@"%@",fuliStr);
             NSArray *fuliArray = [fuliStr componentsSeparatedByString:@","];
 //            if (fuliArray.count <= 3) {
 //                self.detailView.heightCons.constant = 109;

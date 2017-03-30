@@ -45,7 +45,7 @@
     if(dict)
     {
         NSArray *array = [dict objectForKey:@"data"];
-        NSLog(@"%@",[[array objectAtIndex:0] objectForKey:@"company"]);
+//        NSLog(@"%@",[[array objectAtIndex:0] objectForKey:@"company"]);
         return array;
     }
     return nil;

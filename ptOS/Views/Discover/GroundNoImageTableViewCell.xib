@@ -192,6 +192,7 @@
                 <outlet property="addressLabel" destination="WM0-yk-8N1" id="Sqm-1O-jhs"/>
                 <outlet property="bottomView1" destination="QY1-bf-7dJ" id="pWk-HP-dbd"/>
                 <outlet property="comNameLbel" destination="Uik-uy-iml" id="Nb8-7o-R51"/>
+                <outlet property="commentBtn" destination="uCf-le-egt" id="3b7-6U-AhN"/>
                 <outlet property="commentNumLabel" destination="1ts-b3-Wnf" id="B9h-6t-4RG"/>
                 <outlet property="contentLabel" destination="oDY-aR-eTL" id="z5O-zo-hpS"/>
                 <outlet property="labelHeightCons" destination="5Xj-Sj-sCM" id="ECJ-Eu-2VB"/>

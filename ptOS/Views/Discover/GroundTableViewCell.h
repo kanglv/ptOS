@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *smallImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
+@property (strong, nonatomic) IBOutlet UIButton *commentBtn;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *comNameLbel;

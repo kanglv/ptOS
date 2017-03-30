@@ -240,6 +240,7 @@
                 <outlet property="addressLabel" destination="MFv-Vz-fUF" id="93K-1Y-gt6"/>
                 <outlet property="bottomView1" destination="X3P-d7-QOD" id="0vc-Mu-EWV"/>
                 <outlet property="comNameLabel" destination="hrd-bf-2cR" id="85r-oB-EF8"/>
+                <outlet property="commentBtn" destination="8BG-DQ-a41" id="KEZ-vC-2OQ"/>
                 <outlet property="commentNumLabel" destination="F0u-d1-Ijk" id="c8Z-uX-jwY"/>
                 <outlet property="conNumBtn" destination="F0u-d1-Ijk" id="FEJ-Az-yNg"/>
                 <outlet property="nickNameLabel" destination="Dd3-Rp-uE3" id="vec-uK-AAC"/>

@@ -61,7 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-    
+    //判断当前网络
     [self addPlayer];
     
     self.videoTitleLabel.text = @"公司环境";

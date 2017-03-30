@@ -78,10 +78,10 @@
     
     if(![self hasData])
     {
-        CGFloat width = FITWIDTH(150);
-        noDataImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 250, width * 2.2, width)];
+        CGFloat width = FITWIDTH(200);
+        noDataImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 186, width * 2.2, width)];
         noDataImage.centerX = self.view.centerX;
-        noDataImage.y = noDataImage.y - FITWIDTH(100);
+        
         noDataImage.image = [UIImage imageNamed:@"kongbai"];
         [self.view addSubview:noDataImage];
         

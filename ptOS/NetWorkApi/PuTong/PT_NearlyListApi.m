@@ -44,16 +44,18 @@
     {
         NSDictionary *dataDict = [dict objectForKey:@"data"];
         NSLog(@"%@",dataDict);
+        if([[dataDict objectForKey:@"datalist"] isKindOfClass:[NSNull class]]){
+            
+        }
+        
         if(dataDict && [dataDict isKindOfClass:[NSDictionary class]])
         {
-            NSArray *array = [dataDict objectForKey:@"datalist"];
-//            NSMutableArray *result = [NSMutableArray array];
-//            for(NSDictionary *dic in array)
-//            {
-//                PT_NearlyListModel *model = [[PT_NearlyListModel alloc]initWithDic:dic];
-//                [result addObject:model];
-//            }
-            return array;
+            if([[dataDict objectForKey:@"datalist"] isKindOfClass:[NSArray class]]){
+                 return [dataDict objectForKey:@"datalist"];
+            } else{
+                NSArray *array = [[NSArray alloc]init];
+                return array;
+            }
         }
     }
     return nil;

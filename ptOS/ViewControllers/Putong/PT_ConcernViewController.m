@@ -154,7 +154,7 @@
 //没有数据时添加占位的view
 
 - (void)addPlaceHolderView {
-    _noDataImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 250, FITWIDTH(200) * 2.2, FITWIDTH(200))];  //需要调整
+    _noDataImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 186, FITWIDTH(200) * 2.2, FITWIDTH(200))];  //需要调整
     _noDataImageView.centerX = self.view.centerX;
     _noDataImageView.image = [UIImage imageNamed:@"kongbai"];
     [self.view addSubview: _noDataImageView];
