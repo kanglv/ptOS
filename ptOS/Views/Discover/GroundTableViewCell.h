@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelHeightCons;
 
+@property (strong, nonatomic) IBOutlet UIButton *showImage;
 
 @property (weak, nonatomic) IBOutlet UIView *shuView;
 

@@ -22,8 +22,8 @@
     
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    self.itemArray = [NSArray arrayWithObjects:@"新闻资讯",@"薪资政策",@"通知公告",@"工资查询",@"工友集",@"意见征集",nil];
-    self.imageArray = [NSArray arrayWithObjects:@"icon_xinwenzixun",@"icon_xinzi",@"icon_tongzhigonggao",@"icon_gongzichaxun",@"icon_gongyouji",@"icon_yijianzhengji", nil];
+    self.itemArray = [NSArray arrayWithObjects:@"新闻资讯",@"薪资政策",@"通知公告",@"工友集",@"意见征集",nil];
+    self.imageArray = [NSArray arrayWithObjects:@"icon_xinwenzixun",@"icon_xinzi",@"icon_tongzhigonggao",@"icon_gongyouji",@"icon_yijianzhengji", nil];
     
     
     [self.disPlayCollectionView setCollectionViewLayout:layout];
@@ -52,7 +52,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *str  = @"DisplayCollectionViewCell";
     DisplayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:str forIndexPath:indexPath ];
-    if(indexPath.row<6){
+    if(indexPath.row<5){
         
         cell.itemLabel.text = [self.itemArray objectAtIndex:indexPath.row];
         NSString *imageName = [self.imageArray objectAtIndex:indexPath.row];

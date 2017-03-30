@@ -150,6 +150,13 @@
                                     <constraint firstAttribute="width" constant="120" id="yeg-jc-xfE"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8d-B4-pbS">
+                                <rect key="frame" x="223" y="5" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="8ox-gG-wef"/>
+                                    <constraint firstAttribute="height" constant="120" id="lMo-EJ-KgC"/>
+                                </constraints>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -170,6 +177,7 @@
                             <constraint firstItem="Cde-xv-Kd9" firstAttribute="top" secondItem="r5z-jW-vUv" secondAttribute="bottom" constant="8" id="PvB-Sy-YOp"/>
                             <constraint firstItem="xUz-7H-Md6" firstAttribute="leading" secondItem="oBD-fv-bGE" secondAttribute="trailing" constant="19" id="RGp-us-yhI"/>
                             <constraint firstAttribute="bottom" secondItem="oBD-fv-bGE" secondAttribute="bottom" constant="8.5" id="ScH-2G-Lsf"/>
+                            <constraint firstItem="I8d-B4-pbS" firstAttribute="top" secondItem="1V0-qb-0D9" secondAttribute="top" constant="5" id="Tky-PC-Lf6"/>
                             <constraint firstItem="oBD-fv-bGE" firstAttribute="top" secondItem="XyR-B7-Qjz" secondAttribute="bottom" constant="10" id="XhS-oz-32H"/>
                             <constraint firstItem="5yg-kW-QcX" firstAttribute="leading" secondItem="xUz-7H-Md6" secondAttribute="trailing" constant="1" id="Yz9-5k-k71"/>
                             <constraint firstAttribute="trailing" secondItem="zZ2-H9-thI" secondAttribute="trailing" constant="10" id="bg2-zg-CNA"/>
@@ -182,6 +190,7 @@
                             <constraint firstItem="4Q9-Gn-Avw" firstAttribute="leading" secondItem="5Aa-bI-z3f" secondAttribute="trailing" constant="1" id="mgR-qi-t20"/>
                             <constraint firstItem="b75-5X-2hc" firstAttribute="leading" secondItem="rlX-tY-8YF" secondAttribute="trailing" constant="7" id="qqN-CH-SAj"/>
                             <constraint firstAttribute="trailing" secondItem="DIc-Be-m8L" secondAttribute="trailing" constant="140" id="rEc-g8-7N0"/>
+                            <constraint firstAttribute="trailing" secondItem="I8d-B4-pbS" secondAttribute="trailing" constant="8" id="rU0-i1-JP3"/>
                             <constraint firstItem="29u-BC-vfU" firstAttribute="leading" secondItem="5yg-kW-QcX" secondAttribute="trailing" constant="9" id="rhO-wr-Wam"/>
                             <constraint firstItem="oBD-fv-bGE" firstAttribute="leading" secondItem="Cde-xv-Kd9" secondAttribute="trailing" constant="1" id="tAj-P2-t3k"/>
                             <constraint firstItem="5yg-kW-QcX" firstAttribute="top" secondItem="b75-5X-2hc" secondAttribute="bottom" constant="11" id="wmt-d9-0ty"/>
@@ -207,6 +216,7 @@
                 <outlet property="labelHeightCons" destination="3DV-J2-cB3" id="xED-tb-LTa"/>
                 <outlet property="nickNameLabel" destination="XyR-B7-Qjz" id="zuX-a0-QKa"/>
                 <outlet property="shareBtn" destination="29u-BC-vfU" id="YoF-KA-3TV"/>
+                <outlet property="showImage" destination="I8d-B4-pbS" id="Kul-i6-DGk"/>
                 <outlet property="shuView" destination="rlX-tY-8YF" id="jcZ-iP-RjS"/>
                 <outlet property="smallImageView" destination="r5z-jW-vUv" id="Aoh-Tk-QS5"/>
                 <outlet property="timeLabel" destination="6o4-qT-KKt" id="gvy-9g-B7u"/>

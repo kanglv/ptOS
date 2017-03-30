@@ -74,6 +74,7 @@
 
 @property (nonatomic ,strong)UIImageView *placeholderImageView;
 
+@property (nonatomic,strong)UIView *showImageBackgroundView;
 
 @property (nonatomic, strong)UIImageView *nodataImgView;
 
@@ -122,12 +123,10 @@
     } else if([indexItem isEqualToString:@"2"]){
         AnnouncementViewController *announcementVc = [[AnnouncementViewController alloc]init];
         [self.navigationController pushViewController:announcementVc animated:YES];
-    } else if([indexItem isEqualToString:@"3"]){
-        //工资政策
-    } else if([indexItem isEqualToString:@"4"]){
+    }  else if([indexItem isEqualToString:@"3"]){
         WorkerViewController *workerVc = [[WorkerViewController alloc]init];
         [self.navigationController pushViewController:workerVc animated:YES];
-    }  else if ([indexItem isEqualToString:@"5"]){
+    }  else if ([indexItem isEqualToString:@"4"]){
         SuggestionViewController *suggestionVc = [[SuggestionViewController alloc]init];
         [self.navigationController pushViewController:suggestionVc animated:YES];
     }
@@ -299,6 +298,49 @@
 
 }
 
+
+- (void)showImage:(UIButton *)sender{
+    FX_ComListModel *model = [[FX_ComListModel alloc]init];
+    if(self.right_tbView.hidden){
+        //若当前为广场
+        if (self.isSearch) {
+            if (self.searchDataArray.count > 0 ) {
+                model = self.searchDataArray[sender.tag];
+            }
+        }else {
+            if (self.leftDataArray.count > 0) {
+                model = self.leftDataArray[sender.tag];
+            }
+        }
+
+    } else {
+        if(self.rightDataArray.count>0){
+            model = self.rightDataArray[sender.tag - 1];
+
+        }
+    }
+    [self showImageView:model.imgUrl];
+}
+
+- (void)showImageView:(NSString *)imageUrl{
+   self.showImageBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+     self.showImageBackgroundView.backgroundColor = [UIColor blackColor];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenImageView)];
+    [ self.showImageBackgroundView addGestureRecognizer:tapGesture];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-245)/2, (self.view.frame.size.height-245)/2, 245, 245)];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"moren_pt"]];
+    [ self.showImageBackgroundView addSubview:imageView];
+    [self.view addSubview: self.showImageBackgroundView];
+    
+    
+}
+
+- (void)hiddenImageView{
+    [ self.showImageBackgroundView removeFromSuperview];
+}
+
+
 - (void)groundBtnPress {
     self.left_tbView.hidden = NO;
     self.right_tbView.hidden = YES;
@@ -378,6 +420,7 @@
 }
 
 - (void)refresh {
+    [self.view sendSubviewToBack:self.choosePublishWayView];
     [self groundListApiNet];
     [self comListApiNet];
 }
@@ -694,7 +737,8 @@
                 
                 
                 [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
-                
+                [cell.showImage addTarget:self action:@selector(showImage:) forControlEvents:UIControlEventTouchUpInside];
+                cell.showImage.tag = indexPath.row;
                 if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
                     cell.shuView.hidden = YES;
                 }else {
@@ -901,6 +945,9 @@
                     
                     
                     [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
+                    [cell.showImage addTarget:self action:@selector(showImage:) forControlEvents:UIControlEventTouchUpInside];
+                    cell.showImage.tag = indexPath.row;
+                    
                     
                     if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
                         cell.shuView.hidden = YES;
