@@ -48,8 +48,8 @@
     {
         NSDictionary *dataDict = [dict objectForKey:@"data"];
         NSLog(@"%@",dataDict);
-        NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
-        [userdefault setValue:dataDict[@"phone"] forKey:PhoneKey];
+//        NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+//        [userdefault setValue:dataDict[@"phone"] forKey:PhoneKey];
         if(dataDict && [dataDict isKindOfClass:[NSDictionary class]])
         {
             return [[UserInfoModel alloc] initWithDic:dataDict];

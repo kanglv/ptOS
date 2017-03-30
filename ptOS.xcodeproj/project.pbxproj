@@ -458,6 +458,18 @@
 		5D585B111E77E37800569D33 /* PT_GetMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B101E77E37800569D33 /* PT_GetMessageModel.m */; };
 		5D585B141E77E50900569D33 /* PT_NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B131E77E50900569D33 /* PT_NoticeViewController.m */; };
 		5D585B171E77E54700569D33 /* PT_ConcernViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B161E77E54700569D33 /* PT_ConcernViewController.m */; };
+		5D5FD5EE1E8CEE66001840E9 /* WeiXinRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD5ED1E8CEE66001840E9 /* WeiXinRegister.m */; };
+		5D5FD5F11E8CEEAC001840E9 /* GetUserInfoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD5F01E8CEEAC001840E9 /* GetUserInfoApi.m */; };
+		5D5FD5F61E8CEED5001840E9 /* RegisterApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD5F31E8CEED5001840E9 /* RegisterApi.m */; };
+		5D5FD5F71E8CEED5001840E9 /* WeiXinLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD5F51E8CEED5001840E9 /* WeiXinLogin.m */; };
+		5D5FD5FA1E8CEF01001840E9 /* QQLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD5F91E8CEF01001840E9 /* QQLogin.m */; };
+		5D5FD5FF1E8CEF1B001840E9 /* BindQQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD5FC1E8CEF1B001840E9 /* BindQQ.m */; };
+		5D5FD6001E8CEF1B001840E9 /* BindWeiXin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD5FE1E8CEF1B001840E9 /* BindWeiXin.m */; };
+		5D5FD6051E8CEF49001840E9 /* CheckCodeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD6021E8CEF49001840E9 /* CheckCodeApi.m */; };
+		5D5FD6061E8CEF49001840E9 /* FindPswApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD6041E8CEF49001840E9 /* FindPswApi.m */; };
+		5D5FD6091E8CEF70001840E9 /* QQRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD6081E8CEF70001840E9 /* QQRegister.m */; };
+		5D5FD60E1E8CEF95001840E9 /* GetcodeAfterApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD60B1E8CEF95001840E9 /* GetcodeAfterApi.m */; };
+		5D5FD60F1E8CEF95001840E9 /* GetCodeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5FD60D1E8CEF95001840E9 /* GetCodeApi.m */; };
 		5D74A8551E6BBDCC00D437DE /* DisplayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D74A8531E6BBDCC00D437DE /* DisplayCollectionViewCell.m */; };
 		5D74A8561E6BBDCC00D437DE /* DisplayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D74A8541E6BBDCC00D437DE /* DisplayCollectionViewCell.xib */; };
 		5D74A85D1E6BF1B700D437DE /* icon_gongyouji.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D74A8571E6BF1B700D437DE /* icon_gongyouji.png */; };
@@ -609,15 +621,6 @@
 		F02AFB1B1D951D8000D9AE4B /* My_ChangeNIcknameApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB1A1D951D8000D9AE4B /* My_ChangeNIcknameApi.m */; };
 		F02AFB1E1D951D8F00D9AE4B /* MY_ChangePswApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB1D1D951D8F00D9AE4B /* MY_ChangePswApi.m */; };
 		F02AFB211D953F4900D9AE4B /* QZ_FavoriteComApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB201D953F4900D9AE4B /* QZ_FavoriteComApi.m */; };
-		F02AFB241D953FD100D9AE4B /* RegisterApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB231D953FD100D9AE4B /* RegisterApi.m */; };
-		F02AFB271D9540B800D9AE4B /* BindWeiXin.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB261D9540B800D9AE4B /* BindWeiXin.m */; };
-		F02AFB2A1D9540BE00D9AE4B /* BindQQ.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB291D9540BE00D9AE4B /* BindQQ.m */; };
-		F02AFB2D1D95414E00D9AE4B /* GetCodeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB2C1D95414E00D9AE4B /* GetCodeApi.m */; };
-		F02AFB301D9541D700D9AE4B /* QQRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB2F1D9541D700D9AE4B /* QQRegister.m */; };
-		F02AFB331D9541E700D9AE4B /* WeiXinRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB321D9541E700D9AE4B /* WeiXinRegister.m */; };
-		F02AFB361D9542D500D9AE4B /* GetUserInfoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB351D9542D500D9AE4B /* GetUserInfoApi.m */; };
-		F02AFB391D9543BD00D9AE4B /* WeiXinLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB381D9543BD00D9AE4B /* WeiXinLogin.m */; };
-		F02AFB3C1D9543C600D9AE4B /* QQLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB3B1D9543C600D9AE4B /* QQLogin.m */; };
 		F02AFB3F1D95504200D9AE4B /* GetResumeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB3E1D95504200D9AE4B /* GetResumeApi.m */; };
 		F02AFB421D95509600D9AE4B /* MyResumeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB411D95509600D9AE4B /* MyResumeModel.m */; };
 		F02AFB451D95561700D9AE4B /* MY_ChangePhoneApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F02AFB441D95561700D9AE4B /* MY_ChangePhoneApi.m */; };
@@ -889,7 +892,6 @@
 		F0E82A241D9BA7F20087FC4C /* morentouxiang.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E82A221D9BA7F20087FC4C /* morentouxiang.png */; };
 		F0E82A271D9BAD020087FC4C /* icon_qq_press.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E82A251D9BAD020087FC4C /* icon_qq_press.png */; };
 		F0E82A281D9BAD020087FC4C /* icon_weixing_press.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E82A261D9BAD020087FC4C /* icon_weixing_press.png */; };
-		F0E82A2B1D9BB8FE0087FC4C /* FindPswApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E82A2A1D9BB8FE0087FC4C /* FindPswApi.m */; };
 		F0E82A3F1D9BF16E0087FC4C /* MHDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E82A3B1D9BF16E0087FC4C /* MHDatePicker.m */; };
 		F0E82A401D9BF16E0087FC4C /* MHSelectPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E82A3D1D9BF16E0087FC4C /* MHSelectPickerView.m */; };
 		F0E82A411D9BF16E0087FC4C /* MHSelectPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0E82A3E1D9BF16E0087FC4C /* MHSelectPickerView.xib */; };
@@ -910,8 +912,6 @@
 		F0EBC9D31D98D4AE007710BD /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F0EBC9D21D98D4AE007710BD /* libicucore.tbd */; };
 		F0EBC9D51D98D4C2007710BD /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0EBC9D41D98D4C2007710BD /* JavaScriptCore.framework */; };
 		F0EBC9D71D98F5D4007710BD /* shareImg.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EBC9D61D98F5D4007710BD /* shareImg.png */; };
-		F0EBC9DA1D98FE41007710BD /* GetcodeAfterApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EBC9D91D98FE41007710BD /* GetcodeAfterApi.m */; };
-		F0EBC9DD1D990187007710BD /* CheckCodeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EBC9DC1D990187007710BD /* CheckCodeApi.m */; };
 		F0EF457D1DAE5B94006E1EB0 /* beijing_375.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EF457C1DAE5B94006E1EB0 /* beijing_375.png */; };
 		F0EF45801DAE5EA2006E1EB0 /* icon_tongyong1.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EF457E1DAE5EA2006E1EB0 /* icon_tongyong1.png */; };
 		F0EF45811DAE5EA2006E1EB0 /* icon_tongyong2.png in Resources */ = {isa = PBXBuildFile; fileRef = F0EF457F1DAE5EA2006E1EB0 /* icon_tongyong2.png */; };
@@ -1893,6 +1893,30 @@
 		5D585B131E77E50900569D33 /* PT_NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_NoticeViewController.m; sourceTree = "<group>"; };
 		5D585B151E77E54700569D33 /* PT_ConcernViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_ConcernViewController.h; sourceTree = "<group>"; };
 		5D585B161E77E54700569D33 /* PT_ConcernViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_ConcernViewController.m; sourceTree = "<group>"; };
+		5D5FD5EC1E8CEE66001840E9 /* WeiXinRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiXinRegister.h; path = ptOS/NetWorkApi/WeiXinRegister.h; sourceTree = SOURCE_ROOT; };
+		5D5FD5ED1E8CEE66001840E9 /* WeiXinRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeiXinRegister.m; path = ptOS/NetWorkApi/WeiXinRegister.m; sourceTree = SOURCE_ROOT; };
+		5D5FD5EF1E8CEEAC001840E9 /* GetUserInfoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetUserInfoApi.h; path = ptOS/NetWorkApi/GetUserInfoApi.h; sourceTree = SOURCE_ROOT; };
+		5D5FD5F01E8CEEAC001840E9 /* GetUserInfoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserInfoApi.m; path = ptOS/NetWorkApi/GetUserInfoApi.m; sourceTree = SOURCE_ROOT; };
+		5D5FD5F21E8CEED5001840E9 /* RegisterApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterApi.h; path = ptOS/NetWorkApi/RegisterApi.h; sourceTree = SOURCE_ROOT; };
+		5D5FD5F31E8CEED5001840E9 /* RegisterApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterApi.m; path = ptOS/NetWorkApi/RegisterApi.m; sourceTree = SOURCE_ROOT; };
+		5D5FD5F41E8CEED5001840E9 /* WeiXinLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiXinLogin.h; path = ptOS/NetWorkApi/WeiXinLogin.h; sourceTree = SOURCE_ROOT; };
+		5D5FD5F51E8CEED5001840E9 /* WeiXinLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeiXinLogin.m; path = ptOS/NetWorkApi/WeiXinLogin.m; sourceTree = SOURCE_ROOT; };
+		5D5FD5F81E8CEF01001840E9 /* QQLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QQLogin.h; path = ptOS/NetWorkApi/QQLogin.h; sourceTree = SOURCE_ROOT; };
+		5D5FD5F91E8CEF01001840E9 /* QQLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QQLogin.m; path = ptOS/NetWorkApi/QQLogin.m; sourceTree = SOURCE_ROOT; };
+		5D5FD5FB1E8CEF1B001840E9 /* BindQQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BindQQ.h; path = ptOS/NetWorkApi/BindQQ.h; sourceTree = SOURCE_ROOT; };
+		5D5FD5FC1E8CEF1B001840E9 /* BindQQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BindQQ.m; path = ptOS/NetWorkApi/BindQQ.m; sourceTree = SOURCE_ROOT; };
+		5D5FD5FD1E8CEF1B001840E9 /* BindWeiXin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BindWeiXin.h; path = ptOS/NetWorkApi/BindWeiXin.h; sourceTree = SOURCE_ROOT; };
+		5D5FD5FE1E8CEF1B001840E9 /* BindWeiXin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BindWeiXin.m; path = ptOS/NetWorkApi/BindWeiXin.m; sourceTree = SOURCE_ROOT; };
+		5D5FD6011E8CEF49001840E9 /* CheckCodeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckCodeApi.h; path = ptOS/NetWorkApi/CheckCodeApi.h; sourceTree = SOURCE_ROOT; };
+		5D5FD6021E8CEF49001840E9 /* CheckCodeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckCodeApi.m; path = ptOS/NetWorkApi/CheckCodeApi.m; sourceTree = SOURCE_ROOT; };
+		5D5FD6031E8CEF49001840E9 /* FindPswApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FindPswApi.h; path = ptOS/NetWorkApi/FindPswApi.h; sourceTree = SOURCE_ROOT; };
+		5D5FD6041E8CEF49001840E9 /* FindPswApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FindPswApi.m; path = ptOS/NetWorkApi/FindPswApi.m; sourceTree = SOURCE_ROOT; };
+		5D5FD6071E8CEF70001840E9 /* QQRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QQRegister.h; path = ptOS/NetWorkApi/QQRegister.h; sourceTree = SOURCE_ROOT; };
+		5D5FD6081E8CEF70001840E9 /* QQRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QQRegister.m; path = ptOS/NetWorkApi/QQRegister.m; sourceTree = SOURCE_ROOT; };
+		5D5FD60A1E8CEF95001840E9 /* GetcodeAfterApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetcodeAfterApi.h; path = ptOS/NetWorkApi/GetcodeAfterApi.h; sourceTree = SOURCE_ROOT; };
+		5D5FD60B1E8CEF95001840E9 /* GetcodeAfterApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetcodeAfterApi.m; path = ptOS/NetWorkApi/GetcodeAfterApi.m; sourceTree = SOURCE_ROOT; };
+		5D5FD60C1E8CEF95001840E9 /* GetCodeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetCodeApi.h; path = ptOS/NetWorkApi/GetCodeApi.h; sourceTree = SOURCE_ROOT; };
+		5D5FD60D1E8CEF95001840E9 /* GetCodeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetCodeApi.m; path = ptOS/NetWorkApi/GetCodeApi.m; sourceTree = SOURCE_ROOT; };
 		5D74A8521E6BBDCC00D437DE /* DisplayCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayCollectionViewCell.h; sourceTree = "<group>"; };
 		5D74A8531E6BBDCC00D437DE /* DisplayCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayCollectionViewCell.m; sourceTree = "<group>"; };
 		5D74A8541E6BBDCC00D437DE /* DisplayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -2178,24 +2202,6 @@
 		F02AFB1D1D951D8F00D9AE4B /* MY_ChangePswApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MY_ChangePswApi.m; sourceTree = "<group>"; };
 		F02AFB1F1D953F4900D9AE4B /* QZ_FavoriteComApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZ_FavoriteComApi.h; sourceTree = "<group>"; };
 		F02AFB201D953F4900D9AE4B /* QZ_FavoriteComApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZ_FavoriteComApi.m; sourceTree = "<group>"; };
-		F02AFB221D953FD100D9AE4B /* RegisterApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterApi.h; path = ../RegisterApi.h; sourceTree = "<group>"; };
-		F02AFB231D953FD100D9AE4B /* RegisterApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterApi.m; path = ../RegisterApi.m; sourceTree = "<group>"; wrapsLines = 0; };
-		F02AFB251D9540B800D9AE4B /* BindWeiXin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BindWeiXin.h; path = ../BindWeiXin.h; sourceTree = "<group>"; };
-		F02AFB261D9540B800D9AE4B /* BindWeiXin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BindWeiXin.m; path = ../BindWeiXin.m; sourceTree = "<group>"; };
-		F02AFB281D9540BE00D9AE4B /* BindQQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BindQQ.h; path = ../BindQQ.h; sourceTree = "<group>"; };
-		F02AFB291D9540BE00D9AE4B /* BindQQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BindQQ.m; path = ../BindQQ.m; sourceTree = "<group>"; };
-		F02AFB2B1D95414E00D9AE4B /* GetCodeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetCodeApi.h; path = ../GetCodeApi.h; sourceTree = "<group>"; };
-		F02AFB2C1D95414E00D9AE4B /* GetCodeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetCodeApi.m; path = ../GetCodeApi.m; sourceTree = "<group>"; };
-		F02AFB2E1D9541D700D9AE4B /* QQRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QQRegister.h; path = ../QQRegister.h; sourceTree = "<group>"; };
-		F02AFB2F1D9541D700D9AE4B /* QQRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QQRegister.m; path = ../QQRegister.m; sourceTree = "<group>"; };
-		F02AFB311D9541E700D9AE4B /* WeiXinRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiXinRegister.h; path = ../WeiXinRegister.h; sourceTree = "<group>"; };
-		F02AFB321D9541E700D9AE4B /* WeiXinRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeiXinRegister.m; path = ../WeiXinRegister.m; sourceTree = "<group>"; };
-		F02AFB341D9542D500D9AE4B /* GetUserInfoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetUserInfoApi.h; path = ../GetUserInfoApi.h; sourceTree = "<group>"; };
-		F02AFB351D9542D500D9AE4B /* GetUserInfoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetUserInfoApi.m; path = ../GetUserInfoApi.m; sourceTree = "<group>"; };
-		F02AFB371D9543BD00D9AE4B /* WeiXinLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiXinLogin.h; path = ../WeiXinLogin.h; sourceTree = "<group>"; };
-		F02AFB381D9543BD00D9AE4B /* WeiXinLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeiXinLogin.m; path = ../WeiXinLogin.m; sourceTree = "<group>"; };
-		F02AFB3A1D9543C600D9AE4B /* QQLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QQLogin.h; path = ../QQLogin.h; sourceTree = "<group>"; };
-		F02AFB3B1D9543C600D9AE4B /* QQLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QQLogin.m; path = ../QQLogin.m; sourceTree = "<group>"; };
 		F02AFB3D1D95504200D9AE4B /* GetResumeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetResumeApi.h; path = ../GetResumeApi.h; sourceTree = "<group>"; };
 		F02AFB3E1D95504200D9AE4B /* GetResumeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetResumeApi.m; path = ../GetResumeApi.m; sourceTree = "<group>"; };
 		F02AFB401D95509600D9AE4B /* MyResumeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyResumeModel.h; sourceTree = "<group>"; };
@@ -2235,8 +2241,8 @@
 		F0616B801D76E2EC0041599B /* MyDisCoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDisCoverViewController.m; path = ../Discover/MyDisCoverViewController.m; sourceTree = "<group>"; };
 		F0616B821D76E4D50041599B /* MyFavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavoriteViewController.h; sourceTree = "<group>"; };
 		F0616B831D76E4D50041599B /* MyFavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavoriteViewController.m; sourceTree = "<group>"; };
-		F0616B851D76E6760041599B /* WorkExperienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkExperienceViewController.h; sourceTree = "<group>"; };
-		F0616B861D76E6760041599B /* WorkExperienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkExperienceViewController.m; sourceTree = "<group>"; };
+		F0616B851D76E6760041599B /* WorkExperienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkExperienceViewController.h; path = ../Discover/WorkExperienceViewController.h; sourceTree = "<group>"; };
+		F0616B861D76E6760041599B /* WorkExperienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkExperienceViewController.m; path = ../Discover/WorkExperienceViewController.m; sourceTree = "<group>"; };
 		F0616B881D76E7B70041599B /* FavoriteCompanyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteCompanyTableViewCell.h; sourceTree = "<group>"; };
 		F0616B891D76E7B70041599B /* FavoriteCompanyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteCompanyTableViewCell.m; sourceTree = "<group>"; };
 		F0616B8A1D76E7B70041599B /* FavoriteCompanyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteCompanyTableViewCell.xib; sourceTree = "<group>"; };
@@ -2600,8 +2606,6 @@
 		F0E82A221D9BA7F20087FC4C /* morentouxiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = morentouxiang.png; sourceTree = "<group>"; };
 		F0E82A251D9BAD020087FC4C /* icon_qq_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_qq_press.png; sourceTree = "<group>"; };
 		F0E82A261D9BAD020087FC4C /* icon_weixing_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_weixing_press.png; sourceTree = "<group>"; };
-		F0E82A291D9BB8FE0087FC4C /* FindPswApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FindPswApi.h; path = ../FindPswApi.h; sourceTree = "<group>"; };
-		F0E82A2A1D9BB8FE0087FC4C /* FindPswApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FindPswApi.m; path = ../FindPswApi.m; sourceTree = "<group>"; };
 		F0E82A3A1D9BF16E0087FC4C /* MHDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHDatePicker.h; sourceTree = "<group>"; };
 		F0E82A3B1D9BF16E0087FC4C /* MHDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHDatePicker.m; sourceTree = "<group>"; };
 		F0E82A3C1D9BF16E0087FC4C /* MHSelectPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSelectPickerView.h; sourceTree = "<group>"; };
@@ -2636,10 +2640,6 @@
 		F0EBC9D21D98D4AE007710BD /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		F0EBC9D41D98D4C2007710BD /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F0EBC9D61D98F5D4007710BD /* shareImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareImg.png; sourceTree = "<group>"; };
-		F0EBC9D81D98FE41007710BD /* GetcodeAfterApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetcodeAfterApi.h; path = ../GetcodeAfterApi.h; sourceTree = "<group>"; };
-		F0EBC9D91D98FE41007710BD /* GetcodeAfterApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetcodeAfterApi.m; path = ../GetcodeAfterApi.m; sourceTree = "<group>"; };
-		F0EBC9DB1D990187007710BD /* CheckCodeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckCodeApi.h; path = ../CheckCodeApi.h; sourceTree = "<group>"; };
-		F0EBC9DC1D990187007710BD /* CheckCodeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckCodeApi.m; path = ../CheckCodeApi.m; sourceTree = "<group>"; };
 		F0EF457C1DAE5B94006E1EB0 /* beijing_375.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beijing_375.png; sourceTree = "<group>"; };
 		F0EF457E1DAE5EA2006E1EB0 /* icon_tongyong1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tongyong1.png; sourceTree = "<group>"; };
 		F0EF457F1DAE5EA2006E1EB0 /* icon_tongyong2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_tongyong2.png; sourceTree = "<group>"; };
@@ -5162,8 +5162,6 @@
 				F0616B7D1D76E1460041599B /* PubLishQunaziViewController.m */,
 				F0616B821D76E4D50041599B /* MyFavoriteViewController.h */,
 				F0616B831D76E4D50041599B /* MyFavoriteViewController.m */,
-				F0616B851D76E6760041599B /* WorkExperienceViewController.h */,
-				F0616B861D76E6760041599B /* WorkExperienceViewController.m */,
 				F0DD36D31D9CE41B001D869C /* JuBaoViewController.h */,
 				F0DD36D41D9CE41B001D869C /* JuBaoViewController.m */,
 				5D7958451E6A7A63005764CF /* ConcernCompanyViewController.h */,
@@ -5200,6 +5198,8 @@
 				F0616B9F1D7725D20041599B /* MyInfo2ViewController.m */,
 				F0616BA11D7725DC0041599B /* MyInfo3ViewController.h */,
 				F0616BA21D7725DC0041599B /* MyInfo3ViewController.m */,
+				F0616B851D76E6760041599B /* WorkExperienceViewController.h */,
+				F0616B861D76E6760041599B /* WorkExperienceViewController.m */,
 				F0616BA41D772BA70041599B /* MyResumeViewController.h */,
 				F0616BA51D772BA70041599B /* MyResumeViewController.m */,
 				F07314F31D7BD1BF0057213C /* My_SettingViewController.h */,
@@ -6159,32 +6159,32 @@
 		F0F0BA511DC3366F0030C4C1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				F02AFB341D9542D500D9AE4B /* GetUserInfoApi.h */,
-				F02AFB351D9542D500D9AE4B /* GetUserInfoApi.m */,
+				5D5FD5EC1E8CEE66001840E9 /* WeiXinRegister.h */,
+				5D5FD5ED1E8CEE66001840E9 /* WeiXinRegister.m */,
+				5D5FD5EF1E8CEEAC001840E9 /* GetUserInfoApi.h */,
+				5D5FD5F01E8CEEAC001840E9 /* GetUserInfoApi.m */,
 				F0EF73191D902A3D00CB8654 /* LoginNetApi.h */,
 				F0EF731A1D902A3D00CB8654 /* LoginNetApi.m */,
-				F02AFB221D953FD100D9AE4B /* RegisterApi.h */,
-				F02AFB231D953FD100D9AE4B /* RegisterApi.m */,
-				F02AFB251D9540B800D9AE4B /* BindWeiXin.h */,
-				F02AFB261D9540B800D9AE4B /* BindWeiXin.m */,
-				F02AFB281D9540BE00D9AE4B /* BindQQ.h */,
-				F02AFB291D9540BE00D9AE4B /* BindQQ.m */,
-				F02AFB2B1D95414E00D9AE4B /* GetCodeApi.h */,
-				F02AFB2C1D95414E00D9AE4B /* GetCodeApi.m */,
-				F0EBC9D81D98FE41007710BD /* GetcodeAfterApi.h */,
-				F0EBC9D91D98FE41007710BD /* GetcodeAfterApi.m */,
-				F0EBC9DB1D990187007710BD /* CheckCodeApi.h */,
-				F0EBC9DC1D990187007710BD /* CheckCodeApi.m */,
-				F02AFB2E1D9541D700D9AE4B /* QQRegister.h */,
-				F02AFB2F1D9541D700D9AE4B /* QQRegister.m */,
-				F02AFB371D9543BD00D9AE4B /* WeiXinLogin.h */,
-				F02AFB381D9543BD00D9AE4B /* WeiXinLogin.m */,
-				F02AFB3A1D9543C600D9AE4B /* QQLogin.h */,
-				F02AFB3B1D9543C600D9AE4B /* QQLogin.m */,
-				F02AFB311D9541E700D9AE4B /* WeiXinRegister.h */,
-				F02AFB321D9541E700D9AE4B /* WeiXinRegister.m */,
-				F0E82A291D9BB8FE0087FC4C /* FindPswApi.h */,
-				F0E82A2A1D9BB8FE0087FC4C /* FindPswApi.m */,
+				5D5FD5F21E8CEED5001840E9 /* RegisterApi.h */,
+				5D5FD5F31E8CEED5001840E9 /* RegisterApi.m */,
+				5D5FD5F41E8CEED5001840E9 /* WeiXinLogin.h */,
+				5D5FD5F51E8CEED5001840E9 /* WeiXinLogin.m */,
+				5D5FD5F81E8CEF01001840E9 /* QQLogin.h */,
+				5D5FD5F91E8CEF01001840E9 /* QQLogin.m */,
+				5D5FD5FB1E8CEF1B001840E9 /* BindQQ.h */,
+				5D5FD5FC1E8CEF1B001840E9 /* BindQQ.m */,
+				5D5FD5FD1E8CEF1B001840E9 /* BindWeiXin.h */,
+				5D5FD5FE1E8CEF1B001840E9 /* BindWeiXin.m */,
+				5D5FD6011E8CEF49001840E9 /* CheckCodeApi.h */,
+				5D5FD6021E8CEF49001840E9 /* CheckCodeApi.m */,
+				5D5FD6031E8CEF49001840E9 /* FindPswApi.h */,
+				5D5FD6041E8CEF49001840E9 /* FindPswApi.m */,
+				5D5FD6071E8CEF70001840E9 /* QQRegister.h */,
+				5D5FD6081E8CEF70001840E9 /* QQRegister.m */,
+				5D5FD60A1E8CEF95001840E9 /* GetcodeAfterApi.h */,
+				5D5FD60B1E8CEF95001840E9 /* GetcodeAfterApi.m */,
+				5D5FD60C1E8CEF95001840E9 /* GetCodeApi.h */,
+				5D5FD60D1E8CEF95001840E9 /* GetCodeApi.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -6674,7 +6674,6 @@
 				F07314EE1D7BBF080057213C /* QZ_JobsDetailView.m in Sources */,
 				2EC3FE4A1E6EDE1300CDD478 /* NIMMessageMaker.m in Sources */,
 				2C0A2EC91E6EC163006CD3E1 /* NTESBlackListViewController.m in Sources */,
-				F02AFB241D953FD100D9AE4B /* RegisterApi.m in Sources */,
 				2C0A23E01E6D8AFA006CD3E1 /* UIImageView+HighlightedWebCache.m in Sources */,
 				F0B2E10A1D818C0F00C7A478 /* CommentTableViewCell.m in Sources */,
 				F02AFB0C1D951D3200D9AE4B /* MY_PostReumeApi.m in Sources */,
@@ -6706,7 +6705,6 @@
 				F0B2E0EF1D813F5000C7A478 /* JobsDetailViewController.m in Sources */,
 				F02AFB181D951D6E00D9AE4B /* MY_LogoutApi.m in Sources */,
 				F02B89B81DA7A54F0020ED25 /* UIImage+MDQRCode.m in Sources */,
-				F02AFB2D1D95414E00D9AE4B /* GetCodeApi.m in Sources */,
 				2C0A2EDB1E6EC163006CD3E1 /* NTESChartletAttachment.m in Sources */,
 				2EC3FE201E6EDE1300CDD478 /* NIMMemberGroupView.m in Sources */,
 				2C0A2F021E6EC163006CD3E1 /* NTESMutiClientsCell.m in Sources */,
@@ -6742,6 +6740,7 @@
 				2EC3FE171E6EDE1300CDD478 /* NIMKitSwitcherCell.m in Sources */,
 				2EC3FE6B1E6EDE1300CDD478 /* NIMTeamAnnouncementListViewController.m in Sources */,
 				2CA0AEA71E74294C004EB87A /* NTESSessionListViewController.m in Sources */,
+				5D5FD5F71E8CEED5001840E9 /* WeiXinLogin.m in Sources */,
 				2C0A2EFE1E6EC163006CD3E1 /* NTESVideoChatViewController.m in Sources */,
 				2EC3FE3C1E6EDE1300CDD478 /* NIMAudioContentConfig.m in Sources */,
 				2C0A2F0A1E6EC163006CD3E1 /* NTESLogUploader.m in Sources */,
@@ -6783,6 +6782,7 @@
 				2C0A2EA81E6EC163006CD3E1 /* NTESColorButtonCell.m in Sources */,
 				2EC3FE181E6EDE1300CDD478 /* NIMKitUIConfig.m in Sources */,
 				2C0A2F151E6EC163006CD3E1 /* NTESSettingViewController.m in Sources */,
+				5D5FD6051E8CEF49001840E9 /* CheckCodeApi.m in Sources */,
 				5DB2E0B51E595D2300A56507 /* ChoosePublishWay.m in Sources */,
 				2EC3FE5C1E6EDE1300CDD478 /* NIMSessionUnknowContentView.m in Sources */,
 				F00933931D93E1F8006B00A9 /* FX_GiveGreatApi.m in Sources */,
@@ -6836,6 +6836,7 @@
 				2C0A2F281E6EC163006CD3E1 /* NTESDemoRegisterTask.m in Sources */,
 				F02B89B61DA7A54F0020ED25 /* rscode.c in Sources */,
 				2C0A2EBC1E6EC163006CD3E1 /* NTESChatroomSegmentedControl.m in Sources */,
+				5D5FD5FA1E8CEF01001840E9 /* QQLogin.m in Sources */,
 				5D7A9D1E1E7D7A320032E643 /* PT_NoticeTableViewCell.m in Sources */,
 				2C0A2F1D1E6EC163006CD3E1 /* NTESSignSettingViewController.m in Sources */,
 				5D811F561E6D09B70024374B /* PT_NearlyListTableViewCell.m in Sources */,
@@ -6845,6 +6846,7 @@
 				F04ADF3E1D797EBE008EB203 /* QZ_JobsTableViewCell.m in Sources */,
 				F00DE8EB1D759081004D43D0 /* AFSecurityPolicy.m in Sources */,
 				2C0A2ED31E6EC163006CD3E1 /* NTESSystemNotificationViewController.m in Sources */,
+				5D5FD5F11E8CEEAC001840E9 /* GetUserInfoApi.m in Sources */,
 				F0F33D3D1D9E33A700D276F5 /* LayoutTextView.m in Sources */,
 				F0B2E0FC1D81583400C7A478 /* QZ_CompanyDetailView2.m in Sources */,
 				5D585B111E77E37800569D33 /* PT_GetMessageModel.m in Sources */,
@@ -6866,13 +6868,13 @@
 				2C0A23D41E6D8AFA006CD3E1 /* NSData+ImageContentType.m in Sources */,
 				F0F945BD1D77FC67001AE058 /* PT_WriteExamViewController.m in Sources */,
 				F0C30EF91D73F2FF007941A1 /* BaseNetApi.m in Sources */,
+				5D5FD60F1E8CEF95001840E9 /* GetCodeApi.m in Sources */,
 				2C0A23EE1E6D8AFA006CD3E1 /* TZImageManager.m in Sources */,
 				F0B60EC71D9183D000F8F519 /* MJRefreshFooter.m in Sources */,
 				2C0A23F01E6D8AFA006CD3E1 /* TZImagePickerController.m in Sources */,
 				F0B60EC81D9183D000F8F519 /* MJRefreshHeader.m in Sources */,
 				2EC3FE1A1E6EDE1300CDD478 /* NIMAvatarImageView.m in Sources */,
 				F0695B441DAD3D90003CB097 /* IQUIScrollView+Additions.m in Sources */,
-				F02AFB391D9543BD00D9AE4B /* WeiXinLogin.m in Sources */,
 				F02B89B31DA7A54F0020ED25 /* qrencode.c in Sources */,
 				F009336D1D9399BE006B00A9 /* QZ_SearchNumApi.m in Sources */,
 				2C0A2F271E6EC163006CD3E1 /* NTESDemoFetchChatroomTask.m in Sources */,
@@ -6900,6 +6902,7 @@
 				2C0A26621E6DADB1006CD3E1 /* mztools.c in Sources */,
 				F0695B471DAD3D90003CB097 /* IQUIViewController+Additions.m in Sources */,
 				2C0A23ED1E6D8AFA006CD3E1 /* TZImageCropManager.m in Sources */,
+				5D5FD6001E8CEF1B001840E9 /* BindWeiXin.m in Sources */,
 				F0B60ED31D9183D000F8F519 /* MJRefreshConst.m in Sources */,
 				2EC3FE4F1E6EDE1300CDD478 /* NIMSessionLayoutImpl.m in Sources */,
 				F0B60ED11D9183D000F8F519 /* MJRefreshStateHeader.m in Sources */,
@@ -6912,6 +6915,7 @@
 				2C0A2EA51E6EC163006CD3E1 /* UIScrollView+NTESPullToRefresh.m in Sources */,
 				F0695B091DACEC9F003CB097 /* UIView+FDCollapsibleConstraints.m in Sources */,
 				2C0A2E971E6EC163006CD3E1 /* NTESSessionUtil.m in Sources */,
+				5D5FD6061E8CEF49001840E9 /* FindPswApi.m in Sources */,
 				2C0A26591E6DADB1006CD3E1 /* aeskey.c in Sources */,
 				2C0A2EA91E6EC163006CD3E1 /* NTESJionTeamViewController.m in Sources */,
 				F0616B9A1D771B120041599B /* SHLUILabel.m in Sources */,
@@ -6919,17 +6923,14 @@
 				2C0A265B1E6DADB1006CD3E1 /* entropy.c in Sources */,
 				2EC3FE4B1E6EDE1300CDD478 /* NIMKitAudioCenter.m in Sources */,
 				2C0A2EB61E6EC163006CD3E1 /* NTESChatroomMessageDataProvider.m in Sources */,
-				F02AFB301D9541D700D9AE4B /* QQRegister.m in Sources */,
 				2C0A2E821E6EC163006CD3E1 /* UINavigationController+Swizzling.m in Sources */,
 				2C0A2E921E6EC163006CD3E1 /* NTESDevice.m in Sources */,
 				F0695B501DAD3D90003CB097 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				F0E82A181D9B60E80087FC4C /* OSSManager.m in Sources */,
 				F02AF9A11D75B24A005D3F98 /* UserInfoModel.m in Sources */,
 				F0B60ECC1D9183D000F8F519 /* MJRefreshBackGifFooter.m in Sources */,
-				F02AFB331D9541E700D9AE4B /* WeiXinRegister.m in Sources */,
 				2C0A2EA21E6EC163006CD3E1 /* UIImage+NTESColor.m in Sources */,
 				2C0A2F011E6EC163006CD3E1 /* NTESVideoChatNetStatusView.m in Sources */,
-				F02AFB3C1D9543C600D9AE4B /* QQLogin.m in Sources */,
 				2C0A2EBA1E6EC163006CD3E1 /* NTESChatroomListCell.m in Sources */,
 				2C0A2EDC1E6EC163006CD3E1 /* NTESCustomAttachmentDecoder.m in Sources */,
 				2C0A2EF51E6EC163006CD3E1 /* NTESWhiteboardViewController.m in Sources */,
@@ -6968,7 +6969,6 @@
 				2EC3FE141E6EDE1200CDD478 /* NIMCommonTableDelegate.m in Sources */,
 				2EC3FE481E6EDE1300CDD478 /* NIMKitMessageAtModel.m in Sources */,
 				2C0A23DC1E6D8AFA006CD3E1 /* UIButton+WebCache.m in Sources */,
-				F02AFB2A1D9540BE00D9AE4B /* BindQQ.m in Sources */,
 				2C0A2E961E6EC163006CD3E1 /* NTESService.m in Sources */,
 				5DF836F51E500AFF0037F542 /* SelectCityViewController.m in Sources */,
 				F00933641D9395D4006B00A9 /* QZ_JobDetailCollectJobApi.m in Sources */,
@@ -6995,7 +6995,6 @@
 				2C0A2E8C1E6EC163006CD3E1 /* NTESMarginButton.m in Sources */,
 				F0E82A621D9C0DE90087FC4C /* AJGradientView.m in Sources */,
 				2C0A23631E6D7A76006CD3E1 /* DDDispatchQueueLogFormatter.m in Sources */,
-				F02AFB271D9540B800D9AE4B /* BindWeiXin.m in Sources */,
 				2C0A23DE1E6D8AFA006CD3E1 /* UIImage+MultiFormat.m in Sources */,
 				2C0A23EB1E6D8AFA006CD3E1 /* TZAssetModel.m in Sources */,
 				2C0A2EE11E6EC163006CD3E1 /* NTESWhiteboardAttachment.m in Sources */,
@@ -7017,7 +7016,6 @@
 				2CA0AEA51E741F9E004EB87A /* NTESContactAddFriendViewController.m in Sources */,
 				F00D4D721D7099450031A6C1 /* NSDictionary+Additional.m in Sources */,
 				F07A50271D82FBED001BE234 /* PT_MapViewController.m in Sources */,
-				F0E82A2B1D9BB8FE0087FC4C /* FindPswApi.m in Sources */,
 				2EC3FE0D1E6EDE1200CDD478 /* M80AttributedLabel+NIMKit.m in Sources */,
 				F0695B171DAD3449003CB097 /* QZTopTextView.m in Sources */,
 				2C0A23D11E6D8AFA006CD3E1 /* M80AttributedLabelURL.m in Sources */,
@@ -7058,7 +7056,6 @@
 				2EC3FE5F1E6EDE1300CDD478 /* NIMSessionViewController.m in Sources */,
 				2C0A2EF71E6EC163006CD3E1 /* NTESWhiteboardDrawView.m in Sources */,
 				F00933B11D94241B006B00A9 /* PT_MsgDetailModel.m in Sources */,
-				F0EBC9DA1D98FE41007710BD /* GetcodeAfterApi.m in Sources */,
 				F0D68B251D963B3900FCACAE /* MyCommentTableViewCell.m in Sources */,
 				F0F945AC1D77D75E001AE058 /* FindPSWViewController.m in Sources */,
 				F00D4D821D7099C20031A6C1 /* ControlUtil.m in Sources */,
@@ -7070,7 +7067,6 @@
 				F0695B0D1DAD25E0003CB097 /* TQLocationConverter.m in Sources */,
 				5D4BBC211E7A2C9C00633313 /* PT_ConcernTableViewCell.m in Sources */,
 				2C0A2ED51E6EC163006CD3E1 /* NTESLoginManager.m in Sources */,
-				F02AFB361D9542D500D9AE4B /* GetUserInfoApi.m in Sources */,
 				2EC3FE441E6EDE1300CDD478 /* NIMUnsupportContentConfig.m in Sources */,
 				F0616B901D76EC0B0041599B /* FavoriteJobTableViewCell.m in Sources */,
 				2C0A2E861E6EC163006CD3E1 /* NTESMainTabController.m in Sources */,
@@ -7081,6 +7077,7 @@
 				F0695B061DAC8E48003CB097 /* ScannerViewController.m in Sources */,
 				F075DA221DA8D09200B547D2 /* ChangePhone1ViewController.m in Sources */,
 				2C0A2EE71E6EC163006CD3E1 /* NTESSessionTipContentView.m in Sources */,
+				5D5FD5F61E8CEED5001840E9 /* RegisterApi.m in Sources */,
 				2C0A2EED1E6EC163006CD3E1 /* NTESFileTransSelectViewController.m in Sources */,
 				2C0A281E1E6DB49D006CD3E1 /* UIView+Frame.m in Sources */,
 				F0DD36CF1D9CC20A001D869C /* UIButton+JKTouchAreaInsets.m in Sources */,
@@ -7132,6 +7129,7 @@
 				5DFDD7431E51B92B00B1F2E2 /* screenView.m in Sources */,
 				2C0A2EE31E6EC163006CD3E1 /* NTESSearchMessageEntraceCell.m in Sources */,
 				F0B2E10F1D818C6800C7A478 /* ComDetail_JobTableViewCell.m in Sources */,
+				5D5FD5FF1E8CEF1B001840E9 /* BindQQ.m in Sources */,
 				2C0A23DF1E6D8AFA006CD3E1 /* UIImage+WebP.m in Sources */,
 				2EC3FE311E6EDE1300CDD478 /* NIMInputEmoticonParser.m in Sources */,
 				2C0A2F291E6EC163006CD3E1 /* NTESDemoService.m in Sources */,
@@ -7161,6 +7159,7 @@
 				2C0A23671E6D7A76006CD3E1 /* FMDatabase.m in Sources */,
 				F0E82A631D9C0DE90087FC4C /* AJPhotoGroupCell.m in Sources */,
 				2C510CFF1E71450B00A50582 /* ContactSchoolInfoCell.m in Sources */,
+				5D5FD60E1E8CEF95001840E9 /* GetcodeAfterApi.m in Sources */,
 				2EC3FE501E6EDE1300CDD478 /* NIMSessionMsgDatasource.m in Sources */,
 				2C0A2EAC1E6EC163006CD3E1 /* NTESSearchTeamViewController.m in Sources */,
 				2C0A2EC61E6EC163006CD3E1 /* NTESContactUtilCell.m in Sources */,
@@ -7220,7 +7219,6 @@
 				2C0A2EA41E6EC163006CD3E1 /* UIScrollView+NTESDirection.m in Sources */,
 				2C0A23DA1E6D8AFA006CD3E1 /* SDWebImageManager.m in Sources */,
 				F0B60EC51D9183D000F8F519 /* MJRefreshBackFooter.m in Sources */,
-				F0EBC9DD1D990187007710BD /* CheckCodeApi.m in Sources */,
 				F075DA2E1DA8F66F00B547D2 /* CommentLabel.m in Sources */,
 				F07A501C1D82AAD6001BE234 /* DiscoverNavView.m in Sources */,
 				F00201211D8A5BE5006F0136 /* Discover_DetailViewController.m in Sources */,
@@ -7238,6 +7236,7 @@
 				F0616B871D76E6760041599B /* WorkExperienceViewController.m in Sources */,
 				F0C8C0D31D9299680065D945 /* QZ_JobDetailApi.m in Sources */,
 				F0695B451DAD3D90003CB097 /* IQUITextFieldView+Additions.m in Sources */,
+				5D5FD6091E8CEF70001840E9 /* QQRegister.m in Sources */,
 				F00D4D841D7099C20031A6C1 /* KeyChainStore.m in Sources */,
 				F0AAC4621D9A23BF0040D1C5 /* DiscoverLabel.m in Sources */,
 				2C0A23DB1E6D8AFA006CD3E1 /* SDWebImagePrefetcher.m in Sources */,
@@ -7291,6 +7290,7 @@
 				5D7958611E6A9DCF005764CF /* ConcernCompanyTableViewCell.m in Sources */,
 				F00DE8E81D759081004D43D0 /* AFHTTPRequestOperationManager.m in Sources */,
 				F00DE8EE1D759081004D43D0 /* AFURLResponseSerialization.m in Sources */,
+				5D5FD5EE1E8CEE66001840E9 /* WeiXinRegister.m in Sources */,
 				F0F945C61D782856001AE058 /* PT_FaceExamFeedBackViewController.m in Sources */,
 				2EC3FE2F1E6EDE1300CDD478 /* NIMInputEmoticonContainerView.m in Sources */,
 				2EC3FE561E6EDE1300CDD478 /* NIMSessionImageContentView.m in Sources */,

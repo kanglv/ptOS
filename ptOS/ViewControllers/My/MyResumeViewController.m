@@ -10,12 +10,18 @@
 #import "MyResumeModel.h"
 #import "MY_ResumeDetailApi.h"
 #import "MY_ResumeDetailModel.h"
+#import "MY_PostReumeApi.h"
 #import "MyInfo1ViewController.h"
+#import "MyInfo2ViewController.h"
+#import "MyInfo3ViewController.h"
+#import "WorkExperienceViewController.h"
+
+#import "OSSManager.h"
 #import "AFHTTPRequestOperation.h"
 #import "GetResumeApi.h"
 #import "MyResumeModel.h"
 @interface MyResumeViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *jumpBtn;
+
 @property (weak, nonatomic) IBOutlet UILabel *basicInfoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cardLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workExpLabel;
@@ -23,6 +29,7 @@
 
 @property (nonatomic,strong)MY_ResumeDetailApi *detailApi;
 @property (nonatomic,strong)GetResumeApi *getResumeApi;
+@property (nonatomic,strong)MY_PostReumeApi *postResumeApi;
 
 @end
 
@@ -33,6 +40,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"简历概况"];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"保存" forState:UIControlStateNormal];
+    [btn setTitleColor:WhiteColor forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(next) forControlEvents:UIControlEventTouchUpInside];
+    [btn setFrame:CGRectMake(0, 0, 60, 40)];
+    btn.titleLabel.font = [UIFont systemFontOfSize:16];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = rightItem;
+
     
     [self detailApiNet];
     [self getResumeApiNet];
@@ -42,23 +59,94 @@
     [super viewWillAppear:animated];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)next {
+    
+       [self postResumeApiNet];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)uploadImageWithImage:(UIImage *)image withFileName:(NSString *)fileName {
+    NSData *data = UIImageJPEGRepresentation(image, 1.0);
+    
+    [[OSSManager sharedManager] uploadObjectAsyncWithData:data andFileName:fileName andBDName:@"bd-resume" andIsSuccess:^(BOOL isSuccess, UIImage *image) {
+        NSLog(@"上传成功");
+    } andProgressBlock:^(int64_t has, int64_t total, int64_t will) {
+        
+    }];
 }
+
+- (void)postResumeApiNet {
+    if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+    {
+        [self presentLoginCtrl];
+        return;
+    }
+    
+    if(self.postResumeApi&& !self.postResumeApi.requestOperation.isFinished)
+    {
+        [self.postResumeApi stop];
+    }
+    
+    self.postResumeApi = [[MY_PostReumeApi alloc] initWithName:[GlobalData sharedInstance].jl_name WithSex:[GlobalData sharedInstance].jl_sex WithBirth:[GlobalData sharedInstance].jl_birth WithEducation:[GlobalData sharedInstance].jl_education Withphone:[GlobalData sharedInstance].jl_phone WithCardPicFrontUrl:[GlobalData sharedInstance].jl_cardPicFont WithCardPicBackUrl:[GlobalData sharedInstance].jl_cardPicBack WithEducationPic:[GlobalData sharedInstance].jl_educationPiC Withzs1PicUrl:[GlobalData sharedInstance].jl_zs1 Withzs2PicUrl:[GlobalData sharedInstance].jl_zs2 Withzs3PicUrl:[GlobalData sharedInstance].jl_zs3 WithWorkExp:[GlobalData sharedInstance].jl_workExp WithSkills:[GlobalData sharedInstance].jl_skills];
+    self.postResumeApi.sessionDelegate = self;
+    [self.postResumeApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+        
+        MY_PostReumeApi *result = (MY_PostReumeApi *)request;
+        if(result.isCorrectResult)
+        {
+            [self uploadImageWithImage:[GlobalData sharedInstance].cardPicFont withFileName:[GlobalData sharedInstance].cardPicFontName];
+            [self uploadImageWithImage:[GlobalData sharedInstance].cardPicBack withFileName:[GlobalData sharedInstance].cardPicBackName];
+            [self uploadImageWithImage:[GlobalData sharedInstance].educationPiC withFileName:[GlobalData sharedInstance].educationPiCName];
+            [XHToast showCenterWithText:@"保存成功"];
+//            [self.navigationController popToRootViewControllerAnimated:YES];
+            [GlobalData sharedInstance].jl_name = nil;
+            [GlobalData sharedInstance].jl_sex = nil;
+            [GlobalData sharedInstance].jl_birth = nil;
+            [GlobalData sharedInstance].jl_education = nil;
+            [GlobalData sharedInstance].jl_phone = nil;
+            [GlobalData sharedInstance].jl_cardPicFont = nil;
+            [GlobalData sharedInstance].jl_cardPicBack = nil;
+            [GlobalData sharedInstance].jl_educationPiC = nil;
+            [GlobalData sharedInstance].jl_zs1 = nil;
+            [GlobalData sharedInstance].jl_zs2 = nil;
+            [GlobalData sharedInstance].jl_zs3 = nil;
+            [GlobalData sharedInstance].jl_workExp = nil;
+            [GlobalData sharedInstance].jl_skills = nil;
+        } else{
+            [XHToast showCenterWithText:@"保存失败"];
+        }
+    } failure:^(YTKBaseRequest *request) {
+        NSLog(@"上传失败");
+        
+    }];
+}
+
 
 #pragma mark - customFuncs
-- (IBAction)gotoResume:(id)sender {
-    NSString *num = [UserDefault objectForKey:JLKey];
-    if ([num isEqualToString:@"1"]) {
-        
-    }
-    MyInfo1ViewController *ctrll = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MyInfo1ViewController"];
-    [self.navigationController pushViewController:ctrll animated:YES];
+//跳转基本信息详情页
+- (IBAction)baseInformationBtnClicked:(id)sender {
+    MyInfo1ViewController *ctr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MyInfo1ViewController"];
+    [self.navigationController pushViewController:ctr animated:YES];
 }
+
+//跳转证书页
+- (IBAction)certificateBtnClicked:(id)sender {
+    MyInfo2ViewController *ctr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MyInfo2ViewController"];
+    [self.navigationController pushViewController:ctr animated:YES];
+}
+
+//跳转工作经历
+- (IBAction)workExperienceBtnClicked:(id)sender {
+    WorkExperienceViewController *ctr =[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WorkExperienceViewController"];
+    [self.navigationController pushViewController:ctr animated:YES];
+
+}
+- (IBAction)skillsBtnClicked:(id)sender {
+    
+    MyInfo3ViewController *ctr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MyInfo3ViewController"];
+    [self.navigationController pushViewController:ctr animated:YES];
+  
+}
+
 
 #pragma mark - Networkapis
 - (void)detailApiNet {

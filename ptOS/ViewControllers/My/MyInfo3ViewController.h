@@ -10,8 +10,6 @@
 
 @interface MyInfo3ViewController : BaseViewController
 
-@property (nonatomic,strong)UIImage *image1;
-@property (nonatomic,strong)UIImage *image2;
-@property (nonatomic,strong)UIImage *image3;
+
 
 @end

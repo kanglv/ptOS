@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>应用需要访问您的录音权限</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -53,6 +49,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0.1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -93,6 +91,8 @@
 	<string>亲，允许访问相机才能更换头像哦</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>打开定位才能顺利导航哦</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>应用需要访问您的录音权限</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>亲，允许访问相册才能更换头像哦</string>
 	<key>UIBackgroundModes</key>

@@ -174,7 +174,7 @@
                   moduleName = "ptOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lvkang/oooo/ptOS/Views/Putong/PT_NoticeTableViewCell.h"
-                  timestampString = "512448113.081966"
+                  timestampString = "512553363.707808"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -189,7 +189,7 @@
                   moduleName = "ptOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lvkang/oooo/ptOS/Views/Putong/PT_NoticeTableViewCell.h"
-                  timestampString = "512448113.085504"
+                  timestampString = "512553363.712763"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -212,6 +212,22 @@
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "-getJobList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ptOS/ViewControllers/My/My_MyAccountViewController.m"
+            timestampString = "512554103.913712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-changNameApiNetWithName:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

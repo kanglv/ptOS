@@ -7,11 +7,13 @@
 //
 
 #import "MyInfo2ViewController.h"
-#import "MyInfo3ViewController.h"
+
+#import "AFHTTPRequestOperation.h"
 #import "AJPhotoPickerViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "AJPhotoBrowserViewController.h"
+#import "OSSManager.h"
 #import "UIButton+WebCache.h"
 
 @interface MyInfo2ViewController ()<AJPhotoPickerProtocol,AJPhotoBrowserDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -58,7 +60,7 @@
         _is3 = YES;
     }
     
-    [self.navigationItem setTitle:@"基本信息"];
+    [self.navigationItem setTitle:@"证书"];
     
     n = 0;
     m = 0;
@@ -68,7 +70,7 @@
     ZRViewRadius(self.twoLabel, 12.5);
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"下一步" forState:UIControlStateNormal];
+    [btn setTitle:@"保存" forState:UIControlStateNormal];
     [btn setTitleColor:WhiteColor forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(next) forControlEvents:UIControlEventTouchUpInside];
     [btn setFrame:CGRectMake(0, 0, 60, 40)];
@@ -77,15 +79,6 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = rightItem;
     
-    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn1 setTitle:@"上一步" forState:UIControlStateNormal];
-    [btn1 setTitleColor:WhiteColor forState:UIControlStateNormal];
-    [btn1 addTarget:self action:@selector(down) forControlEvents:UIControlEventTouchUpInside];
-    [btn1 setFrame:CGRectMake(0, 0, 60, 40)];
-    btn.titleLabel.font = [UIFont systemFontOfSize:16];
-    
-    UIBarButtonItem *rightItem1 = [[UIBarButtonItem alloc]initWithCustomView:btn1];
-    self.navigationItem.leftBarButtonItem = rightItem1;
 }
 
 
@@ -95,28 +88,18 @@
     
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark - customFuncs
 - (void)next {
-    MyInfo3ViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MyInfo3ViewController"];
+   
     if (!_is1 || !_is2 || !_is3) {
         [XHToast showCenterWithText:@"请填写完整"];
         return;
     }
-    UIImage *image1 = self.frontBtn.imageView.image;
-    UIImage *image2 = self.backBtn.imageView.image;
-    UIImage *image3 = self.educationBtn.imageView.image;
-    ctrl.image1 = image1;
-    ctrl.image2 = image2;
-    ctrl.image3 = image3;
-    [self.navigationController pushViewController:ctrl animated:YES];
+    [XHToast showCenterWithText:@"保存成功"];
+//    UIImage *image1 = self.frontBtn.imageView.image;
+//    UIImage *image2 = self.backBtn.imageView.image;
+//    UIImage *image3 = self.educationBtn.imageView.image;
+    
 }
 
 - (void)down {
@@ -293,6 +276,9 @@
         block(status);
     }
 }
+
+
+
 
 
 

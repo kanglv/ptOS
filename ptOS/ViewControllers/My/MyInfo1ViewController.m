@@ -17,7 +17,7 @@
     BOOL _isBirth;
     BOOL _isEdu;
 }
-@property (weak, nonatomic) IBOutlet UILabel *oneLabel;
+
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
 @property (weak, nonatomic) IBOutlet UIView *manLeftBtn;
 @property (weak, nonatomic) IBOutlet UIButton *manBtn;
@@ -44,7 +44,7 @@
     _isBirth = NO;
     _isEdu = NO;
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"下一步" forState:UIControlStateNormal];
+    [btn setTitle:@"保存" forState:UIControlStateNormal];
     [btn setTitleColor:WhiteColor forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(next) forControlEvents:UIControlEventTouchUpInside];
     [btn setFrame:CGRectMake(0, 0, 60, 40)];
@@ -85,6 +85,8 @@
     }
     if (isValidStr([GlobalData sharedInstance].jl_phone)) {
         self.phoneNumLabel.text = [GlobalData sharedInstance].jl_phone;
+    } else {
+        self.phoneNumLabel.text = [GlobalData sharedInstance].selfInfo.userName;
     }
     NSString *sex = [GlobalData sharedInstance].jl_sex;
     if ([sex isEqualToString:@"0"]) {
@@ -108,7 +110,7 @@
 - (void)initUI {
     ZRViewRadius(self.manLeftBtn, 8);
     ZRViewRadius(self.womenLetfBtn, 8);
-    ZRViewRadius(self.oneLabel, 12.5);
+ 
     
     [self.riliBtn addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
     [self.xueliBtn addTarget:self action:@selector(setEdu) forControlEvents:UIControlEventTouchUpInside];
@@ -136,8 +138,7 @@
     }
     [GlobalData sharedInstance].jl_name = self.nameTF.text;
     [GlobalData sharedInstance].jl_phone = [GlobalData sharedInstance].selfInfo.phone;
-    MyInfo2ViewController *ctrl =[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MyInfo2ViewController"];
-    [self.navigationController pushViewController:ctrl animated:YES];
+    
 }
 
 - (void)setEdu {
@@ -167,9 +168,15 @@
     __weak typeof(self) weakSelf = self;
     [_selectDatePicker didFinishSelectedDate:^(NSDate *selectedDate) {
         NSString *time = [weakSelf dateStringWithDate:selectedDate DateFormat:@"yyyy年MM月dd日"];
-        [weakSelf.riliBtn setTitle:time forState:UIControlStateNormal];
-        [GlobalData sharedInstance].jl_birth = time;
-        _isBirth = YES;
+        //如果所选日期大于当前日期，提示错误
+        NSDate *now = [NSDate date];
+        if([selectedDate timeIntervalSinceDate:now] > 0.0){
+            [XHToast showCenterWithText:@"出生时间选择错误，请重试"];
+        } else{
+            [weakSelf.riliBtn setTitle:time forState:UIControlStateNormal];
+            [GlobalData sharedInstance].jl_birth = time;
+            _isBirth = YES;
+        }
     }];
     [self.view endEditing:YES];
 }
