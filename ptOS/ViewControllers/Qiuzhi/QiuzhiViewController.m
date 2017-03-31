@@ -46,7 +46,7 @@
 
 #import <AVFoundation/AVFoundation.h>
 
-#define GMap_APPKEY @"04c0b7d2c1edacac03e5527fd3cb4b86"
+#define GMap_APPKEY @"5962aa36d4be64ae6dcf7c018ef5dc78"
 
 //creat by kanglv
 #import "SelectCityViewController.h"
@@ -143,15 +143,10 @@
     
     self.isSearch = NO;
     self.needNav = NO;
-   
-    
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self getCoor];
-    });
+    [self getCoor];
     [self initUI];
     
-    [self getResume];
+//    [self getResume];
     
     NSLog(@"%@",[NSBundle mainBundle].bundleIdentifier);
 }
@@ -293,7 +288,6 @@
         
         if (error)
         {
-            NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
             
             if (error.code == AMapLocationErrorLocateFailed)
             {
@@ -301,19 +295,25 @@
             }
         }
         
-        NSLog(@"location:%@", location);
         [GlobalData sharedInstance].coordinate = [NSString stringWithFormat:@"%f,%f",location.coordinate.latitude,location.coordinate.longitude];
-        NSLog(@"%@",[GlobalData sharedInstance].coordinate);
         
         if (regeocode)
         {
-            NSLog(@"reGeocode:%@", regeocode);
-            [GlobalData sharedInstance].location = regeocode.formattedAddress;
-            //定位到当前城市
-            self.selectedCity = regeocode.city;
+            NSLog(@"reGeocode:%@", regeocode.city);
+            [GlobalData sharedInstance].location = [regeocode.city substringToIndex:2];
+            [GlobalData sharedInstance].indexLocation = regeocode.formattedAddress;
+            
+            //只取前两个，不要“市”
+            
+            [_jobsNavView.locationBtn  setTitle:[GlobalData sharedInstance].location forState:UIControlStateNormal];
         }
+        
+        //定位完成之后调用获取数据接口
+        [self jobsListApiNet];
+        [self CompanyListApiNet];
     }];
 }
+
 - (void) addLaunch {
     self.imgView = [[UIImageView alloc]init];
     NSArray *gifArray = [NSArray arrayWithObjects:[UIImage imageNamed:@"dengluye2"],
@@ -346,8 +346,8 @@
     self.company_tbView.hidden = YES;
     
     [self setFrame];
-    [self jobsListApiNet];
-    [self CompanyListApiNet];
+//    [self jobsListApiNet];
+//    [self CompanyListApiNet];
 }
 
 //点击左上角位置
@@ -777,8 +777,7 @@
                 [self.rightDataArray addObjectsFromArray:[result getCompanyList]];
             }
             [self.company_tbView reloadData];
-            NSInteger count = [result getCompanyList].count;
-            if (count == 0) {
+            if (self.rightDataArray.count == 0) {
                 if(!self.company_tbView.hidden){
                     [self addPlaceHolderView];
                 }

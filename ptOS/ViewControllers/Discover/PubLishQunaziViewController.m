@@ -85,7 +85,7 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = rightItem;
     
-    self.addressLabel.text = [GlobalData sharedInstance].location;
+    self.addressLabel.text = [GlobalData sharedInstance].indexLocation;
     
     [self.textView jk_addPlaceHolder:@"  说点什么吧"];
 }

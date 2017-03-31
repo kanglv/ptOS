@@ -5088,7 +5088,6 @@
 			children = (
 				F08FC4FF1D83F1F10000B1A5 /* H5 */,
 				F00DE8A61D758C4A004D43D0 /* My */,
-				F00DE8A71D758C4A004D43D0 /* Putong */,
 				F00DE8A81D758C4A004D43D0 /* Qiuzhi */,
 				F00DE8A11D758705004D43D0 /* Tabbar */,
 				F0C30EE71D73D40A007941A1 /* Login */,
@@ -5254,7 +5253,8 @@
 				5D585B151E77E54700569D33 /* PT_ConcernViewController.h */,
 				5D585B161E77E54700569D33 /* PT_ConcernViewController.m */,
 			);
-			path = Putong;
+			name = Putong;
+			path = ../Putong;
 			sourceTree = "<group>";
 		};
 		F00DE8A81D758C4A004D43D0 /* Qiuzhi */ = {
@@ -5895,6 +5895,7 @@
 		F08FC4FF1D83F1F10000B1A5 /* H5 */ = {
 			isa = PBXGroup;
 			children = (
+				F00DE8A71D758C4A004D43D0 /* Putong */,
 				F08FC5001D83F1FC0000B1A5 /* H5ViewController.h */,
 				F08FC5011D83F1FC0000B1A5 /* H5ViewController.m */,
 			);

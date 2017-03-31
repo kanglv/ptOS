@@ -109,6 +109,8 @@
 
 
 - (void)videoAction {
+    
+    
     AVPlayerController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"AVPlayerController"];
     ctrl.url = _videoUrl;
     if (_videoUrl) {

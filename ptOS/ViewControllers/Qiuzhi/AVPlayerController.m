@@ -8,6 +8,8 @@
 
 #import "AVPlayerController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "Reachability.h"
+#import "AFNetworking.h"
 
 //播放地址
 //static NSString *urlString = @"http://file.bmob.cn/M02/9D/18/oYYBAFZJkRqAYlYAADGhrfBK7Tg193.mp4";
@@ -57,18 +59,73 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    //判断当前网络
+    Reachability *reachability   = [Reachability reachabilityWithHostname:@"www.apple.com"];
+    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+    switch(internetStatus){
+        case NotReachable: // 没有网络(断网)
+            [XHToast showCenterWithText:@"请检查网络"];
+            break;
+        case ReachableViaWWAN: // 手机自带网络
+            [self showNoticeView];
+            break;
+        case ReachableViaWiFi: // WIFI
+            [self addPlayer];
+            break;
+        default:
+            break;
+    }
+    
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-    //判断当前网络
-    [self addPlayer];
+    
+//    AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];
+//    
+//    [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        switch(status){
+//            case AFNetworkReachabilityStatusUnknown: // 未知网络
+//                 [XHToast showCenterWithText:@"未知网络"];
+//                break;
+//            case AFNetworkReachabilityStatusNotReachable: // 没有网络(断网)
+//                [XHToast showCenterWithText:@"请检查网络"];
+//                break;
+//            case AFNetworkReachabilityStatusReachableViaWWAN: // 手机自带网络
+//                [self showNoticeView];
+//                break;
+//            case AFNetworkReachabilityStatusReachableViaWiFi: // WIFI
+//                [self addPlayer];
+//                break;
+//        }
+//    }];
+    
+//    [self addPlayer];
     
     self.videoTitleLabel.text = @"公司环境";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setHideOrShowOrPause)];
     [self.view addGestureRecognizer:tap];
     
 }
+
+- (void)showNoticeView{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您正在使用2G/3G/4G网络，观看视频会消耗大量流量，可能导致运营商向您收取更多费用，强烈建议您连接Wi-Fi后再观看视频" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    
+                        [self addPlayer];
+                    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 //添加播放器
 - (void)addPlayer{

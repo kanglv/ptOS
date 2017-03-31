@@ -108,7 +108,7 @@
 
     
    
-    self.locationLabel.text = [GlobalData sharedInstance].location; //显示当前定位
+    self.locationLabel.text = [GlobalData sharedInstance].indexLocation; //显示当前定位
     
 }
 

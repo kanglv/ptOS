@@ -27,7 +27,7 @@
 #import "WXApi.h"
 
 #define UM_APPKEY @"57d5609b67e58ecf2a001f3c"
-#define GMap_APPKEY @"04c0b7d2c1edacac03e5527fd3cb4b86"
+#define GMap_APPKEY @"5962aa36d4be64ae6dcf7c018ef5dc78"
 #define JPush_APPKEY @"df0db706713b07e6aaff7800"
 #define Share_APPKEY @"1772c42427f4c"
 

@@ -14,6 +14,8 @@
 
 @property (nonatomic,strong)NSString *coordinate;
 
+@property (nonatomic, strong)NSString *indexLocation;
+
 @property (nonatomic,strong)NSString *location; //当前选择城市
 
 @property (nonatomic, strong)NSString *minSalary; //最低薪资
