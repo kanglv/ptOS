@@ -693,6 +693,8 @@
                 
                 
                 [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
+                 [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+                cell.commentBtn.tag = indexPath.row;
                 
                 if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
                     cell.shuView.hidden = YES;
@@ -737,6 +739,8 @@
                 
                 
                 [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
+                 cell.commentBtn.tag = indexPath.row;
+                [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [cell.showImage addTarget:self action:@selector(showImage:) forControlEvents:UIControlEventTouchUpInside];
                 cell.showImage.tag = indexPath.row;
                 if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
@@ -790,7 +794,8 @@
             cell.time.text = [self caculateSpeechTime:model.imgUrl withMessageId:model.tzId];
 
         
-            
+            cell.commentBtn.tag = indexPath.row;
+            [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
             [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
             
             if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
@@ -834,7 +839,8 @@
             [cell.zanNumLabel setTitle:model.greatNum forState:UIControlStateNormal];
             [cell.commentNumLabel setTitle:model.commentNum forState:UIControlStateNormal];
             [cell.addressLabel setTitle:model.address forState:UIControlStateNormal];
-            
+            cell.commentBtn.tag = indexPath.row;
+            [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
             
             [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -898,7 +904,8 @@
                     [cell.zanNumLabel setTitle:model.greatNum forState:UIControlStateNormal];
                     [cell.commentNumLabel setTitle:model.commentNum forState:UIControlStateNormal];
                     [cell.addressLabel setTitle:model.address forState:UIControlStateNormal];
-                    
+                    cell.commentBtn.tag = indexPath.row;
+                    [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
                     
                     [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
                     
@@ -943,7 +950,8 @@
                     [cell.commentNumLabel setTitle:model.commentNum forState:UIControlStateNormal];
                     [cell.addressLabel setTitle:model.address forState:UIControlStateNormal];
                     
-                    
+                    cell.commentBtn.tag = indexPath.row;
+                    [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
                     [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
                     [cell.showImage addTarget:self action:@selector(showImage:) forControlEvents:UIControlEventTouchUpInside];
                     cell.showImage.tag = indexPath.row;
@@ -1002,7 +1010,8 @@
                 cell.time.text = [self caculateSpeechTime:model.imgUrl withMessageId:model.tzId];
                     
                 
-                
+                cell.commentBtn.tag = indexPath.row;
+                [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
                 
                 if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
@@ -1046,7 +1055,8 @@
                 [cell.commentNumLabel setTitle:model.commentNum forState:UIControlStateNormal];
                 [cell.addressLabel setTitle:model.address forState:UIControlStateNormal];
                 
-                
+                cell.commentBtn.tag = indexPath.row;
+                [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
                 
                 if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
@@ -1075,6 +1085,34 @@
         return nil;
     }
 }
+
+
+- (void)commentBtnClicked:(UIButton *)sender {
+    if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+    {
+        [self presentLoginCtrl];
+        return;
+    }
+    
+    Discover_DetailViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Discover_DetailViewController"];
+    FX_ComListModel *model;
+    if (!self.left_tbView.hidden) {
+        if (_isSearch) {
+            model = self.searchDataArray[sender.tag];
+        }else {
+            model = self.leftDataArray[sender.tag];
+        }
+        
+    }else {
+        
+        model = self.rightDataArray[sender.tag - 1];
+    }
+    NSLog(@"%@",model.tzId);
+    ctrl.tzId = model.tzId;
+    [self.navigationController pushViewController:ctrl animated:YES];
+
+}
+
 
 //计算语音时长
 - (NSString *)caculateSpeechTime:(NSString *)url withMessageId:(NSString *)messageId{

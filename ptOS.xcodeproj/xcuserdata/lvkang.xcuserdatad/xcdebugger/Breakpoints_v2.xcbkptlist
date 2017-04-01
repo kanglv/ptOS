@@ -174,12 +174,12 @@
                   moduleName = "ptOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lvkang/oooo/ptOS/Views/Putong/PT_NoticeTableViewCell.h"
-                  timestampString = "512660033.923303"
+                  timestampString = "512715563.664349"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "12">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -189,12 +189,12 @@
                   moduleName = "ptOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lvkang/oooo/ptOS/Views/Putong/PT_NoticeTableViewCell.h"
-                  timestampString = "512660033.926328"
+                  timestampString = "512715563.6672"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "64">
+                  offsetFromSymbolStart = "49">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -221,13 +221,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ptOS/ViewControllers/My/My_MyAccountViewController.m"
-            timestampString = "512554103.913712"
+            filePath = "ptOS/ViewControllers/My/ChangePSWViewController.m"
+            timestampString = "512663451.457449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-changNameApiNetWithName:"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-changePwdNet:withNPWD:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

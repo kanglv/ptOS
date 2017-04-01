@@ -437,7 +437,8 @@
                 [cell.commentNumLabel setTitle:model.commentNum forState:UIControlStateNormal];
                 [cell.addressLabel setTitle:model.address forState:UIControlStateNormal];
                 
-                
+                cell.commentBtn.tag = indexPath.row;
+                [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
                 [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
                 
                 if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
@@ -464,6 +465,25 @@
                 
             }
     
+}
+
+- (void)commentBtnClicked:(UIButton *)sender {
+    if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+    {
+        [self presentLoginCtrl];
+        return;
+    }
+    GroundNoImageTableViewCell *cell = (GroundNoImageTableViewCell *)sender.superview.superview.superview;
+    NSIndexPath *indexpath = [self.left_tbView indexPathForCell:cell];
+    FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]init];
+    if (_isSearch) {
+        model = self.searchDataArray[indexpath.row];
+    }else {
+        model = self.leftDataArray[indexpath.row];
+    }
+    Discover_DetailViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Discover_DetailViewController"];
+    ctrl.tzId = model.tzId;
+    [self.navigationController pushViewController:ctrl animated:YES];
 }
 
 
@@ -581,14 +601,14 @@
             }else {
                 [self.leftDataArray addObjectsFromArray:[result getCompanyOtherNotice]];
             }
-            [self.left_tbView reloadData];
-            NSInteger count = [result getCompanyOtherNotice].count;
-            if (count == 0) {
+           
+            if (self.leftDataArray.count == 0) {
                 [self addPlaceholder];
                 [(MJRefreshAutoFooter *)self.left_tbView.mj_footer setHidden:YES];
             }else {
                 [(MJRefreshAutoFooter *)self.left_tbView.mj_footer setHidden:NO];
             }
+            [self.left_tbView reloadData];
         }else {
             if (_leftPage > 1) {
                 _leftPage --;

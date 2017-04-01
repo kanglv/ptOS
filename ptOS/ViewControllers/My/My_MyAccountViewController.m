@@ -74,13 +74,13 @@
 }
 
 #pragma mark - NetworkApis
-- (void)changNameApiNetWithName:(NSString *)name {
+- (void)changNameApiNetWithName{
     if(self.changeNameApi&& !self.changeNameApi.requestOperation.isFinished)
     {
         [self.changeNameApi stop];
     }
     
-    self.changeNameApi = [[My_ChangeNIcknameApi alloc] initWithNickname:name];
+    self.changeNameApi = [[My_ChangeNIcknameApi alloc] initWithNickname:self.name];
     self.changeNameApi.sessionDelegate = self;
     [self.changeNameApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         
@@ -130,8 +130,10 @@
         }else if (![ControlUtil validateNickName:alertController.textFields.firstObject.text]) {
             [SVProgressHUD showImage:nil status:@"4-16个字符，汉字为2个字符"];
         }else {
-            [self changNameApiNetWithName:alertController.textFields.firstObject.text];
+           
             self.name = alertController.textFields.firstObject.text;
+            NSLog(@"%@",self.name);
+             [self changNameApiNetWithName];
         }
         
     }];

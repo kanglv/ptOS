@@ -213,7 +213,7 @@
             //云信的帐号密码获取？
             [[[NIMSDK sharedSDK] loginManager] login:[GlobalData sharedInstance].selfInfo.userId
                                                token:[[GlobalData sharedInstance].selfInfo.userId tokenByPassword] completion:^(NSError * _Nullable error) {
-                                                
+                 //18626051857
                                                    
                                                    
                                                }];

@@ -296,6 +296,8 @@
             
             [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
             
+            [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            
             if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
                 cell.shuView.hidden = YES;
             }else {
@@ -339,7 +341,7 @@
             
             
             [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
-            
+             [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
             if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
                 cell.shuView.hidden = YES;
             }else {
@@ -400,7 +402,7 @@
             height = 60;
         }
         
-        
+        [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         if ([model.isLike isEqualToString:@"1"]) {
             cell.zanBtn.selected = YES;
         }else {
@@ -430,7 +432,7 @@
         [cell.commentNumLabel setTitle:model.commentNum forState:UIControlStateNormal];
         [cell.addressLabel setTitle:model.address forState:UIControlStateNormal];
         
-        
+         [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [cell.shareBtn addTarget:self action:@selector(shareActionWithContent:) forControlEvents:UIControlEventTouchUpInside];
         
         if ([model.companyName isEqualToString:@""] || model.companyName == nil || [model.companyName isKindOfClass:[NSNull class]]) {
@@ -459,7 +461,15 @@
     
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *dic = self.leftDataArray[indexPath.row ];
+    FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]initWithDic:dic];
+    Discover_DetailViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Discover_DetailViewController"];
+    ctrl.tzId = model.tzId;
+    [self.navigationController pushViewController:ctrl animated:YES];
+    
+    
+}
 
 - (void)playSpeech:(UIButton *)sender{
     //广场列表的播放录音
@@ -498,6 +508,25 @@
     }
 }
 
+
+- (void)commentBtnClicked:(UIButton *)sender {
+    if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+    {
+        [self presentLoginCtrl];
+        return;
+    }
+    GroundNoImageTableViewCell *cell = (GroundNoImageTableViewCell *)sender.superview.superview.superview;
+    NSIndexPath *indexpath = [self.left_tbView indexPathForCell:cell];
+     FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]init];
+    if (_isSearch) {
+        model = self.searchDataArray[indexpath.row];
+    }else {
+        model = self.leftDataArray[indexpath.row];
+    }
+    Discover_DetailViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Discover_DetailViewController"];
+    ctrl.tzId = model.tzId;
+    [self.navigationController pushViewController:ctrl animated:YES];
+}
 
 
 - (void)dianzanActionNO:(UIButton *)sender {
@@ -632,15 +661,7 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *dic = self.leftDataArray[indexPath.row ];
-    FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]initWithDic:dic];
-    Discover_DetailViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Discover_DetailViewController"];
-    ctrl.tzId = model.tzId;
-    [self.navigationController pushViewController:ctrl animated:YES];
 
-    
-}
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

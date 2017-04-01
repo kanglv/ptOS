@@ -3300,13 +3300,6 @@
 			path = Categorys;
 			sourceTree = "<group>";
 		};
-		2C0A2AD71E6EAF6F006CD3E1 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		2C0A2D031E6EC162006CD3E1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -4926,7 +4919,6 @@
 		F00D4D2C1D7094690031A6C1 /* ptOS */ = {
 			isa = PBXGroup;
 			children = (
-				2C0A2AD71E6EAF6F006CD3E1 /* New Group */,
 				2C0A24061E6DAC38006CD3E1 /* 网易云demo */,
 				2C0A21051E6D7440006CD3E1 /* 网易云信开源NIMKit */,
 				2C0A20AE1E6D71A8006CD3E1 /* 网易云信SDK */,
@@ -5086,6 +5078,7 @@
 		F00D4D681D70991B0031A6C1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F00DE8A71D758C4A004D43D0 /* Putong */,
 				F08FC4FF1D83F1F10000B1A5 /* H5 */,
 				F00DE8A61D758C4A004D43D0 /* My */,
 				F00DE8A81D758C4A004D43D0 /* Qiuzhi */,
@@ -5253,8 +5246,7 @@
 				5D585B151E77E54700569D33 /* PT_ConcernViewController.h */,
 				5D585B161E77E54700569D33 /* PT_ConcernViewController.m */,
 			);
-			name = Putong;
-			path = ../Putong;
+			path = Putong;
 			sourceTree = "<group>";
 		};
 		F00DE8A81D758C4A004D43D0 /* Qiuzhi */ = {
@@ -5895,7 +5887,6 @@
 		F08FC4FF1D83F1F10000B1A5 /* H5 */ = {
 			isa = PBXGroup;
 			children = (
-				F00DE8A71D758C4A004D43D0 /* Putong */,
 				F08FC5001D83F1FC0000B1A5 /* H5ViewController.h */,
 				F08FC5011D83F1FC0000B1A5 /* H5ViewController.m */,
 			);

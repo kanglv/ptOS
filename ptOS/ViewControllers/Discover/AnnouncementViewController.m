@@ -73,7 +73,7 @@
     if (self.getNoticeListNet && !self.getNoticeListNet.requestOperation.isFinished) {
         [self.getNoticeListNet stop];
     }
-    self.getNoticeListNet = [[FX_GetNoticeListApi alloc]initWithPage:[NSString stringWithFormat:@"%ld",(long)_leftPage] withSessionId:[GlobalData sharedInstance].selfInfo.sessionId withType:@"3" withSearchKey:self.searchNavView.searchTF.text];
+    self.getNoticeListNet = [[FX_GetNoticeListApi alloc]initWithPage:[NSString stringWithFormat:@"%ld",(long)_leftPage] withSessionId:[GlobalData sharedInstance].selfInfo.sessionId withType:@"3" withSearchKey:@"1"];
     self.getNoticeListNet .netLoadingDelegate = self;
     self.getNoticeListNet .noNetWorkingDelegate = self;
     [self.getNoticeListNet  startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -86,14 +86,15 @@
             }else {
                 [self.leftDataArray addObjectsFromArray:[result getNoticeList]];
             }
-            [self.tbView reloadData];
-            NSInteger count = [result getNoticeList].count;
-            if (count == 0) {
+            
+//            NSInteger count = [result getNoticeList].count;
+            if (self.leftDataArray.count == 0) {
                 [self addPlaceholder];
                 [(MJRefreshAutoFooter *)self.tbView.mj_footer setHidden:YES];
             }else {
                 [(MJRefreshAutoFooter *)self.tbView.mj_footer setHidden:NO];
             }
+            [self.tbView reloadData];
         }else {
             [self addPlaceholder];
             if (_leftPage > 1) {
@@ -136,16 +137,6 @@
     
     [self.view addSubview:self.tbView];
     
-//    [self.view addSubview:self.searchNavView];
-//    
-//    [self.view addSubview:self.navView];
-//    
-//    
-//    
-//    
-//    [self setFrame];
-//    
-    
 }
 
 
@@ -186,41 +177,7 @@
     return cell;
 }
 
-//- (void)searchBtnPress {
-//    
-//    self.navView.hidden = YES;
-//    self.searchNavView.hidden = NO;
-//    self.searchView1.hidden = YES;
-//    self.searchView2.hidden = YES;
-//    
-//    
-//    self.isSearch = YES;
-//    [self.searchDataArray removeAllObjects];
-//    
-//    [self getDataApiNet];
-//    [self.tbView reloadData];
-//    [self.searchNavView.searchTF becomeFirstResponder];
-//}
-//
-//- (void)cancelSearch {
-//    [self.view endEditing:YES];
-//    self.searchNavView.hidden = YES;
-//    self.navView.hidden = NO;
-//    self.searchView1.hidden = NO;
-//    self.searchView2.hidden = NO;
-//    
-//    [self.searchDataArray removeAllObjects];
-//    
-//    self.isSearch = NO;
-//    
-//    [self.tbView reloadData];
-//}
-//
-//
-//
-//- (void)back{
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
+
 
 - (UITableView *)tbView {
     if (_tbView == nil) {
@@ -248,108 +205,6 @@
     return _tbView;
 }
 
-//
-//- (DiscoverNavView *)navView {
-//    if (_navView == nil) {
-//        _navView = [[NSBundle mainBundle] loadNibNamed:@"DiscoverNavView" owner:nil options:nil].lastObject;
-//        
-//        [_navView.publishBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-//        [_navView.publishBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-//        [_navView.groundBtn2 setTitle:@"通知公告" forState:UIControlStateNormal];
-//        _navView.groundBtn.hidden = YES;
-//        _navView.companyBtn.hidden = YES;
-//        _navView.searchBtn.hidden = YES;
-//    }
-//    return _navView;
-//}
-//
-//
-//- (DisCover_SearchNavView *)searchNavView {
-//    if (_searchNavView == nil) {
-//        _searchNavView = [[NSBundle mainBundle] loadNibNamed:@"DisCover_SearchNavView" owner:nil options:nil].lastObject;
-//        UIImageView *leftView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 0, 15, 15)];
-//        leftView.image = [UIImage imageNamed:@"icon_shousuo"];
-//        UIView *reaLeftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 45, 15)];
-//        [reaLeftView addSubview:leftView];
-//        _searchNavView.searchTF.leftView = reaLeftView;
-//        _searchNavView.searchTF.leftViewMode = UITextFieldViewModeAlways;
-//        UIImageView *rightView = [[UIImageView alloc]initWithFrame:CGRectMake(21, 1.5, 12, 12)];
-//        UIView *reaRightView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 45, 15)];
-//        [reaRightView addSubview:rightView];
-//        rightView.image = [UIImage imageNamed:@"icon_guanbi"];
-//        _searchNavView.searchTF.rightView = reaRightView;
-//        _searchNavView.searchTF.rightViewMode = UITextFieldViewModeWhileEditing;
-//        _searchNavView.searchTF.delegate = self;
-//        _searchNavView.searchTF.textColor = WhiteColor;
-//        [_searchNavView.searchTF setValue:WhiteColor forKeyPath:@"_placeholderLabel.textColor"];
-//        [_searchNavView.cancelBtn addTarget:self action:@selector(cancelSearch) forControlEvents:UIControlEventTouchUpInside];
-//        _searchNavView.hidden = YES;
-//    }
-//    return _searchNavView;
-//}
-//
-//- (UIView *)searchView1 {
-//    if (_searchView1 == nil) {
-//        _searchView1 = [[UIView alloc]init];
-//        _searchView1.backgroundColor = MainColor;
-//        _searchView1.frame = CGRectMake(0, 64, SCREEN_WIDTH, 40);
-//        
-//        UIView *whiteBgView = [[UIView alloc]initWithFrame:CGRectMake(12, 5, FITWIDTH(351), 30)];
-//        whiteBgView.backgroundColor = RGB(162, 192, 249);
-//        [_searchView1 addSubview:whiteBgView];
-//        
-//        UIImageView *searchImageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2.0 - 33, 7, 15, 16)];
-//        searchImageView.image = [UIImage imageNamed:@"icon_shousuo.png"];
-//        [whiteBgView addSubview:searchImageView];
-//        ZRViewRadius(whiteBgView, 5);
-//        
-//        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(searchImageView.x + 20, searchImageView.y, 25, 16)];
-//        label.font = [UIFont systemFontOfSize:12];
-//        label.text = @"搜索";
-//        label.textColor = [UIColor whiteColor];
-//        [whiteBgView addSubview:label];
-//        
-//        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-//        btn.frame = whiteBgView.frame;
-//        [btn addTarget:self action:@selector(searchBtnPress) forControlEvents:UIControlEventTouchUpInside];
-//        [whiteBgView addSubview:btn];
-//    }
-//    return _searchView1;
-//}
-//
-//- (UIView *)searchView2 {
-//    if (_searchView2 == nil) {
-//        _searchView2 = [[UIView alloc]init];
-//        _searchView2.backgroundColor = MainColor;
-//        _searchView2.frame = CGRectMake(0, 64, SCREEN_WIDTH, 40);
-//        
-//        UIView *whiteBgView = [[UIView alloc]initWithFrame:CGRectMake(12, 5, FITWIDTH(351), 30)];
-//        whiteBgView.backgroundColor = RGB(162, 192, 249);
-//        [_searchView2 addSubview:whiteBgView];
-//        
-//        UIImageView *searchImageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2.0 - 33, 7, 15, 16)];
-//        searchImageView.image = [UIImage imageNamed:@"icon_shousuo.png"];
-//        [whiteBgView addSubview:searchImageView];
-//        ZRViewRadius(whiteBgView, 5);
-//        
-//        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(searchImageView.x + 20, searchImageView.y, 25, 16)];
-//        label.font = [UIFont systemFontOfSize:12];
-//        label.text = @"搜索";
-//        label.textColor = [UIColor whiteColor];
-//        [whiteBgView addSubview:label];
-//        
-//        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-//        btn.frame = whiteBgView.frame;
-//        [btn addTarget:self action:@selector(searchBtnPress) forControlEvents:UIControlEventTouchUpInside];
-//        [whiteBgView addSubview:btn];
-//    }
-//    return _searchView2;
-//}
-//
-//- (void)setFrame {
-//    self.navView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 64);
-//    self.searchNavView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 64);
-//    self.searchView1.frame = CGRectMake(0, 64, SCREEN_WIDTH, 40);
-//}
+
 
 @end

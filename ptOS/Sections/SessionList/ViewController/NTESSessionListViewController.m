@@ -200,11 +200,8 @@
             }
             cell.icon_image.image = [UIImage imageNamed:self.pt_listArr[indexPath.row - 1][@"icon"]];
             cell.titleLabel.text = self.pt_listArr[indexPath.row - 1][@"title"];
-            //        cell.messageLabel.text = @"面试通知";
-            //        cell.timeLabel.text = @"15分钟前";
-            //        cell.timeLabel.hidden = NO;
-            //        cell.tag_numLabel.text = @"12";
-            //        cell.tag_numLabel.hidden = NO;
+            //如何获取求职的数据，知道有新的通知
+            
             
             return cell;
         }
