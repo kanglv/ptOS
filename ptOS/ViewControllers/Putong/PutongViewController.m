@@ -28,6 +28,8 @@
 @property (nonatomic,strong)PT_MsgNumApi *msgNumApi;
 @property (nonatomic,strong)PT_ClearMsgNumApi *clearMsgNumApi;
 
+@property (nonatomic,strong) NSString *msgNumber;
+
 @property (nonatomic,strong)NTESSessionListViewController *NTESSessionListVC;
 @end
 
@@ -60,6 +62,7 @@
     [self initUI];
     
     _NTESSessionListVC = [[NTESSessionListViewController alloc]init];
+    _NTESSessionListVC.messageNumber = self.msgNumber;
     _NTESSessionListVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-46);
     
     [self addChildViewController:_NTESSessionListVC];
@@ -144,9 +147,10 @@
             if ([model.content isEqualToString:@""]) {
                 self.detailLabel.text = @"暂无新的消息";
             }
-            self.timeLabel.text = model.time;
-            
-            self.msgNumLabel.text = model.number;
+//            self.timeLabel.text = model.time;
+//            
+//            self.msgNumLabel.text = model.number;
+            self.msgNumber = model.number;
             if ([model.number isEqualToString:@"0"]) {
                 self.msgNumLabel.hidden = YES;
             }

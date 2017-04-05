@@ -7,7 +7,8 @@
 //
 
 #import "WorkExperienceViewController.h"
-
+#import "UITextView+JKSelect.h"
+#import "UITextView+JKPlaceHolder.h"
 @interface WorkExperienceViewController ()
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 
@@ -30,11 +31,16 @@
     
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = rightItem;
-
+    if([[GlobalData sharedInstance].jl_workExp isEqualToString:@""]){
+        [self.textView jk_addPlaceHolder:@"  记得保存哦"];
+    } else {
+        self.textView.text =[GlobalData sharedInstance].jl_workExp ;
+    }
 }
 
 - (void)next {
     [GlobalData sharedInstance].jl_workExp = self.textView.text;
+    [XHToast showCenterWithText:@"保存成功"];
 }
 
 

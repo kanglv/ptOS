@@ -60,9 +60,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,8 +77,19 @@
     [self.navigationController pushViewController:ctrl animated:YES];
 }
 - (IBAction)pushSettingPress:(id)sender {
-//    My_PushSettingViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"My_PushSettingViewController"];
-//    [self.navigationController pushViewController:ctrl animated:YES];
+    if([[UIApplication sharedApplication] currentUserNotificationSettings].types == UIUserNotificationTypeNone)
+    {
+        //开启推送
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+         self.pushLabel.text = @"已开启";
+    }
+    else
+    {
+        //关闭推送
+        [[UIApplication sharedApplication] unregisterForRemoteNotifications];
+        self.pushLabel.text = @"请前往设置开启推送";
+    }
+    
 }
 - (IBAction)clearMemeryPress:(id)sender {
     

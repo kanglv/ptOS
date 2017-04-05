@@ -179,9 +179,12 @@
         } else if (method == YTKRequestMethodPatch) {
             request.requestOperation = [self requestOperationWithHTTPMethod:@"PATCH" requestSerializer:requestSerializer URLString:url parameters:param];
         } else {
+            
             YTKLog(@"Error, unsupport method type");
             return;
         }
+        
+        
     }
 
     // Set request operation priority

@@ -28,6 +28,7 @@
 #import "AFHTTPRequestOperation.h"
 
 #import "QQLogin.h"
+#import "LoginlogNetApi.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *closeBtn;
@@ -41,6 +42,7 @@
 
 @property (nonatomic,strong)QQLogin *qqLoginApi;
 
+@property (nonatomic,strong)LoginlogNetApi *loginlogApi;
 
 
 @end
@@ -218,6 +220,8 @@
                                                    
                                                }];
             
+            [self loginNetApiNet];
+            
             [JPUSHService setAlias:[GlobalData sharedInstance].selfInfo.userName callbackSelector:nil object:nil];
             
             [self downloadHeaderImage];
@@ -233,6 +237,30 @@
         NSLog(@"登陆失败");
         [JPUSHService setAlias:@"" callbackSelector:nil object:nil];
     }];
+    
+}
+
+- (void)loginlogApiNet{
+    if (self.loginlogApi && !self.loginlogApi.requestOperation.isFinished) {
+        [self.loginlogApi stop];
+    }
+    self.loginlogApi = [[LoginlogNetApi alloc]initWithUid:[GlobalData sharedInstance].selfInfo.userId withLongtitude:[GlobalData sharedInstance].longtitude withLatitude:[GlobalData sharedInstance].latitude  withAddress:[GlobalData sharedInstance].indexLocation];
+    self.loginlogApi.netLoadingDelegate = self;
+    
+    [self.loginlogApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        LoginlogNetApi *result = (LoginlogNetApi *)request;
+        if (result.isCorrectResult) {
+            
+            NSLog(@"上传位置信息成功");
+            
+        }else {
+            
+        }
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSLog(@"上传位置信息失败");
+        [JPUSHService setAlias:@"" callbackSelector:nil object:nil];
+    }];
+
     
 }
 

@@ -443,6 +443,8 @@
 		5D01787F1E751FF900550045 /* GroundGetNoticeListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01787D1E751FF900550045 /* GroundGetNoticeListTableViewCell.m */; };
 		5D0178801E751FF900550045 /* GroundGetNoticeListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D01787E1E751FF900550045 /* GroundGetNoticeListTableViewCell.xib */; };
 		5D0DDC441E7E4CEB006693E9 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DDC431E7E4CEB006693E9 /* NewsDetailViewController.m */; };
+		5D38CCEE1E94A7290029352A /* LoginlogNetApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D38CCED1E94A7290029352A /* LoginlogNetApi.m */; };
+		5D38CCF11E94BE5A0029352A /* PT_OperNoticeNetApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D38CCF01E94BE5A0029352A /* PT_OperNoticeNetApi.m */; };
 		5D3E70751E5C3881004CAD59 /* icon_dguanzhu.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E70741E5C3881004CAD59 /* icon_dguanzhu.png */; };
 		5D3E70771E5C38A0004CAD59 /* icon_xuan_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E70761E5C38A0004CAD59 /* icon_xuan_press.png */; };
 		5D3E70791E5C38A6004CAD59 /* icon_xuan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E70781E5C38A6004CAD59 /* icon_xuan.png */; };
@@ -1869,6 +1871,10 @@
 		5D01787E1E751FF900550045 /* GroundGetNoticeListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroundGetNoticeListTableViewCell.xib; sourceTree = "<group>"; };
 		5D0DDC421E7E4CEB006693E9 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
 		5D0DDC431E7E4CEB006693E9 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
+		5D38CCEC1E94A7290029352A /* LoginlogNetApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginlogNetApi.h; path = ptOS/Views/Discover/LoginlogNetApi.h; sourceTree = SOURCE_ROOT; };
+		5D38CCED1E94A7290029352A /* LoginlogNetApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginlogNetApi.m; path = ptOS/Views/Discover/LoginlogNetApi.m; sourceTree = SOURCE_ROOT; };
+		5D38CCEF1E94BE5A0029352A /* PT_OperNoticeNetApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_OperNoticeNetApi.h; sourceTree = "<group>"; };
+		5D38CCF01E94BE5A0029352A /* PT_OperNoticeNetApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_OperNoticeNetApi.m; sourceTree = "<group>"; };
 		5D3E70741E5C3881004CAD59 /* icon_dguanzhu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_dguanzhu.png; sourceTree = "<group>"; };
 		5D3E70761E5C38A0004CAD59 /* icon_xuan_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_xuan_press.png; sourceTree = "<group>"; };
 		5D3E70781E5C38A6004CAD59 /* icon_xuan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_xuan.png; sourceTree = "<group>"; };
@@ -4858,6 +4864,8 @@
 				5D585B0D1E77E2A000569D33 /* PT_GetMessageNetApi.m */,
 				5D7A9D181E7D191D0032E643 /* PT_ToAddAttentionApi.h */,
 				5D7A9D191E7D191D0032E643 /* PT_ToAddAttentionApi.m */,
+				5D38CCEF1E94BE5A0029352A /* PT_OperNoticeNetApi.h */,
+				5D38CCF01E94BE5A0029352A /* PT_OperNoticeNetApi.m */,
 			);
 			path = PuTong;
 			sourceTree = "<group>";
@@ -6177,6 +6185,8 @@
 				5D5FD60B1E8CEF95001840E9 /* GetcodeAfterApi.m */,
 				5D5FD60C1E8CEF95001840E9 /* GetCodeApi.h */,
 				5D5FD60D1E8CEF95001840E9 /* GetCodeApi.m */,
+				5D38CCEC1E94A7290029352A /* LoginlogNetApi.h */,
+				5D38CCED1E94A7290029352A /* LoginlogNetApi.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -6903,6 +6913,7 @@
 				F07314F81D7BD3400057213C /* My_MyAccountViewController.m in Sources */,
 				2C0A2E831E6EC163006CD3E1 /* UINavigationItem+Swizzling.m in Sources */,
 				2EC3FE291E6EDE1300CDD478 /* NIMContactSelectViewController.m in Sources */,
+				5D38CCF11E94BE5A0029352A /* PT_OperNoticeNetApi.m in Sources */,
 				2C0A2EFA1E6EC163006CD3E1 /* NetCallChatInfo.m in Sources */,
 				2C0A2EA51E6EC163006CD3E1 /* UIScrollView+NTESPullToRefresh.m in Sources */,
 				F0695B091DACEC9F003CB097 /* UIView+FDCollapsibleConstraints.m in Sources */,
@@ -7244,6 +7255,7 @@
 				F0B2E0F91D81582B00C7A478 /* QZ_CompanyDetailView1.m in Sources */,
 				F00DE8EA1D759081004D43D0 /* AFNetworkReachabilityManager.m in Sources */,
 				F0616B951D76F05A0041599B /* GroundTableViewCell.m in Sources */,
+				5D38CCEE1E94A7290029352A /* LoginlogNetApi.m in Sources */,
 				5D585B0E1E77E2A000569D33 /* PT_GetMessageNetApi.m in Sources */,
 				5D811F5A1E6D4F180024374B /* PT_NearlyListModel.m in Sources */,
 				F0F945CC1D782ACD001AE058 /* PT_MessageViewController.m in Sources */,

@@ -11,5 +11,6 @@
 @interface NTESSessionListViewController : NIMSessionListViewController
 
 @property (nonatomic,strong) UILabel *emptyTipLabel;
+@property (nonatomic,strong)NSString *messageNumber;
 
 @end

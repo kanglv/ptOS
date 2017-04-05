@@ -138,6 +138,7 @@
                 [self presentLoginCtrl];
                 return;
             }
+            
 //            [self clearMsgNumApiNet];
             PT_QiuzhiViewController *ctrl = [[PT_QiuzhiViewController alloc]init];
             [self.navigationController pushViewController:ctrl animated:YES];
@@ -201,7 +202,9 @@
             cell.icon_image.image = [UIImage imageNamed:self.pt_listArr[indexPath.row - 1][@"icon"]];
             cell.titleLabel.text = self.pt_listArr[indexPath.row - 1][@"title"];
             //如何获取求职的数据，知道有新的通知
-            
+            if(indexPath.row ==1){
+                cell.tag_numLabel.text = self.messageNumber;
+            }
             
             return cell;
         }

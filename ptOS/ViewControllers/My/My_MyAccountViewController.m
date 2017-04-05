@@ -81,6 +81,7 @@
     }
     
     self.changeNameApi = [[My_ChangeNIcknameApi alloc] initWithNickname:self.name];
+
     self.changeNameApi.sessionDelegate = self;
     [self.changeNameApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         

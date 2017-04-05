@@ -30,7 +30,7 @@
 #import "LoginNetApi.h"
 #import "QQLogin.h"
 
-
+#import "LoginlogNetApi.h"
 #import "OSSManager.h"
 
 
@@ -76,6 +76,7 @@
 
 
 @property (nonatomic,strong)LoginNetApi *loginApi;
+@property (nonatomic,strong)LoginlogNetApi *loginlogApi;
 
 @property (nonatomic, strong)QZ_JobsNavView *jobsNavView;
 @property (nonatomic, strong)QZ_SearchNavView *searchNavView;
@@ -188,6 +189,31 @@
 }
 
 #pragma mark - customFuncs
+- (void)loginlogApiNet{
+    if (self.loginlogApi && !self.loginlogApi.requestOperation.isFinished) {
+        [self.loginlogApi stop];
+    }
+    self.loginlogApi = [[LoginlogNetApi alloc]initWithUid:[GlobalData sharedInstance].selfInfo.userId withLongtitude:[GlobalData sharedInstance].longtitude withLatitude:[GlobalData sharedInstance].latitude  withAddress:[GlobalData sharedInstance].indexLocation];
+    self.loginlogApi.netLoadingDelegate = self;
+    
+    [self.loginlogApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        LoginlogNetApi *result = (LoginlogNetApi *)request;
+        if (result.isCorrectResult) {
+            
+            NSLog(@"上传位置信息成功");
+            
+        }else {
+            
+        }
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSLog(@"上传位置信息失败");
+        [JPUSHService setAlias:@"" callbackSelector:nil object:nil];
+    }];
+    
+    
+}
+
+
 - (void)autiLoginNet {
     if (self.loginApi && !self.loginApi.requestOperation.isFinished) {
         [self.loginApi stop];
@@ -201,7 +227,7 @@
         [self.loginApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             LoginNetApi *result = (LoginNetApi *)request;
             if (result.isCorrectResult) {
-                
+                [self loginlogApiNet];//同步位置信息
                 
                 [GlobalData sharedInstance].selfInfo = [result getUserInfo];
                 [self downloadHeaderImage];
@@ -294,6 +320,8 @@
                 return;
             }
         }
+        [GlobalData sharedInstance].longtitude = [NSString stringWithFormat:@"%f",location.coordinate.longitude];
+         [GlobalData sharedInstance].latitude = [NSString stringWithFormat:@"%f",location.coordinate.latitude];
         
         [GlobalData sharedInstance].coordinate = [NSString stringWithFormat:@"%f,%f",location.coordinate.latitude,location.coordinate.longitude];
         

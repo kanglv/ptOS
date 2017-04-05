@@ -26,6 +26,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *ziliaoLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *connectPerson;
+@property (strong, nonatomic) IBOutlet UILabel *connectMethod;
 
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *metrialLabel;
@@ -65,8 +67,8 @@
 #pragma mark - Networkapis
 - (void)initUI {
     
-    self.refuseBtn.hidden = YES;
-    self.acceptBtn.hidden = YES;
+//    self.refuseBtn.hidden = YES;
+//    self.acceptBtn.hidden = YES;
     [self detailApiNet];
 }
 
@@ -91,6 +93,8 @@
             self.d_timeLabel.text = model.time;
             self.addressLabel.text = model.address;
             self.metrialLabel.text = model.material;
+            self.connectPerson.text = @"";
+            self.connectMethod.text = @"";
             
             if ([model.material isEqualToString:@""]) {
                 self.metrialLabel.text = @"无";

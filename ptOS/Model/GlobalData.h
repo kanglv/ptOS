@@ -12,6 +12,9 @@
 
 @property (nonatomic,strong)UserInfoModel *selfInfo;
 
+@property (nonatomic,strong)NSString *longtitude;
+@property (nonatomic,strong)NSString *latitude;
+
 @property (nonatomic,strong)NSString *coordinate;
 
 @property (nonatomic, strong)NSString *indexLocation;
