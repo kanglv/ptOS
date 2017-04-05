@@ -53,13 +53,23 @@
     
 }
 
+
 #pragma mark - 扫描二维码成功后结果的代理方法
 - (void)didFinshedScanningQRCode:(NSString *)result{
     
-    [self.navigationController popViewControllerAnimated:NO];
+//    [self.navigationController popViewControllerAnimated:NO];
 
     if ([self.delegate respondsToSelector:@selector(didFinshedScanning:)]) {
-        [self.delegate didFinshedScanning:result];
+        //跳转到指定页面
+        NSURL *url = [NSURL URLWithString:result];
+        if ([[UIApplication sharedApplication]canOpenURL:url]) {
+            [[UIApplication sharedApplication]openURL:url];
+        }else{
+            [XHToast showTopWithText:@"无效二维码"];
+        }
+        
+//        [self.navigationController popViewControllerAnimated:YES];
+//        [self.delegate didFinshedScanning:result];
     }
     else{
         NSLog(@"没有收到扫描结果，看看是不是没有实现协议！");

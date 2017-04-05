@@ -174,7 +174,7 @@
                   moduleName = "ptOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lvkang/oooo/ptOS/Views/Putong/PT_NoticeTableViewCell.h"
-                  timestampString = "513073541.952334"
+                  timestampString = "513077328.943676"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -189,7 +189,7 @@
                   moduleName = "ptOS"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lvkang/oooo/ptOS/Views/Putong/PT_NoticeTableViewCell.h"
-                  timestampString = "513073541.955276"
+                  timestampString = "513077328.946591"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -227,38 +227,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ptOS/Views/Discover/LoginlogNetApi.m"
-            timestampString = "513071818.070141"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "-initWithUid:withLongtitude:withLatitude:withAddress:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ptOS/ViewControllers/Qiuzhi/QiuzhiViewController.m"
-            timestampString = "513073416.956975"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
-            landmarkName = "-autiLoginNet"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
