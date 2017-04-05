@@ -10,6 +10,5 @@
 
 @interface PT_OperNoticeNetApi : BaseNetApi
 
-- (id)initWithUid:(NSString *)uid withTargetUid:(NSString *)targetUid;
-
+- (id)initWithJobresumeId:(NSString *)jobresumeId withJobresumeStatus:(NSString *)jobresumeStatus withOper:(NSString *)oper;
 @end

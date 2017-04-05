@@ -158,6 +158,8 @@
     }
     
     [self loginNetApiNet];
+    [self loginNetApiNet];
+
 }
 - (IBAction)registerBtnPress:(id)sender {
     RegisterViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RegisterViewController"];
@@ -219,8 +221,6 @@
                                                    
                                                    
                                                }];
-            
-            [self loginNetApiNet];
             
             [JPUSHService setAlias:[GlobalData sharedInstance].selfInfo.userName callbackSelector:nil object:nil];
             

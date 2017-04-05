@@ -13,11 +13,12 @@
 #import <MAMapKit/MAMapKit.h>
 #import <MapKit/MapKit.h>
 #import "TQLocationConverter.h"
+#import "PT_OperNoticeNetApi.h"
 
 @interface PT_MapViewController ()
 
 @property (nonatomic, strong)PT_MsgDetailApi *detailApi;
-
+@property (nonatomic,strong)PT_OperNoticeNetApi *operNoticeApi;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -67,9 +68,58 @@
 #pragma mark - Networkapis
 - (void)initUI {
     
+    [self.refuseBtn addTarget:self action:@selector(refuseBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.acceptBtn addTarget:self action:@selector(acceptBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    
 //    self.refuseBtn.hidden = YES;
 //    self.acceptBtn.hidden = YES;
     [self detailApiNet];
+}
+
+- (void)acceptBtnClick {
+    //接受
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认接受？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self operNoticeApiNet:@"1"];
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)refuseBtnClick {
+    //放弃
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确认放弃？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self operNoticeApiNet:@"2"];
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)operNoticeApiNet:(NSString *)oper {
+    if(self.operNoticeApi && !self.operNoticeApi.requestOperation.isFinished)
+    {
+        [self.operNoticeApi stop];
+    }
+    
+    self.operNoticeApi.sessionDelegate = self;
+    self.operNoticeApi = [[PT_OperNoticeNetApi alloc] initWithJobresumeId:self.msgId withJobresumeStatus:@"" withOper:oper];
+    self.operNoticeApi.netLoadingDelegate = self;
+    [self.operNoticeApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+        
+        PT_OperNoticeNetApi *result = (PT_OperNoticeNetApi *)request;
+        if(result.isCorrectResult){
+            [XHToast showCenterWithText:@"操作成功"];
+        }
+    } failure:^(YTKBaseRequest *request) {
+        [XHToast showCenterWithText:@"操作失败"];
+    }];
+
 }
 
 - (void)detailApiNet {

@@ -22,22 +22,21 @@
 
 - (NSString *)requestUrl {
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@/%@",@"postChangeUserName",[GlobalData sharedInstance].selfInfo.sessionId,_nickName];
-     return url;
+     return  @"postChangeUserName";
 }
 
 - (id)requestArgument {
-//    NSMutableDictionary *argument = nil;
-//    if(self.sessionDelegate)
-//    {
-//        argument = [self getBaseArgument];
-//    }
-//    else
-//    {
-//        argument = [self getBaseArgument];
-//    }
-//    [argument setCustomString:_nickName forKey:@"nickName"];
-    return nil;
+    NSMutableDictionary *argument = nil;
+    if(self.sessionDelegate)
+    {
+        argument = [self getBaseArgument];
+    }
+    else
+    {
+        argument = [self getBaseArgument];
+    }
+    [argument setCustomString:_nickName forKey:@"nickName"];
+    return argument;
 }
 
 

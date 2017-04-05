@@ -11,16 +11,16 @@
 @implementation LoginlogNetApi
 {
     NSString *_uid;
-    NSString *_longtitude;
+    NSString *_longitude;
     NSString *_latitude;
     NSString *_address;
    
 }
 
-- (id)initWithUid:(NSString *)uid withLongtitude:(NSString *)longtitude withLatitude:(NSString *)latitude withAddress:(NSString *)address{
+- (id)initWithUid:(NSString *)uid withLongtitude:(NSString *)longitude withLatitude:(NSString *)latitude withAddress:(NSString *)address{
     if (self == [super init]) {
         _uid = uid;
-        _longtitude = longtitude;
+        _longitude = longitude;
         _latitude = latitude;
         _address = address;
     }
@@ -32,8 +32,16 @@
     return YTKRequestMethodPost;
 }
 
+- (YTKRequestSerializerType)requestSerializerType{
+    return YTKRequestSerializerTypeJSON;
+}
+
+- (NSString *)requestUrl {
+    return @"loginlog";
+}
+
 - (id)requestArgument{
-    NSMutableDictionary *argument = nil;
+   NSMutableDictionary *argument = [NSMutableDictionary dictionary];;
     if(self.sessionDelegate)
     {
         argument = [self getBaseArgument];
@@ -43,7 +51,7 @@
         argument = [self getBaseArgument];
     }
     [argument setCustomString:_uid forKey:@"uid"];
-    [argument setCustomString:_longtitude forKey:@"longitude"];
+    [argument setCustomString:_longitude forKey:@"longitude"];
     [argument setCustomString:_latitude forKey:@"latitude"];
     [argument setCustomString:_address forKey:@"address"];
     
@@ -51,8 +59,6 @@
 }
 
 
-- (NSString *)requestUrl {
-    return @"Loginlog";
-}
+
 
 @end

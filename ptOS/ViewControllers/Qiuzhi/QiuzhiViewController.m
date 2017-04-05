@@ -227,7 +227,7 @@
         [self.loginApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             LoginNetApi *result = (LoginNetApi *)request;
             if (result.isCorrectResult) {
-                [self loginlogApiNet];//同步位置信息
+                
                 
                 [GlobalData sharedInstance].selfInfo = [result getUserInfo];
                 [self downloadHeaderImage];
@@ -244,7 +244,7 @@
     }else if (isValidStr([UserDefault objectForKey:UIDKey])) {
         [self qqLoginApiNetWithOpenId:[UserDefault objectForKey:UIDKey]];
     }
-    
+    [self loginlogApiNet];//同步位置信息
 }
 
 - (void)downloadHeaderImage {
