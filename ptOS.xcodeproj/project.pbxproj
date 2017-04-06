@@ -453,6 +453,11 @@
 		5D4BBC211E7A2C9C00633313 /* PT_ConcernTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BBC1F1E7A2C9C00633313 /* PT_ConcernTableViewCell.m */; };
 		5D4BBC221E7A2C9D00633313 /* PT_ConcernTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4BBC201E7A2C9C00633313 /* PT_ConcernTableViewCell.xib */; };
 		5D4BBC251E7A39C800633313 /* CareManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BBC241E7A39C800633313 /* CareManViewController.m */; };
+		5D4CB6D91E96146000989BEB /* MY_ExpersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CB6D71E96146000989BEB /* MY_ExpersTableViewCell.m */; };
+		5D4CB6DA1E96146000989BEB /* MY_ExpersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4CB6D81E96146000989BEB /* MY_ExpersTableViewCell.xib */; };
+		5D4CB6DE1E96148200989BEB /* MY_AddExpersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CB6DC1E96148200989BEB /* MY_AddExpersTableViewCell.m */; };
+		5D4CB6DF1E96148200989BEB /* MY_AddExpersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4CB6DD1E96148200989BEB /* MY_AddExpersTableViewCell.xib */; };
+		5D4CB6E21E961FB100989BEB /* AddWorkExpersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CB6E11E961FB100989BEB /* AddWorkExpersViewController.m */; };
 		5D56EF751E5AD03C009F5C9E /* PublishSpeechViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D56EF741E5AD03C009F5C9E /* PublishSpeechViewController.m */; };
 		5D585B081E77C67C00569D33 /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B071E77C67C00569D33 /* PolicyViewController.m */; };
 		5D585B0B1E77C6A800569D33 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B0A1E77C6A800569D33 /* AnnouncementViewController.m */; };
@@ -1885,6 +1890,14 @@
 		5D4BBC201E7A2C9C00633313 /* PT_ConcernTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PT_ConcernTableViewCell.xib; sourceTree = "<group>"; };
 		5D4BBC231E7A39C800633313 /* CareManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareManViewController.h; sourceTree = "<group>"; };
 		5D4BBC241E7A39C800633313 /* CareManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareManViewController.m; sourceTree = "<group>"; };
+		5D4CB6D61E96146000989BEB /* MY_ExpersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MY_ExpersTableViewCell.h; sourceTree = "<group>"; };
+		5D4CB6D71E96146000989BEB /* MY_ExpersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MY_ExpersTableViewCell.m; sourceTree = "<group>"; };
+		5D4CB6D81E96146000989BEB /* MY_ExpersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MY_ExpersTableViewCell.xib; sourceTree = "<group>"; };
+		5D4CB6DB1E96148200989BEB /* MY_AddExpersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MY_AddExpersTableViewCell.h; sourceTree = "<group>"; };
+		5D4CB6DC1E96148200989BEB /* MY_AddExpersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MY_AddExpersTableViewCell.m; sourceTree = "<group>"; };
+		5D4CB6DD1E96148200989BEB /* MY_AddExpersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MY_AddExpersTableViewCell.xib; sourceTree = "<group>"; };
+		5D4CB6E01E961FB100989BEB /* AddWorkExpersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWorkExpersViewController.h; sourceTree = "<group>"; };
+		5D4CB6E11E961FB100989BEB /* AddWorkExpersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWorkExpersViewController.m; sourceTree = "<group>"; };
 		5D56EF731E5AD03C009F5C9E /* PublishSpeechViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSpeechViewController.h; sourceTree = "<group>"; };
 		5D56EF741E5AD03C009F5C9E /* PublishSpeechViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSpeechViewController.m; sourceTree = "<group>"; };
 		5D585B061E77C67B00569D33 /* PolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyViewController.h; sourceTree = "<group>"; };
@@ -5224,6 +5237,8 @@
 				F075DA241DA8D09D00B547D2 /* ChangePhone2ViewController.m */,
 				F075DA261DA8D3D700B547D2 /* ChangePSWViewController.h */,
 				F075DA271DA8D3D700B547D2 /* ChangePSWViewController.m */,
+				5D4CB6E01E961FB100989BEB /* AddWorkExpersViewController.h */,
+				5D4CB6E11E961FB100989BEB /* AddWorkExpersViewController.m */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -5342,6 +5357,12 @@
 				F0D68B221D963B3900FCACAE /* MyCommentTableViewCell.h */,
 				F0D68B231D963B3900FCACAE /* MyCommentTableViewCell.m */,
 				F0D68B241D963B3900FCACAE /* MyCommentTableViewCell.xib */,
+				5D4CB6D61E96146000989BEB /* MY_ExpersTableViewCell.h */,
+				5D4CB6D71E96146000989BEB /* MY_ExpersTableViewCell.m */,
+				5D4CB6D81E96146000989BEB /* MY_ExpersTableViewCell.xib */,
+				5D4CB6DB1E96148200989BEB /* MY_AddExpersTableViewCell.h */,
+				5D4CB6DC1E96148200989BEB /* MY_AddExpersTableViewCell.m */,
+				5D4CB6DD1E96148200989BEB /* MY_AddExpersTableViewCell.xib */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -6475,6 +6496,7 @@
 				F07315881D7C715A0057213C /* icon_jianli.png in Resources */,
 				F07A50221D82F4B2001BE234 /* icon_pt_qiuzhi.png in Resources */,
 				5D811F571E6D09B70024374B /* PT_NearlyListTableViewCell.xib in Resources */,
+				5D4CB6DF1E96148200989BEB /* MY_AddExpersTableViewCell.xib in Resources */,
 				F07315251D7C03070057213C /* icon_mima_press.png in Resources */,
 				F0F945DA1D782C8F001AE058 /* QZ_CompanyTableViewCell.xib in Resources */,
 				F0616B911D76EC0B0041599B /* FavoriteJobTableViewCell.xib in Resources */,
@@ -6592,6 +6614,7 @@
 				5D74A8601E6BF1B700D437DE /* icon_xinwenzixun.png in Resources */,
 				5D7A9D1F1E7D7A320032E643 /* PT_NoticeTableViewCell.xib in Resources */,
 				2C0A266B1E6DB161006CD3E1 /* d3.icns in Resources */,
+				5D4CB6DA1E96146000989BEB /* MY_ExpersTableViewCell.xib in Resources */,
 				F043EB191DB4F8C700752081 /* MSTableViewCell.xib in Resources */,
 				F0A017F41D7D5A85003BEABF /* mima_eye_blue.png in Resources */,
 				2C0A2EFF1E6EC163006CD3E1 /* NTESVideoChatViewController.xib in Resources */,
@@ -6963,6 +6986,7 @@
 				F0695B431DAD3D90003CB097 /* IQNSArray+Sort.m in Sources */,
 				2EC3FE631E6EDE1300CDD478 /* NIMCardMemberItem.m in Sources */,
 				2EC3FE5D1E6EDE1300CDD478 /* NIMSessionVideoContentView.m in Sources */,
+				5D4CB6E21E961FB100989BEB /* AddWorkExpersViewController.m in Sources */,
 				F0695B481DAD3D90003CB097 /* IQUIWindow+Hierarchy.m in Sources */,
 				2C0A26581E6DADB1006CD3E1 /* aescrypt.c in Sources */,
 				2EC3FE5B1E6EDE1300CDD478 /* NIMSessionTextContentView.m in Sources */,
@@ -7173,6 +7197,7 @@
 				2C510D041E71450B00A50582 /* ContactsTableViewIndex.m in Sources */,
 				2EC3FE111E6EDE1200CDD478 /* UITableView+NIMScrollToBottom.m in Sources */,
 				2C0A2F201E6EC163006CD3E1 /* NTESBirthPickerView.m in Sources */,
+				5D4CB6D91E96146000989BEB /* MY_ExpersTableViewCell.m in Sources */,
 				2C0A2EBB1E6EC163006CD3E1 /* NTESChatroomMemberCell.m in Sources */,
 				F0E82A6D1D9C0DE90087FC4C /* AJTapDetectingView.m in Sources */,
 				2C0A2F091E6EC163006CD3E1 /* NTESLogManager.m in Sources */,
@@ -7291,6 +7316,7 @@
 				F02AFB151D951D5E00D9AE4B /* MY_MyPublishApi.m in Sources */,
 				F0616B841D76E4D50041599B /* MyFavoriteViewController.m in Sources */,
 				F00DE90D1D759088004D43D0 /* YTKBatchRequest.m in Sources */,
+				5D4CB6DE1E96148200989BEB /* MY_AddExpersTableViewCell.m in Sources */,
 				5D7958611E6A9DCF005764CF /* ConcernCompanyTableViewCell.m in Sources */,
 				F00DE8E81D759081004D43D0 /* AFHTTPRequestOperationManager.m in Sources */,
 				F00DE8EE1D759081004D43D0 /* AFURLResponseSerialization.m in Sources */,

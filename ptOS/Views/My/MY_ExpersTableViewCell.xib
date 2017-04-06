@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MY_ExpersTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QFK-54-kbO">
+                        <rect key="frame" x="12" y="0.0" width="351" height="48.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/12-2017/02" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umu-WP-HTB">
+                                <rect key="frame" x="8" y="5" width="110.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我们都是哈哈哈哈" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTY-eM-Eh9">
+                                <rect key="frame" x="8" y="27" width="98.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJW-3h-ymz">
+                                <rect key="frame" x="303" y="5" width="40" height="38.5"/>
+                                <color key="backgroundColor" red="0.3921568627" green="0.58823529409999997" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="2DG-jD-UD7"/>
+                                </constraints>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLx-mw-kMk">
+                                <rect key="frame" x="8" y="47.5" width="0.0" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Kq7-e9-r5m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="jJW-3h-ymz" secondAttribute="trailing" constant="8" id="4xQ-De-Qty"/>
+                            <constraint firstItem="VTY-eM-Eh9" firstAttribute="leading" secondItem="QFK-54-kbO" secondAttribute="leading" constant="8" id="8pa-Qc-C5F"/>
+                            <constraint firstAttribute="bottom" secondItem="jJW-3h-ymz" secondAttribute="bottom" constant="5" id="C0S-V5-Ie8"/>
+                            <constraint firstAttribute="bottom" secondItem="CLx-mw-kMk" secondAttribute="bottom" id="RBZ-7M-8vZ"/>
+                            <constraint firstItem="Umu-WP-HTB" firstAttribute="top" secondItem="QFK-54-kbO" secondAttribute="top" constant="5" id="Vfq-XT-QWw"/>
+                            <constraint firstItem="jJW-3h-ymz" firstAttribute="top" secondItem="QFK-54-kbO" secondAttribute="top" constant="5" id="fK6-fI-qYR"/>
+                            <constraint firstItem="VTY-eM-Eh9" firstAttribute="top" secondItem="Umu-WP-HTB" secondAttribute="bottom" constant="5" id="kZe-1q-y34"/>
+                            <constraint firstItem="CLx-mw-kMk" firstAttribute="leading" secondItem="QFK-54-kbO" secondAttribute="leading" constant="8" id="r7p-RF-faI"/>
+                            <constraint firstItem="Umu-WP-HTB" firstAttribute="leading" secondItem="QFK-54-kbO" secondAttribute="leading" constant="8" id="uV0-Di-mbA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QFK-54-kbO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0w5-nA-Lfd"/>
+                    <constraint firstAttribute="bottom" secondItem="QFK-54-kbO" secondAttribute="bottom" constant="1" id="PPp-4d-HJQ"/>
+                    <constraint firstAttribute="trailing" secondItem="QFK-54-kbO" secondAttribute="trailing" constant="12" id="rk4-hN-Nw0"/>
+                    <constraint firstItem="QFK-54-kbO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="ymS-k6-gbJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="backView" destination="QFK-54-kbO" id="l7S-ek-U4x"/>
+                <outlet property="contentLabel" destination="VTY-eM-Eh9" id="r74-Aq-0Ll"/>
+                <outlet property="timeLabel" destination="Umu-WP-HTB" id="lKB-Wc-C7A"/>
+                <outlet property="writeBtn" destination="jJW-3h-ymz" id="qsA-3a-IvH"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

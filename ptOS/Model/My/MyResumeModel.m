@@ -13,6 +13,7 @@
 
 - (instancetype)initWithDic:(NSDictionary *)dict {
     if (self == [super init]) {
+        self.resumeId = [dict strForKey:@"id"];
         self.name = [dict strForKey:@"name"];
         self.sex = [dict strForKey:@"sex"];
         self.birth = [dict strForKey:@"birth"];
@@ -24,7 +25,7 @@
         self.zs1 = [dict strForKey:@"zs1"];
         self.zs2 = [dict strForKey:@"zs2"];
         self.zs3 = [dict strForKey:@"zs3"];
-        self.workExp = [dict strForKey:@"workExp"];
+        self.workExp = [dict objectForKey:@"expers"];
         self.skills = [dict strForKey:@"skills"];
     }
     return self;

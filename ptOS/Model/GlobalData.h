@@ -44,7 +44,7 @@
 @property (nonatomic,copy)NSString *jl_zs1;
 @property (nonatomic,copy)NSString *jl_zs2;
 @property (nonatomic,copy)NSString *jl_zs3;
-@property (nonatomic,copy)NSString *jl_workExp;
+@property (nonatomic,copy)NSMutableArray *jl_workExp;
 @property (nonatomic,copy)NSString *jl_skills;
 
 @property (nonatomic,strong)UIImage *cardPicFont;

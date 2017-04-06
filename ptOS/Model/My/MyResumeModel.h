@@ -10,7 +10,7 @@
 
 @interface MyResumeModel : BaseModel
 
-
+@property (nonatomic, copy)NSString *resumeId;
 @property (nonatomic, copy)NSString *name;
 @property (nonatomic, copy)NSString *sex;
 @property (nonatomic, copy)NSString *birth;
@@ -22,7 +22,8 @@
 @property (nonatomic, copy)NSString *zs1;
 @property (nonatomic, copy)NSString *zs2;
 @property (nonatomic, copy)NSString *zs3;
-@property (nonatomic, copy)NSString *workExp;
+@property (nonatomic, copy)NSMutableArray *workExp;
 @property (nonatomic, copy)NSString *skills;
+
 
 @end
