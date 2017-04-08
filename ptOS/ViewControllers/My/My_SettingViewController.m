@@ -158,9 +158,9 @@
         [GlobalData sharedInstance].jl_cardPicFont = nil;
         [GlobalData sharedInstance].jl_cardPicBack = nil;
         [GlobalData sharedInstance].jl_educationPiC = nil;
-        [GlobalData sharedInstance].jl_zs1 = nil;
-        [GlobalData sharedInstance].jl_zs2 = nil;
-        [GlobalData sharedInstance].jl_zs3 = nil;
+//        [GlobalData sharedInstance].jl_zs1 = nil;
+//        [GlobalData sharedInstance].jl_zs2 = nil;
+//        [GlobalData sharedInstance].jl_zs3 = nil;
         [GlobalData sharedInstance].jl_workExp = nil;
         [GlobalData sharedInstance].jl_skills = nil;
         

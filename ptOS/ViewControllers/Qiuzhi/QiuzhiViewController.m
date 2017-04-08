@@ -29,7 +29,7 @@
 #import "QRCScanner.h"
 #import "LoginNetApi.h"
 #import "QQLogin.h"
-
+#import "AFNetworking.h"
 #import "LoginlogNetApi.h"
 #import "OSSManager.h"
 
@@ -190,29 +190,33 @@
 
 #pragma mark - customFuncs
 - (void)loginlogApiNet{
-    if (self.loginlogApi && !self.loginlogApi.requestOperation.isFinished) {
-        [self.loginlogApi stop];
-    }
-    self.loginlogApi = [[LoginlogNetApi alloc]initWithUid:[GlobalData sharedInstance].selfInfo.userId withLongtitude:[GlobalData sharedInstance].longtitude withLatitude:[GlobalData sharedInstance].latitude  withAddress:[GlobalData sharedInstance].indexLocation];
-    self.loginlogApi.netLoadingDelegate = self;
+    NSMutableDictionary *argument = [NSMutableDictionary dictionary];;
+    [argument setCustomString:[GlobalData sharedInstance].selfInfo.userId forKey:@"uid"];
+    [argument setCustomString:[GlobalData sharedInstance].longtitude forKey:@"longitude"];
+    [argument setCustomString:[GlobalData sharedInstance].latitude forKey:@"latitude"];
+    [argument setCustomString:[GlobalData sharedInstance].indexLocation forKey:@"address"];
     
-    [self.loginlogApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        LoginlogNetApi *result = (LoginlogNetApi *)request;
-        if (result.isCorrectResult) {
-            
-            NSLog(@"上传位置信息成功");
-            
-        }else {
-            
-        }
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"上传位置信息失败");
-        [JPUSHService setAlias:@"" callbackSelector:nil object:nil];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setValue:argument forKey:@"params"];
+    
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    
+    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    sessionManager.requestSerializer.timeoutInterval = 3;//设置登录超时为15s
+    
+    [sessionManager.requestSerializer setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
+    
+    [sessionManager  POST:@"http://139.196.230.156/ptApp/loginlog" parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"hhhhh");
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"fdsfsd");
     }];
     
-    
 }
-
 
 - (void)autiLoginNet {
     if (self.loginApi && !self.loginApi.requestOperation.isFinished) {

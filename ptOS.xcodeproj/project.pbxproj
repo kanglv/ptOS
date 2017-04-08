@@ -458,6 +458,7 @@
 		5D4CB6DE1E96148200989BEB /* MY_AddExpersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CB6DC1E96148200989BEB /* MY_AddExpersTableViewCell.m */; };
 		5D4CB6DF1E96148200989BEB /* MY_AddExpersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4CB6DD1E96148200989BEB /* MY_AddExpersTableViewCell.xib */; };
 		5D4CB6E21E961FB100989BEB /* AddWorkExpersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CB6E11E961FB100989BEB /* AddWorkExpersViewController.m */; };
+		5D5547A81E990D6E00B00794 /* NewRequestMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5547A71E990D6E00B00794 /* NewRequestMethod.m */; };
 		5D56EF751E5AD03C009F5C9E /* PublishSpeechViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D56EF741E5AD03C009F5C9E /* PublishSpeechViewController.m */; };
 		5D585B081E77C67C00569D33 /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B071E77C67C00569D33 /* PolicyViewController.m */; };
 		5D585B0B1E77C6A800569D33 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D585B0A1E77C6A800569D33 /* AnnouncementViewController.m */; };
@@ -1898,6 +1899,8 @@
 		5D4CB6DD1E96148200989BEB /* MY_AddExpersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MY_AddExpersTableViewCell.xib; sourceTree = "<group>"; };
 		5D4CB6E01E961FB100989BEB /* AddWorkExpersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWorkExpersViewController.h; sourceTree = "<group>"; };
 		5D4CB6E11E961FB100989BEB /* AddWorkExpersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWorkExpersViewController.m; sourceTree = "<group>"; };
+		5D5547A61E990D6E00B00794 /* NewRequestMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRequestMethod.h; sourceTree = "<group>"; };
+		5D5547A71E990D6E00B00794 /* NewRequestMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRequestMethod.m; sourceTree = "<group>"; };
 		5D56EF731E5AD03C009F5C9E /* PublishSpeechViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishSpeechViewController.h; sourceTree = "<group>"; };
 		5D56EF741E5AD03C009F5C9E /* PublishSpeechViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishSpeechViewController.m; sourceTree = "<group>"; };
 		5D585B061E77C67B00569D33 /* PolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolicyViewController.h; sourceTree = "<group>"; };
@@ -6063,6 +6066,8 @@
 			children = (
 				F0C30EEE1D73D430007941A1 /* LoginViewController.h */,
 				F0C30EEF1D73D430007941A1 /* LoginViewController.m */,
+				5D5547A61E990D6E00B00794 /* NewRequestMethod.h */,
+				5D5547A71E990D6E00B00794 /* NewRequestMethod.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -6953,6 +6958,7 @@
 				2C0A2E921E6EC163006CD3E1 /* NTESDevice.m in Sources */,
 				F0695B501DAD3D90003CB097 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				F0E82A181D9B60E80087FC4C /* OSSManager.m in Sources */,
+				5D5547A81E990D6E00B00794 /* NewRequestMethod.m in Sources */,
 				F02AF9A11D75B24A005D3F98 /* UserInfoModel.m in Sources */,
 				F0B60ECC1D9183D000F8F519 /* MJRefreshBackGifFooter.m in Sources */,
 				2C0A2EA21E6EC163006CD3E1 /* UIImage+NTESColor.m in Sources */,

@@ -86,7 +86,8 @@
         [self.postResumeApi stop];
     }
     
-    self.postResumeApi = [[MY_PostReumeApi alloc] initWithName:[GlobalData sharedInstance].jl_name WithSex:[GlobalData sharedInstance].jl_sex WithBirth:[GlobalData sharedInstance].jl_birth WithEducation:[GlobalData sharedInstance].jl_education Withphone:[GlobalData sharedInstance].jl_phone WithCardPicFrontUrl:[GlobalData sharedInstance].jl_cardPicFont WithCardPicBackUrl:[GlobalData sharedInstance].jl_cardPicBack WithEducationPic:[GlobalData sharedInstance].jl_educationPiC Withzs1PicUrl:[GlobalData sharedInstance].jl_zs1 Withzs2PicUrl:[GlobalData sharedInstance].jl_zs2 Withzs3PicUrl:[GlobalData sharedInstance].jl_zs3 WithWorkExp:[GlobalData sharedInstance].jl_workExp WithSkills:[GlobalData sharedInstance].jl_skills];
+    self.postResumeApi = [[MY_PostReumeApi alloc] initWithName:[GlobalData sharedInstance].jl_name WithSex:[GlobalData sharedInstance].jl_sex WithBirth:[GlobalData sharedInstance].jl_birth WithEducation:[GlobalData sharedInstance].jl_education Withphone:[GlobalData sharedInstance].jl_phone WithCardPicFrontUrl:[GlobalData sharedInstance].jl_cardPicFont WithCardPicBackUrl:[GlobalData sharedInstance].jl_cardPicBack  WithEducationPic:[GlobalData sharedInstance].jl_educationPiC WithWorkExp:[GlobalData sharedInstance].jl_workExp WithSkills:[GlobalData sharedInstance].jl_skills WithSkillVoice:@"" WithId:[GlobalData sharedInstance].jl_resumeId ];
+    
     self.postResumeApi.sessionDelegate = self;
     [self.postResumeApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         
@@ -106,9 +107,6 @@
             [GlobalData sharedInstance].jl_cardPicFont = nil;
             [GlobalData sharedInstance].jl_cardPicBack = nil;
             [GlobalData sharedInstance].jl_educationPiC = nil;
-            [GlobalData sharedInstance].jl_zs1 = nil;
-            [GlobalData sharedInstance].jl_zs2 = nil;
-            [GlobalData sharedInstance].jl_zs3 = nil;
             [GlobalData sharedInstance].jl_workExp = nil;
             [GlobalData sharedInstance].jl_skills = nil;
         } else{
@@ -188,6 +186,7 @@
         if(result.isCorrectResult)
         {
             MyResumeModel *model = [result getMyResume];
+            [GlobalData sharedInstance].jl_resumeId = model.resumeId;
             [GlobalData sharedInstance].jl_name = model.name;
             [GlobalData sharedInstance].jl_sex  = model.sex;
             [GlobalData sharedInstance].jl_birth = model.birth;
@@ -196,9 +195,9 @@
             [GlobalData sharedInstance].jl_cardPicFont = model.cardPicFront;
             [GlobalData sharedInstance].jl_cardPicBack = model.cardPicBack;
             [GlobalData sharedInstance].jl_educationPiC = model.educationPic;
-            [GlobalData sharedInstance].jl_zs1 = model.zs1;
-            [GlobalData sharedInstance].jl_zs2 = model.zs2;
-            [GlobalData sharedInstance].jl_zs3 = model.zs3;
+//            [GlobalData sharedInstance].jl_zs1 = model.zs1;
+//            [GlobalData sharedInstance].jl_zs2 = model.zs2;
+//            [GlobalData sharedInstance].jl_zs3 = model.zs3;
             [GlobalData sharedInstance].jl_workExp = model.workExp;
             [GlobalData sharedInstance].jl_skills = model.skills;
         }

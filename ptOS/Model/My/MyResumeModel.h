@@ -19,11 +19,12 @@
 @property (nonatomic, copy)NSString *cardPicFront;
 @property (nonatomic, copy)NSString *cardPicBack;
 @property (nonatomic, copy)NSString *educationPic;
-@property (nonatomic, copy)NSString *zs1;
-@property (nonatomic, copy)NSString *zs2;
-@property (nonatomic, copy)NSString *zs3;
+//@property (nonatomic, copy)NSString *zs1;
+//@property (nonatomic, copy)NSString *zs2;
+//@property (nonatomic, copy)NSString *zs3;
 @property (nonatomic, copy)NSMutableArray *workExp;
 @property (nonatomic, copy)NSString *skills;
+@property (nonatomic, copy)NSString *skillsvoice;
 
 
 @end

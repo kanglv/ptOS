@@ -26,6 +26,8 @@
 
 #pragma mark - lifeCycles
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor;
@@ -56,7 +58,22 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addWorkExp:) name:@"workExp" object:nil];
+
 }
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"workExp" object:nil];
+}
+
+- (void)addWorkExp:(NSNotification *)notification {
+    
+    [self.dataArray addObject:notification.userInfo];
+    [self.tableView reloadData];
+    
+}
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArray.count+1;

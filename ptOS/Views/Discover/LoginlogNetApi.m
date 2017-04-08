@@ -40,8 +40,10 @@
     return @"loginlog";
 }
 
+
+
 - (id)requestArgument{
-   NSMutableDictionary *argument = [NSMutableDictionary dictionary];;
+   NSMutableDictionary *argument = [NSMutableDictionary dictionary];
     if(self.sessionDelegate)
     {
         argument = [self getBaseArgument];

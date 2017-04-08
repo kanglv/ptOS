@@ -22,11 +22,12 @@
         self.cardPicFront = [dict strForKey:@"cardPicFront"];
         self.cardPicBack = [dict strForKey:@"cardPicBack"];
         self.educationPic = [dict strForKey:@"educationPic"];
-        self.zs1 = [dict strForKey:@"zs1"];
-        self.zs2 = [dict strForKey:@"zs2"];
-        self.zs3 = [dict strForKey:@"zs3"];
+//        self.zs1 = [dict strForKey:@"zs1"];
+//        self.zs2 = [dict strForKey:@"zs2"];
+//        self.zs3 = [dict strForKey:@"zs3"];
         self.workExp = [dict objectForKey:@"expers"];
         self.skills = [dict strForKey:@"skills"];
+        self.skillsvoice = [dict strForKey:@"skillsvoice"];
     }
     return self;
 }

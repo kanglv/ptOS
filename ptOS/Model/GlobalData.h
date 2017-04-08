@@ -33,6 +33,7 @@
 
 
 //简历
+@property (nonatomic,copy)NSString *jl_resumeId;
 @property (nonatomic,copy)NSString *jl_name;
 @property (nonatomic,copy)NSString *jl_sex;
 @property (nonatomic,copy)NSString *jl_birth;
@@ -41,11 +42,13 @@
 @property (nonatomic,copy)NSString *jl_cardPicFont;
 @property (nonatomic,copy)NSString *jl_cardPicBack;
 @property (nonatomic,copy)NSString *jl_educationPiC;
-@property (nonatomic,copy)NSString *jl_zs1;
-@property (nonatomic,copy)NSString *jl_zs2;
-@property (nonatomic,copy)NSString *jl_zs3;
+//@property (nonatomic,copy)NSString *jl_zs1;
+//@property (nonatomic,copy)NSString *jl_zs2;
+//@property (nonatomic,copy)NSString *jl_zs3;
 @property (nonatomic,copy)NSMutableArray *jl_workExp;
 @property (nonatomic,copy)NSString *jl_skills;
+@property (nonatomic,copy)NSString *jl_skillsvoice;
+
 
 @property (nonatomic,strong)UIImage *cardPicFont;
 @property (nonatomic,strong)UIImage *cardPicBack;
