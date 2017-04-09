@@ -20,6 +20,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "GetResumeApi.h"
 #import "MyResumeModel.h"
+#import "AFNetworking.h"
 @interface MyResumeViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *basicInfoLabel;
@@ -74,49 +75,115 @@
     }];
 }
 
-- (void)postResumeApiNet {
-    if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
-    {
-        [self presentLoginCtrl];
-        return;
-    }
+- (void)postResumeApiNet{
+    NSMutableDictionary *argument = [NSMutableDictionary dictionary];
     
-    if(self.postResumeApi&& !self.postResumeApi.requestOperation.isFinished)
-    {
-        [self.postResumeApi stop];
-    }
+    [argument setCustomString:[GlobalData sharedInstance].jl_resumeId forKey:@"id"];
+    [argument setCustomString:[GlobalData sharedInstance].jl_name forKey:@"name"];
+    [argument setCustomString:[GlobalData sharedInstance].jl_sex forKey:@"sex"];
+    [argument setCustomString:[GlobalData sharedInstance].jl_birth forKey:@"birth"];
+    [argument setCustomString:[GlobalData sharedInstance].jl_education forKey:@"education"];
+    [argument setCustomString:[GlobalData sharedInstance].jl_phone forKey:@"phone"];
+    [argument setCustomString:[GlobalData sharedInstance].jl_cardPicFont forKey:@"cardPicFront"];
+    [argument setCustomString:[GlobalData sharedInstance].jl_cardPicBack forKey:@"cardPicBack"];
+    [argument setCustomString:[GlobalData sharedInstance].jl_educationPiC forKey:@"educationPic"];
+    [argument setCustomString:[GlobalData sharedInstance].jl_skills forKey:@"skills"];
+    [argument setCustomString:[GlobalData sharedInstance].jl_skillsvoice forKey:@"skillsvoice"];
+    [argument setValue:[GlobalData sharedInstance].jl_workExp forKey:@"expers"];
+
     
-    self.postResumeApi = [[MY_PostReumeApi alloc] initWithName:[GlobalData sharedInstance].jl_name WithSex:[GlobalData sharedInstance].jl_sex WithBirth:[GlobalData sharedInstance].jl_birth WithEducation:[GlobalData sharedInstance].jl_education Withphone:[GlobalData sharedInstance].jl_phone WithCardPicFrontUrl:[GlobalData sharedInstance].jl_cardPicFont WithCardPicBackUrl:[GlobalData sharedInstance].jl_cardPicBack  WithEducationPic:[GlobalData sharedInstance].jl_educationPiC WithWorkExp:[GlobalData sharedInstance].jl_workExp WithSkills:[GlobalData sharedInstance].jl_skills WithSkillVoice:@"" WithId:[GlobalData sharedInstance].jl_resumeId ];
+   NSString *string = @"http://139.196.230.156/ptApp/postResume?sessionId=";
+    NSString *str = [string stringByAppendingString:[GlobalData sharedInstance].selfInfo.sessionId];
     
-    self.postResumeApi.sessionDelegate = self;
-    [self.postResumeApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    
+    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    sessionManager.requestSerializer.timeoutInterval = 3;//设置登录超时为15s
+    
+    [sessionManager.requestSerializer setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
+    
+    [sessionManager  POST:str parameters:argument success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"%@",responseObject);
+                    [self uploadImageWithImage:[GlobalData sharedInstance].cardPicFont withFileName:[GlobalData sharedInstance].cardPicFontName];
+                    [self uploadImageWithImage:[GlobalData sharedInstance].cardPicBack withFileName:[GlobalData sharedInstance].cardPicBackName];
+                    [self uploadImageWithImage:[GlobalData sharedInstance].educationPiC withFileName:[GlobalData sharedInstance].educationPiCName];
+                    [XHToast showCenterWithText:@"保存成功"];
+        //            [self.navigationController popToRootViewControllerAnimated:YES];
+                    [GlobalData sharedInstance].jl_name = nil;
+                    [GlobalData sharedInstance].jl_sex = nil;
+                    [GlobalData sharedInstance].jl_birth = nil;
+                    [GlobalData sharedInstance].jl_education = nil;
+                    [GlobalData sharedInstance].jl_phone = nil;
+                    [GlobalData sharedInstance].jl_cardPicFont = nil;
+                    [GlobalData sharedInstance].jl_cardPicBack = nil;
+                    [GlobalData sharedInstance].jl_educationPiC = nil;
+                    [GlobalData sharedInstance].jl_workExp = nil;
+                    [GlobalData sharedInstance].jl_skills = nil;
+                    [GlobalData sharedInstance].jl_resumeId = nil;
+
+        [XHToast showCenterWithText:@"保存成功"];
         
-        MY_PostReumeApi *result = (MY_PostReumeApi *)request;
-        if(result.isCorrectResult)
-        {
-            [self uploadImageWithImage:[GlobalData sharedInstance].cardPicFont withFileName:[GlobalData sharedInstance].cardPicFontName];
-            [self uploadImageWithImage:[GlobalData sharedInstance].cardPicBack withFileName:[GlobalData sharedInstance].cardPicBackName];
-            [self uploadImageWithImage:[GlobalData sharedInstance].educationPiC withFileName:[GlobalData sharedInstance].educationPiCName];
-            [XHToast showCenterWithText:@"保存成功"];
-//            [self.navigationController popToRootViewControllerAnimated:YES];
-            [GlobalData sharedInstance].jl_name = nil;
-            [GlobalData sharedInstance].jl_sex = nil;
-            [GlobalData sharedInstance].jl_birth = nil;
-            [GlobalData sharedInstance].jl_education = nil;
-            [GlobalData sharedInstance].jl_phone = nil;
-            [GlobalData sharedInstance].jl_cardPicFont = nil;
-            [GlobalData sharedInstance].jl_cardPicBack = nil;
-            [GlobalData sharedInstance].jl_educationPiC = nil;
-            [GlobalData sharedInstance].jl_workExp = nil;
-            [GlobalData sharedInstance].jl_skills = nil;
-        } else{
-            [XHToast showCenterWithText:@"保存失败"];
-        }
-    } failure:^(YTKBaseRequest *request) {
-        NSLog(@"上传失败");
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
+        [XHToast showCenterWithText:@"保存失败"];
     }];
+    
 }
+
+
+//- (void)postResumeApiNet {
+//    if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+//    {
+//        [self presentLoginCtrl];
+//        return;
+//    }
+//    
+//    
+//    if(self.postResumeApi&& !self.postResumeApi.requestOperation.isFinished)
+//    {
+//        [self.postResumeApi stop];
+//    }
+//    NSString *string;
+//    if([GlobalData sharedInstance].jl_resumeId){
+//        string = [GlobalData sharedInstance].jl_resumeId;
+//    } else {
+//        string = [GlobalData sharedInstance].selfInfo.userId;
+//    }
+//    
+//    self.postResumeApi = [[MY_PostReumeApi alloc] initWithName:[GlobalData sharedInstance].jl_name WithSex:[GlobalData sharedInstance].jl_sex WithBirth:[GlobalData sharedInstance].jl_birth WithEducation:[GlobalData sharedInstance].jl_education Withphone:[GlobalData sharedInstance].jl_phone WithCardPicFrontUrl:[GlobalData sharedInstance].jl_cardPicFont WithCardPicBackUrl:[GlobalData sharedInstance].jl_cardPicBack  WithEducationPic:[GlobalData sharedInstance].jl_educationPiC WithWorkExp:[GlobalData sharedInstance].jl_workExp WithSkills:[GlobalData sharedInstance].jl_skills WithSkillVoice:@"" WithId:string ];
+//    
+//    self.postResumeApi.sessionDelegate = self;
+//    [self.postResumeApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+//        
+//        MY_PostReumeApi *result = (MY_PostReumeApi *)request;
+//        if(result.isCorrectResult)
+//        {
+//            [self uploadImageWithImage:[GlobalData sharedInstance].cardPicFont withFileName:[GlobalData sharedInstance].cardPicFontName];
+//            [self uploadImageWithImage:[GlobalData sharedInstance].cardPicBack withFileName:[GlobalData sharedInstance].cardPicBackName];
+//            [self uploadImageWithImage:[GlobalData sharedInstance].educationPiC withFileName:[GlobalData sharedInstance].educationPiCName];
+//            [XHToast showCenterWithText:@"保存成功"];
+////            [self.navigationController popToRootViewControllerAnimated:YES];
+//            [GlobalData sharedInstance].jl_name = nil;
+//            [GlobalData sharedInstance].jl_sex = nil;
+//            [GlobalData sharedInstance].jl_birth = nil;
+//            [GlobalData sharedInstance].jl_education = nil;
+//            [GlobalData sharedInstance].jl_phone = nil;
+//            [GlobalData sharedInstance].jl_cardPicFont = nil;
+//            [GlobalData sharedInstance].jl_cardPicBack = nil;
+//            [GlobalData sharedInstance].jl_educationPiC = nil;
+//            [GlobalData sharedInstance].jl_workExp = nil;
+//            [GlobalData sharedInstance].jl_skills = nil;
+//            [GlobalData sharedInstance].jl_resumeId = nil;
+//        } else{
+//            [XHToast showCenterWithText:@"保存失败"];
+//        }
+//    } failure:^(YTKBaseRequest *request) {
+//        NSLog(@"上传失败");
+//        
+//    }];
+//}
 
 
 #pragma mark - customFuncs

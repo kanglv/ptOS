@@ -10,8 +10,8 @@
 
 @interface PT_MsgNumModel : BaseModel
 
-@property (nonatomic, copy)NSString *time;
-@property (nonatomic, copy)NSString *content;
-@property (nonatomic, copy)NSString *number;
+@property (nonatomic,strong)NSMutableDictionary *qiuzhiDic;
+@property (nonatomic,strong)NSMutableDictionary *tongzhiDic;
+@property (nonatomic, strong)NSMutableDictionary *guanzhuDic;
 
 @end

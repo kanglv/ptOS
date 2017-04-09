@@ -33,12 +33,12 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJW-3h-ymz">
-                                <rect key="frame" x="303" y="5" width="40" height="38.5"/>
-                                <color key="backgroundColor" red="0.3921568627" green="0.58823529409999997" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJW-3h-ymz">
+                                <rect key="frame" x="323" y="15" width="20" height="18.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="2DG-jD-UD7"/>
+                                    <constraint firstAttribute="width" constant="20" id="2DG-jD-UD7"/>
                                 </constraints>
+                                <state key="normal" image="icon_xiugai.png"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLx-mw-kMk">
                                 <rect key="frame" x="8" y="47.5" width="0.0" height="1"/>
@@ -55,10 +55,10 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jJW-3h-ymz" secondAttribute="trailing" constant="8" id="4xQ-De-Qty"/>
                             <constraint firstItem="VTY-eM-Eh9" firstAttribute="leading" secondItem="QFK-54-kbO" secondAttribute="leading" constant="8" id="8pa-Qc-C5F"/>
-                            <constraint firstAttribute="bottom" secondItem="jJW-3h-ymz" secondAttribute="bottom" constant="5" id="C0S-V5-Ie8"/>
+                            <constraint firstAttribute="bottom" secondItem="jJW-3h-ymz" secondAttribute="bottom" constant="15" id="C0S-V5-Ie8"/>
                             <constraint firstAttribute="bottom" secondItem="CLx-mw-kMk" secondAttribute="bottom" id="RBZ-7M-8vZ"/>
                             <constraint firstItem="Umu-WP-HTB" firstAttribute="top" secondItem="QFK-54-kbO" secondAttribute="top" constant="5" id="Vfq-XT-QWw"/>
-                            <constraint firstItem="jJW-3h-ymz" firstAttribute="top" secondItem="QFK-54-kbO" secondAttribute="top" constant="5" id="fK6-fI-qYR"/>
+                            <constraint firstItem="jJW-3h-ymz" firstAttribute="top" secondItem="QFK-54-kbO" secondAttribute="top" constant="15" id="fK6-fI-qYR"/>
                             <constraint firstItem="VTY-eM-Eh9" firstAttribute="top" secondItem="Umu-WP-HTB" secondAttribute="bottom" constant="5" id="kZe-1q-y34"/>
                             <constraint firstItem="CLx-mw-kMk" firstAttribute="leading" secondItem="QFK-54-kbO" secondAttribute="leading" constant="8" id="r7p-RF-faI"/>
                             <constraint firstItem="Umu-WP-HTB" firstAttribute="leading" secondItem="QFK-54-kbO" secondAttribute="leading" constant="8" id="uV0-Di-mbA"/>
@@ -80,4 +80,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icon_xiugai.png" width="32" height="33"/>
+    </resources>
 </document>

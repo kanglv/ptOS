@@ -20,6 +20,11 @@
         self.address        = [dict strForKey:@"address"];
         self.material         = [dict strForKey:@"material"];
         self.coordinate           = [dict strForKey:@"coordinate"];
+        
+        self.jobresumeId  = [dict strForKey:@"jobresumeId"];
+        self.jobresumeStatus = [dict strForKey:@"jobresumeStatus"];
+        self.contacts = [dict strForKey:@"contacts"];
+        self.contactWay = [dict strForKey:@"contactWay"];
     }
     return self;
 }

@@ -18,9 +18,9 @@
     NSString *_cardPicFront;
     NSString *_cardPicBack;
     NSString *_educationPic;
-    NSString *_zs1;
-    NSString *_zs2;
-    NSString *_zs3;
+//    NSString *_zs1;
+//    NSString *_zs2;
+//    NSString *_zs3;
     NSMutableArray *_workExp;
     NSString *_skills;
     NSString *_skillsVoice;
@@ -67,12 +67,11 @@ WithCardPicBackUrl:(NSString *)cardPicBackUrl
     
 }
 
-
-- (YTKRequestMethod)requestMethod {
-    return YTKRequestMethodPost;
+- (NSString *)requestUrl {
+    return @"postResume";
 }
 
-- (id)requestArgument{
+- (NSDictionary *)requestHeaderFieldValueDictionary{
     NSMutableDictionary *argument = nil;
     if(self.sessionDelegate)
     {
@@ -82,6 +81,15 @@ WithCardPicBackUrl:(NSString *)cardPicBackUrl
     {
         argument = [self getBaseArgument];
     }
+    return argument;
+}
+
+- (YTKRequestMethod)requestMethod {
+    return YTKRequestMethodPost;
+}
+
+- (id)requestArgument{
+    NSMutableDictionary *argument = [NSMutableDictionary dictionary];
     [argument setCustomString:_resumeId forKey:@"id"];
     [argument setCustomString:_name forKey:@"name"];
     [argument setCustomString:_sex forKey:@"sex"];
@@ -93,13 +101,11 @@ WithCardPicBackUrl:(NSString *)cardPicBackUrl
     [argument setCustomString:_educationPic forKey:@"educationPic"];
     [argument setCustomString:_skills forKey:@"skills"];
     [argument setCustomString:_skillsVoice forKey:@"skillsvoice"];
-    [argument setValue:_workExp forKey:@"workExp"];
+    [argument setValue:_workExp forKey:@"expers"];
     
     return argument;
 }
 
 
-- (NSString *)requestUrl {
-    return @"postResume";
-}
+
 @end

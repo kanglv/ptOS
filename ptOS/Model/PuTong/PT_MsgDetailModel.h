@@ -17,5 +17,9 @@
 @property (nonatomic, copy)NSString *address;
 @property (nonatomic, copy)NSString *material;
 @property (nonatomic, copy)NSString *coordinate;
+@property (nonatomic ,copy)NSString *jobresumeId;
+@property (nonatomic ,copy)NSString *jobresumeStatus;
+@property (nonatomic ,copy)NSString *contacts;
+@property (nonatomic ,copy)NSString *contactWay;
 
 @end

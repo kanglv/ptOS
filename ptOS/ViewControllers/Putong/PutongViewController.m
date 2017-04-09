@@ -28,7 +28,7 @@
 @property (nonatomic,strong)PT_MsgNumApi *msgNumApi;
 @property (nonatomic,strong)PT_ClearMsgNumApi *clearMsgNumApi;
 
-@property (nonatomic,strong) NSString *msgNumber;
+@property (nonatomic,strong) PT_MsgNumModel *msgModel;
 
 @property (nonatomic,strong)NTESSessionListViewController *NTESSessionListVC;
 @end
@@ -38,6 +38,15 @@
 
 
 #pragma mark - lifeCycles
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+//    if (isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+//    {
+//        [self msgNumApiNet];
+//    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,22 +70,20 @@
     self.navigationItem.rightBarButtonItem = rightBarButton;
     [self initUI];
     
-    _NTESSessionListVC = [[NTESSessionListViewController alloc]init];
-    _NTESSessionListVC.messageNumber = self.msgNumber;
-    _NTESSessionListVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-46);
+//    if (isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+//    {
+        [self msgNumApiNet];
+//    }
     
-    [self addChildViewController:_NTESSessionListVC];
-    [self.view addSubview:_NTESSessionListVC.view];
+//    _NTESSessionListVC = [[NTESSessionListViewController alloc]init];
+//    _NTESSessionListVC.model = self.msgModel;
+//    _NTESSessionListVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-46);
+//    
+//    [self addChildViewController:_NTESSessionListVC];
+//    [self.view addSubview:_NTESSessionListVC.view];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    if (isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
-    {
-        [self msgNumApiNet];
-    }
-}
+
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -94,34 +101,34 @@
     self.detailLabel.hidden = YES;
     self.msgNumLabel.hidden = YES;
 }
-//活动按钮事件
-- (IBAction)activityAction:(id)sender {
-}
-//附近的人点击事件
-- (IBAction)nearbyAction:(id)sender {
-    PT_NearlyListViewController *nearlyListViewController = [[PT_NearlyListViewController alloc]init];
-    [self.navigationController pushViewController:nearlyListViewController animated:YES];
-    
-}
-//通知消息点击事件
-- (IBAction)messageAction:(id)sender {
-}
-//我关注的人点击事件
-- (IBAction)concernAction:(id)sender {
-    PT_ConcernViewController *concernVc = [[PT_ConcernViewController alloc]init];
-    [self.navigationController pushViewController:concernVc animated:YES];
-}
-
-- (IBAction)QZBtnPress:(id)sender {
-    if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
-    {
-        [self presentLoginCtrl];
-        return;
-    }
-    [self clearMsgNumApiNet];
-    PT_QiuzhiViewController *ctrl = [[PT_QiuzhiViewController alloc]init];
-    [self.navigationController pushViewController:ctrl animated:YES];
-}
+////活动按钮事件
+//- (IBAction)activityAction:(id)sender {
+//}
+////附近的人点击事件
+//- (IBAction)nearbyAction:(id)sender {
+//    PT_NearlyListViewController *nearlyListViewController = [[PT_NearlyListViewController alloc]init];
+//    [self.navigationController pushViewController:nearlyListViewController animated:YES];
+//    
+//}
+////通知消息点击事件
+//- (IBAction)messageAction:(id)sender {
+//}
+////我关注的人点击事件
+//- (IBAction)concernAction:(id)sender {
+//    PT_ConcernViewController *concernVc = [[PT_ConcernViewController alloc]init];
+//    [self.navigationController pushViewController:concernVc animated:YES];
+//}
+//
+//- (IBAction)QZBtnPress:(id)sender {
+//    if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+//    {
+//        [self presentLoginCtrl];
+//        return;
+//    }
+//    [self clearMsgNumApiNet];
+//    PT_QiuzhiViewController *ctrl = [[PT_QiuzhiViewController alloc]init];
+//    [self.navigationController pushViewController:ctrl animated:YES];
+//}
 
 
 #pragma mark - NetworkApis 
@@ -139,24 +146,22 @@
         PT_MsgNumApi *result = (PT_MsgNumApi *)request;
         if(result.isCorrectResult)
         {
-            self.timeLabel.hidden = NO;
-            self.detailLabel.hidden = NO;
-            self.msgNumLabel.hidden = NO;
-            PT_MsgNumModel *model = [result getMsgNumModel];
-            self.detailLabel.text = model.content;
-            if ([model.content isEqualToString:@""]) {
-                self.detailLabel.text = @"暂无新的消息";
-            }
-//            self.timeLabel.text = model.time;
-//            
-//            self.msgNumLabel.text = model.number;
-            self.msgNumber = model.number;
-            if ([model.number isEqualToString:@"0"]) {
-                self.msgNumLabel.hidden = YES;
-            }
+            self.msgModel = [result getMsgNumModel];
+            _NTESSessionListVC = [[NTESSessionListViewController alloc]init];
+            _NTESSessionListVC.model = self.msgModel;
+            _NTESSessionListVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-46);
+            
+            [self addChildViewController:_NTESSessionListVC];
+            [self.view addSubview:_NTESSessionListVC.view];
         }
         
     } failure:^(YTKBaseRequest *request) {
+        _NTESSessionListVC = [[NTESSessionListViewController alloc]init];
+        _NTESSessionListVC.model = self.msgModel;
+        _NTESSessionListVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-46);
+        
+        [self addChildViewController:_NTESSessionListVC];
+        [self.view addSubview:_NTESSessionListVC.view];
         
     }];
 }

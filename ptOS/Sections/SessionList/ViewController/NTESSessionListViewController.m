@@ -32,6 +32,7 @@
 #import "PT_ConcernViewController.h"
 #import "PT_NoticeViewController.h"
 
+
 #define SessionListTitle @"云信 Demo"
 
 @interface NTESSessionListViewController ()<NIMLoginManagerDelegate,NTESListHeaderDelegate,UIViewControllerPreviewingDelegate,SessionExpireDelegate,NetLoadingDelegate,NoNetWorkingDelegate>
@@ -48,6 +49,7 @@
 
 @property (nonatomic,strong)PT_MsgNumApi *msgNumApi;
 @property (nonatomic,strong)PT_ClearMsgNumApi *clearMsgNumApi;
+
 
 @end
 
@@ -99,20 +101,11 @@
     
     if (isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
     {
-        [self msgNumApiNet];
+      
     }
 }
 
 #pragma mark - NetworkApis
-- (void)msgNumApiNet {
-    if(self.msgNumApi && !self.msgNumApi.requestOperation.isFinished)
-    {
-        [self.msgNumApi stop];
-    }
-    
-    self.msgNumApi.sessionDelegate = self;
-    self.msgNumApi = [[PT_MsgNumApi alloc]init];
-}
 
 - (void)refresh:(BOOL)reload{
     [super refresh:reload];
@@ -202,10 +195,34 @@
             cell.icon_image.image = [UIImage imageNamed:self.pt_listArr[indexPath.row - 1][@"icon"]];
             cell.titleLabel.text = self.pt_listArr[indexPath.row - 1][@"title"];
             //如何获取求职的数据，知道有新的通知
+            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+//            @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+//            @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+//            @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+//            @property (weak, nonatomic) IBOutlet UILabel *tag_numLabel;
+            NSLog(@"");
             if(indexPath.row ==1){
-                cell.tag_numLabel.text = self.messageNumber;
+                dic = self.model.qiuzhiDic;
+                
+
+            } else if(indexPath.row == 3){
+                dic = self.model.guanzhuDic;
+            } else if(indexPath.row ==4){
+                dic = self.model.tongzhiDic;
             }
-            
+            cell.timeLabel.text = [dic objectForKey:@"time"];
+            if([[dic strForKey:@"content"] isEqualToString:@""]){
+                cell.messageLabel.text =@"暂无新消息";
+            } else {
+                cell.messageLabel.text = [dic strForKey:@"content"];
+            }
+           
+            if([[dic strForKey:@"number"] isEqualToString:@"0"]){
+                cell.tag_numLabel.text = @"";
+            } else{
+                 cell.tag_numLabel.text = [dic strForKey:@"number"];
+            }
+           
             return cell;
         }
     }else{

@@ -46,6 +46,12 @@
     
     self.outTimeBtn.tag = 2;
     [self.outTimeBtn addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.descripteTextView jk_addPlaceHolder: @"   请添加描述"];
+    
+    //输入公司的testField设置
+    self.companyTextFiled.placeholder = @"输入公司名";
+    self.companyTextFiled.borderStyle =  UITextBorderStyleNone;
 
     
 
@@ -98,8 +104,16 @@
     [dic setValue:self.outTimeLabel.text forKey:@"outTime"];
     [dic setValue:self.companyTextFiled.text forKey:@"companyName"];
     [dic setValue:self.descripteTextView.text forKey:@"description"];
-    [dic setValue:@"11" forKey:@"resumeId"];
-    [dic setValue:@"30" forKey:@"id"];
+    
+    NSString *string;
+    if([GlobalData sharedInstance].jl_resumeId){
+        string = [GlobalData sharedInstance].jl_resumeId;
+    } else {
+        string = [GlobalData sharedInstance].selfInfo.userId;
+    }
+
+    [dic setValue:string forKey:@"resumeId"];
+    [dic setValue:string forKey:@"id"];
     [dic setValue:@"" forKey:@"voice"];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"workExp" object:self userInfo:dic];

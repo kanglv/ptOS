@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PT_MsgNumModel.h"
 
 @interface NTESSessionListViewController : NIMSessionListViewController
 
 @property (nonatomic,strong) UILabel *emptyTipLabel;
-@property (nonatomic,strong)NSString *messageNumber;
+@property (nonatomic, strong)PT_MsgNumModel *model;
+
 
 @end

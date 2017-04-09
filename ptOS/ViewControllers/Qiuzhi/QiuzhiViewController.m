@@ -494,7 +494,7 @@
     if([[GlobalData sharedInstance].experience isEqualToString:@"0,0,0"]&&[[GlobalData sharedInstance].educations isEqualToString:@"0,0,0,0,0,0,0"]&&[[GlobalData sharedInstance].jobNatures isEqualToString:@"0,0,0"]){
         if([[GlobalData sharedInstance].minSalary isEqualToString: @"1000"]&&[[GlobalData sharedInstance].maxSalary isEqualToString: @"10000"]){
             [self.sortView.moneyBtn setTitle:@"筛选" forState:UIControlStateNormal];
-             [self.sortView.moneyBtn setTitleColor:[UIColor blackColor]  forState:UIControlStateNormal];
+             [self.sortView.moneyBtn setTitleColor:RGB(102, 102, 102)  forState:UIControlStateNormal];
             self.sortView.moneyImageView.image = [UIImage imageNamed:@"icon_xuan"];
         }
     }else {

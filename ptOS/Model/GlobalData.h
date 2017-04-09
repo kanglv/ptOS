@@ -91,6 +91,9 @@
 @property (nonatomic,strong)NSString *health8Name;
 
 
+
+
+
 + (GlobalData *)sharedInstance;
 
 @end

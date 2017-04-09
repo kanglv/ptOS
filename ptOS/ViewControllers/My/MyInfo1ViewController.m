@@ -138,6 +138,7 @@
     }
     [GlobalData sharedInstance].jl_name = self.nameTF.text;
     [GlobalData sharedInstance].jl_phone = [GlobalData sharedInstance].selfInfo.phone;
+    [XHToast showCenterWithText:@"保存成功"];
     
 }
 

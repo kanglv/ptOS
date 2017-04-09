@@ -69,6 +69,9 @@
 - (void)addWorkExp:(NSNotification *)notification {
     
     [self.dataArray addObject:notification.userInfo];
+    
+    [self.tableView setFrame:CGRectMake(0, 10, self.view.frame.size.width, 50*(self.dataArray.count+1))];
+    
     [self.tableView reloadData];
     
 }

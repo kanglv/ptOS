@@ -13,9 +13,9 @@
 - (id)initWithDic:(NSDictionary *)dict {
     self = [super initWithDic:dict];
     if (self) {
-        self.time          = [dict strForKey:@"time"];
-        self.content              = [dict strForKey:@"content"];
-        self.number       = [dict strForKey:@"number"];
+        self.qiuzhiDic          = [dict objectForKey:@"qiuzhi"];
+        self.guanzhuDic              = [dict objectForKey:@"guanzhu"];
+        self.tongzhiDic       = [dict objectForKey:@"tongzhi"];
     }
     return self;
 }

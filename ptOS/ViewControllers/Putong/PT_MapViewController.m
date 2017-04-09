@@ -34,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *metrialLabel;
 
 @property (nonatomic,strong)NSString *coordinate;
+@property (nonatomic ,strong)NSString *jobresumeId;
+@property (nonatomic ,strong)NSString *jobresumeStatus;
 
 @property (weak, nonatomic) IBOutlet MAMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *acceptBtn;
@@ -108,7 +110,7 @@
     }
     
     self.operNoticeApi.sessionDelegate = self;
-    self.operNoticeApi = [[PT_OperNoticeNetApi alloc] initWithJobresumeId:self.msgId withJobresumeStatus:@"" withOper:oper];
+    self.operNoticeApi = [[PT_OperNoticeNetApi alloc] initWithJobresumeId:self.jobresumeId withJobresumeStatus:self.jobresumeStatus withOper:oper];
     self.operNoticeApi.netLoadingDelegate = self;
     [self.operNoticeApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         
@@ -143,8 +145,10 @@
             self.d_timeLabel.text = model.time;
             self.addressLabel.text = model.address;
             self.metrialLabel.text = model.material;
-            self.connectPerson.text = @"";
-            self.connectMethod.text = @"";
+            self.connectPerson.text = model.contacts;
+            self.connectMethod.text = model.contactWay;
+            self.jobresumeId = model.jobresumeId;
+            self.jobresumeStatus = model.jobresumeStatus;
             
             if ([model.material isEqualToString:@""]) {
                 self.metrialLabel.text = @"无";
