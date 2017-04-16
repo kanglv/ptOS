@@ -24,6 +24,8 @@
 
 @property (strong, nonatomic) MHDatePicker *selectDatePicker;
 
+@property (strong,nonatomic) NSString * isNew;
+
 @end
 
 @implementation AddWorkExpersViewController
@@ -35,7 +37,7 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:@"添加" forState:UIControlStateNormal];
     [btn setTitleColor:WhiteColor forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(add) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(add:) forControlEvents:UIControlEventTouchUpInside];
     [btn setFrame:CGRectMake(0, 0, 60, 40)];
     btn.titleLabel.font = [UIFont systemFontOfSize:16];
     
@@ -52,7 +54,8 @@
     //输入公司的testField设置
     self.companyTextFiled.placeholder = @"输入公司名";
     self.companyTextFiled.borderStyle =  UITextBorderStyleNone;
-
+    
+    
     
 
 }
@@ -68,7 +71,7 @@
         NSString *time = [weakSelf dateStringWithDate:selectedDate DateFormat:@"yyyy年MM月"];
         NSDate *now = [NSDate date];
         if([selectedDate timeIntervalSinceDate:now] > 0.0){
-            [XHToast showCenterWithText:@"出生时间选择错误，请重试"];
+            [XHToast showCenterWithText:@"时间选择错误，请重试"];
         } else{
             if(sender.tag == 1){
                 self.inTimeLabel.text = time;
@@ -96,10 +99,14 @@
 }
 
 
--(void)add{
+-(void)add:(UIButton *)sender{
+    //防止多次点击
+    [sender setEnabled:NO];
+    
     //发一个通知，跳转到前一个页面
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    
     [dic setValue:self.inTimeLabel.text forKey:@"inTime"];
     [dic setValue:self.outTimeLabel.text forKey:@"outTime"];
     [dic setValue:self.companyTextFiled.text forKey:@"companyName"];
@@ -107,16 +114,37 @@
     
     NSString *string;
     if([GlobalData sharedInstance].jl_resumeId){
+        //已存在的
         string = [GlobalData sharedInstance].jl_resumeId;
+       
     } else {
+        //新增的
         string = [GlobalData sharedInstance].selfInfo.userId;
     }
 
     [dic setValue:string forKey:@"resumeId"];
-    [dic setValue:string forKey:@"id"];
+    if([self.indexExpersId isEqualToString:@"10000"]){
+        self.isNew = @"1";
+        //如何设一个ID?
+         [dic setValue: [GlobalData sharedInstance].jl_expersID forKey:@"id"];
+         int i = [[GlobalData sharedInstance].jl_expersID intValue] + 1;
+       
+        [GlobalData sharedInstance].jl_expersID = [NSString stringWithFormat:@"%d",i];
+        
+    }else {
+        self.isNew = @"0";
+        [dic setValue:self.indexExpersId forKey:@"id"];
+    }
+
+    
     [dic setValue:@"" forKey:@"voice"];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"workExp" object:self userInfo:dic];
+    NSMutableDictionary *addDic =[[NSMutableDictionary alloc]init];
+    
+    [addDic setValue:self.isNew forKey:@"isNew"];
+    [addDic setValue:dic forKey:@"dataDic"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"workExp" object:self userInfo:addDic];
     
     //跳回上一页
     [self.navigationController popViewControllerAnimated:YES];

@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface AddWorkExpersViewController : BaseViewController
+@property (strong,nonatomic)NSString * indexExpersId;
 
 @end

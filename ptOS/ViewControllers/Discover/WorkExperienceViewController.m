@@ -32,6 +32,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = BackgroundColor;
     self.dataArray =  [NSMutableArray arrayWithArray:[GlobalData sharedInstance].jl_workExp];
+    
+//    [self.tableView setFrame:CGRectMake(0, 10, self.view.frame.size.width, 50*(self.dataArray.count+1))];
     NSLog(@"%@",[self.dataArray objectAtIndex:0]);
      [self.navigationItem setTitle:@"工作经历"];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -46,7 +48,9 @@
     [self.textView jk_addPlaceHolder:@"  其他补充描述"];
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addWorkExp:) name:@"workExp" object:nil];
     
+
 }
 
 - (void)next {
@@ -58,7 +62,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addWorkExp:) name:@"workExp" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addWorkExp:) name:@"workExp" object:nil];
+//  
 
 }
 
@@ -66,11 +71,41 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"workExp" object:nil];
 }
 
+
+
 - (void)addWorkExp:(NSNotification *)notification {
     
-    [self.dataArray addObject:notification.userInfo];
     
-    [self.tableView setFrame:CGRectMake(0, 10, self.view.frame.size.width, 50*(self.dataArray.count+1))];
+    if([[notification.userInfo objectForKey:@"isNew"]isEqualToString:@"1"]){
+        //若为新增简历
+         [self.dataArray addObject:[notification.userInfo objectForKey:@"dataDic"]];
+        
+        //去重策略
+        for(int i=0;i<self.dataArray.count;i++){
+            NSMutableDictionary *dic = [self.dataArray objectAtIndex:i];
+            NSString *str  = [NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
+            NSMutableDictionary *newDataDic =[notification.userInfo objectForKey:@"dataDic"];
+            //找到对应的简历，更新
+            if([str isEqualToString:[newDataDic objectForKey:@"id"]]){
+                [self.dataArray replaceObjectAtIndex:i withObject:newDataDic];
+            }
+        }
+
+        
+    } else {
+        for(int i=0;i<self.dataArray.count;i++){
+            NSMutableDictionary *dic = [self.dataArray objectAtIndex:i];
+            NSString *str  = [NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
+            NSMutableDictionary *newDataDic =[notification.userInfo objectForKey:@"dataDic"];
+            //找到对应的简历，更新
+            if([str isEqualToString:[newDataDic objectForKey:@"id"]]){
+                [self.dataArray replaceObjectAtIndex:i withObject:newDataDic];
+            }
+        }
+    }
+    
+    
+    
     
     [self.tableView reloadData];
     
@@ -94,7 +129,9 @@
         if (cell == nil) {
             cell = [[NSBundle mainBundle] loadNibNamed:@"MY_AddExpersTableViewCell" owner:nil options:nil].lastObject;
         }
+        cell.selectionStyle  = UITableViewCellSelectionStyleNone;
         [cell.AddBtn addTarget:self action:@selector(writeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        cell.AddBtn.tag = 10000;
         return cell;
         
     } else {
@@ -103,13 +140,15 @@
         if (cell == nil) {
             cell = [[NSBundle mainBundle] loadNibNamed:@"MY_ExpersTableViewCell" owner:nil options:nil].lastObject;
         }
-        
+        cell.selectionStyle  = UITableViewCellSelectionStyleNone;
         NSMutableDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
         cell.contentLabel.text = [dic objectForKey:@"companyName"];
         NSString *time = [NSString stringWithFormat:@"%@-%@",[dic objectForKey:@"inTime"],[dic objectForKey:@"outTime"]];
         cell.timeLabel.text = time;
-        cell.writeBtn.tag = [[dic objectForKey:@"resumeId"] integerValue];
+        cell.writeBtn.tag = [[dic objectForKey:@"id"] integerValue];
         [cell.writeBtn addTarget:self action:@selector(writeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        
+       
         return cell;
 
     }
@@ -120,6 +159,7 @@
 - (void)writeBtnClicked:(UIButton *)sender{
     
      AddWorkExpersViewController *ctr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AddWorkExpersViewController"];
+    ctr.indexExpersId = [NSString stringWithFormat:@"%ld",sender.tag];
     [self.navigationController pushViewController:ctr animated:YES];
     
 }

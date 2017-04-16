@@ -122,7 +122,7 @@
         
     }];
     
-    WeakSelf;
+    
     UIAlertAction *otherAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [alertController.textFields.firstObject resignFirstResponder];
         

@@ -266,7 +266,7 @@
             self.detailView.ageLabel.text = model.age;
             self.detailView.qtyqLabel.text = model.qtyq;
             self.detailView.zxsjLabel.text = model.zxsj;
-            if ([model.isZP isEqualToString:@"0"]) {
+            if ([model.isYBM isEqualToString:@"0"]) {
                 [self.applyBtn setBackgroundColor:[UIColor lightGrayColor]];
                 self.applyBtn.userInteractionEnabled = NO;
             }else {
@@ -534,6 +534,9 @@
         if(result.isCorrectResult)
         {
             [XHToast showCenterWithText:@"报名成功，等待HR确认"];
+            //将报名图标变灰色，按钮不可点击
+            _applyBtn.backgroundColor = [UIColor grayColor];
+            [_applyBtn setEnabled:NO];;
         }else {
             NSString *num = [UserDefault objectForKey:JLKey];
             if ([num isEqualToString:@"0"]) {

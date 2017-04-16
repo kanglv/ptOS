@@ -110,18 +110,18 @@
                     [self uploadImageWithImage:[GlobalData sharedInstance].cardPicBack withFileName:[GlobalData sharedInstance].cardPicBackName];
                     [self uploadImageWithImage:[GlobalData sharedInstance].educationPiC withFileName:[GlobalData sharedInstance].educationPiCName];
                     [XHToast showCenterWithText:@"保存成功"];
-        //            [self.navigationController popToRootViewControllerAnimated:YES];
-                    [GlobalData sharedInstance].jl_name = nil;
-                    [GlobalData sharedInstance].jl_sex = nil;
-                    [GlobalData sharedInstance].jl_birth = nil;
-                    [GlobalData sharedInstance].jl_education = nil;
-                    [GlobalData sharedInstance].jl_phone = nil;
-                    [GlobalData sharedInstance].jl_cardPicFont = nil;
-                    [GlobalData sharedInstance].jl_cardPicBack = nil;
-                    [GlobalData sharedInstance].jl_educationPiC = nil;
-                    [GlobalData sharedInstance].jl_workExp = nil;
-                    [GlobalData sharedInstance].jl_skills = nil;
-                    [GlobalData sharedInstance].jl_resumeId = nil;
+//        //            [self.navigationController popToRootViewControllerAnimated:YES];
+//                    [GlobalData sharedInstance].jl_name = nil;
+//                    [GlobalData sharedInstance].jl_sex = nil;
+//                    [GlobalData sharedInstance].jl_birth = nil;
+//                    [GlobalData sharedInstance].jl_education = nil;
+//                    [GlobalData sharedInstance].jl_phone = nil;
+//                    [GlobalData sharedInstance].jl_cardPicFont = nil;
+//                    [GlobalData sharedInstance].jl_cardPicBack = nil;
+//                    [GlobalData sharedInstance].jl_educationPiC = nil;
+//                    [GlobalData sharedInstance].jl_workExp = nil;
+//                    [GlobalData sharedInstance].jl_skills = nil;
+//                    [GlobalData sharedInstance].jl_resumeId = nil;
 
         [XHToast showCenterWithText:@"保存成功"];
         
@@ -262,11 +262,18 @@
             [GlobalData sharedInstance].jl_cardPicFont = model.cardPicFront;
             [GlobalData sharedInstance].jl_cardPicBack = model.cardPicBack;
             [GlobalData sharedInstance].jl_educationPiC = model.educationPic;
-//            [GlobalData sharedInstance].jl_zs1 = model.zs1;
-//            [GlobalData sharedInstance].jl_zs2 = model.zs2;
-//            [GlobalData sharedInstance].jl_zs3 = model.zs3;
+
             [GlobalData sharedInstance].jl_workExp = model.workExp;
             [GlobalData sharedInstance].jl_skills = model.skills;
+            
+            //取到最后一条工作经历
+            NSMutableDictionary *dic =  [[NSMutableArray arrayWithArray:[GlobalData sharedInstance].jl_workExp] lastObject];
+            int i = [[dic objectForKey:@"id"] intValue];
+            NSString *expersId = [NSString stringWithFormat:@"%d",i+1];
+
+            [GlobalData sharedInstance].jl_expersID = expersId;
+            
+
         }
         
     } failure:^(YTKBaseRequest *request) {

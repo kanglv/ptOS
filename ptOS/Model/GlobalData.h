@@ -49,6 +49,8 @@
 @property (nonatomic,copy)NSString *jl_skills;
 @property (nonatomic,copy)NSString *jl_skillsvoice;
 
+@property (nonatomic,copy)NSString *jl_expersID;//新增经历的标记
+
 
 @property (nonatomic,strong)UIImage *cardPicFont;
 @property (nonatomic,strong)UIImage *cardPicBack;
