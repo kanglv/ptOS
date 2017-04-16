@@ -268,6 +268,7 @@
             self.detailView.zxsjLabel.text = model.zxsj;
             if ([model.isYBM isEqualToString:@"0"]) {
                 [self.applyBtn setBackgroundColor:[UIColor lightGrayColor]];
+                [_applyBtn setTitle:@"已报名" forState:UIControlStateNormal];
                 self.applyBtn.userInteractionEnabled = NO;
             }else {
                 [self.applyBtn setBackgroundColor:MainColor];
@@ -535,8 +536,10 @@
         {
             [XHToast showCenterWithText:@"报名成功，等待HR确认"];
             //将报名图标变灰色，按钮不可点击
-            _applyBtn.backgroundColor = [UIColor grayColor];
-            [_applyBtn setEnabled:NO];;
+            [self.applyBtn setBackgroundColor:[UIColor lightGrayColor]];
+            [_applyBtn setTitle:@"已报名" forState:UIControlStateNormal];
+            self.applyBtn.userInteractionEnabled = NO;
+            
         }else {
             NSString *num = [UserDefault objectForKey:JLKey];
             if ([num isEqualToString:@"0"]) {
