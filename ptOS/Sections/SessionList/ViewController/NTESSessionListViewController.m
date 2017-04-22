@@ -31,11 +31,18 @@
 #import "PT_NearlyListViewController.h"
 #import "PT_ConcernViewController.h"
 #import "PT_NoticeViewController.h"
-
+#import "PT_ClearMessageNumApi.h"
 
 #define SessionListTitle @"云信 Demo"
 
 @interface NTESSessionListViewController ()<NIMLoginManagerDelegate,NTESListHeaderDelegate,UIViewControllerPreviewingDelegate,SessionExpireDelegate,NetLoadingDelegate,NoNetWorkingDelegate>
+{
+    UIImageView *noNetWorkingImage;
+    UIImageView *noDataImage;
+    UIView *loadingView;
+    
+    NSTimer *timer;
+}
 
 @property (nonatomic,strong) UILabel *titleLabel;
 
@@ -49,6 +56,7 @@
 
 @property (nonatomic,strong)PT_MsgNumApi *msgNumApi;
 @property (nonatomic,strong)PT_ClearMsgNumApi *clearMsgNumApi;
+@property (nonatomic,strong)PT_ClearMessageNumApi *clearMessageNumApi;
 
 
 @end
@@ -112,6 +120,143 @@
     self.emptyTipLabel.hidden = self.recentSessions.count;
 }
 
+
+//session过期
+- (void)sessionIsExpire:(BaseNetApi *)object
+{
+    [GlobalData sharedInstance].selfInfo = nil;
+    //    [UMessage setAlias:UN_VALID_ALIAS type:ALIAS_TYPE response:^(id responseObject, NSError *error) {
+    
+    //    }];
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray *_tmpArray = [NSArray arrayWithArray:[cookieJar cookies]];
+    for (NSHTTPCookie *obj in _tmpArray) {
+        if([obj.name isEqualToString:@"sessionID"] || [obj.name isEqualToString:@"sessionId"])
+        {
+            [cookieJar deleteCookie:obj];
+        }
+    }
+    [self presentLoginCtrl];
+}
+
+
+
+#pragma mark --NoNetWorkingDelegate
+//网络接口出错后判断是否有数据，然后判断是否有网络，网络正常显示无数据，网络异常显示无网络
+- (void)noNetWorking
+{
+    
+    if(![self hasData])
+    {
+       
+            CGFloat width = FITWIDTH(150);
+            noNetWorkingImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 250, width * 2.2, width)];
+            noNetWorkingImage.image = [UIImage imageNamed:@"chucuo"];
+            noNetWorkingImage.centerX = self.view.centerX;
+            [self.view addSubview:noNetWorkingImage];
+            
+            [self.view bringSubviewToFront:noNetWorkingImage];
+    }
+}
+
+- (BOOL)hasData
+{
+    return YES;
+}
+
+#pragma mark --NetLoadingDelegate
+- (void)startLoading
+{
+    
+    
+    CGFloat width = 100;
+    CGFloat imageWidth = 80;
+    
+    loadingView = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - width)/2, (self.view.frame.size.height - width)/2, width, width)];
+    [self.view addSubview:loadingView];
+    
+    UIImageView *gifImageView = [[UIImageView alloc] initWithFrame:CGRectMake((width -imageWidth)/2, 0, imageWidth, imageWidth)];
+    NSArray *gifArray = [NSArray arrayWithObjects:[UIImage imageNamed:@"jiazaizhong01"],
+                         [UIImage imageNamed:@"jiazaizhong02"],
+                         [UIImage imageNamed:@"jiazaizhong03"],
+                         [UIImage imageNamed:@"jiazaizhong04"],
+                         [UIImage imageNamed:@"jiazaizhong05"],
+                         [UIImage imageNamed:@"jiazaizhong06"],
+                         [UIImage imageNamed:@"jiazaizhong02"],nil];
+    gifImageView.animationImages = gifArray; //动画图片数组
+    gifImageView.animationDuration = 1; //执行一次完整动画所需的时长
+    gifImageView.animationRepeatCount = 0;  //动画重复次数
+    [loadingView addSubview:gifImageView];
+    
+    
+    UILabel *lable = [ControlUtil lableView:@"努力加载中…"
+                                  backColor:[UIColor clearColor]
+                                  textColor:MainColor
+                                   textFont:[UIFont systemFontOfSize:12.0]
+                                  WithFrame:CGRectMake(0, imageWidth, width, width - imageWidth) textAlignment:NSTextAlignmentCenter];
+    [loadingView addSubview:lable];
+    
+    [gifImageView startAnimating];
+    
+}
+
+- (void)stopLoading
+{
+    if(loadingView)
+    {
+        [loadingView removeFromSuperview];
+        loadingView = nil;
+    }
+}
+
+
+
+
+- (void)clearMsgNumApiNet {
+    if(self.clearMsgNumApi && !self.clearMsgNumApi.requestOperation.isFinished)
+    {
+        [self.clearMsgNumApi stop];
+    }
+    
+    self.clearMsgNumApi.sessionDelegate = self;
+    self.clearMsgNumApi = [[PT_ClearMsgNumApi alloc]init];
+    self.clearMsgNumApi.netLoadingDelegate = self;
+    [self.clearMsgNumApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+        
+        PT_ClearMsgNumApi *result = (PT_ClearMsgNumApi *)request;
+        if(result.isCorrectResult)
+        {
+//             [XHToast showCenterWithText:@"清除成功"];
+        }
+        
+    } failure:^(YTKBaseRequest *request) {
+        
+    }];
+}
+
+- (void)clearMsgNumApiNetwithType:(NSString *)type {
+    if(self.clearMessageNumApi && !self.clearMessageNumApi.requestOperation.isFinished)
+    {
+        [self.clearMessageNumApi stop];
+    }
+    
+    self.clearMessageNumApi.sessionDelegate = self;
+    self.clearMessageNumApi = [[PT_ClearMessageNumApi alloc]initWithType:type];
+    self.clearMessageNumApi.netLoadingDelegate = self;
+    [self.clearMessageNumApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+        
+        PT_ClearMessageNumApi *result = (PT_ClearMessageNumApi *)request;
+        if(result.isCorrectResult)
+        {
+//            [XHToast showCenterWithText:@"清除成功"];
+        }
+        
+    } failure:^(YTKBaseRequest *request) {
+        
+    }];
+}
+
+
 - (void)onSelectedRecent:(NIMRecentSession *)recent atIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 0) {
@@ -132,7 +277,7 @@
                 return;
             }
             
-//            [self clearMsgNumApiNet];
+            [self clearMsgNumApi];
             PT_QiuzhiViewController *ctrl = [[PT_QiuzhiViewController alloc]init];
             [self.navigationController pushViewController:ctrl animated:YES];
 
@@ -145,6 +290,7 @@
                 [self presentLoginCtrl];
                 return;
             }
+             [self clearMsgNumApiNetwithType:@"2"];
             PT_ConcernViewController *concernVc = [[PT_ConcernViewController alloc]init];
             [self.navigationController pushViewController:concernVc animated:YES];
         }else if (indexPath.row == 4){//通知消息
@@ -153,6 +299,7 @@
                 [self presentLoginCtrl];
                 return;
             }
+             [self clearMsgNumApiNetwithType:@"1"];
             PT_NoticeViewController *noticeVc = [[PT_NoticeViewController alloc]init];
             [self.navigationController pushViewController:noticeVc animated:YES];
 
@@ -196,30 +343,35 @@
             cell.titleLabel.text = self.pt_listArr[indexPath.row - 1][@"title"];
             //如何获取求职的数据，知道有新的通知
             NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-//            @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-//            @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
-//            @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-//            @property (weak, nonatomic) IBOutlet UILabel *tag_numLabel;
-            NSLog(@"");
+
+           
             if(indexPath.row ==1){
                 dic = self.model.qiuzhiDic;
                 
-
             } else if(indexPath.row == 3){
                 dic = self.model.guanzhuDic;
             } else if(indexPath.row ==4){
                 dic = self.model.tongzhiDic;
             }
-            cell.timeLabel.text = [dic objectForKey:@"time"];
+            
+            //时间
+            if(indexPath.row ==2){
+                cell.timeLabel.text = @"";
+            } else {
+                cell.timeLabel.text =[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
+            }
+            //内容
             if([[dic strForKey:@"content"] isEqualToString:@""]){
                 cell.messageLabel.text =@"暂无新消息";
             } else {
                 cell.messageLabel.text = [dic strForKey:@"content"];
             }
            
+            //消息数目
             if([[dic strForKey:@"number"] isEqualToString:@"0"]){
                 cell.tag_numLabel.text = @"";
             } else{
+                NSLog(@"数目：%@",[dic strForKey:@"number"]);
                  cell.tag_numLabel.text = [dic strForKey:@"number"];
             }
            

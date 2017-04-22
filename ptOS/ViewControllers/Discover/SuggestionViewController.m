@@ -361,7 +361,7 @@
             }else {
                 cell.zanBtn.selected = NO;
             }
-            [cell.zanBtn addTarget:self action:@selector(dianzanActionNO:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.zanBtn addTarget:self action:@selector(dianzanActionHas:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }
         

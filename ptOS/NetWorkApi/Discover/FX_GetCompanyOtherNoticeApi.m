@@ -7,7 +7,7 @@
 //
 
 #import "FX_GetCompanyOtherNoticeApi.h"
-
+#import "FX_CompanyNoticeModel.h"
 @implementation FX_GetCompanyOtherNoticeApi
 {
     NSString *_page;
@@ -38,7 +38,7 @@
     NSMutableDictionary *argument = [self getBaseArgument];
     
     [argument setCustomString:_page forKey:@"page"];
-    [argument setCustomString:_sessionId forKey:@"sessionId"];
+//    [argument setCustomString:_sessionId forKey:@"sessionId"];
     [argument setCustomString:_type forKey:@"type"];
     
     return argument;
@@ -53,9 +53,17 @@
         NSLog(@"%@",dataDict);
         if(dataDict && [dataDict isKindOfClass:[NSDictionary class]])
         {
+            
             NSArray *array = [dataDict objectForKey:@"dataList"];
             NSMutableArray *result = [NSMutableArray array];
-            NSLog(@"%@",array);
+;
+            for(NSDictionary *dic in array)
+            {
+                 FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]initWithDic:dic];
+                [result addObject:model];
+            }
+//            NSMutableArray *result = [NSMutableArray array];
+//            NSLog(@"%@",array);
             
             return result;
         }

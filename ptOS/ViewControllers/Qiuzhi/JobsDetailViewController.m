@@ -266,7 +266,7 @@
             self.detailView.ageLabel.text = model.age;
             self.detailView.qtyqLabel.text = model.qtyq;
             self.detailView.zxsjLabel.text = model.zxsj;
-            if ([model.isYBM isEqualToString:@"0"]) {
+            if ([model.isYBM isEqualToString:@"1"]) {
                 [self.applyBtn setBackgroundColor:[UIColor lightGrayColor]];
                 [_applyBtn setTitle:@"已报名" forState:UIControlStateNormal];
                 self.applyBtn.userInteractionEnabled = NO;

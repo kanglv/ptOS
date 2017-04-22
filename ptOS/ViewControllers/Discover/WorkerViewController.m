@@ -255,15 +255,16 @@
             }
             
         }
-        CGFloat height = [ControlUtil heightWithContent:model.content withFont:[UIFont systemFontOfSize:15] withWidth:FITWIDTH(326)];
-        if (model.imgUrl.length < 6) {
+        
+        if ([model.fileType isEqualToString:@"1"]) {
             
-            
-            if (height > 60) {
-                return 231;
-            }else {
-                return 181 - 60 + height;
+            if([model.imgUrl isEqualToString:@""]){
+                CGFloat height = [ControlUtil heightWithContent:model.content withFont:[UIFont systemFontOfSize:15] withWidth:FITWIDTH(199)];
+                 return  121 + height;
+            } else {
+                 return 231;
             }
+
         }else if([model.fileType isEqualToString:@"2"]){
             
             return 154 ;
@@ -277,8 +278,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-            NSDictionary *dic = self.leftDataArray[indexPath.row ];
-            FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]initWithDic:dic];
+    FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]init];
+    if (self.isSearch) {
+        if (self.searchDataArray.count > 0 ) {
+            model = self.searchDataArray[indexPath.row];
+        }
+    }else {
+        if (self.leftDataArray.count > 0) {
+            model = self.leftDataArray[indexPath.row];
+        }
+        
+    }
+
             if([model.fileType isEqualToString:@"1"]) {
                 //图片或者文字
                 if (model.imgUrl.length < 6) {
@@ -323,6 +334,7 @@
                     }else {
                         cell.zanBtn.selected = NO;
                     }
+                    cell.zanBtn.tag = indexPath.row;
                     [cell.zanBtn addTarget:self action:@selector(dianzanActionNO:) forControlEvents:UIControlEventTouchUpInside];
                     return cell;
                 } else {
@@ -366,6 +378,7 @@
                     }else {
                         cell.zanBtn.selected = NO;
                     }
+                    cell.zanBtn.tag = indexPath.row;
                     [cell.zanBtn addTarget:self action:@selector(dianzanActionNO:) forControlEvents:UIControlEventTouchUpInside];
                     return cell;
                 }
@@ -413,6 +426,7 @@
                 }else {
                     cell.zanBtn.selected = NO;
                 }
+                cell.zanBtn.tag = indexPath.row;
                 [cell.zanBtn addTarget:self action:@selector(dianzanActionNO:) forControlEvents:UIControlEventTouchUpInside];
                 return cell;
                 
@@ -460,6 +474,7 @@
                 }else {
                     cell.zanBtn.selected = NO;
                 }
+                cell.zanBtn.tag = indexPath.row;
                 [cell.zanBtn addTarget:self action:@selector(dianzanActionNO:) forControlEvents:UIControlEventTouchUpInside];
                 return cell;
                 
@@ -473,17 +488,21 @@
         [self presentLoginCtrl];
         return;
     }
-    GroundNoImageTableViewCell *cell = (GroundNoImageTableViewCell *)sender.superview.superview.superview;
-    NSIndexPath *indexpath = [self.left_tbView indexPathForCell:cell];
-    FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]init];
-    if (_isSearch) {
-        model = self.searchDataArray[indexpath.row];
-    }else {
-        model = self.leftDataArray[indexpath.row];
-    }
+    
     Discover_DetailViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Discover_DetailViewController"];
+    FX_CompanyNoticeModel *model;
+    if (_isSearch) {
+        model = self.searchDataArray[sender.tag];
+    }else {
+        model = self.leftDataArray[sender.tag];
+    }
+        
+    NSLog(@"%@",model.tzId);
     ctrl.tzId = model.tzId;
     [self.navigationController pushViewController:ctrl animated:YES];
+    
+
+
 }
 
 
@@ -583,7 +602,6 @@
     cell.zanBtn.selected = !cell.zanBtn.selected;
 }
 
-
 #pragma mark - NetworkApis
 - (void)getCompanyOtherNoticeApiNet {
     if (self.getCompanyApi && !self.getCompanyApi.requestOperation.isFinished) {
@@ -659,8 +677,13 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *dic = self.leftDataArray[indexPath.row ];
-    FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]initWithDic:dic];
+    FX_CompanyNoticeModel *model = [[FX_CompanyNoticeModel alloc]init];
+    if (_isSearch) {
+        model = self.searchDataArray[indexPath.row];
+    }else {
+        model = self.leftDataArray[indexPath.row];
+    }
+
     Discover_DetailViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Discover_DetailViewController"];
     ctrl.tzId = model.tzId;
     [self.navigationController pushViewController:ctrl animated:YES];

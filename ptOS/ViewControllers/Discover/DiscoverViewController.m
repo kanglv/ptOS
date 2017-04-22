@@ -486,13 +486,14 @@
             }else {
                 [self.rightDataArray addObjectsFromArray:[result getComList]];
             }
-            [self.right_tbView reloadData];
+            
             NSInteger count = [result getComList].count;
             if (count == 0) {
                 [(MJRefreshAutoFooter *)self.right_tbView.mj_footer setHidden:YES];
             }else {
                 [(MJRefreshAutoFooter *)self.right_tbView.mj_footer setHidden:NO];
             }
+            [self.right_tbView reloadData];
         }else {
             if (_rightPage > 1) {
                 _rightPage --;
@@ -576,7 +577,7 @@
         FX_GiveGreatApi *result = (FX_GiveGreatApi *)request;
         if(result.isCorrectResult)
         {
-            
+            [XHToast showCenterWithText:@"点赞成功"];
         }
     } failure:^(YTKBaseRequest *request) {
         
@@ -929,6 +930,7 @@
                     }else {
                         cell.zanBtn.selected = NO;
                     }
+                     cell.zanBtn.tag = indexPath.row;
                     [cell.zanBtn addTarget:self action:@selector(dianzanActionNO:) forControlEvents:UIControlEventTouchUpInside];
                     return cell;
                 } else {
@@ -976,6 +978,7 @@
                     }else {
                         cell.zanBtn.selected = NO;
                     }
+                     cell.zanBtn.tag = indexPath.row;
                     [cell.zanBtn addTarget:self action:@selector(dianzanActionNO:) forControlEvents:UIControlEventTouchUpInside];
                     return cell;
                 }
@@ -1032,6 +1035,7 @@
                 }else {
                     cell.zanBtn.selected = NO;
                 }
+                 cell.zanBtn.tag = indexPath.row;
                 [cell.zanBtn addTarget:self action:@selector(dianzanActionNO:) forControlEvents:UIControlEventTouchUpInside];
                 return cell;
                 
@@ -1076,6 +1080,7 @@
                 }else {
                     cell.zanBtn.selected = NO;
                 }
+                cell.zanBtn.tag = indexPath.row;
                 [cell.zanBtn addTarget:self action:@selector(dianzanActionNO:) forControlEvents:UIControlEventTouchUpInside];
                 return cell;
                 
@@ -1144,7 +1149,7 @@
     
     float seconds =  (float)player.duration;
     
-    int disSecond = ceilf(seconds-3);//时间计算大概3秒误差，待修复
+    int disSecond = ceilf(seconds);//时间计算大概3秒误差
     string = [NSString stringWithFormat:@"%d秒",disSecond];
     NSLog(@"%@",string);
     return string;
@@ -1222,12 +1227,21 @@
     }
     
     GroundNoImageTableViewCell *cell = (GroundNoImageTableViewCell *)sender.superview.superview.superview;
-    NSIndexPath *indexpath = [self.left_tbView indexPathForCell:cell];
+//    NSIndexPath *indexpath = [self.left_tbView indexPathForCell:cell];
+  
+   
+    
     FX_ComListModel *model = [[FX_ComListModel alloc]init];
-    if (_isSearch) {
-        model = self.searchDataArray[indexpath.row];
+    if (!self.left_tbView.hidden) {
+        if (_isSearch) {
+            model = self.searchDataArray[sender.tag];
+        }else {
+            model = self.leftDataArray[sender.tag];
+        }
+        
     }else {
-        model = self.leftDataArray[indexpath.row];
+        NSLog(@"------%ld",sender.tag);
+        model = self.rightDataArray[sender.tag - 1];
     }
     if (cell.zanBtn.selected == YES) {
         NSInteger n = cell.zanNumLabel.titleLabel.text.integerValue;
@@ -1238,38 +1252,40 @@
         NSString *nowNum = [NSString stringWithFormat:@"%ld",(long)n + 1];
         [cell.zanNumLabel setTitle:nowNum forState:UIControlStateNormal];
     }
+    NSLog(@"当前的tzId:%@",model.tzId);
+    
     [self giveGreatApiNetWithTzId:model.tzId];
     cell.zanBtn.selected = !cell.zanBtn.selected;
     
     
 }
 
-- (void)dianzanActionHas:(UIButton *)sender {
-    if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
-    {
-        [self presentLoginCtrl];
-        return;
-    }
-    GroundTableViewCell *cell = (GroundTableViewCell *)sender.superview.superview.superview;
-    NSIndexPath *indexpath = [self.left_tbView indexPathForCell:cell];
-    FX_ComListModel *model = [[FX_ComListModel alloc]init];
-    if (_isSearch) {
-        model = self.searchDataArray[indexpath.row];
-    }else {
-        model = self.leftDataArray[indexpath.row];
-    }
-    if (cell.zanBtn.selected == YES) {
-        NSInteger n = cell.zanNumLabel.titleLabel.text.integerValue;
-        NSString *nowNum = [NSString stringWithFormat:@"%ld",(long)n - 1];
-        [cell.zanNumLabel setTitle:nowNum forState:UIControlStateNormal];
-    }else {
-        NSInteger n = cell.zanNumLabel.titleLabel.text.integerValue;
-        NSString *nowNum = [NSString stringWithFormat:@"%ld",(long)n + 1];
-        [cell.zanNumLabel setTitle:nowNum forState:UIControlStateNormal];
-    }
-    [self giveGreatApiNetWithTzId:model.tzId];
-    cell.zanBtn.selected = !cell.zanBtn.selected;
-}
+//- (void)dianzanActionHas:(UIButton *)sender {
+//    if (!isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
+//    {
+//        [self presentLoginCtrl];
+//        return;
+//    }
+//    GroundTableViewCell *cell = (GroundTableViewCell *)sender.superview.superview.superview;
+//    NSIndexPath *indexpath = [self.left_tbView indexPathForCell:cell];
+//    FX_ComListModel *model = [[FX_ComListModel alloc]init];
+//    if (_isSearch) {
+//        model = self.searchDataArray[indexpath.row];
+//    }else {
+//        model = self.leftDataArray[indexpath.row];
+//    }
+//    if (cell.zanBtn.selected == YES) {
+//        NSInteger n = cell.zanNumLabel.titleLabel.text.integerValue;
+//        NSString *nowNum = [NSString stringWithFormat:@"%ld",(long)n - 1];
+//        [cell.zanNumLabel setTitle:nowNum forState:UIControlStateNormal];
+//    }else {
+//        NSInteger n = cell.zanNumLabel.titleLabel.text.integerValue;
+//        NSString *nowNum = [NSString stringWithFormat:@"%ld",(long)n + 1];
+//        [cell.zanNumLabel setTitle:nowNum forState:UIControlStateNormal];
+//    }
+//    [self giveGreatApiNetWithTzId:model.tzId];
+//    cell.zanBtn.selected = !cell.zanBtn.selected;
+//}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Discover_DetailViewController *ctrl = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"Discover_DetailViewController"];
     FX_ComListModel *model;
@@ -1286,7 +1302,7 @@
         }
         model = self.rightDataArray[indexPath.row - 1];
     }
-    NSLog(@"%@",model.tzId);
+     NSLog(@"当前的tzId:%@",model.tzId);
     ctrl.tzId = model.tzId;
     [self.navigationController pushViewController:ctrl animated:YES];
 }
@@ -1389,6 +1405,7 @@
 
         
         _right_tbView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [self.rightDataArray  removeAllObjects];
             _rightPage = 1;
             [self comListApiNet];
         }];

@@ -47,7 +47,7 @@
     if(dict)
     {
         NSDictionary *dataDict = [dict objectForKey:@"data"];
-        NSLog(@"%@",dataDict);
+//        NSLog(@"%@",dataDict);
 //        NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
 //        [userdefault setValue:dataDict[@"phone"] forKey:PhoneKey];
         if(dataDict && [dataDict isKindOfClass:[NSDictionary class]])

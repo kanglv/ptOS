@@ -42,10 +42,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    if (isValidStr([GlobalData sharedInstance].selfInfo.sessionId))
-//    {
-//        [self msgNumApiNet];
-//    }
+
+        [self msgNumApiNet];
+
 }
 
 - (void)viewDidLoad {
@@ -166,27 +165,27 @@
     }];
 }
 
-- (void)clearMsgNumApiNet {
-    if(self.clearMsgNumApi && !self.clearMsgNumApi.requestOperation.isFinished)
-    {
-        [self.clearMsgNumApi stop];
-    }
-    
-    self.clearMsgNumApi.sessionDelegate = self;
-    self.clearMsgNumApi = [[PT_ClearMsgNumApi alloc]init];
-    self.clearMsgNumApi.netLoadingDelegate = self;
-    [self.clearMsgNumApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
-        
-        PT_ClearMsgNumApi *result = (PT_ClearMsgNumApi *)request;
-        if(result.isCorrectResult)
-        {
-            
-        }
-        
-    } failure:^(YTKBaseRequest *request) {
-        
-    }];
-}
+//- (void)clearMsgNumApiNet {
+//    if(self.clearMsgNumApi && !self.clearMsgNumApi.requestOperation.isFinished)
+//    {
+//        [self.clearMsgNumApi stop];
+//    }
+//    
+//    self.clearMsgNumApi.sessionDelegate = self;
+//    self.clearMsgNumApi = [[PT_ClearMsgNumApi alloc]init];
+//    self.clearMsgNumApi.netLoadingDelegate = self;
+//    [self.clearMsgNumApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+//        
+//        PT_ClearMsgNumApi *result = (PT_ClearMsgNumApi *)request;
+//        if(result.isCorrectResult)
+//        {
+//            
+//        }
+//        
+//    } failure:^(YTKBaseRequest *request) {
+//        
+//    }];
+//}
 
 - (void)rightToFirst{
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"选择操作" delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"添加好友",@"创建高级群",@"创建讨论组",@"搜索高级群", nil];

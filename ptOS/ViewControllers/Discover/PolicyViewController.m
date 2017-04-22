@@ -110,7 +110,7 @@
     if (self.getNoticeListNet && !self.getNoticeListNet.requestOperation.isFinished) {
         [self.getNoticeListNet stop];
     }
-    self.getNoticeListNet = [[FX_GetNoticeListApi alloc]initWithPage:[NSString stringWithFormat:@"%ld",(long)_leftPage] withSessionId:[GlobalData sharedInstance].selfInfo.sessionId withType:@"2" withSearchKey:@"1"];
+    self.getNoticeListNet = [[FX_GetNoticeListApi alloc]initWithPage:[NSString stringWithFormat:@"%ld",(long)_leftPage] withSessionId:[GlobalData sharedInstance].selfInfo.sessionId withType:@"2" withSearchKey:@""];
     self.getNoticeListNet .netLoadingDelegate = self;
     self.getNoticeListNet .noNetWorkingDelegate = self;
     [self.getNoticeListNet  startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -123,7 +123,7 @@
             }else {
                 [self.leftDataArray addObjectsFromArray:[result getNoticeList]];
             }
-            NSLog(@"%@",self.leftDataArray);
+            
             [self.tbView reloadData];
             NSInteger count = [result getNoticeList].count;
             

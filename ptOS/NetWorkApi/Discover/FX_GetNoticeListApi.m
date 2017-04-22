@@ -25,14 +25,7 @@
     }
     return self;
 }
-- (id)initWithPage:(NSString *)page withSessionId:(NSString *)sessionId withType:(NSString *)type  {
-    if (self == [super init]) {
-        _page = page;
-        _sessionId = sessionId;
-        _type = type;
-    }
-    return self;
-}
+
 - (NSString *)requestUrl {
     return @"getNoticeList";
 }
@@ -45,7 +38,7 @@
     NSMutableDictionary *argument = [self getBaseArgument];
     
     [argument setCustomString:_page forKey:@"page"];
-    [argument setCustomString:_sessionId forKey:@"sessionId"];
+//    [argument setCustomString:_sessionId forKey:@"sessionId"];
     [argument setCustomString:_type forKey:@"type"];
     [argument setCustomString:_searchKey forKey:@"searchKey"];
     return argument;

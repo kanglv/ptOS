@@ -218,12 +218,13 @@
             
             [GlobalData sharedInstance].selfInfo = [result getUserInfo];
             NSLog(@"%@",[GlobalData sharedInstance].selfInfo.userId);
+            NSLog(@"%@",[GlobalData sharedInstance].selfInfo.sessionId);
             //云信的帐号密码获取？
             [[[NIMSDK sharedSDK] loginManager] login:[GlobalData sharedInstance].selfInfo.userId
                                                token:[[GlobalData sharedInstance].selfInfo.userId tokenByPassword] completion:^(NSError * _Nullable error) {
                  //18626051857
                                                    
-                                                   
+//                                                 15262785522
                                                }];
             
             [self loginlogApiNet];

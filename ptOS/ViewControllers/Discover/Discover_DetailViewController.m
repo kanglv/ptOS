@@ -167,6 +167,12 @@
         [self presentLoginCtrl];
         return;
     }
+//    if (self.dianzanBtn.selected == YES) {
+//         self.dianzanBtn.selected = !self.dianzanBtn.selected;
+//    }else {
+//        
+//    }
+
     self.dianzanBtn.selected = !self.dianzanBtn.selected;
     [self giveGreateApiNet];
 }
@@ -378,6 +384,7 @@
         [self.giveGreatApi stop];
     }
     self.giveGreatApi.sessionDelegate = self;
+     NSLog(@"当前的tzId:%@",self.tzId);
     self.giveGreatApi = [[FX_GiveGreatApi alloc]initWithtzId:self.tzId];
     
     [self.giveGreatApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
@@ -385,6 +392,7 @@
         FX_GiveGreatApi *result = (FX_GiveGreatApi *)request;
         if(result.isCorrectResult)
         {
+            [XHToast showCenterWithText:@"点赞成"];
         }
     } failure:^(YTKBaseRequest *request) {
         

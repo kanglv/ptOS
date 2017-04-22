@@ -30,7 +30,7 @@
 }
 
 - (id)requestArgument {
-    NSMutableDictionary *argument = [NSMutableDictionary new];
+     NSMutableDictionary *argument = [self getBaseArgument];
     [argument setCustomString:_zwId forKey:@"zwId"];
     return argument;
 }

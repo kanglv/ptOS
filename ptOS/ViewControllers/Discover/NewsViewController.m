@@ -122,7 +122,8 @@
     if (self.getNoticeListNet && !self.getNoticeListNet.requestOperation.isFinished) {
         [self.getNoticeListNet stop];
     }
-    self.getNoticeListNet = [[FX_GetNoticeListApi alloc]initWithPage:[NSString stringWithFormat:@"%ld",(long)_leftPage] withSessionId:[GlobalData sharedInstance].selfInfo.sessionId withType:@"1" withSearchKey:@"1"];
+    self.getNoticeListNet = [[FX_GetNoticeListApi alloc]initWithPage:[NSString stringWithFormat:@"%ld",(long)_leftPage] withSessionId:[GlobalData sharedInstance].selfInfo.sessionId withType:@"1" withSearchKey:@""];
+
     self.getNoticeListNet .netLoadingDelegate = self;
     self.getNoticeListNet .noNetWorkingDelegate = self;
     [self.getNoticeListNet  startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {

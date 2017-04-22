@@ -145,6 +145,7 @@
             self.d_timeLabel.text = model.time;
             self.addressLabel.text = model.address;
             self.metrialLabel.text = model.material;
+            
             self.connectPerson.text = model.contacts;
             self.connectMethod.text = model.contactWay;
             self.jobresumeId = model.jobresumeId;
@@ -153,15 +154,15 @@
             if ([model.material isEqualToString:@""]) {
                 self.metrialLabel.text = @"无";
             }
-            
-            CGFloat height = [ControlUtil heightWithContent:model.material withFont:[UIFont systemFontOfSize:15] withWidth:FITWIDTH(199)];
-            if (height <= 21) {
-                self.metrialLabel.height = 21;
-                self.ziliaoLabel.height = 21;
-            }else {
-                self.metrialLabel.height = height;
-                self.ziliaoLabel.height = height;
-            }
+            self.metrialLabel.adjustsFontSizeToFitWidth = YES;
+//            CGFloat height = [ControlUtil heightWithContent:model.material withFont:[UIFont systemFontOfSize:15] withWidth:FITWIDTH(199)];
+//            if (height <= 21) {
+//                self.metrialLabel.height = 21;
+////                self.ziliaoLabel.height = 21;
+//            }else {
+//                self.metrialLabel.height = height;
+////                self.ziliaoLabel.height = height;
+//            }
             
             NSString *coor = model.coordinate;
             self.coordinate = model.coordinate;

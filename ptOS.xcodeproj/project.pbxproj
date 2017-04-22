@@ -442,6 +442,7 @@
 		5D01787B1E751B7400550045 /* FX_NoticeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01787A1E751B7400550045 /* FX_NoticeListModel.m */; };
 		5D01787F1E751FF900550045 /* GroundGetNoticeListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D01787D1E751FF900550045 /* GroundGetNoticeListTableViewCell.m */; };
 		5D0178801E751FF900550045 /* GroundGetNoticeListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D01787E1E751FF900550045 /* GroundGetNoticeListTableViewCell.xib */; };
+		5D077E9F1EAB86190062E508 /* PT_ClearMessageNumApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D077E9E1EAB86190062E508 /* PT_ClearMessageNumApi.m */; };
 		5D0DDC441E7E4CEB006693E9 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DDC431E7E4CEB006693E9 /* NewsDetailViewController.m */; };
 		5D241DB71E99F9F4002950A8 /* icon_addjianli.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D241DB61E99F9F3002950A8 /* icon_addjianli.png */; };
 		5D241DB91E99FA04002950A8 /* icon_xiugai.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D241DB81E99FA04002950A8 /* icon_xiugai.png */; };
@@ -1877,6 +1878,8 @@
 		5D01787C1E751FF900550045 /* GroundGetNoticeListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundGetNoticeListTableViewCell.h; sourceTree = "<group>"; };
 		5D01787D1E751FF900550045 /* GroundGetNoticeListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundGetNoticeListTableViewCell.m; sourceTree = "<group>"; };
 		5D01787E1E751FF900550045 /* GroundGetNoticeListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroundGetNoticeListTableViewCell.xib; sourceTree = "<group>"; };
+		5D077E9D1EAB86190062E508 /* PT_ClearMessageNumApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT_ClearMessageNumApi.h; sourceTree = "<group>"; };
+		5D077E9E1EAB86190062E508 /* PT_ClearMessageNumApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PT_ClearMessageNumApi.m; sourceTree = "<group>"; };
 		5D0DDC421E7E4CEB006693E9 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
 		5D0DDC431E7E4CEB006693E9 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
 		5D241DB61E99F9F3002950A8 /* icon_addjianli.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_addjianli.png; sourceTree = "<group>"; };
@@ -4870,6 +4873,8 @@
 			children = (
 				F02AFAE91D950F8800D9AE4B /* PT_MsgNumApi.h */,
 				F02AFAEA1D950F8800D9AE4B /* PT_MsgNumApi.m */,
+				5D077E9D1EAB86190062E508 /* PT_ClearMessageNumApi.h */,
+				5D077E9E1EAB86190062E508 /* PT_ClearMessageNumApi.m */,
 				F02AFAEC1D950FA400D9AE4B /* PT_ClearMsgNumApi.h */,
 				F02AFAED1D950FA400D9AE4B /* PT_ClearMsgNumApi.m */,
 				F02AFAEF1D950FB300D9AE4B /* PT_MsgListApi.h */,
@@ -6982,6 +6987,7 @@
 				2EC3FE371E6EDE1300CDD478 /* NIMKitInfo.m in Sources */,
 				2EC3FE251E6EDE1300CDD478 /* NIMContactDataItem.m in Sources */,
 				F00DE9111D759088004D43D0 /* YTKNetworkAgent.m in Sources */,
+				5D077E9F1EAB86190062E508 /* PT_ClearMessageNumApi.m in Sources */,
 				2EC3FE641E6EDE1300CDD478 /* NIMTeamCardOperationItem.m in Sources */,
 				F00D4D741D7099450031A6C1 /* UIView+Additional.m in Sources */,
 				F00DE8EC1D759081004D43D0 /* AFURLConnectionOperation.m in Sources */,
